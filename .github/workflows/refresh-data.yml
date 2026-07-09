@@ -1,39 +1,38 @@
-# Refresh data snapshots and publish them to the `data` branch.
-# Main stays clean — data commits never touch it. The Pages deploy
-# (Phase 1) checks out main + the data branch and ships both.
-#
-# Phase 0: settings only, manual trigger. Phase 1 enables the cron and
-# adds scoreboard/standings; later phases add transactions and free agents.
+# Refresh data snapshots and publish them to the `data` branch, then
+# trigger a Pages deploy — but only when the data actually changed.
+# Main stays clean: data commits never touch it.
 
 name: Refresh data
 
 on:
   workflow_dispatch:
-  # Enabled in Phase 1 — every 15 min during baseball hours (Mar–Oct), plus
-  # daily free-agent snapshots in Phase 2:
-  # schedule:
-  #   - cron: '*/15 16-23,0-5 * 3-10 *'
+  schedule:
+    # Every 15 min during baseball hours: noon–1am ET, Mar–Oct
+    - cron: '*/15 16-23,0-5 * 3-10 *'
 
 concurrency:
   group: refresh-data
   cancel-in-progress: true
 
-permissions:
-  contents: write
-
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      published: ${{ steps.publish.outputs.published }}
     steps:
       - uses: actions/checkout@v4
 
-      # Start from the previous snapshot so pipelines can update incrementally.
+      # Start from the previous snapshot so pipelines update incrementally,
+      # and keep a copy for change detection.
       - name: Restore data branch
         run: |
           if git fetch origin data 2>/dev/null; then
             git worktree add /tmp/data-branch origin/data
             rsync -a /tmp/data-branch/ data/ --exclude .git
             git worktree remove /tmp/data-branch
+            cp -R data /tmp/prev-data
           else
             echo "No data branch yet — starting fresh"
           fi
@@ -67,20 +66,28 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           if [ -n "$GH_TOKEN" ] && [ -f token-cache.json ]; then
-            node -e "console.log(require('./token-cache.json').refreshToken)" \
+            node -e "process.stdout.write(require('./token-cache.json').refreshToken)" \
               | gh secret set YAHOO_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
           fi
 
-      - name: Fetch settings (current season)
+      - name: Fetch data
         env:
           YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
           YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
-        run: npm run fetch:settings -- --current
-
-      # Phase 1+: npm run fetch:live / fetch:transactions / fetch:freeagents
-
-      - name: Publish data branch
         run: |
+          npm run fetch:settings -- --current
+          npm run fetch:live
+
+      - name: Publish data branch (if changed)
+        id: publish
+        run: |
+          # manifest.json only carries the freshness timestamp — ignore it
+          # when deciding whether anything real changed.
+          if [ -d /tmp/prev-data ] && diff -rq --exclude=manifest.json /tmp/prev-data data >/dev/null 2>&1; then
+            echo "No data changes — skipping publish and deploy"
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           cd data
           git init -b data
           git config user.name "github-actions[bot]"
@@ -88,3 +95,13 @@ jobs:
           git add -A
           git commit -m "Data snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" data
+          echo "published=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.published == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml

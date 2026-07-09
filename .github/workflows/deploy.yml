@@ -1,0 +1,56 @@
+# Build the app, bundle the latest data-branch snapshot, deploy to Pages.
+# Runs on app changes (push to main), manually, or via workflow_call from
+# the refresh workflow when data actually changed.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore data branch
+        run: |
+          if git fetch origin data 2>/dev/null; then
+            git worktree add /tmp/data-branch origin/data
+            rsync -a /tmp/data-branch/ data/ --exclude .git
+            git worktree remove /tmp/data-branch
+          else
+            echo "No data branch yet — deploying app without data"
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

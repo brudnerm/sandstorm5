@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Sandstorm</title>
+    <meta name="description" content="Fantasy baseball scoreboard and standings" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon-192.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f5f2" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121211" />
+    <script>
+      // Set theme before first paint to avoid a flash of the wrong mode.
+      (function () {
+        var stored = localStorage.getItem('ss5-theme')
+        var theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/app/main.tsx"></script>
+  </body>
+</html>

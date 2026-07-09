@@ -1,0 +1,2240 @@
+{
+  "fantasy_content": {
+    "xml:lang": "en-US",
+    "yahoo:uri": "/fantasy/v2/league/469.l.20795/standings",
+    "league": [
+      {
+        "league_key": "469.l.20795",
+        "league_id": "20795",
+        "name": "sidebar",
+        "url": "https://baseball.fantasysports.yahoo.com/b1/20795",
+        "recordbook_url": "https://baseball.fantasysports.yahoo.com/b1/20795/recordbook?layout=webview&device=smartphone",
+        "logo_url": "https://s.yimg.com/ep/cx/blendr/v2/image-batsand-balls-png_1721241176264.png",
+        "draft_status": "postdraft",
+        "num_teams": 10,
+        "edit_key": "2026-07-08",
+        "weekly_deadline": "intraday",
+        "roster_type": "date",
+        "league_update_timestamp": "1783498024",
+        "scoring_type": "head",
+        "scoring_label": "H2H Cat",
+        "league_type": "private",
+        "renew": "458_19841",
+        "renewed": "",
+        "felo_tier": "silver",
+        "is_highscore": false,
+        "is_guillotine": "0",
+        "matchup_week": 16,
+        "iris_group_chat_id": "",
+        "allow_add_to_dl_extra_pos": 0,
+        "is_pro_league": "0",
+        "is_cash_league": "0",
+        "current_week": 16,
+        "start_week": "1",
+        "start_date": "2026-03-25",
+        "end_week": "25",
+        "end_date": "2026-09-20",
+        "current_date": "2026-07-08",
+        "is_plus_league": "0",
+        "game_code": "mlb",
+        "season": "2026"
+      },
+      {
+        "standings": [
+          {
+            "teams": {
+              "0": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.3"
+                    },
+                    {
+                      "team_id": "3"
+                    },
+                    {
+                      "name": "Guerrero Rocher"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/3"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/6c4c884f42b97ec280b49a104b7edc080e4004b9177e48ac663cbc887f870261.jpg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 6
+                    },
+                    [],
+                    {
+                      "waiver_priority": 6
+                    },
+                    {
+                      "faab_balance": "60"
+                    },
+                    {
+                      "number_of_moves": 30
+                    },
+                    {
+                      "number_of_trades": "1"
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "1"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 260
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "3",
+                            "nickname": "mike",
+                            "guid": "--hidden--",
+                            "image_url": "https://s.yimg.com/ag/images/4584/38188417010_b56c11_64sq.jpg",
+                            "felo_score": "631",
+                            "felo_tier": "silver"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "468"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "123"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "392"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "98"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "767"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "50"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".248"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".761"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "837.0"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "46"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "46"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "851"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "50"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "3.98"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.17"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "3.34"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "53"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "1",
+                      "playoff_seed": "1",
+                      "outcome_totals": {
+                        "wins": "125",
+                        "losses": "98",
+                        "ties": "17",
+                        "percentage": ".556"
+                      },
+                      "games_back": "-"
+                    }
+                  }
+                ]
+              },
+              "1": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.2"
+                    },
+                    {
+                      "team_id": "2"
+                    },
+                    {
+                      "name": "She Said 'Seiya Later Boy'"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/2"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/e3d252c8697efeb43a1b16eeda0d24eff34c8ace4796b940f915bdff82833402.jpg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 7
+                    },
+                    [],
+                    {
+                      "waiver_priority": 9
+                    },
+                    {
+                      "faab_balance": "73"
+                    },
+                    {
+                      "number_of_moves": 13
+                    },
+                    {
+                      "number_of_trades": "2"
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "0"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 260
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "2",
+                            "nickname": "Jamison",
+                            "guid": "--hidden--",
+                            "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                            "felo_score": "765",
+                            "felo_tier": "gold"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "439"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "122"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "400"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "68"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "745"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "55"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".258"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".776"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "737.1"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "30"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "28"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "860"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "46"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "3.58"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.14"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "3.55"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "55"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "2",
+                      "playoff_seed": "2",
+                      "outcome_totals": {
+                        "wins": "124",
+                        "losses": "98",
+                        "ties": "18",
+                        "percentage": ".554"
+                      },
+                      "games_back": "0.5"
+                    }
+                  }
+                ]
+              },
+              "2": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.10"
+                    },
+                    {
+                      "team_id": "10"
+                    },
+                    {
+                      "name": "Forgot about Trea"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/10"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://s.yimg.com/cv/apiv2/default/mlb/mlb_1.png"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 10
+                    },
+                    [],
+                    {
+                      "waiver_priority": 4
+                    },
+                    {
+                      "faab_balance": "49"
+                    },
+                    {
+                      "number_of_moves": 23
+                    },
+                    {
+                      "number_of_trades": "1"
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "0"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 260
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "10",
+                            "nickname": "KC",
+                            "guid": "--hidden--",
+                            "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                            "felo_score": "625",
+                            "felo_tier": "silver"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "498"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "159"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "434"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "73"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "793"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "47"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".268"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".811"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "597.2"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "43"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "33"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "609"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "38"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "4.34"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.23"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "3.08"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "41"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "3",
+                      "playoff_seed": "3",
+                      "outcome_totals": {
+                        "wins": "121",
+                        "losses": "104",
+                        "ties": "15",
+                        "percentage": ".535"
+                      },
+                      "games_back": "5"
+                    }
+                  }
+                ]
+              },
+              "3": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.6"
+                    },
+                    {
+                      "team_id": "6"
+                    },
+                    {
+                      "name": "Magic Baseballs"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/6"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/25317660186_fb0203d391.jpg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 8
+                    },
+                    [],
+                    {
+                      "waiver_priority": 3
+                    },
+                    {
+                      "faab_balance": "77"
+                    },
+                    {
+                      "number_of_moves": 12
+                    },
+                    {
+                      "number_of_trades": 0
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "0"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 258
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "6",
+                            "nickname": "Galen",
+                            "guid": "--hidden--",
+                            "image_url": "https://s.yimg.com/ag/images/4530/37568814003_a3933b_64sq.jpg",
+                            "felo_score": "667",
+                            "felo_tier": "silver"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "462"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "138"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "408"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "102"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "752"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "57"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".263"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".782"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "577.1"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "40"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "33"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "614"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "42"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "3.96"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.26"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "3.09"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "35"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "4",
+                      "playoff_seed": "4",
+                      "outcome_totals": {
+                        "wins": "117",
+                        "losses": "101",
+                        "ties": "22",
+                        "percentage": ".533"
+                      },
+                      "games_back": "5.5"
+                    }
+                  }
+                ]
+              },
+              "4": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.8"
+                    },
+                    {
+                      "team_id": "8"
+                    },
+                    {
+                      "name": "Steamed Abrahams"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/8"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/993db72829e247df334dbda5532a4bf932c9002634440b06ee29086fff5536b9.jpg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 2
+                    },
+                    [],
+                    {
+                      "waiver_priority": 2
+                    },
+                    {
+                      "faab_balance": "44"
+                    },
+                    {
+                      "number_of_moves": 21
+                    },
+                    {
+                      "number_of_trades": "1"
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "1"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 256
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "8",
+                            "nickname": "Nick",
+                            "guid": "--hidden--",
+                            "image_url": "https://s.yimg.com/ag/images/4549/37422381463_63cdb2_64sq.jpg",
+                            "felo_score": "579",
+                            "felo_tier": "bronze"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "397"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "111"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "412"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "86"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "704"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "76"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".234"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".700"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "658.1"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "38"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "59"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "747"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "39"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "3.16"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.13"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "4.24"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "47"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "5",
+                      "playoff_seed": "5",
+                      "outcome_totals": {
+                        "wins": "115",
+                        "losses": "111",
+                        "ties": "14",
+                        "percentage": ".508"
+                      },
+                      "games_back": "11.5"
+                    }
+                  }
+                ]
+              },
+              "5": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.9"
+                    },
+                    {
+                      "team_id": "9"
+                    },
+                    {
+                      "name": "Three Lindors Down"
+                    },
+                    {
+                      "is_owned_by_current_login": 1
+                    },
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/9"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/a7878cbbab283374054ab89e0ba95c40d07dc86dad24cfe6d9a2409396f14b99.png"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 4
+                    },
+                    [],
+                    {
+                      "waiver_priority": 1
+                    },
+                    {
+                      "faab_balance": "56"
+                    },
+                    {
+                      "number_of_moves": 35
+                    },
+                    {
+                      "number_of_trades": 0
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "1"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 260
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "9",
+                            "nickname": "angel escobar",
+                            "guid": "--hidden--",
+                            "is_current_login": "1",
+                            "image_url": "https://s.yimg.com/ag/images/4692/37722385273_b21562_64sq.jpg",
+                            "felo_score": "764",
+                            "felo_tier": "gold"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "460"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "142"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "459"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "48"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "749"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "58"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".247"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".778"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "602.0"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "42"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "37"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "614"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "39"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "3.78"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.21"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "2.84"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "44"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "6",
+                      "playoff_seed": "6",
+                      "outcome_totals": {
+                        "wins": "109",
+                        "losses": "112",
+                        "ties": "19",
+                        "percentage": ".494"
+                      },
+                      "games_back": "15"
+                    }
+                  }
+                ]
+              },
+              "6": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.4"
+                    },
+                    {
+                      "team_id": "4"
+                    },
+                    {
+                      "name": "DeLauter'd in the Comatorium"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/4"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/92407b106950baa3f6e4d4c55c5634deb4ecd2346641da36fb9300cce091e96e.jpg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 1
+                    },
+                    [],
+                    {
+                      "waiver_priority": 8
+                    },
+                    {
+                      "faab_balance": "76"
+                    },
+                    {
+                      "number_of_moves": 20
+                    },
+                    {
+                      "number_of_trades": 0
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "0"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 258
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "4",
+                            "nickname": "joey",
+                            "guid": "--hidden--",
+                            "image_url": "https://s.yimg.com/ag/images/4583/37896890790_97a2e1_64sq.jpg",
+                            "felo_score": "641",
+                            "felo_tier": "silver"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "412"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "110"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "376"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "65"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "697"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "47"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".240"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".741"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "704.0"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "46"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "47"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "718"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "48"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "3.96"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.27"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "2.62"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "48"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "7",
+                      "playoff_seed": "7",
+                      "outcome_totals": {
+                        "wins": "106",
+                        "losses": "110",
+                        "ties": "24",
+                        "percentage": ".492"
+                      },
+                      "games_back": "15.5"
+                    }
+                  }
+                ]
+              },
+              "7": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.5"
+                    },
+                    {
+                      "team_id": "5"
+                    },
+                    {
+                      "name": "Lewiston Meth Heads"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/5"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/25202638902_a86c678448.jpg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 9
+                    },
+                    [],
+                    {
+                      "waiver_priority": 5
+                    },
+                    {
+                      "faab_balance": "92"
+                    },
+                    {
+                      "number_of_moves": 10
+                    },
+                    {
+                      "number_of_trades": 0
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "0"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 260
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "5",
+                            "nickname": "Will Youmans",
+                            "guid": "--hidden--",
+                            "image_url": "https://s.yimg.com/ag/images/4518/38956008256_427fa4_64sq.jpg",
+                            "felo_score": "583",
+                            "felo_tier": "bronze"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "418"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "112"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "371"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "55"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "722"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "71"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".260"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".784"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "673.2"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "40"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "25"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "644"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "44"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "4.09"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.20"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "2.74"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "47"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "8",
+                      "playoff_seed": "8",
+                      "outcome_totals": {
+                        "wins": "106",
+                        "losses": "112",
+                        "ties": "22",
+                        "percentage": ".488"
+                      },
+                      "games_back": "16.5"
+                    }
+                  }
+                ]
+              },
+              "8": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.1"
+                    },
+                    {
+                      "team_id": "1"
+                    },
+                    {
+                      "name": "Sod Poodles"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/1"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s192sq/fantasy-logos/33567074320_9a7782df85.jpg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 5
+                    },
+                    [],
+                    {
+                      "waiver_priority": 10
+                    },
+                    {
+                      "faab_balance": "68"
+                    },
+                    {
+                      "number_of_moves": 31
+                    },
+                    {
+                      "number_of_trades": "2"
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "2"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 246
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "1",
+                            "nickname": "Mark",
+                            "guid": "--hidden--",
+                            "is_commissioner": "1",
+                            "image_url": "https://s.yimg.com/ag/images/default_user_profile_pic_64sq.jpg",
+                            "felo_score": "565",
+                            "felo_tier": "bronze"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "443"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "124"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "421"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "59"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "788"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "57"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".243"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".747"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "592.1"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "31"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "39"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "590"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "45"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "3.68"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.20"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "3.55"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "41"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "9",
+                      "playoff_seed": "9",
+                      "outcome_totals": {
+                        "wins": "101",
+                        "losses": "115",
+                        "ties": "24",
+                        "percentage": ".471"
+                      },
+                      "games_back": "20.5"
+                    }
+                  }
+                ]
+              },
+              "9": {
+                "team": [
+                  [
+                    {
+                      "team_key": "469.l.20795.t.7"
+                    },
+                    {
+                      "team_id": "7"
+                    },
+                    {
+                      "name": "Snow Falling on Peters"
+                    },
+                    [],
+                    {
+                      "url": "https://baseball.fantasysports.yahoo.com/b1/20795/7"
+                    },
+                    {
+                      "team_logos": [
+                        {
+                          "team_logo": {
+                            "size": "large",
+                            "url": "https://s.yimg.com/cv/apiv2/default/mlb/mlb_12.png"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "previous_season_team_rank": 3
+                    },
+                    [],
+                    {
+                      "waiver_priority": 7
+                    },
+                    {
+                      "faab_balance": "40"
+                    },
+                    {
+                      "number_of_moves": 41
+                    },
+                    {
+                      "number_of_trades": "1"
+                    },
+                    {
+                      "roster_adds": {
+                        "coverage_type": "week",
+                        "coverage_value": 16,
+                        "value": "0"
+                      }
+                    },
+                    [],
+                    {
+                      "league_scoring_type": "head"
+                    },
+                    [],
+                    [],
+                    {
+                      "has_draft_grade": 0
+                    },
+                    {
+                      "auction_budget_total": "260"
+                    },
+                    {
+                      "auction_budget_spent": 255
+                    },
+                    [],
+                    [],
+                    [],
+                    {
+                      "managers": [
+                        {
+                          "manager": {
+                            "manager_id": "7",
+                            "nickname": "Rich Garcis",
+                            "guid": "--hidden--",
+                            "image_url": "https://s.yimg.com/ag/images/4584/37422981143_89c58c_64sq.jpg",
+                            "felo_score": "699",
+                            "felo_tier": "silver"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  {
+                    "team_stats": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "stats": [
+                        {
+                          "stat": {
+                            "stat_id": "60",
+                            "value": ""
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "7",
+                            "value": "468"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "12",
+                            "value": "116"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "13",
+                            "value": "408"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "16",
+                            "value": "49"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "21",
+                            "value": "767"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "22",
+                            "value": "66"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "3",
+                            "value": ".254"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "55",
+                            "value": ".778"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "50",
+                            "value": "747.2"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "29",
+                            "value": "51"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "32",
+                            "value": "25"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "42",
+                            "value": "725"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "46",
+                            "value": "53"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "26",
+                            "value": "4.21"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "27",
+                            "value": "1.28"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "56",
+                            "value": "2.50"
+                          }
+                        },
+                        {
+                          "stat": {
+                            "stat_id": "83",
+                            "value": "47"
+                          }
+                        }
+                      ]
+                    },
+                    "team_points": {
+                      "coverage_type": "season",
+                      "season": "2026",
+                      "total": "0"
+                    }
+                  },
+                  {
+                    "team_standings": {
+                      "rank": "10",
+                      "playoff_seed": "10",
+                      "outcome_totals": {
+                        "wins": "79",
+                        "losses": "142",
+                        "ties": "19",
+                        "percentage": ".369"
+                      },
+                      "games_back": "45"
+                    }
+                  }
+                ]
+              },
+              "count": 10
+            }
+          }
+        ]
+      }
+    ],
+    "time": "65.165996551514ms",
+    "copyright": "Certain Data by Sportradar, Stats Perform and Rotowire",
+    "refresh_rate": "30"
+  }
+}

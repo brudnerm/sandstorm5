@@ -35,9 +35,11 @@ direction. `tests/settings.test.ts` enforces this against recorded fixtures.
 ## Commands
 
 ```bash
+npm run dev               # app + data shards at localhost:5173
 npm test                  # vitest (normalizer fixtures, GIDP acceptance test)
 npm run typecheck
 npm run fetch:settings    # settings shards for every league-season (--current for latest only)
+npm run fetch:live        # standings + scoreboards + manifest (incremental)
 npm run discover-leagues  # print registry entries for all your Yahoo leagues
 npm run token refresh     # see AUTH.md
 ```
@@ -51,7 +53,7 @@ That's it — no code changes.
 ## Delivery phases
 
 - **Phase 0** — foundation: registry, client, normalizer, settings pipeline ✅
-- **Phase 1** — MVP: scoreboard + standings, both leagues, deployed
+- **Phase 1** — MVP: scoreboard + standings, both leagues, deployed ✅
 - **Phase 2** — waiver wire & analytics (free-agent pipeline, trends)
 - **Phase 3** — transaction history redesign + draft history
 - **Phase 4** — hall of fame + cross-season trends
