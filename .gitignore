@@ -1,0 +1,19 @@
+# Dependencies & build
+node_modules/
+dist/
+
+# Generated data snapshots — published to the `data` branch by CI, never to main
+data/
+
+# Secrets — never commit any credential or token file
+.env
+.env.*
+!.env.example
+token-cache.json
+token_response.json
+*.pem
+*.key
+
+# OS / editor
+.DS_Store
+*.local

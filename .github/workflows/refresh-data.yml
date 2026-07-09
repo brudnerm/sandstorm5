@@ -1,0 +1,90 @@
+# Refresh data snapshots and publish them to the `data` branch.
+# Main stays clean — data commits never touch it. The Pages deploy
+# (Phase 1) checks out main + the data branch and ships both.
+#
+# Phase 0: settings only, manual trigger. Phase 1 enables the cron and
+# adds scoreboard/standings; later phases add transactions and free agents.
+
+name: Refresh data
+
+on:
+  workflow_dispatch:
+  # Enabled in Phase 1 — every 15 min during baseball hours (Mar–Oct), plus
+  # daily free-agent snapshots in Phase 2:
+  # schedule:
+  #   - cron: '*/15 16-23,0-5 * 3-10 *'
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Start from the previous snapshot so pipelines can update incrementally.
+      - name: Restore data branch
+        run: |
+          if git fetch origin data 2>/dev/null; then
+            git worktree add /tmp/data-branch origin/data
+            rsync -a /tmp/data-branch/ data/ --exclude .git
+            git worktree remove /tmp/data-branch
+          else
+            echo "No data branch yet — starting fresh"
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Refresh Yahoo token
+        env:
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+          YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
+        run: |
+          npm run token refresh
+          node -e "
+            const c = require('./token-cache.json');
+            console.log('::add-mask::' + c.accessToken);
+            console.log('::add-mask::' + c.refreshToken);
+          "
+
+      # Best-effort: persist the rotated refresh token for future runs.
+      # Needs GH_PAT (fine-grained, this repo only, Secrets: read/write).
+      - name: Store rotated refresh token
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -n "$GH_TOKEN" ] && [ -f token-cache.json ]; then
+            node -e "console.log(require('./token-cache.json').refreshToken)" \
+              | gh secret set YAHOO_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
+          fi
+
+      - name: Fetch settings (current season)
+        env:
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+        run: npm run fetch:settings -- --current
+
+      # Phase 1+: npm run fetch:live / fetch:transactions / fetch:freeagents
+
+      - name: Publish data branch
+        run: |
+          cd data
+          git init -b data
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Data snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" data

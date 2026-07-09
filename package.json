@@ -1,0 +1,23 @@
+{
+  "name": "sandstorm5",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "token": "tsx src/yahoo/cli-token.ts",
+    "discover-leagues": "tsx src/pipeline/discover-leagues.ts",
+    "fetch:settings": "tsx src/pipeline/fetch-settings.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
