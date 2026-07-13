@@ -39,7 +39,8 @@ npm run dev               # app + data shards at localhost:5173
 npm test                  # vitest (normalizer fixtures, GIDP acceptance test)
 npm run typecheck
 npm run fetch:settings    # settings shards for every league-season (--current for latest only)
-npm run fetch:live        # standings + scoreboards + manifest (incremental)
+npm run fetch:live        # standings + scoreboards + full-season schedule + manifest (incremental)
+npm run fetch:players     # rosters × stat windows + free-agent watchlist (needs fetch:live)
 npm run discover-leagues  # print registry entries for all your Yahoo leagues
 npm run token refresh     # see AUTH.md
 ```
@@ -54,6 +55,22 @@ That's it — no code changes.
 
 - **Phase 0** — foundation: registry, client, normalizer, settings pipeline ✅
 - **Phase 1** — MVP: scoreboard + standings, both leagues, deployed ✅
-- **Phase 2** — waiver wire & analytics (free-agent pipeline, trends)
+- **Phase 2** — strategy: Home vs-field matrix with per-player breakdowns,
+  waiver-wire risers vs roster slumpers (z-score valuation) ✅
 - **Phase 3** — transaction history redesign + draft history
 - **Phase 4** — hall of fame + cross-season trends
+
+## Strategic views
+
+The **Home** tab is built around a "home team" (persisted per league,
+defaults to angel escobar's team): summary tiles plus a matrix of how the
+home team's week would score against *every* team, ordered by the schedule
+(this week's opponent first, then next meetings). Tapping any row expands
+per-player stat lines with week / 7d / 30d / season windows.
+
+The **Strategy** tab values every rostered player and free-agent candidate
+as the mean z-score across the league's scored categories (direction from
+league settings, per window, population = all rostered + watchlist). It
+flags roster spots that are cold for a month *and* below league average (or
+on the IL), pairs them with rising free agents at the same position, and
+lists full riser/roster-trend tables.

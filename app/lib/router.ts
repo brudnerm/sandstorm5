@@ -4,7 +4,9 @@
  */
 import { useCallback, useSyncExternalStore } from 'react'
 
-export type View = 'scoreboard' | 'standings'
+export type View = 'home' | 'scoreboard' | 'standings' | 'strategy'
+
+const VIEWS: View[] = ['home', 'scoreboard', 'standings', 'strategy']
 
 export interface Route {
   league: string | null
@@ -15,7 +17,7 @@ export interface Route {
 export function parseHash(hash: string): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean)
   const league = parts[0] ?? null
-  const view: View = parts[1] === 'standings' ? 'standings' : 'scoreboard'
+  const view = VIEWS.find(v => v === parts[1]) ?? 'home'
   const week = parts[2] ? Number.parseInt(parts[2], 10) : null
   return { league, view, week: Number.isNaN(week) ? null : week }
 }
@@ -23,7 +25,8 @@ export function parseHash(hash: string): Route {
 export function routeToHash(route: Route): string {
   if (!route.league) return '#/'
   const parts = [route.league, route.view]
-  if (route.view === 'scoreboard' && route.week !== null) parts.push(String(route.week))
+  const hasWeek = route.view === 'scoreboard' || route.view === 'home'
+  if (hasWeek && route.week !== null) parts.push(String(route.week))
   return '#/' + parts.join('/')
 }
 

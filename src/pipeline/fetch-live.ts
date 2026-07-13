@@ -75,6 +75,17 @@ for (const league of LEAGUES) {
     weeks[String(w)] = normalizeScoreboard(weekRaw, settings).matchups
     fetched++
   }
+
+  // Future weeks carry the schedule (preevent pairings, no stats). The
+  // regular-season schedule is static, so fetch each week once; playoff
+  // pairings change with the standings, so keep re-fetching those.
+  for (let w = current.currentWeek + 1; w <= (settings.endWeek ?? current.currentWeek); w++) {
+    const stored = weeks[String(w)]
+    if (stored && stored.length > 0 && !stored.some(m => m.isPlayoffs)) continue
+    const weekRaw = await yahooGet(`league/${leagueKey}/scoreboard;week=${w}`)
+    weeks[String(w)] = normalizeScoreboard(weekRaw, settings).matchups
+    fetched++
+  }
   console.log(`  matchups: ${Object.keys(weeks).length} weeks stored (${fetched} re-fetched)`)
 
   const live: LiveShard = {
