@@ -3,8 +3,10 @@ import type { Manifest } from '../src/domain/matchups'
 import { timeAgo } from './lib/format'
 import { useRoute, type View } from './lib/router'
 import { useJson } from './lib/useJson'
+import Home from './views/Home'
 import Scoreboard from './views/Scoreboard'
 import Standings from './views/Standings'
+import Strategy from './views/Strategy'
 
 function ThemeToggle() {
   const toggle = () => {
@@ -28,8 +30,10 @@ function ThemeToggle() {
 }
 
 const TABS: Array<{ id: View; label: string }> = [
+  { id: 'home', label: 'Home' },
   { id: 'scoreboard', label: 'Scoreboard' },
   { id: 'standings', label: 'Standings' },
+  { id: 'strategy', label: 'Strategy' },
 ]
 
 export default function App() {
@@ -47,7 +51,7 @@ export default function App() {
   }, [leagues, league, route.view, navigate])
 
   return (
-    <div className="app">
+    <div className={`app${route.view === 'home' ? ' wide' : ''}`}>
       <header className="header">
         <div className="header-row">
           <span className="wordmark">Sandstorm</span>
@@ -88,6 +92,15 @@ export default function App() {
             <p className="empty-desc">{manifest.error}</p>
           </div>
         )}
+        {league && route.view === 'home' && (
+          <Home
+            key={league.id}
+            league={league}
+            week={route.week}
+            onWeekChange={week => navigate({ league: league.id, view: 'home', week })}
+          />
+        )}
+        {league && route.view === 'strategy' && <Strategy key={league.id} league={league} />}
         {league && route.view === 'scoreboard' && (
           <Scoreboard
             key={league.id}
