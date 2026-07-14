@@ -78,6 +78,7 @@ jobs:
           npm run fetch:settings -- --current
           npm run fetch:live
           npm run fetch:players
+          npm run fetch:mlb
 
       - name: Publish data branch (if changed)
         id: publish
