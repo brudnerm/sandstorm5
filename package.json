@@ -14,7 +14,8 @@
     "discover-leagues": "tsx src/pipeline/discover-leagues.ts",
     "fetch:settings": "tsx src/pipeline/fetch-settings.ts",
     "fetch:live": "tsx src/pipeline/fetch-live.ts",
-    "fetch:players": "tsx src/pipeline/fetch-players.ts"
+    "fetch:players": "tsx src/pipeline/fetch-players.ts",
+    "fetch:mlb": "tsx src/pipeline/fetch-mlb.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

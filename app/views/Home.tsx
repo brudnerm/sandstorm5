@@ -1,6 +1,6 @@
 import { Fragment, useMemo, useState } from 'react'
 import type { LiveShard, Manifest, SeasonMatchups } from '../../src/domain/matchups'
-import type { PlayersShard, StatWindow, TeamRoster } from '../../src/domain/players'
+import type { PlayersShard, RosterPlayer, StatWindow, TeamRoster } from '../../src/domain/players'
 import {
   scoredCategories,
   statKey,
@@ -8,6 +8,7 @@ import {
   type Role,
   type StatCategory,
 } from '../../src/domain/stats'
+import PlayerDrawer, { type DrawerPlayer } from '../components/PlayerDrawer'
 import { useHomeTeam } from '../lib/homeTeam'
 import { computeMatrix, type Matrix, type MatrixRow } from '../lib/matrix'
 import { useJson } from '../lib/useJson'
@@ -36,11 +37,12 @@ const WINDOW_TABS: Array<{ id: StatWindow; label: (week: number) => string }> = 
   { id: 'season', label: () => 'Season' },
 ]
 
-function RoleTable({ roster, role, categories, window }: {
+function RoleTable({ roster, role, categories, window, onOpenPlayer }: {
   roster: TeamRoster
   role: Role
   categories: StatCategory[]
   window: StatWindow
+  onOpenPlayer: (player: RosterPlayer) => void
 }) {
   const cats = categories.filter(c => c.role === role)
   const players = roster.players
@@ -64,11 +66,13 @@ function RoleTable({ roster, role, categories, window }: {
           {players.map(p => (
             <tr key={p.playerKey} className={p.selectedPosition === 'BN' || p.selectedPosition?.startsWith('IL') ? 'benched' : ''}>
               <td className="rt-name">
-                <span className="rt-player">{p.name}</span>
-                <span className="rt-meta">
-                  {p.mlbTeam} · {p.displayPosition}
-                  {p.status && <span className="rt-status"> {p.status}</span>}
-                </span>
+                <button className="player-link" onClick={() => onOpenPlayer(p)}>
+                  <span className="rt-player">{p.name}</span>
+                  <span className="rt-meta">
+                    {p.mlbTeam} · {p.displayPosition}
+                    {p.status && <span className="rt-status"> {p.status}</span>}
+                  </span>
+                </button>
               </td>
               <td className="rt-slot">{p.selectedPosition ?? '–'}</td>
               {cats.map(c => (
@@ -84,10 +88,11 @@ function RoleTable({ roster, role, categories, window }: {
   )
 }
 
-function RosterPanel({ roster, categories, shardWeek }: {
+function RosterPanel({ roster, categories, shardWeek, onOpenPlayer }: {
   roster: TeamRoster
   categories: StatCategory[]
   shardWeek: number
+  onOpenPlayer: (player: RosterPlayer) => void
 }) {
   const [window, setWindow] = useState<StatWindow>('week')
   return (
@@ -104,8 +109,8 @@ function RosterPanel({ roster, categories, shardWeek }: {
           </button>
         ))}
       </div>
-      <RoleTable roster={roster} role="batting" categories={categories} window={window} />
-      <RoleTable roster={roster} role="pitching" categories={categories} window={window} />
+      <RoleTable roster={roster} role="batting" categories={categories} window={window} onOpenPlayer={onOpenPlayer} />
+      <RoleTable roster={roster} role="pitching" categories={categories} window={window} onOpenPlayer={onOpenPlayer} />
     </div>
   )
 }
@@ -183,6 +188,7 @@ export default function Home({ league, week, onWeekChange }: Props) {
 
   const [homeKey, setHomeKey] = useHomeTeam(league.id, live.data?.standings)
   const [expandedKey, setExpandedKey] = useState<string | null>(null)
+  const [drawerPlayer, setDrawerPlayer] = useState<DrawerPlayer | null>(null)
 
   const currentWeek = live.data?.currentWeek ?? league.currentWeek
   const selectedWeek = week !== null && week >= 1 && week <= currentWeek ? week : currentWeek
@@ -225,7 +231,14 @@ export default function Home({ league, week, onWeekChange }: Props) {
       <tr className="mx-expansion">
         <td colSpan={colSpan}>
           {roster && players.data
-            ? <RosterPanel roster={roster} categories={settings.data!.categories} shardWeek={players.data.week} />
+            ? (
+              <RosterPanel
+                roster={roster}
+                categories={settings.data!.categories}
+                shardWeek={players.data.week}
+                onOpenPlayer={p => setDrawerPlayer({ card: p })}
+              />
+            )
             : <div className="empty-desc roster-missing">{players.error ?? 'Loading players…'}</div>}
         </td>
       </tr>
@@ -346,6 +359,14 @@ export default function Home({ league, week, onWeekChange }: Props) {
             Everything reads {matrix.home.manager}’s way: green = a category {matrix.home.manager} would win, red = would lose, orange = tied. Tap any row for player stats.
           </p>
         </>
+      )}
+
+      {drawerPlayer && settings.data && (
+        <PlayerDrawer
+          player={drawerPlayer}
+          settings={settings.data}
+          onClose={() => setDrawerPlayer(null)}
+        />
       )}
     </div>
   )

@@ -41,6 +41,7 @@ npm run typecheck
 npm run fetch:settings    # settings shards for every league-season (--current for latest only)
 npm run fetch:live        # standings + scoreboards + full-season schedule + manifest (incremental)
 npm run fetch:players     # rosters × stat windows + free-agent watchlist (needs fetch:live)
+npm run fetch:mlb         # MLBAM id map + Statcast expected stats (statsapi + Savant, no auth)
 npm run discover-leagues  # print registry entries for all your Yahoo leagues
 npm run token refresh     # see AUTH.md
 ```
@@ -70,7 +71,16 @@ per-player stat lines with week / 7d / 30d / season windows.
 
 The **Strategy** tab values every rostered player and free-agent candidate
 as the mean z-score across the league's scored categories (direction from
-league settings, per window, population = all rostered + watchlist). It
-flags roster spots that are cold for a month *and* below league average (or
-on the IL), pairs them with rising free agents at the same position, and
+league settings, per window, population = all rostered + watchlist). Rate
+categories are shrunk by playing time (AB/IP from the display stats) so
+tiny samples can't top the board. It flags roster spots that are cold for
+a month, below league average, *and* backed by real playing time (or hurt
+while occupying an active slot — dropped and IL-slotted players are
+excluded), pairs them with rising free agents at the same position, and
 lists full riser/roster-trend tables.
+
+Tapping any player (Strategy tables, swap cards, or Home roster panels)
+opens a profile drawer: production windows, Statcast expected stats and
+quality of contact (from the `fetch:mlb` shard, matched by normalized
+name), plus live vs-L/R splits, last-10 game log, and transaction news
+fetched in the browser from statsapi.mlb.com (which allows CORS).

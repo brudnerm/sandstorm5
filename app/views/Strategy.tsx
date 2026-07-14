@@ -1,4 +1,5 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
+import PlayerDrawer, { type DrawerPlayer } from '../components/PlayerDrawer'
 import type { LiveShard, Manifest } from '../../src/domain/matchups'
 import type {
   FreeAgent,
@@ -11,7 +12,14 @@ import type {
 import { scoredCategories, statKey, type LeagueSeasonSettings } from '../../src/domain/stats'
 import { useHomeTeam } from '../lib/homeTeam'
 import { useJson } from '../lib/useJson'
-import { buildBaselines, playerValue, positionsOverlap, type Baselines } from '../lib/valuation'
+import {
+  buildBaselines,
+  meaningfulSample,
+  playerValue,
+  positionsOverlap,
+  volumeLabel,
+  type Baselines,
+} from '../lib/valuation'
 
 interface Props {
   league: Manifest['leagues'][number]
@@ -28,10 +36,14 @@ interface Valued<P extends PlayerCard> {
   trend: number | null
 }
 
-function value<P extends PlayerCard>(player: P, baselines: Baselines): Valued<P> {
-  const lastweek = playerValue(player, 'lastweek', baselines)
-  const lastmonth = playerValue(player, 'lastmonth', baselines)
-  const season = playerValue(player, 'season', baselines)
+function value<P extends PlayerCard>(
+  player: P,
+  baselines: Baselines,
+  settings: LeagueSeasonSettings,
+): Valued<P> {
+  const lastweek = playerValue(player, 'lastweek', baselines, settings)
+  const lastmonth = playerValue(player, 'lastmonth', baselines, settings)
+  const season = playerValue(player, 'season', baselines, settings)
   return {
     player,
     lastweek,
@@ -61,25 +73,29 @@ function ValueCell({ v }: { v: number | null }) {
   return <td className={`sg-val ${cls}`}>{fmtValue(v)}</td>
 }
 
-/** Compact headline stat line, e.g. "3 HR · 9 RBI · .310 AVG" for the window. */
+/** Compact headline stat line, e.g. "26 AB · 3 HR · .310 AVG" for the window. */
 function statLine(player: PlayerCard, window: StatWindow, settings: LeagueSeasonSettings): string {
   const stats = player.windows[window]
   if (!stats) return ''
   const role = player.positionType === 'P' ? 'pitching' : 'batting'
-  return scoredCategories(settings)
+  const line = scoredCategories(settings)
     .filter(c => c.role === role)
     .map(c => `${stats[statKey(c.role, c.statId)] ?? '–'} ${c.abbr}`)
     .join(' · ')
+  const volume = volumeLabel(player, window, settings)
+  return volume ? `${volume} · ${line}` : line
 }
 
-function PlayerId({ player }: { player: PlayerCard }) {
+function PlayerId({ player, onOpen }: { player: PlayerCard; onOpen: () => void }) {
   return (
     <td className="sg-player">
-      <span className="rt-player">{player.name}</span>
-      <span className="rt-meta">
-        {player.mlbTeam} · {player.displayPosition}
-        {player.status && <span className="rt-status"> {player.status}</span>}
-      </span>
+      <button className="player-link" onClick={onOpen}>
+        <span className="rt-player">{player.name}</span>
+        <span className="rt-meta">
+          {player.mlbTeam} · {player.displayPosition}
+          {player.status && <span className="rt-status"> {player.status}</span>}
+        </span>
+      </button>
     </td>
   )
 }
@@ -91,31 +107,67 @@ export default function Strategy({ league }: Props) {
   const freeAgents = useJson<FreeAgentsShard>(`data/${league.id}/players/freeagents.json`)
 
   const [homeKey] = useHomeTeam(league.id, live.data?.standings)
+  const [drawerPlayer, setDrawerPlayer] = useState<DrawerPlayer | null>(null)
+
+  const openRoster = (card: PlayerCard) => setDrawerPlayer({ card })
+  const openFa = (fa: FreeAgent) => setDrawerPlayer({
+    card: fa,
+    percentOwned: fa.percentOwned,
+    ownershipDelta: fa.ownershipDelta,
+  })
 
   const model = useMemo(() => {
     if (!settings.data || !players.data || !freeAgents.data || !homeKey) return null
+    const leagueSettings = settings.data
 
     const rostered = players.data.rosters.flatMap(r => r.players)
-    const baselines = buildBaselines([...rostered, ...freeAgents.data.players], settings.data, WINDOWS)
+    const baselines = buildBaselines([...rostered, ...freeAgents.data.players], leagueSettings, WINDOWS)
 
-    const homeRoster = players.data.rosters.find(r => r.teamKey === homeKey)?.players ?? []
+    // Players with no lineup slot today were dropped mid-week — they still
+    // carry week stats for the matchup views but aren't roster decisions.
+    const homeRoster = (players.data.rosters.find(r => r.teamKey === homeKey)?.players ?? [])
+      .filter(p => p.selectedPosition !== null)
     const roster = homeRoster
-      .map(p => value<RosterPlayer>(p, baselines))
+      .map(p => value<RosterPlayer>(p, baselines, leagueSettings))
       .sort((a, b) => (a.trend ?? 99) - (b.trend ?? 99))
 
     const risers = freeAgents.data.players
-      .map(p => value<FreeAgent>(p, baselines))
+      .map(p => value<FreeAgent>(p, baselines, leagueSettings))
       .sort((a, b) => riserScore(b) - riserScore(a))
 
-    // A roster spot is "slumping" when the player has been clearly below
-    // their season level for a month AND is producing at/below league
-    // average — a star merely regressing toward great isn't droppable.
-    // Anyone on the IL is always a candidate spot.
-    const slumping = roster.filter(v =>
-      (v.trend !== null && v.trend <= -0.35 && (v.lastmonth ?? 0) < 0.1) ||
-      (v.player.status?.startsWith('IL') ?? false),
+    // A roster spot is worth reconsidering when the player:
+    //  - has been clearly below his own season level for a month,
+    //  - is producing at/below league average (stars merely regressing
+    //    toward great aren't droppable), and
+    //  - has real playing time behind both numbers (no tiny-sample or
+    //    thin-rookie-baseline flags);
+    // or he's hurt while occupying an active/bench slot (players parked in
+    // an IL slot don't cost a roster spot).
+    const inIlSlot = (p: RosterPlayer) =>
+      p.selectedPosition === 'NA' || (p.selectedPosition?.startsWith('IL') ?? false)
+    // Severity blends how bad the month was with how far it fell short of
+    // the player's own season level; the floor keeps borderline months
+    // (a good pitcher with one thin-win month) off the list.
+    const severity = (v: Valued<RosterPlayer>) => (v.lastmonth ?? 0) + (v.trend ?? 0)
+    const slumping = roster
+      .filter(v => {
+        if (inIlSlot(v.player)) return false
+        if (v.player.status?.startsWith('IL')) return true
+        return (
+          v.trend !== null && v.trend <= -0.35 &&
+          (v.lastmonth ?? 0) < 0.1 &&
+          severity(v) <= -0.6 &&
+          meaningfulSample(v.player, 'lastmonth', leagueSettings, 40, 8) &&
+          meaningfulSample(v.player, 'season', leagueSettings, 100, 25)
+        )
+      })
+      .sort((a, b) => severity(a) - severity(b))
+
+    // A riser must be genuinely playing right now, not a one-game fluke.
+    const risingFas = risers.filter(v =>
+      riserScore(v) > 0 &&
+      meaningfulSample(v.player, 'lastweek', leagueSettings, 8, 3),
     )
-    const risingFas = risers.filter(v => riserScore(v) > 0)
 
     const suggestions = slumping.map(slump => ({
       slump,
@@ -160,11 +212,13 @@ export default function Strategy({ league }: Props) {
             <div key={slump.player.playerKey} className="card swap-card">
               <div className="swap-slumper">
                 <div className="swap-head">
-                  <span className="rt-player">{slump.player.name}</span>
-                  <span className="rt-meta">
-                    {slump.player.mlbTeam} · {slump.player.displayPosition}
-                    {slump.player.status && <span className="rt-status"> {slump.player.status}</span>}
-                  </span>
+                  <button className="player-link" onClick={() => openRoster(slump.player)}>
+                    <span className="rt-player">{slump.player.name}</span>
+                    <span className="rt-meta">
+                      {slump.player.mlbTeam} · {slump.player.displayPosition}
+                      {slump.player.status && <span className="rt-status"> {slump.player.status}</span>}
+                    </span>
+                  </button>
                   <span className="spacer" />
                   <span className="trend-badge bad">
                     {slump.trend !== null ? `${fmtValue(slump.trend)} vs season` : 'on IL'}
@@ -176,8 +230,10 @@ export default function Strategy({ league }: Props) {
                 <div key={fa.player.playerKey} className="swap-candidate">
                   <div className="swap-head">
                     <span className="swap-arrow" aria-hidden>↑</span>
-                    <span className="rt-player">{fa.player.name}</span>
-                    <span className="rt-meta">{fa.player.mlbTeam} · {fa.player.displayPosition}</span>
+                    <button className="player-link" onClick={() => openFa(fa.player)}>
+                      <span className="rt-player">{fa.player.name}</span>
+                      <span className="rt-meta">{fa.player.mlbTeam} · {fa.player.displayPosition}</span>
+                    </button>
                     <span className="spacer" />
                     {fa.player.percentOwned !== null && (
                       <span className="trend-badge good">
@@ -217,7 +273,7 @@ export default function Strategy({ league }: Props) {
             <tbody>
               {model.risers.slice(0, 30).map(v => (
                 <tr key={v.player.playerKey}>
-                  <PlayerId player={v.player} />
+                  <PlayerId player={v.player} onOpen={() => openFa(v.player)} />
                   <td className="sg-val">{v.player.percentOwned ?? '–'}</td>
                   <td className={`sg-val ${(v.player.ownershipDelta ?? 0) > 0 ? 'win' : (v.player.ownershipDelta ?? 0) < 0 ? 'loss' : ''}`}>
                     {fmtDelta(v.player.ownershipDelta)}
@@ -252,7 +308,7 @@ export default function Strategy({ league }: Props) {
             <tbody>
               {model.roster.map(v => (
                 <tr key={v.player.playerKey}>
-                  <PlayerId player={v.player} />
+                  <PlayerId player={v.player} onOpen={() => openRoster(v.player)} />
                   <td className="sg-val">{v.player.selectedPosition ?? '–'}</td>
                   <ValueCell v={v.lastweek} />
                   <ValueCell v={v.lastmonth} />
@@ -265,6 +321,14 @@ export default function Strategy({ league }: Props) {
           </table>
         </div>
       </section>
+
+      {drawerPlayer && (
+        <PlayerDrawer
+          player={drawerPlayer}
+          settings={leagueSettings}
+          onClose={() => setDrawerPlayer(null)}
+        />
+      )}
     </div>
   )
 }
