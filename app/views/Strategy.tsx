@@ -17,6 +17,7 @@ import {
   meaningfulSample,
   playerValue,
   positionsOverlap,
+  realPositions,
   volumeLabel,
   type Baselines,
 } from '../lib/valuation'
@@ -26,6 +27,28 @@ interface Props {
 }
 
 const WINDOWS: StatWindow[] = ['lastweek', 'lastmonth', 'season']
+
+/** Fielding positions offered as riser filters, in scorecard order. */
+const POSITION_ORDER = ['C', '1B', '2B', '3B', 'SS', 'OF', 'SP', 'RP']
+
+type RiserSortKey = 'score' | 'owned' | 'delta' | 'lastweek' | 'lastmonth' | 'season'
+
+interface RiserSort {
+  key: RiserSortKey
+  dir: 'asc' | 'desc'
+}
+
+/** Numeric sort value for a riser column; nulls sink to the bottom. */
+function riserSortValue(v: Valued<FreeAgent>, key: RiserSortKey): number {
+  switch (key) {
+    case 'owned': return v.player.percentOwned ?? -1
+    case 'delta': return v.player.ownershipDelta ?? -999
+    case 'lastweek': return v.lastweek ?? -99
+    case 'lastmonth': return v.lastmonth ?? -99
+    case 'season': return v.season ?? -99
+    case 'score': return riserScore(v)
+  }
+}
 
 interface Valued<P extends PlayerCard> {
   player: P
@@ -68,9 +91,9 @@ function fmtDelta(v: number | null): string {
   return v > 0 ? `+${v}` : String(v)
 }
 
-function ValueCell({ v }: { v: number | null }) {
+function ValueCell({ v, sorted = false }: { v: number | null; sorted?: boolean }) {
   const cls = v === null ? '' : v >= 0.25 ? 'win' : v <= -0.25 ? 'loss' : ''
-  return <td className={`sg-val ${cls}`}>{fmtValue(v)}</td>
+  return <td className={`sg-val${sorted ? ' sorted' : ''} ${cls}`}>{fmtValue(v)}</td>
 }
 
 /** Compact headline stat line, e.g. "26 AB · 3 HR · .310 AVG" for the window. */
@@ -100,6 +123,30 @@ function PlayerId({ player, onOpen }: { player: PlayerCard; onOpen: () => void }
   )
 }
 
+/** A right-aligned, clickable column header that reflects and toggles sort. */
+function SortHeader({ label, title, sortKey, sort, onSort }: {
+  label: string
+  title?: string
+  sortKey: RiserSortKey
+  sort: RiserSort
+  onSort: (key: RiserSortKey) => void
+}) {
+  const active = sort.key === sortKey
+  return (
+    <th
+      className={`sg-sortable${active ? ' active' : ''}`}
+      title={title}
+      aria-sort={active ? (sort.dir === 'asc' ? 'ascending' : 'descending') : 'none'}
+      onClick={() => onSort(sortKey)}
+    >
+      <span className="sg-th-inner">
+        {label}
+        <span className="sort-caret" aria-hidden>{active ? (sort.dir === 'asc' ? '▲' : '▼') : ''}</span>
+      </span>
+    </th>
+  )
+}
+
 export default function Strategy({ league }: Props) {
   const live = useJson<LiveShard>(`data/${league.id}/live.json`)
   const settings = useJson<LeagueSeasonSettings>(`data/${league.id}/settings/${league.season}.json`)
@@ -108,6 +155,13 @@ export default function Strategy({ league }: Props) {
 
   const [homeKey] = useHomeTeam(league.id, live.data?.standings)
   const [drawerPlayer, setDrawerPlayer] = useState<DrawerPlayer | null>(null)
+  const [riserPos, setRiserPos] = useState<string>('All')
+  const [riserSort, setRiserSort] = useState<RiserSort>({ key: 'score', dir: 'desc' })
+
+  const onRiserSort = (key: RiserSortKey) =>
+    setRiserSort(prev => prev.key === key
+      ? { key, dir: prev.dir === 'desc' ? 'asc' : 'desc' }
+      : { key, dir: 'desc' })
 
   const openRoster = (card: PlayerCard) => setDrawerPlayer({ card })
   const openFa = (fa: FreeAgent) => setDrawerPlayer({
@@ -195,6 +249,18 @@ export default function Strategy({ league }: Props) {
   const leagueSettings = settings.data
   const homeManager = live.data?.standings.find(r => r.teamKey === homeKey)?.manager ?? 'home'
 
+  // Position filters: only offer positions some riser is actually eligible at.
+  const riserPositions = POSITION_ORDER.filter(pos =>
+    model.risers.some(v => realPositions(v.player).includes(pos)),
+  )
+  const filteredRisers = [...model.risers]
+    .filter(v => riserPos === 'All' || realPositions(v.player).includes(riserPos))
+    .sort((a, b) => {
+      const diff = riserSortValue(a, riserSort.key) - riserSortValue(b, riserSort.key)
+      return riserSort.dir === 'asc' ? diff : -diff
+    })
+    .slice(0, 30)
+
   return (
     <div className="view">
       <section>
@@ -257,33 +323,50 @@ export default function Strategy({ league }: Props) {
         <p className="section-desc">
           Best available players by recent category value (z-score vs everyone rostered or listed; 0 is league average).
         </p>
+        <div className="sg-filter" role="group" aria-label="Filter by position">
+          {['All', ...riserPositions].map(pos => (
+            <button
+              key={pos}
+              className={`chip small${riserPos === pos ? ' active' : ''}`}
+              aria-pressed={riserPos === pos}
+              onClick={() => setRiserPos(pos)}
+            >
+              {pos}
+            </button>
+          ))}
+        </div>
         <div className="card table-scroll">
-          <table className="sg-table">
+          <table className="sg-table sortable">
             <thead>
               <tr>
                 <th className="sg-player">Player</th>
-                <th>Own%</th>
-                <th>Δ</th>
-                <th>7d</th>
-                <th>30d</th>
-                <th>Szn</th>
+                <SortHeader label="Own%" title="Percent of leagues rostered" sortKey="owned" sort={riserSort} onSort={onRiserSort} />
+                <SortHeader label="Δ" title="Weekly change in ownership" sortKey="delta" sort={riserSort} onSort={onRiserSort} />
+                <SortHeader label="7d" title="Last 7 days value" sortKey="lastweek" sort={riserSort} onSort={onRiserSort} />
+                <SortHeader label="30d" title="Last 30 days value" sortKey="lastmonth" sort={riserSort} onSort={onRiserSort} />
+                <SortHeader label="Szn" title="Season value" sortKey="season" sort={riserSort} onSort={onRiserSort} />
                 <th className="sg-line">Last 7 days</th>
               </tr>
             </thead>
             <tbody>
-              {model.risers.slice(0, 30).map(v => (
+              {filteredRisers.map(v => (
                 <tr key={v.player.playerKey}>
                   <PlayerId player={v.player} onOpen={() => openFa(v.player)} />
-                  <td className="sg-val">{v.player.percentOwned ?? '–'}</td>
-                  <td className={`sg-val ${(v.player.ownershipDelta ?? 0) > 0 ? 'win' : (v.player.ownershipDelta ?? 0) < 0 ? 'loss' : ''}`}>
+                  <td className={`sg-val${riserSort.key === 'owned' ? ' sorted' : ''}`}>{v.player.percentOwned ?? '–'}</td>
+                  <td className={`sg-val${riserSort.key === 'delta' ? ' sorted' : ''} ${(v.player.ownershipDelta ?? 0) > 0 ? 'win' : (v.player.ownershipDelta ?? 0) < 0 ? 'loss' : ''}`}>
                     {fmtDelta(v.player.ownershipDelta)}
                   </td>
-                  <ValueCell v={v.lastweek} />
-                  <ValueCell v={v.lastmonth} />
-                  <ValueCell v={v.season} />
+                  <ValueCell v={v.lastweek} sorted={riserSort.key === 'lastweek'} />
+                  <ValueCell v={v.lastmonth} sorted={riserSort.key === 'lastmonth'} />
+                  <ValueCell v={v.season} sorted={riserSort.key === 'season'} />
                   <td className="sg-line">{statLine(v.player, 'lastweek', leagueSettings)}</td>
                 </tr>
               ))}
+              {filteredRisers.length === 0 && (
+                <tr>
+                  <td className="sg-empty" colSpan={7}>No available {riserPos} risers right now.</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
