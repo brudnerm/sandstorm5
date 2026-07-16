@@ -45,6 +45,7 @@ jobs:
       - run: npm ci
 
       - name: Refresh Yahoo token
+        id: token
         env:
           YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
           YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
@@ -57,18 +58,28 @@ jobs:
             console.log('::add-mask::' + c.refreshToken);
           "
 
-      # Best-effort: persist the rotated refresh token for future runs.
-      # Needs GH_PAT (fine-grained, this repo only, Secrets: read/write).
+      # Yahoo rotates the refresh token on every use and invalidates the
+      # previous one, so the step above already consumed the stored token.
+      # Persisting the rotated replacement is MANDATORY, not best-effort:
+      # if it doesn't land, the next run dies with invalid_grant and data
+      # silently freezes. Fail loudly here instead so the break is visible
+      # immediately, on the run that caused it.
       - name: Store rotated refresh token
-        if: always()
-        continue-on-error: true
+        if: steps.token.outcome == 'success'
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          if [ -n "$GH_TOKEN" ] && [ -f token-cache.json ]; then
-            node -e "process.stdout.write(require('./token-cache.json').refreshToken)" \
-              | gh secret set YAHOO_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::GH_PAT is not set, so the rotated Yahoo refresh token cannot be saved. The old token was just invalidated, so the next run will fail with invalid_grant. Add a fine-grained PAT (this repo only, Secrets: read/write) as the GH_PAT secret — see AUTH.md."
+            exit 1
           fi
+          if [ ! -f token-cache.json ]; then
+            echo "::error::token-cache.json is missing after a successful refresh — nothing to persist."
+            exit 1
+          fi
+          node -e "process.stdout.write(require('./token-cache.json').refreshToken)" \
+            | gh secret set YAHOO_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
+          echo "Persisted the rotated refresh token to YAHOO_REFRESH_TOKEN."
 
       - name: Fetch data
         env:
