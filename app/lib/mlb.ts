@@ -52,11 +52,41 @@ export interface SplitLine {
   strikeOuts: number | null
 }
 
+export interface BatGame {
+  ab: number
+  r: number
+  h: number
+  doubles: number
+  triples: number
+  hr: number
+  rbi: number
+  sb: number
+  bb: number
+  ibb: number
+  hbp: number
+  sf: number
+  so: number
+}
+
+export interface PitGame {
+  /** Innings in true thirds (5.1 IP → 5.333) for aggregation. */
+  ip: number
+  /** Innings as MLB displays them ("5.1"). */
+  ipDisplay: string
+  h: number
+  er: number
+  bb: number
+  so: number
+  /** Decision: 'W' | 'L' | 'SV' | 'H' | null. */
+  dec: string | null
+}
+
 export interface GameLine {
   date: string
   opponent: string
   home: boolean
-  summary: string
+  bat: BatGame | null
+  pit: PitGame | null
 }
 
 export interface NewsItem {
@@ -70,23 +100,41 @@ export interface LivePlayerData {
   news: NewsItem[] | null
 }
 
-function batterSummary(stat: AnyObj): string {
-  const parts = [`${stat.hits ?? 0}-${stat.atBats ?? 0}`]
-  if (stat.homeRuns > 0) parts.push(`${stat.homeRuns} HR`)
-  if (stat.rbi > 0) parts.push(`${stat.rbi} RBI`)
-  if (stat.runs > 0) parts.push(`${stat.runs} R`)
-  if (stat.stolenBases > 0) parts.push(`${stat.stolenBases} SB`)
-  if (stat.baseOnBalls > 0) parts.push(`${stat.baseOnBalls} BB`)
-  return parts.join(', ')
+/** statsapi innings ("5.1") count thirds in the decimal. */
+function parseIp(value: string): number {
+  const [whole, frac] = value.split('.')
+  return Number(whole ?? 0) + Number(frac ?? 0) / 3
 }
 
-function pitcherSummary(stat: AnyObj): string {
-  const parts = [`${stat.inningsPitched ?? '0'} IP`, `${stat.earnedRuns ?? 0} ER`, `${stat.strikeOuts ?? 0} K`]
-  if (stat.baseOnBalls > 0) parts.push(`${stat.baseOnBalls} BB`)
-  if (stat.wins > 0) parts.push('W')
-  if (stat.losses > 0) parts.push('L')
-  if (stat.saves > 0) parts.push('SV')
-  return parts.join(', ')
+function batGame(stat: AnyObj): BatGame {
+  return {
+    ab: Number(stat.atBats ?? 0),
+    r: Number(stat.runs ?? 0),
+    h: Number(stat.hits ?? 0),
+    doubles: Number(stat.doubles ?? 0),
+    triples: Number(stat.triples ?? 0),
+    hr: Number(stat.homeRuns ?? 0),
+    rbi: Number(stat.rbi ?? 0),
+    sb: Number(stat.stolenBases ?? 0),
+    bb: Number(stat.baseOnBalls ?? 0),
+    ibb: Number(stat.intentionalWalks ?? 0),
+    hbp: Number(stat.hitByPitch ?? 0),
+    sf: Number(stat.sacFlies ?? 0),
+    so: Number(stat.strikeOuts ?? 0),
+  }
+}
+
+function pitGame(stat: AnyObj): PitGame {
+  const ipDisplay = String(stat.inningsPitched ?? '0')
+  return {
+    ip: parseIp(ipDisplay),
+    ipDisplay,
+    h: Number(stat.hits ?? 0),
+    er: Number(stat.earnedRuns ?? 0),
+    bb: Number(stat.baseOnBalls ?? 0),
+    so: Number(stat.strikeOuts ?? 0),
+    dec: stat.wins > 0 ? 'W' : stat.losses > 0 ? 'L' : stat.saves > 0 ? 'SV' : stat.holds > 0 ? 'H' : null,
+  }
 }
 
 async function fetchSplits(mlbamId: number, group: StatGroup, season: string): Promise<SplitLine[]> {
@@ -120,12 +168,68 @@ async function fetchGameLog(mlbamId: number, group: StatGroup, season: string): 
     teamAbbrs(season),
   ])
   const games: AnyObj[] = data.stats?.[0]?.splits ?? []
-  return games.slice(-10).reverse().map(g => ({
+  // Full season, newest first — the drawer slices for display and the
+  // rolling helpers re-sort chronologically. Copy before reversing: the
+  // response object is cached and must not be mutated.
+  return [...games].reverse().map(g => ({
     date: String(g.date ?? ''),
     opponent: abbrs.get(Number(g.opponent?.id)) ?? String(g.opponent?.name ?? ''),
     home: g.isHome === true,
-    summary: group === 'hitting' ? batterSummary(g.stat ?? {}) : pitcherSummary(g.stat ?? {}),
+    bat: group === 'hitting' ? batGame(g.stat ?? {}) : null,
+    pit: group === 'pitching' ? pitGame(g.stat ?? {}) : null,
   }))
+}
+
+export interface RollingPoint {
+  date: string
+  value: number
+}
+
+// FanGraphs linear weights, near-constant season to season; close enough
+// for a trend chart labeled wOBA (not xwOBA — that needs pitch-level data).
+const W = { bb: 0.69, hbp: 0.72, single: 0.88, double: 1.24, triple: 1.56, hr: 2.0 }
+
+/** Oldest→newest, whatever order the caller holds them in (ISO dates sort lexically). */
+function chronological(games: GameLine[]): GameLine[] {
+  return [...games].sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0))
+}
+
+/** Trailing-window wOBA after each game; points start once `window` PA accrue. */
+export function rollingWoba(unordered: GameLine[], window = 100): RollingPoint[] {
+  const games = chronological(unordered)
+  const points: RollingPoint[] = []
+  for (let i = 0; i < games.length; i++) {
+    let numerator = 0
+    let denominator = 0
+    for (let j = i; j >= 0 && denominator < window; j--) {
+      const b = games[j]!.bat
+      if (!b) continue
+      const singles = b.h - b.doubles - b.triples - b.hr
+      numerator += W.bb * (b.bb - b.ibb) + W.hbp * b.hbp
+        + W.single * singles + W.double * b.doubles + W.triple * b.triples + W.hr * b.hr
+      denominator += b.ab + (b.bb - b.ibb) + b.sf + b.hbp
+    }
+    if (denominator >= window) points.push({ date: games[i]!.date, value: numerator / denominator })
+  }
+  return points
+}
+
+/** Trailing-window ERA after each game; points start once `windowIp` innings accrue. */
+export function rollingEra(unordered: GameLine[], windowIp = 30): RollingPoint[] {
+  const games = chronological(unordered)
+  const points: RollingPoint[] = []
+  for (let i = 0; i < games.length; i++) {
+    let er = 0
+    let ip = 0
+    for (let j = i; j >= 0 && ip < windowIp; j--) {
+      const p = games[j]!.pit
+      if (!p) continue
+      er += p.er
+      ip += p.ip
+    }
+    if (ip >= windowIp) points.push({ date: games[i]!.date, value: (er * 9) / ip })
+  }
+  return points
 }
 
 async function fetchNews(mlbamId: number, season: string): Promise<NewsItem[]> {

@@ -9,7 +9,7 @@ import type {
   RosterPlayer,
   StatWindow,
 } from '../../src/domain/players'
-import { scoredCategories, statKey, type LeagueSeasonSettings } from '../../src/domain/stats'
+import { scoredCategories, statKey, type LeagueSeasonSettings, type Role, type StatCategory } from '../../src/domain/stats'
 import { useHomeTeam } from '../lib/homeTeam'
 import { useJson } from '../lib/useJson'
 import {
@@ -107,6 +107,24 @@ function statLine(player: PlayerCard, window: StatWindow, settings: LeagueSeason
     .join(' · ')
   const volume = volumeLabel(player, window, settings)
   return volume ? `${volume} · ${line}` : line
+}
+
+/** Last-7-days volume + one cell per scored category, for a riser row. */
+function RiserStatCells({ player, cats, settings }: {
+  player: PlayerCard
+  cats: StatCategory[]
+  settings: LeagueSeasonSettings
+}) {
+  const stats = player.windows.lastweek
+  const volume = volumeLabel(player, 'lastweek', settings)
+  return (
+    <>
+      <td className="sg-stat sg-stats-split">{volume ? volume.split(' ')[0] : '–'}</td>
+      {cats.map(c => (
+        <td key={c.statId} className="sg-stat">{stats?.[statKey(c.role, c.statId)] ?? '–'}</td>
+      ))}
+    </>
+  )
 }
 
 function PlayerId({ player, onOpen }: { player: PlayerCard; onOpen: () => void }) {
@@ -259,7 +277,6 @@ export default function Strategy({ league }: Props) {
       const diff = riserSortValue(a, riserSort.key) - riserSortValue(b, riserSort.key)
       return riserSort.dir === 'asc' ? diff : -diff
     })
-    .slice(0, 30)
 
   return (
     <div className="view">
@@ -335,41 +352,54 @@ export default function Strategy({ league }: Props) {
             </button>
           ))}
         </div>
-        <div className="card table-scroll">
-          <table className="sg-table sortable">
-            <thead>
-              <tr>
-                <th className="sg-player">Player</th>
-                <SortHeader label="Own%" title="Percent of leagues rostered" sortKey="owned" sort={riserSort} onSort={onRiserSort} />
-                <SortHeader label="Δ" title="Weekly change in ownership" sortKey="delta" sort={riserSort} onSort={onRiserSort} />
-                <SortHeader label="7d" title="Last 7 days value" sortKey="lastweek" sort={riserSort} onSort={onRiserSort} />
-                <SortHeader label="30d" title="Last 30 days value" sortKey="lastmonth" sort={riserSort} onSort={onRiserSort} />
-                <SortHeader label="Szn" title="Season value" sortKey="season" sort={riserSort} onSort={onRiserSort} />
-                <th className="sg-line">Last 7 days</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredRisers.map(v => (
-                <tr key={v.player.playerKey}>
-                  <PlayerId player={v.player} onOpen={() => openFa(v.player)} />
-                  <td className={`sg-val${riserSort.key === 'owned' ? ' sorted' : ''}`}>{v.player.percentOwned ?? '–'}</td>
-                  <td className={`sg-val${riserSort.key === 'delta' ? ' sorted' : ''} ${(v.player.ownershipDelta ?? 0) > 0 ? 'win' : (v.player.ownershipDelta ?? 0) < 0 ? 'loss' : ''}`}>
-                    {fmtDelta(v.player.ownershipDelta)}
-                  </td>
-                  <ValueCell v={v.lastweek} sorted={riserSort.key === 'lastweek'} />
-                  <ValueCell v={v.lastmonth} sorted={riserSort.key === 'lastmonth'} />
-                  <ValueCell v={v.season} sorted={riserSort.key === 'season'} />
-                  <td className="sg-line">{statLine(v.player, 'lastweek', leagueSettings)}</td>
-                </tr>
-              ))}
-              {filteredRisers.length === 0 && (
-                <tr>
-                  <td className="sg-empty" colSpan={7}>No available {riserPos} risers right now.</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+        {(['batting', 'pitching'] as Role[]).map(role => {
+          const rows = filteredRisers
+            .filter(v => (v.player.positionType === 'P') === (role === 'pitching'))
+            .slice(0, 20)
+          if (rows.length === 0) return null
+          const cats = scoredCategories(leagueSettings).filter(c => c.role === role)
+          return (
+            <div key={role} className="sg-role-block">
+              <h4 className="sg-role-title">{role === 'pitching' ? 'Pitchers' : 'Batters'}</h4>
+              <div className="card table-scroll">
+                <table className="sg-table sortable">
+                  <thead>
+                    <tr>
+                      <th className="sg-player">Player</th>
+                      <SortHeader label="Own%" title="Percent of leagues rostered" sortKey="owned" sort={riserSort} onSort={onRiserSort} />
+                      <SortHeader label="Δ" title="Weekly change in ownership" sortKey="delta" sort={riserSort} onSort={onRiserSort} />
+                      <SortHeader label="7d" title="Last 7 days value" sortKey="lastweek" sort={riserSort} onSort={onRiserSort} />
+                      <SortHeader label="30d" title="Last 30 days value" sortKey="lastmonth" sort={riserSort} onSort={onRiserSort} />
+                      <SortHeader label="Szn" title="Season value" sortKey="season" sort={riserSort} onSort={onRiserSort} />
+                      <th className="sg-stats-split">{role === 'pitching' ? 'IP' : 'AB'}</th>
+                      {cats.map(c => <th key={c.statId} title={c.name}>{c.abbr}</th>)}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map(v => (
+                      <tr key={v.player.playerKey}>
+                        <PlayerId player={v.player} onOpen={() => openFa(v.player)} />
+                        <td className={`sg-val${riserSort.key === 'owned' ? ' sorted' : ''}`}>{v.player.percentOwned ?? '–'}</td>
+                        <td className={`sg-val${riserSort.key === 'delta' ? ' sorted' : ''} ${(v.player.ownershipDelta ?? 0) > 0 ? 'win' : (v.player.ownershipDelta ?? 0) < 0 ? 'loss' : ''}`}>
+                          {fmtDelta(v.player.ownershipDelta)}
+                        </td>
+                        <ValueCell v={v.lastweek} sorted={riserSort.key === 'lastweek'} />
+                        <ValueCell v={v.lastmonth} sorted={riserSort.key === 'lastmonth'} />
+                        <ValueCell v={v.season} sorted={riserSort.key === 'season'} />
+                        <RiserStatCells player={v.player} cats={cats} settings={leagueSettings} />
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )
+        })}
+        {filteredRisers.length === 0 && (
+          <div className="card pad">
+            <p className="empty-desc">No available {riserPos} risers right now.</p>
+          </div>
+        )}
       </section>
 
       <section>

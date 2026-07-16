@@ -630,6 +630,17 @@ img { max-width: 100%; }
 .sg-val.win { color: var(--win); font-weight: 600; }
 .sg-val.loss { color: var(--loss); }
 .sg-line { text-align: left !important; color: var(--text-3); font-size: 11.5px; padding-left: 14px !important; }
+.sg-role-block { margin-bottom: 10px; }
+.sg-role-title {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.sg-stat { color: var(--text-2); font-size: 12px; }
+th.sg-stats-split, td.sg-stats-split { border-left: 1px solid var(--border); }
 .sg-empty { text-align: center !important; color: var(--text-3); font-size: 12.5px; padding: 20px !important; }
 
 /* ---------- Player links & drawer ---------- */
@@ -735,6 +746,93 @@ img { max-width: 100%; }
 .xstat-x { color: var(--text-3); font-weight: 500; }
 .xstat-x.win { color: var(--win); font-weight: 700; }
 .xstat-x.loss { color: var(--loss); }
+
+/* Savant percentile bars: five tiers, poor → great, number always shown. */
+.pct-list { display: flex; flex-direction: column; gap: 7px; }
+.pct-row { display: grid; grid-template-columns: 104px 1fr; align-items: center; gap: 8px; }
+.pct-label { font-size: 11px; font-weight: 600; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pct-track {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+.pct-fill { height: 100%; border-radius: 4px; }
+.pct-bubble {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  border: 2px solid var(--surface);
+}
+.pct-fill.p1, .pct-bubble.p1 { background: var(--loss); }
+.pct-fill.p2, .pct-bubble.p2 { background: color-mix(in srgb, var(--loss) 55%, var(--surface-2)); }
+.pct-fill.p3, .pct-bubble.p3 { background: color-mix(in srgb, var(--text-3) 80%, var(--surface-2)); }
+.pct-fill.p4, .pct-bubble.p4 { background: color-mix(in srgb, var(--win) 55%, var(--surface-2)); }
+.pct-fill.p5, .pct-bubble.p5 { background: var(--win); }
+.pct-bubble.p2, .pct-bubble.p3, .pct-bubble.p4 { color: var(--text); }
+:root[data-theme='dark'] .pct-bubble { border-color: var(--bg); }
+
+/* Statcast table */
+.sc-table .sc-prev { color: var(--text-3); }
+.sc-table .sc-cur { font-weight: 700; }
+.sc-table .sc-x { color: var(--text-3); }
+.sc-table .sc-x.win { color: var(--win); font-weight: 700; }
+.sc-table .sc-x.loss { color: var(--loss); }
+.sc-table .sc-trend { color: var(--text-3); }
+.sc-table .sc-trend.win { color: var(--win); font-weight: 600; }
+.sc-table .sc-trend.loss { color: var(--loss); }
+
+/* Rolling wOBA / ERA chart */
+.roll-chart { width: 100%; height: auto; display: block; touch-action: pan-y; }
+.roll-grid { stroke: color-mix(in srgb, var(--border) 70%, transparent); stroke-dasharray: 3 3; }
+.roll-tick { fill: var(--text-3); font-size: 8.5px; font-variant-numeric: tabular-nums; }
+.roll-avg { stroke: var(--text-3); stroke-dasharray: 5 4; opacity: 0.7; }
+.roll-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.roll-cross { stroke: color-mix(in srgb, var(--text-3) 50%, transparent); }
+.roll-dot { fill: var(--accent); stroke: var(--surface); stroke-width: 1.5; }
+.roll-hover { fill: var(--text); font-size: 9.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Game log */
+.games-toggle { display: inline-flex; gap: 4px; }
+.games-toggle .chip.small { padding: 2px 9px; font-size: 11px; }
+.games-toggle .chip:disabled { opacity: 0.35; cursor: default; }
+.game-date { color: var(--text-3); font-size: 11px; }
+.game-opp { font-weight: 600; }
+
+/* Scraped news stories */
+.drawer-stories { list-style: none; margin: 0; padding: 0; }
+.drawer-stories li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 7px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 40%, transparent);
+}
+.drawer-stories li:last-child { border-bottom: none; }
+.story-head { display: flex; align-items: baseline; gap: 8px; }
+.story-source {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+.story-headline { font-size: 13px; font-weight: 700; }
+.story-headline a { color: inherit; text-decoration: none; }
+.story-headline a:active { color: var(--accent); }
+.story-detail { font-size: 12px; color: var(--text-2); }
 
 .drawer-games, .drawer-news { list-style: none; margin: 0; padding: 0; }
 .drawer-games li, .drawer-news li {

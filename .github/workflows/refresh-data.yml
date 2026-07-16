@@ -90,6 +90,7 @@ jobs:
           npm run fetch:live
           npm run fetch:players
           npm run fetch:mlb
+          npm run fetch:news
 
       - name: Publish data branch (if changed)
         id: publish
