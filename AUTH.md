@@ -10,12 +10,39 @@ before the first commit — there is no token material anywhere in git history).
 - **Access tokens** last ~1 hour. `src/yahoo/auth.ts` refreshes them on demand
   using the long-lived **refresh token** and caches the result in
   `token-cache.json` (gitignored).
-- Yahoo **rotates the refresh token** on every refresh. The cache always holds
-  the newest one; in CI, the workflow writes the newest refresh token back to
-  the `YAHOO_REFRESH_TOKEN` repo secret (best-effort — a failed write-back is
-  fine because Yahoo keeps recent previous refresh tokens working).
+- Yahoo **rotates the refresh token on every refresh and invalidates the
+  previous one** — so exactly one token in the chain is ever live. Whoever
+  refreshes rotates the chain forward; the token everyone else is holding
+  dies. In CI, the workflow writes the rotated token back to the
+  `YAHOO_REFRESH_TOKEN` repo secret so the next run inherits the live one.
+- That write-back is **mandatory, not best-effort.** If it fails (missing
+  `GH_PAT`, `gh` error), the stored token is already dead and the next run
+  fails with `invalid_grant` — so the workflow now fails loudly on the run
+  that caused it rather than freezing data silently until someone notices.
 - Every pipeline job goes through `src/yahoo/client.ts`, which handles token
   refresh on 401 and retry/backoff on 429/5xx. No other code talks to Yahoo.
+
+## Don't fork the chain: local dev vs CI
+
+Because only one refresh token is ever live, **running the pipelines locally
+against the same Yahoo app forks CI's chain and invalidates it** (and vice
+versa): your local refresh rotates the token, orphaning the one in the CI
+secret, so the next scheduled run dies. This is what froze the data on
+2026-07-14.
+
+Pick one:
+
+- **Let CI own the token** (simplest): don't run `fetch:*` locally against the
+  prod app. Use recorded fixtures for local work; let the scheduled workflow
+  do the real fetching.
+- **Give local dev its own credentials**: register a second Yahoo app and put
+  *its* client id/secret/refresh token in `.env`, leaving the CI secrets on the
+  prod app. The two chains never touch.
+
+`auth.ts` softens the blow after an accidental fork: if the cached token is
+rejected it falls back to the seed token in `YAHOO_REFRESH_TOKEN` before
+failing, so refreshing `.env` (or the secret) is enough to recover without
+hand-deleting `token-cache.json`.
 
 ## Commands
 
@@ -52,5 +79,5 @@ Only needed if the refresh token is lost or fully expired
 | Secret | Purpose |
 |---|---|
 | `YAHOO_CLIENT_ID` / `YAHOO_CLIENT_SECRET` | OAuth app credentials |
-| `YAHOO_REFRESH_TOKEN` | Long-lived token; auto-rotated by the workflow |
-| `GH_PAT` (optional) | Fine-grained PAT, **this repo only**, *Secrets: read/write* — lets the workflow persist the rotated refresh token. Without it, runs still work off the stored token. |
+| `YAHOO_REFRESH_TOKEN` | Refresh token; rotated and rewritten by the workflow every run |
+| `GH_PAT` (**required**) | Fine-grained PAT, **this repo only**, *Secrets: read/write* — lets the workflow persist the rotated refresh token. Without it the chain breaks after one run; the workflow fails loudly if it's missing. |
