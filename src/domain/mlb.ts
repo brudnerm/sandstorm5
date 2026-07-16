@@ -39,6 +39,35 @@ export interface StatcastPitching {
   barrelPct: number | null
 }
 
+/**
+ * Savant percentile rankings, 0–100, always oriented so higher = better
+ * (a batter with a low strikeout rate gets a HIGH kPct percentile).
+ * Batter-only and pitcher-only fields are null for the other role.
+ */
+export interface PercentileSet {
+  xwoba: number | null
+  xba: number | null
+  xslg: number | null
+  /** Pitchers only. */
+  xera: number | null
+  exitVelocity: number | null
+  maxEv: number | null
+  barrelPct: number | null
+  hardHitPct: number | null
+  kPct: number | null
+  bbPct: number | null
+  whiffPct: number | null
+  chasePct: number | null
+  /** Batters only from here down (except fbVelocity). */
+  sprintSpeed: number | null
+  oaa: number | null
+  armStrength: number | null
+  batSpeed: number | null
+  squaredUp: number | null
+  /** Pitchers only. */
+  fbVelocity: number | null
+}
+
 export interface MlbPlayer {
   /** MLBAM person id — the key into statsapi.mlb.com and Savant. */
   mlbamId: number
@@ -50,12 +79,38 @@ export interface MlbPlayer {
   throws: string | null
   batting: StatcastBatting | null
   pitching: StatcastPitching | null
+  /** Prior-season Statcast lines, for year-over-year trend display. */
+  prevBatting: StatcastBatting | null
+  prevPitching: StatcastPitching | null
+  battingPct: PercentileSet | null
+  pitchingPct: PercentileSet | null
 }
 
 /** data/mlb/players.json */
 export interface MlbShard {
   season: string
+  /** The season prevBatting/prevPitching cover. */
+  prevSeason: string
   players: MlbPlayer[]
+}
+
+/** One scraped fantasy-news blurb, matched to players by normalized name. */
+export interface NewsStory {
+  source: 'CBS' | 'RotoWire'
+  playerName: string
+  /** Display position/team context as scraped, e.g. "C | DET". */
+  context: string | null
+  headline: string
+  detail: string
+  /** Display timestamp as scraped ("26M ago", "July 16, 2026"). */
+  time: string
+  url: string | null
+}
+
+/** data/mlb/news.json */
+export interface NewsShard {
+  fetchedAt: string
+  stories: NewsStory[]
 }
 
 /**
