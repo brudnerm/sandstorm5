@@ -236,7 +236,11 @@ export default function Home({ league, week, onWeekChange }: Props) {
                 roster={roster}
                 categories={settings.data!.categories}
                 shardWeek={players.data.week}
-                onOpenPlayer={p => setDrawerPlayer({ card: p })}
+                onOpenPlayer={p => setDrawerPlayer({
+                  card: p,
+                  percentOwned: p.percentOwned ?? null,
+                  ownershipDelta: p.ownershipDelta ?? null,
+                })}
               />
             )
             : <div className="empty-desc roster-missing">{players.error ?? 'Loading players…'}</div>}

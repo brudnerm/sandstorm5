@@ -92,6 +92,32 @@ async function fetchWindow(
   }
 }
 
+interface Ownership {
+  percentOwned: number | null
+  ownershipDelta: number | null
+}
+
+/** Batch-fetch Yahoo ownership (percent rostered + weekly delta) per player. */
+async function fetchOwnership(
+  leagueKey: string,
+  settings: LeagueSeasonSettings,
+  playerKeys: string[],
+): Promise<Map<string, Ownership>> {
+  const ownership = new Map<string, Ownership>()
+  for (const batch of chunk(playerKeys, PAGE)) {
+    const raw = await yahooGet(
+      `league/${leagueKey}/players;player_keys=${batch.join(',')}/percent_owned`,
+    )
+    for (const p of normalizeLeaguePlayers(raw, settings)) {
+      ownership.set(p.playerKey, {
+        percentOwned: p.percentOwned,
+        ownershipDelta: p.ownershipDelta,
+      })
+    }
+  }
+  return ownership
+}
+
 for (const league of LEAGUES) {
   const season = currentSeason(league)
   const leagueKey = league.seasons[season]!
@@ -126,12 +152,18 @@ for (const league of LEAGUES) {
     await fetchWindow(leagueKey, settings, allKeys, window, windowsByKey)
   }
 
+  // Ownership signals feed the strategy view's drop heuristics: a player
+  // most leagues still roster is presumed too valuable to cut.
+  const rosterOwnership = await fetchOwnership(leagueKey, settings, allKeys)
+
   const rosters: TeamRoster[] = live.standings.map(row => ({
     teamKey: row.teamKey,
     players: (rosterOf.get(row.teamKey) ?? []).map((key): RosterPlayer => ({
       ...toCard(rosterPlayers.get(key)!),
       selectedPosition: rosterPlayers.get(key)!.selectedPosition,
       windows: (windowsByKey.get(key) ?? {}) as RosterPlayer['windows'],
+      percentOwned: rosterOwnership.get(key)?.percentOwned ?? null,
+      ownershipDelta: rosterOwnership.get(key)?.ownershipDelta ?? null,
     })),
   }))
   writeJson(path.join(DATA_DIR, league.id, 'players', 'current.json'), {
@@ -163,18 +195,7 @@ for (const league of LEAGUES) {
     await fetchWindow(leagueKey, settings, faKeys, window, faWindows)
   }
 
-  const ownership = new Map<string, { percentOwned: number | null; ownershipDelta: number | null }>()
-  for (const batch of chunk(faKeys, PAGE)) {
-    const raw = await yahooGet(
-      `league/${leagueKey}/players;player_keys=${batch.join(',')}/percent_owned`,
-    )
-    for (const p of normalizeLeaguePlayers(raw, settings)) {
-      ownership.set(p.playerKey, {
-        percentOwned: p.percentOwned,
-        ownershipDelta: p.ownershipDelta,
-      })
-    }
-  }
+  const ownership = await fetchOwnership(leagueKey, settings, faKeys)
 
   const freeAgents: FreeAgent[] = faKeys.map((key): FreeAgent => {
     const p = candidates.get(key)!
