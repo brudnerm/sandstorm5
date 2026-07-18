@@ -36,6 +36,10 @@ export interface PlayerCard {
 export interface RosterPlayer extends PlayerCard {
   /** Today's lineup slot: 'C', 'Util', 'SP', 'BN', 'IL', ... */
   selectedPosition: string | null
+  /** Percent of Yahoo leagues where this player is rostered. */
+  percentOwned: number | null
+  /** Week-over-week change in percentOwned; negative = being dropped. */
+  ownershipDelta: number | null
 }
 
 export interface TeamRoster {

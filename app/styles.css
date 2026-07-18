@@ -313,12 +313,15 @@ img { max-width: 100%; }
 .standings-card { padding: 4px 0; }
 .standings-row {
   display: grid;
-  grid-template-columns: 26px minmax(0, 1fr) 74px 44px 36px 48px;
+  grid-template-columns: 26px 32px minmax(0, 1fr) 74px 44px 36px 48px;
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
   font-variant-numeric: tabular-nums;
 }
+.st-delta { font-size: 12px; font-weight: 700; text-align: left !important; }
+.st-delta.win { color: var(--win); }
+.st-delta.loss { color: var(--loss); }
 .standings-row + .standings-row { border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent); }
 .standings-row.head {
   font-size: 11px;
@@ -334,8 +337,9 @@ img { max-width: 100%; }
 .st-num { font-size: 13px; color: var(--text-2); text-align: right; white-space: nowrap; }
 
 @media (max-width: 420px) {
-  .standings-row { grid-template-columns: 22px minmax(0, 1fr) 70px 36px 44px; }
-  .standings-row .st-num:nth-child(4), .standings-row.head .st-num:nth-child(4) { display: none; } /* hide PCT */
+  .standings-row { grid-template-columns: 22px 28px minmax(0, 1fr) 70px 36px 44px; }
+  /* hide PCT (now the 5th child: rank, Δ, team, record, PCT, ...) */
+  .standings-row > :nth-child(5) { display: none; }
 }
 
 /* ---------- Home: bar, tiles, matrix ---------- */
@@ -534,20 +538,9 @@ img { max-width: 100%; }
 .card.pad { padding: 14px; }
 
 .swap-card { padding: 0; }
-.swap-slumper { padding: 12px 14px 10px; }
-.swap-head { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.swap-head { display: flex; align-items: baseline; gap: 8px; min-width: 0; padding: 12px 14px 8px; }
 .swap-head .rt-player { display: inline; }
 .swap-head .rt-meta { display: inline; }
-.swap-line {
-  font-size: 12px;
-  color: var(--text-2);
-  font-variant-numeric: tabular-nums;
-  margin-top: 3px;
-  overflow-x: auto;
-  white-space: nowrap;
-  scrollbar-width: none;
-}
-.swap-line::-webkit-scrollbar { display: none; }
 .trend-badge {
   font-size: 11px;
   font-weight: 700;
@@ -557,13 +550,12 @@ img { max-width: 100%; }
 }
 .trend-badge.bad { color: var(--loss); background: color-mix(in srgb, var(--loss) 12%, transparent); }
 .trend-badge.good { color: var(--win); background: color-mix(in srgb, var(--win) 12%, transparent); }
-.swap-candidate {
-  border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
-  padding: 9px 14px;
-  background: color-mix(in srgb, var(--win) 3%, transparent);
-}
-.swap-candidate.none { font-size: 12px; color: var(--text-3); background: none; }
-.swap-arrow { color: var(--win); font-weight: 800; }
+
+/* Swap table: the drop candidate's 30d row, then rising adds in green. */
+.swap-table th, .swap-table td { padding: 7px 9px; }
+.swap-table .swap-row-drop td { border-bottom: 1px solid var(--border); }
+.swap-row-add { background: color-mix(in srgb, var(--win) 4%, transparent); }
+.swap-row-add .sg-player { background: color-mix(in srgb, var(--win) 4%, var(--surface)); }
 
 /* Position filter chips above the risers table. */
 .sg-filter {
@@ -630,15 +622,6 @@ img { max-width: 100%; }
 .sg-val.win { color: var(--win); font-weight: 600; }
 .sg-val.loss { color: var(--loss); }
 .sg-line { text-align: left !important; color: var(--text-3); font-size: 11.5px; padding-left: 14px !important; }
-.sg-role-block { margin-bottom: 10px; }
-.sg-role-title {
-  margin: 0 0 6px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
 .sg-stat { color: var(--text-2); font-size: 12px; }
 th.sg-stats-split, td.sg-stats-split { border-left: 1px solid var(--border); }
 .sg-empty { text-align: center !important; color: var(--text-3); font-size: 12.5px; padding: 20px !important; }
