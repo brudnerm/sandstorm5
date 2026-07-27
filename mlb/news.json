@@ -1,0 +1,320 @@
+{
+ "fetchedAt": "2026-07-27T08:48:36.920Z",
+ "stories": [
+  {
+   "source": "CBS",
+   "playerName": "Lane Thomas",
+   "context": "CF | KC",
+   "headline": "Royals' Lane Thomas: Clubs 10th homer in win",
+   "detail": "Thomas went 1-for-4 with a solo home run and a walk in Sunday's 5-4 win over the Tigers.",
+   "time": "1H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/royals-lane-thomas-clubs-10th-homer-in-win/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Michael Massey",
+   "context": "2B | KC",
+   "headline": "Royals' Michael Massey: Belts pinch-hit homer Sunday",
+   "detail": "Massey went 1-for-2 with a two-run home run in Sunday's 5-4 win over Detroit.",
+   "time": "1H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/royals-michael-massey-belts-pinch-hit-homer-sunday/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Jeff McNeil",
+   "context": "2B | ATH",
+   "headline": "Athletics' Jeff McNeil: Stays hot in Sunday's loss",
+   "detail": "McNeil went 2-for-4 with two RBI and a run scored in Sunday's 11-8 loss to the Twins.",
+   "time": "1H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/athletics-jeff-mcneil-stays-hot-in-sundays-loss/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Ben Rice",
+   "context": "1B | NYY",
+   "headline": "Yankees' Ben Rice: Belts 31st homer in loss",
+   "detail": "Rice went 2-for-5 with a solo homer, a double and an additional run scored in Sunday's 11-4 loss to the Phillies.",
+   "time": "2H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/yankees-ben-rice-belts-31st-homer-in-loss/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Alec Bohm",
+   "context": "3B | PHI",
+   "headline": "Phillies' Alec Bohm: Plates four runs in win",
+   "detail": "Bohm went 1-for-4 with a double, four RBI, two runs scored and a hit-by-pitch in Sunday's 11-4 win over the Yankees.",
+   "time": "2H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/phillies-alec-bohm-plates-four-runs-in-win/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Bryson Stott",
+   "context": "2B | PHI",
+   "headline": "Phillies' Bryson Stott: Big offensive performance Sunday",
+   "detail": "Stott went 3-for-4 with a solo homer, a double and five total RBI in Sunday's 11-4 win over the Yankees.",
+   "time": "2H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/phillies-bryson-stott-big-offensive-performance-sunday/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Will Warren",
+   "context": "SP | NYY",
+   "headline": "Yankees' Will Warren: Tagged for six runs in fifth loss",
+   "detail": "Warren (7-5) took the loss Sunday, allowing six runs on six hits and two walks over three-plus innings against the Phillies. He struck out five.",
+   "time": "2H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/yankees-will-warren-tagged-for-six-runs-in-fifth-loss/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Cristopher Sanchez",
+   "context": "SP | PHI",
+   "headline": "Phillies' Cristopher Sanchez: Picks up 13th win",
+   "detail": "Sanchez (13-4) earned the win Sunday, allowing three runs on six hits and three walks over six innings against the Yankees. He struck out six.",
+   "time": "2H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/phillies-cristopher-sanchez-picks-up-13th-win/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Jorge Soler",
+   "context": "DH | LAA",
+   "headline": "Angels' Jorge Soler: Launches 12th long ball",
+   "detail": "Soler went 1-for-4 with a solo home run and an additional RBI in Sunday's 4-3 victory over the Giants.",
+   "time": "3H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/angels-jorge-soler-launches-12th-long-ball/"
+  },
+  {
+   "source": "CBS",
+   "playerName": "Jo Adell",
+   "context": "RF | LAA",
+   "headline": "Angels' Jo Adell: Smashes 16th homer",
+   "detail": "Adell went 1-for-4 with a two-run home run in Sunday's win over the Giants.",
+   "time": "3H ago",
+   "url": "https://www.cbssports.com/fantasy/baseball/news/angels-jo-adell-smashes-16th-homer/"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Lane Thomas",
+   "context": "OF | Kansas City Royals",
+   "headline": "Clubs 10th homer in win",
+   "detail": "Thomas went 1-for-4 with a solo home run and a walk in Sunday's 5-4 win over the Tigers.",
+   "time": "July 27, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/lane-thomas-news-clubs-10th-homer-in-win-1016601"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Michael Massey",
+   "context": "2B | Kansas City Royals",
+   "headline": "Belts pinch-hit homer Sunday",
+   "detail": "Massey went 1-for-2 with a two-run home run in Sunday's 5-4 win over Detroit.",
+   "time": "July 27, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/michael-massey-news-belts-pinch-hit-homer-sunday-1016600"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Jeff McNeil",
+   "context": "2B | Sacramento Athletics",
+   "headline": "Stays hot in Sunday's loss",
+   "detail": "McNeil went 2-for-4 with two RBI and a run scored in Sunday's 11-8 loss to the Twins.",
+   "time": "July 27, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/jeff-mcneil-news-stays-hot-in-sundays-loss-1016599"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Ben Rice",
+   "context": "C | New York Yankees",
+   "headline": "Belts 31st homer in loss",
+   "detail": "Rice went 2-for-5 with a solo homer, a double and an additional run scored in Sunday's 11-4 loss to the Phillies.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/ben-rice-news-belts-31st-homer-in-loss-1016598"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Alec Bohm",
+   "context": "3B | Philadelphia Phillies",
+   "headline": "Plates four runs in win",
+   "detail": "Bohm went 1-for-4 with a double, four RBI, two runs scored and a hit-by-pitch in Sunday's 11-4 win over the Yankees.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/alec-bohm-news-plates-four-runs-in-win-1016597"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Bryson Stott",
+   "context": "2B | Philadelphia Phillies",
+   "headline": "Big offensive performance Sunday",
+   "detail": "Stott went 3-for-4 with a solo homer, a double and five total RBI in Sunday's 11-4 win over the Yankees.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/bryson-stott-news-big-offensive-performance-sunday-1016596"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Will Warren",
+   "context": "P | New York Yankees",
+   "headline": "Tagged for six runs in fifth loss",
+   "detail": "Warren (7-5) took the loss Sunday, allowing six runs on six hits and two walks over three-plus innings against the Phillies. He struck out five.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/will-warren-news-tagged-for-six-runs-in-fifth-loss-1016595"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Cristopher Sanchez",
+   "context": "P | Philadelphia Phillies",
+   "headline": "Picks up 13th win",
+   "detail": "Sanchez (13-4) earned the win Sunday, allowing three runs on six hits and three walks over six innings against the Yankees. He struck out six.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/cristopher-sanchez-news-picks-up-13th-win-1016594"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Jorge Soler",
+   "context": "OF | Los Angeles Angels",
+   "headline": "Launches 12th long ball",
+   "detail": "Soler went 1-for-4 with a solo home run and an additional RBI in Sunday's 4-3 victory over the Giants.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/jorge-soler-news-launches-12th-long-ball-1016593"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Jo Adell",
+   "context": "OF | Los Angeles Angels",
+   "headline": "Smashes 16th homer",
+   "detail": "Adell went 1-for-4 with a two-run home run in Sunday's win over the Giants.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/jo-adell-news-smashes-16th-homer-1016592"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Mike Trout",
+   "context": "OF | Los Angeles Angels",
+   "headline": "Perfect at plate in win",
+   "detail": "Trout went 4-for-4 with a double and a run scored in Sunday's win over the Giants.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/mike-trout-news-perfect-at-plate-in-win-1016591"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Mitch Farris",
+   "context": "P | Los Angeles Angels",
+   "headline": "Secures first career save",
+   "detail": "Farris picked up the save Sunday against the Giants. He allowed no earned runs on a hit and no walks while striking out one over two-thirds of an inning.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/mitch-farris-news-secures-first-career-save-1016590"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Marcus Semien",
+   "context": "2B | New York Mets",
+   "headline": "Provides pinch-hit homer Sunday",
+   "detail": "Semien went 1-for-1 with a pinch-hit three-run home run in Sunday's 8-3 win over the Dodgers.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/marcus-semien-news-provides-pinch-hit-homer-sunday-1016589"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Geoff Hartlieb",
+   "context": "P | Sacramento Athletics AAA",
+   "headline": "Designated for assignment",
+   "detail": "Hartlieb was designated for assignment by the Athletics on Sunday, Jason Burke of Roundtable.io reports.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/geoff-hartlieb-news-designated-for-assignment-1016588"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Carson Whisenhunt",
+   "context": "P | San Francisco Giants",
+   "headline": "Hurt by homers in first loss",
+   "detail": "Whisenhunt (2-1) took the loss Sunday, allowing four runs on five hits and two walks over five innings against the Angels. He struck out seven.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/carson-whisenhunt-news-hurt-by-homers-in-first-loss-1016587"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Jose Soriano",
+   "context": "P | Los Angeles Angels",
+   "headline": "Earns ninth win",
+   "detail": "Soriano (9-6) earned the win Sunday, allowing one unearned run on three hits and three walks over five innings in a 4-3 win over San Francisco. He struck out five.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/jose-soriano-news-earns-ninth-win-1016586"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Ezequiel Duran",
+   "context": "1B | Texas Rangers",
+   "headline": "Cracks 11th homer in loss",
+   "detail": "Duran went 1-for-3 with a solo home run and an additional RBI in Sunday's 6-4 loss to the Mariners.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/ezequiel-duran-news-cracks-11th-homer-in-loss-1016585"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Tyrone Taylor",
+   "context": "OF | New York Mets",
+   "headline": "Slaps three-run homer",
+   "detail": "Taylor went 1-for-3 with a three-run home run and a hit-by-pitch in Sunday's 8-3 win over the Dodgers.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/tyrone-taylor-news-slaps-three-run-homer-1016584"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Randy Arozarena",
+   "context": "OF | Seattle Mariners",
+   "headline": "Homers in three-hit performance",
+   "detail": "Arozarena went 3-for-5 with a solo home run in Sunday's 6-4 win over the Rangers.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/randy-arozarena-news-homers-in-three-hit-performance-1016583"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Dominic Canzone",
+   "context": "OF | Seattle Mariners",
+   "headline": "Goes yard in three-hit effort",
+   "detail": "Canzone went 3-for-5 with a three-run homer, a double and an additional RBI in Sunday's 6-4 win over the Rangers.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/dominic-canzone-news-goes-yard-in-three-hit-effort-1016582"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Andres Munoz",
+   "context": "P | Seattle Mariners",
+   "headline": "Dominant in 18th save",
+   "detail": "Munoz picked up the save in Sunday's 6-4 win over the Rangers. He struck out three across a perfect inning.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/andres-munoz-news-dominant-in-18th-save-1016581"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Jacob deGrom",
+   "context": "P | Texas Rangers",
+   "headline": "Allows one run in no-decision",
+   "detail": "DeGrom did not factor into the decision Sunday, allowing one run on seven hits and no walks over five-plus innings against Seattle. He struck out four.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/jacob-degrom-news-allows-one-run-in-no-decision-1016580"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Kyle Stowers",
+   "context": "OF | Miami Marlins",
+   "headline": "Goes deep during loss",
+   "detail": "Stowers went 2-for-4 with a solo home run and a double in Sunday's 5-3 loss to the Padres.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/kyle-stowers-news-goes-deep-during-loss-1016579"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Logan Gilbert",
+   "context": "P | Seattle Mariners",
+   "headline": "Nears quality start Sunday",
+   "detail": "Gilbert did not factor into the decision Sunday, allowing three runs on five hits and two walks over 5.2 innings in a 6-4 win over the Rangers. He struck out four.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/logan-gilbert-news-nears-quality-start-sunday-1016578"
+  },
+  {
+   "source": "RotoWire",
+   "playerName": "Jackson Jobe",
+   "context": "P | Detroit Tigers",
+   "headline": "Completes four-inning rehab start",
+   "detail": "Jobe (elbow) struck out four and allowed one earned run on two hits and two walks across four innings in a rehab start Saturday with Double-A Erie.",
+   "time": "July 26, 2026",
+   "url": "https://www.rotowire.com/baseball/headlines/jackson-jobe-injury-completes-four-inning-rehab-start-1016577"
+  }
+ ]
+}

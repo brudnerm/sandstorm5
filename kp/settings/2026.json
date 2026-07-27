@@ -1,0 +1,126 @@
+{
+  "leagueKey": "469.l.13624",
+  "leagueId": "kp",
+  "season": "2026",
+  "name": "Keeping Pattycakes",
+  "numTeams": 12,
+  "scoringType": "head",
+  "draftType": "snake",
+  "currentWeek": 18,
+  "startWeek": 1,
+  "endWeek": 25,
+  "categories": [
+    {
+      "statId": 60,
+      "role": "batting",
+      "abbr": "H/AB",
+      "name": "Hits / At Bats",
+      "higherIsBetter": true,
+      "isDisplayOnly": true
+    },
+    {
+      "statId": 7,
+      "role": "batting",
+      "abbr": "R",
+      "name": "Runs",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 12,
+      "role": "batting",
+      "abbr": "HR",
+      "name": "Home Runs",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 13,
+      "role": "batting",
+      "abbr": "RBI",
+      "name": "Runs Batted In",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 16,
+      "role": "batting",
+      "abbr": "SB",
+      "name": "Stolen Bases",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 3,
+      "role": "batting",
+      "abbr": "AVG",
+      "name": "Batting Average",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 4,
+      "role": "batting",
+      "abbr": "OBP",
+      "name": "On-base Percentage",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 50,
+      "role": "pitching",
+      "abbr": "IP",
+      "name": "Innings Pitched",
+      "higherIsBetter": true,
+      "isDisplayOnly": true
+    },
+    {
+      "statId": 28,
+      "role": "pitching",
+      "abbr": "W",
+      "name": "Wins",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 29,
+      "role": "pitching",
+      "abbr": "L",
+      "name": "Losses",
+      "higherIsBetter": false,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 32,
+      "role": "pitching",
+      "abbr": "SV",
+      "name": "Saves",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 42,
+      "role": "pitching",
+      "abbr": "K",
+      "name": "Strikeouts",
+      "higherIsBetter": true,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 26,
+      "role": "pitching",
+      "abbr": "ERA",
+      "name": "Earned Run Average",
+      "higherIsBetter": false,
+      "isDisplayOnly": false
+    },
+    {
+      "statId": 27,
+      "role": "pitching",
+      "abbr": "WHIP",
+      "name": "(Walks + Hits)/ Innings Pitched",
+      "higherIsBetter": false,
+      "isDisplayOnly": false
+    }
+  ]
+}
