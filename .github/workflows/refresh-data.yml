@@ -81,6 +81,18 @@ jobs:
             | gh secret set YAHOO_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
           echo "Persisted the rotated refresh token to YAHOO_REFRESH_TOKEN."
 
+      # TEMPORARY — diagnosing the 403 "This application is not authorized"
+      # errors from fetch:settings. Read-only: lists every league the
+      # authenticated user can see via a different Yahoo endpoint, so we can
+      # tell whether the 403 is account/app-wide or scoped to these two
+      # leagues. Remove once the 403s are understood.
+      - name: DIAGNOSTIC - discover-leagues
+        continue-on-error: true
+        env:
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+        run: npm run discover-leagues
+
       - name: Fetch data
         env:
           YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
