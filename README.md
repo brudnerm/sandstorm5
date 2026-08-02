@@ -36,14 +36,14 @@ direction. `tests/settings.test.ts` enforces this against recorded fixtures.
 
 ```bash
 npm run dev               # app + data shards at localhost:5173
-npm test                  # vitest (normalizer fixtures, GIDP acceptance test)
+npm test                  # vitest (normalizer fixtures, GIDP + token rotation tests)
 npm run typecheck
 npm run fetch:settings    # settings shards for every league-season (--current for latest only)
 npm run fetch:live        # standings + scoreboards + full-season schedule + manifest (incremental)
 npm run fetch:players     # rosters × stat windows + free-agent watchlist (needs fetch:live)
 npm run fetch:mlb         # MLBAM id map + Statcast expected stats (statsapi + Savant, no auth)
 npm run discover-leagues  # print registry entries for all your Yahoo leagues
-npm run token refresh     # see AUTH.md
+npm run token ensure      # refresh only if expired — see AUTH.md
 ```
 
 ## Adding a league or season

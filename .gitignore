@@ -17,3 +17,6 @@ token_response.json
 # OS / editor
 .DS_Store
 *.local
+
+# Per-machine Claude settings (.claude/launch.json IS shared and tracked)
+.claude/settings.local.json

@@ -16,19 +16,34 @@ import { fileURLToPath } from 'node:url'
 import dotenv from 'dotenv'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
-const CACHE_PATH = path.join(ROOT, 'token-cache.json')
 const TOKEN_URL = 'https://api.login.yahoo.com/oauth2/get_token'
 
 dotenv.config({ path: path.join(ROOT, '.env'), quiet: true })
 
-interface TokenCache {
+/**
+ * Where the rotated token is cached. Overridable via `YAHOO_TOKEN_CACHE` so
+ * tests never touch the real token-cache.json — clobbering it would invalidate
+ * a live refresh token and force a manual browser re-auth.
+ */
+const CACHE_PATH = process.env.YAHOO_TOKEN_CACHE
+  ? path.resolve(process.env.YAHOO_TOKEN_CACHE)
+  : path.join(ROOT, 'token-cache.json')
+
+export interface TokenCache {
   accessToken: string
   refreshToken: string
   /** epoch ms when the access token expires */
   expiresAt: number
 }
 
-function readCache(): TokenCache | null {
+/**
+ * Read the cached token, or null if there isn't a usable one.
+ *
+ * Exported because the live token has to be re-read *after* the fetch
+ * pipelines run: `client.ts` refreshes on a 401, so a rotation can happen long
+ * after `ensureFreshToken()` reported none. Re-reading is what catches it.
+ */
+export function readTokenCache(): TokenCache | null {
   try {
     const cache = JSON.parse(readFileSync(CACHE_PATH, 'utf8')) as TokenCache
     return cache.accessToken && cache.refreshToken ? cache : null
@@ -91,7 +106,7 @@ export async function refreshAccessToken(): Promise<TokenCache> {
   // .env / the CI secret when the cached one is rejected — e.g. right after
   // a manual re-auth that updated .env while a stale token-cache.json still
   // holds a dead token. Dedup so a matching pair isn't tried twice.
-  const candidates = [readCache()?.refreshToken, process.env.YAHOO_REFRESH_TOKEN]
+  const candidates = [readTokenCache()?.refreshToken, process.env.YAHOO_REFRESH_TOKEN]
     .filter((t): t is string => !!t)
     .filter((t, i, arr) => arr.indexOf(t) === i)
   if (candidates.length === 0) {
@@ -121,9 +136,45 @@ export async function refreshAccessToken(): Promise<TokenCache> {
   )
 }
 
+/**
+ * Ensure a valid access token exists, refreshing ONLY when the cached one has
+ * expired. Returns the live cache plus whether a refresh actually happened.
+ *
+ * This is what CI should use. Forcing a refresh on every run rotates the
+ * refresh token every time, and each rotation is a chance to break the chain
+ * (the old token dies the moment the new one is issued). Access tokens last an
+ * hour, so as long as token-cache.json survives between runs, a workflow
+ * running every 15 minutes only needs to rotate about once an hour instead of
+ * on all four runs. See AUTH.md.
+ */
+export async function ensureFreshToken(): Promise<{
+  cache: TokenCache
+  refreshed: boolean
+}> {
+  const cached = readTokenCache()
+  if (cached && cached.expiresAt > Date.now()) return { cache: cached, refreshed: false }
+  return { cache: await refreshAccessToken(), refreshed: true }
+}
+
+/**
+ * Does the live refresh token still need writing back to the durable store
+ * (the YAHOO_REFRESH_TOKEN secret / .env)?
+ *
+ * Deliberately compares against the stored value rather than tracking "did we
+ * just rotate?". A stored token that disagrees with the live one is not merely
+ * stale, it is DEAD — Yahoo revoked it when the newer token was issued. Asking
+ * the question this way also self-heals the dangerous case: if an earlier run
+ * rotated but failed to persist, the next run still reports that a write is
+ * owed instead of assuming no rotation happened.
+ */
+export function needsStore(
+  liveRefreshToken: string,
+  storedRefreshToken: string | undefined,
+): boolean {
+  return liveRefreshToken !== storedRefreshToken
+}
+
 /** Return a valid access token, refreshing if the cached one has expired. */
 export async function getAccessToken(): Promise<string> {
-  const cached = readCache()
-  if (cached && cached.expiresAt > Date.now()) return cached.accessToken
-  return (await refreshAccessToken()).accessToken
+  return (await ensureFreshToken()).cache.accessToken
 }
