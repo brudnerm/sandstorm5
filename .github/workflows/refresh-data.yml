@@ -12,7 +12,12 @@ on:
 
 concurrency:
   group: refresh-data
-  cancel-in-progress: true
+  # NEVER cancel a run in flight. Yahoo revokes the old refresh token the instant
+  # it issues a new one, so a run killed between rotating and persisting leaves
+  # the stored secret permanently dead — there is no way to recover it without a
+  # manual browser re-auth. Queueing is the safe failure mode; the pipelines are
+  # incremental and idempotent, so a late run simply catches up.
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -44,28 +49,81 @@ jobs:
 
       - run: npm ci
 
-      - name: Refresh Yahoo token
-        id: token
-        env:
-          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
-          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
-          YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
+      # Yahoo access tokens live an hour, but this workflow runs every 15 minutes.
+      # Without a persisted cache every run starts tokenless and is FORCED to
+      # refresh from the stored refresh token — rotating it ~96x/day, and every
+      # rotation is a chance to break the chain. Carrying the cache across runs
+      # drops that to roughly once an hour. Cache misses are safe: auth.ts falls
+      # back to the YAHOO_REFRESH_TOKEN secret.
+      - name: Restore Yahoo token cache
+        uses: actions/cache/restore@v4
+        with:
+          path: token-cache.json
+          key: yahoo-token-${{ github.run_id }}
+          restore-keys: yahoo-token-
+
+      - name: Mask restored token material
+        if: hashFiles('token-cache.json') != ''
         run: |
-          npm run token refresh
           node -e "
             const c = require('./token-cache.json');
             console.log('::add-mask::' + c.accessToken);
             console.log('::add-mask::' + c.refreshToken);
           "
 
-      # Yahoo rotates the refresh token on every use and invalidates the
-      # previous one, so the step above already consumed the stored token.
-      # Persisting the rotated replacement is MANDATORY, not best-effort:
-      # if it doesn't land, the next run dies with invalid_grant and data
-      # silently freezes. Fail loudly here instead so the break is visible
-      # immediately, on the run that caused it.
+      - name: Ensure a valid Yahoo access token
+        id: token
+        env:
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+          YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
+        run: |
+          npm run token ensure
+          node -e "
+            const c = require('./token-cache.json');
+            console.log('::add-mask::' + c.accessToken);
+            console.log('::add-mask::' + c.refreshToken);
+          "
+
+      - name: Fetch data
+        env:
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+        run: |
+          npm run fetch:settings -- --current
+          npm run fetch:live
+          npm run fetch:players
+          npm run fetch:mlb
+          npm run fetch:news
+
+      # The token is persisted AFTER the pipelines, never before. client.ts
+      # refreshes on a 401 and getAccessToken() refreshes on expiry, so the
+      # fetch step above can rotate the token on its own — and that replacement
+      # lives nowhere but token-cache.json. Persisting on the way in would save
+      # the token we already replaced and drop the live one with the runner,
+      # which is the exact failure this whole workflow exists to avoid.
+      # `always()`: a failed or cancelled fetch can still have rotated.
+      - name: Re-check the refresh token after fetching
+        id: token_final
+        if: always()
+        env:
+          YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
+        run: |
+          npm run token check
+          if [ -f token-cache.json ]; then
+            node -e "
+              const c = require('./token-cache.json');
+              console.log('::add-mask::' + c.accessToken);
+              console.log('::add-mask::' + c.refreshToken);
+            "
+          fi
+
+      # Only runs when the refresh token actually changed. When it does, this is
+      # MANDATORY, not best-effort: Yahoo already killed the previous token, so
+      # if the replacement doesn't land the next run dies with invalid_grant and
+      # data silently freezes. Fail loudly here, on the run that caused it.
       - name: Store rotated refresh token
-        if: steps.token.outcome == 'success'
+        if: always() && steps.token_final.outputs.needs_store == 'true'
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
@@ -81,16 +139,15 @@ jobs:
             | gh secret set YAHOO_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
           echo "Persisted the rotated refresh token to YAHOO_REFRESH_TOKEN."
 
-      - name: Fetch data
-        env:
-          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
-          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
-        run: |
-          npm run fetch:settings -- --current
-          npm run fetch:live
-          npm run fetch:players
-          npm run fetch:mlb
-          npm run fetch:news
+      # Save even when an earlier step failed: the cache holds the only live copy
+      # of a token we may have just rotated, so dropping it would force a manual
+      # re-auth. `always()` here is deliberate.
+      - name: Save Yahoo token cache
+        if: always() && hashFiles('token-cache.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: token-cache.json
+          key: yahoo-token-${{ github.run_id }}
 
       - name: Publish data branch (if changed)
         id: publish
