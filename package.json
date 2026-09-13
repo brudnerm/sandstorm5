@@ -16,6 +16,7 @@
     "fetch:live": "tsx src/pipeline/fetch-live.ts",
     "fetch:players": "tsx src/pipeline/fetch-players.ts",
     "fetch:mlb": "tsx src/pipeline/fetch-mlb.ts",
+    "fetch:draft": "tsx src/pipeline/fetch-draft.ts",
     "fetch:news": "tsx src/pipeline/fetch-news.ts"
   },
   "dependencies": {

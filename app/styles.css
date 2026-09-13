@@ -897,3 +897,139 @@ th.sg-stats-split, td.sg-stats-split { border-left: 1px solid var(--border); }
 }
 .empty-title { font-weight: 600; margin: 0 0 4px; }
 .empty-desc { font-size: 13px; color: var(--text-3); margin: 0; }
+
+/* ---------- Draft report ---------- */
+.dft-row {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 34px 46px 46px 50px 28px;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+.dft-row + .dft-row,
+.dft-expansion + .dft-row { border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent); }
+.dft-row.head {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--border);
+}
+.dft-row:not(.head) { cursor: pointer; }
+.dft-row:not(.head):active { background: var(--surface-2); }
+.dft-row.home { background: color-mix(in srgb, var(--accent-soft) 55%, transparent); }
+.dft-row.home .dft-manager { color: var(--accent); }
+
+.dft-team { display: flex; flex-direction: column; min-width: 0; }
+.dft-manager {
+  font-size: 13px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dft-team-name {
+  font-size: 11px;
+  color: var(--text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dft-grade { font-size: 13px; font-weight: 800; text-align: center; }
+.dft-row.head .dft-grade { font-weight: 700; }
+.grade-a { color: var(--win); }
+.grade-b { color: var(--text); }
+.grade-c { color: var(--text-2); }
+.grade-d, .grade-f { color: var(--loss); }
+.dft-surplus.win { color: var(--win); font-weight: 600; }
+.dft-surplus.loss { color: var(--loss); font-weight: 600; }
+
+.dft-expansion {
+  background: var(--surface-2);
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--border);
+}
+.dft-buckets { display: flex; gap: 14px; flex-wrap: wrap; }
+.dft-bucket { display: flex; align-items: baseline; gap: 5px; }
+.dft-bucket-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.dft-bucket-value { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.dft-bucket-value.win { color: var(--win); }
+.dft-bucket-value.loss { color: var(--loss); }
+.dft-extremes { font-size: 12.5px; color: var(--text-2); margin: 8px 0 10px; }
+
+.dft-picks.head,
+.dft-pick {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 44px 48px;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 0;
+  font-variant-numeric: tabular-nums;
+}
+.dft-picks.head {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+.dft-pick + .dft-pick { border-top: 1px solid color-mix(in srgb, var(--border) 40%, transparent); }
+.dft-pick-slot { font-size: 12px; font-weight: 700; color: var(--text-2); white-space: nowrap; }
+.dft-pick-overall { font-weight: 400; color: var(--text-3); }
+.dft-pick-who { display: flex; flex-direction: column; min-width: 0; gap: 1px; }
+.dft-pick-name { font-size: 13px; font-weight: 600; }
+.dft-pick-pos { font-size: 10.5px; font-weight: 600; color: var(--text-3); margin-left: 6px; }
+.dft-pick-line { font-size: 11px; color: var(--text-3); }
+.dft-keeper-note {
+  font-size: 11.5px;
+  color: var(--text-3);
+  margin: 14px 0 2px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.dft-lead {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 62px 48px;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 12px;
+  font-variant-numeric: tabular-nums;
+}
+.dft-lead + .dft-lead { border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent); }
+.dft-lead-mgr {
+  font-size: 12px;
+  color: var(--text-2);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dft-footnote { font-size: 11.5px; color: var(--text-3); margin: 2px 0 0; }
+
+.dft-chart { width: 100%; height: auto; display: block; }
+.dft-chart-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.dft-chart-area { fill: color-mix(in srgb, var(--accent) 14%, transparent); stroke: none; }
+.dft-chart-dot { fill: var(--accent); }
+.dft-chart-zero { stroke: var(--text-3); stroke-width: 1; stroke-dasharray: 3 3; }
+.dft-chart-keeper { fill: color-mix(in srgb, var(--text-3) 12%, transparent); }
+.dft-chart-axis { fill: var(--text-3); font-size: 9px; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 420px) {
+  .dft-row { grid-template-columns: 18px minmax(0, 1fr) 30px 42px 46px 26px; }
+  /* Drop the expected column; surplus and VAR carry the story. */
+  .dft-row > .dft-expected { display: none; }
+  .dft-lead { grid-template-columns: 38px minmax(0, 1fr) 52px 44px; }
+}
