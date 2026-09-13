@@ -4,9 +4,11 @@ import { timeAgo } from './lib/format'
 import { useRoute, type View } from './lib/router'
 import { useJson } from './lib/useJson'
 import Home from './views/Home'
+import Retro from './views/Retro'
 import Scoreboard from './views/Scoreboard'
 import Standings from './views/Standings'
 import Strategy from './views/Strategy'
+import './retro.css'
 
 function ThemeToggle() {
   const toggle = () => {
@@ -34,6 +36,7 @@ const TABS: Array<{ id: View; label: string }> = [
   { id: 'scoreboard', label: 'Scoreboard' },
   { id: 'standings', label: 'Standings' },
   { id: 'strategy', label: 'Strategy' },
+  { id: 'retro', label: 'Season review' },
 ]
 
 export default function App() {
@@ -110,6 +113,14 @@ export default function App() {
           />
         )}
         {league && route.view === 'standings' && <Standings key={league.id} league={league} />}
+        {league && route.view === 'retro' && (
+          <Retro
+            key={league.id}
+            league={league}
+            slug={route.slug ?? null}
+            onSelect={slug => navigate({ league: league.id, view: 'retro', week: null, slug })}
+          />
+        )}
       </main>
 
       {manifest.data && (

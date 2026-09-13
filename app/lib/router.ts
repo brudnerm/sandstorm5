@@ -1,32 +1,41 @@
 /**
- * Tiny hash router: #/{leagueId}/{view}[/{week}]
+ * Tiny hash router: #/{leagueId}/{view}[/{week|slug}]
  * Hash routing keeps URLs shareable on GitHub Pages with zero server config.
  */
 import { useCallback, useSyncExternalStore } from 'react'
 
-export type View = 'home' | 'scoreboard' | 'standings' | 'strategy'
+export type View = 'home' | 'scoreboard' | 'standings' | 'strategy' | 'retro'
 
-const VIEWS: View[] = ['home', 'scoreboard', 'standings', 'strategy']
+const VIEWS: View[] = ['home', 'scoreboard', 'standings', 'strategy', 'retro']
 
 export interface Route {
   league: string | null
   view: View
   week: number | null
+  /** Article slug for the retro view (e.g. "will"). */
+  slug?: string | null
 }
 
 export function parseHash(hash: string): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean)
   const league = parts[0] ?? null
   const view = VIEWS.find(v => v === parts[1]) ?? 'home'
+  if (view === 'retro') {
+    return { league, view, week: null, slug: parts[2] ? decodeURIComponent(parts[2]) : null }
+  }
   const week = parts[2] ? Number.parseInt(parts[2], 10) : null
-  return { league, view, week: Number.isNaN(week) ? null : week }
+  return { league, view, week: Number.isNaN(week) ? null : week, slug: null }
 }
 
 export function routeToHash(route: Route): string {
   if (!route.league) return '#/'
   const parts = [route.league, route.view]
-  const hasWeek = route.view === 'scoreboard' || route.view === 'home'
-  if (hasWeek && route.week !== null) parts.push(String(route.week))
+  if (route.view === 'retro') {
+    if (route.slug) parts.push(encodeURIComponent(route.slug))
+  } else {
+    const hasWeek = route.view === 'scoreboard' || route.view === 'home'
+    if (hasWeek && route.week !== null) parts.push(String(route.week))
+  }
   return '#/' + parts.join('/')
 }
 

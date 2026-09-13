@@ -1,0 +1,97 @@
+/* ---------- Season retrospective ---------- */
+.retro { gap: 18px; }
+.retro-title {
+  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.retro-intro .retro-title { font-size: 24px; margin-bottom: 8px; }
+.retro-kicker { font-size: 13px; font-weight: 600; color: var(--accent); margin: 0 0 2px; }
+.retro-byline { font-size: 13px; color: var(--text-3); margin: 6px 0 0; }
+
+/* Rank numeral is the identifying mark for a team everywhere on the page */
+.retro-rank {
+  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  min-width: 1.6em;
+  text-align: right;
+}
+.retro-rank.big { font-size: 56px; line-height: 0.9; min-width: 0; padding-top: 4px; }
+
+/* Article */
+.retro-back { align-self: flex-start; font-size: 13px; font-weight: 600; color: var(--text-3); padding: 4px 0; }
+.retro-back::before { content: '← '; }
+.retro-article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 18px 24px;
+}
+.retro-article-head { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.retro-p, .retro-ul {
+  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0 0 14px;
+  max-width: 34em;
+}
+.retro-ul { padding-left: 1.1em; }
+.retro-ul li { margin-bottom: 8px; }
+.retro-h2 {
+  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  font-size: 19px;
+  font-weight: 700;
+  margin: 26px 0 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.retro-article > .retro-p:last-child { margin-bottom: 0; }
+
+/* Pager */
+.retro-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.retro-pager-btn {
+  display: flex; flex-direction: column; gap: 2px;
+  text-align: left; font-size: 14px; font-weight: 600;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 12px;
+}
+.retro-pager-btn.right { text-align: right; align-items: flex-end; }
+.retro-pager-btn.muted { color: var(--text-3); font-weight: 500; }
+.retro-pager-label { font-size: 11px; font-weight: 600; color: var(--text-3); }
+
+/* Latest card on the index */
+.retro-latest {
+  display: flex; flex-direction: column; gap: 4px; text-align: left;
+  background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.retro-latest-team {
+  display: flex; align-items: baseline; gap: 10px;
+  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  font-size: 22px; font-weight: 700;
+}
+.retro-latest-team .retro-rank { font-size: 22px; }
+
+/* Ladder: every team, worst to best, published or held */
+.retro-ladder { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.retro-ladder-row + .retro-ladder-row { border-top: 1px solid var(--border); }
+.retro-ladder-btn { display: flex; align-items: center; gap: 12px; width: 100%; padding: 11px 14px; text-align: left; font: inherit; }
+button.retro-ladder-btn:active { background: var(--surface-2); }
+.retro-ladder-row .retro-rank { font-size: 20px; }
+.retro-ladder-main { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.retro-ladder-team { font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.retro-ladder-meta { font-size: 12px; color: var(--text-3); }
+.retro-ladder-status { font-size: 12px; color: var(--accent); font-weight: 600; white-space: nowrap; }
+.retro-ladder-row.held .retro-rank, .retro-ladder-row.held .retro-ladder-team { color: var(--text-3); }
+.retro-ladder-row.held .retro-ladder-status { color: var(--text-3); font-weight: 500; }
+.retro-ladder-row.current .retro-ladder-btn { background: var(--surface-2); }
+
+button.retro-ladder-btn:focus-visible, .retro-pager-btn:focus-visible, .retro-latest:focus-visible, .retro-back:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
