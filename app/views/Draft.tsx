@@ -220,9 +220,10 @@ export default function Draft({ league }: Props) {
         <h2 className="section-title">Draft report</h2>
         <p className="section-desc">
           Every pick scored on the league&rsquo;s 12 categories against the other drafted
-          players, then measured against what that slot returned league wide. Surplus is
-          the difference — it sums to zero across the twelve teams, so one team&rsquo;s gain
-          is another&rsquo;s. Tap a team for its picks.
+          players of its own kind, in standard deviations, so a hitter and a pitcher can
+          be compared directly. VAR is value over a replacement-level pick, expected is
+          what that slot returned league wide, and surplus is the difference — it sums
+          to zero across the twelve teams. Tap a team for its picks.
         </p>
         <div className="card standings-card">
           <div className="dft-row head">
@@ -273,6 +274,13 @@ export default function Draft({ league }: Props) {
         <Leaderboard entries={evaluation.worstPicks} managerOf={managerOf} />
       </section>
 
+      <p className="dft-footnote">
+        Hitters and pitchers are scored in separate pools, each put on a common scale
+        before comparison: a hitter&rsquo;s categories tend to rise together while a
+        pitcher&rsquo;s saves run against his wins and strikeouts, so the raw spreads
+        differ ({evaluation.poolScale.batting.toFixed(1)} against{' '}
+        {evaluation.poolScale.pitching.toFixed(1)} this season).
+      </p>
       {draft.data!.unmatched.length > 0 && (
         <p className="dft-footnote">
           No major-league season on record, so scored as a zero:{' '}

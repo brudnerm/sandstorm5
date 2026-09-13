@@ -145,16 +145,70 @@ export function isotonicNonIncreasing(ys: number[]): number[] {
 
 // ── Valuation ─────────────────────────────────────────────────────────
 
-/** Per-category mean/sd for one role, plus the volume scale for rates. */
+/**
+ * How one category is standardised within a role.
+ *
+ * Counting stats are plain z-scores. Rate stats are NOT: standardising a raw
+ * rate lets a tiny sample destroy the category. In 2026 one pitcher threw a
+ * third of an inning and gave up six runs — a 162.00 ERA — which by itself
+ * pushed the pool's ERA standard deviation to 15.29 against an innings-
+ * weighted 1.44. Dividing every real pitcher's ERA by a number ten times too
+ * large flattened ERA and WHIP to almost nothing, so two of the six pitching
+ * categories silently stopped counting. Batting averages are bounded and
+ * never blow up like that, so the damage was one-sided.
+ *
+ * Instead a rate is scored by its IMPACT: how far it moves the pool's own
+ * aggregate rate, scaled by how much of it the player actually threw or
+ * batted. That is the quantity a manager feels, it is immune to a
+ * third-of-an-inning disaster (which carries a third of an inning of weight),
+ * and standardising it puts all twelve categories on one footing.
+ */
+type Moment =
+  | { kind: 'counting'; mean: number; sd: number }
+  /** `weightedMean` is the pool's aggregate rate; `impactSd` scales impact. */
+  | { kind: 'rate'; weightedMean: number; impactSd: number }
+
+/** Per-category standardisation for one role, plus the volume scale. */
 interface Pool {
   role: DraftRole
-  /** Mean and sd per category, in CATEGORIES order. */
-  moments: Array<{ mean: number; sd: number }>
+  /** One per category, in CATEGORIES order. */
+  moments: Moment[]
   /** Mean AB (hitters) or IP (pitchers) among players who actually played. */
   meanVolume: number
-  /** Sum-of-z value for every member, used for the replacement percentile. */
+  /** Raw sum-of-z value for every member. */
   values: number[]
+  /**
+   * Centre and scale that put this pool's values on a common footing with the
+   * other pool's — see standardize().
+   */
+  centre: number
+  scale: number
+  /** Replacement level, in standardised units. */
   replacement: number
+}
+
+/**
+ * Express a raw value as standard deviations above an average drafted player
+ * of the same role, so hitters and pitchers can be compared at all.
+ *
+ * Summed z-scores are NOT comparable across roles as they stand, because the
+ * two roles' categories correlate differently. A good hitter tends to be good
+ * at everything — runs, homers and RBI move together — so his six z-scores
+ * add up. Pitchers are split between starters and relievers whose profiles
+ * partly cancel: saves run against wins and strikeouts. The pitching pool
+ * therefore comes out narrower (sd 3.4 against 4.1 in 2026) even when every
+ * category is measured correctly.
+ *
+ * Left alone, that difference is a thumb on the scale: replacement sits about
+ * one standard deviation below the mean in each pool, so an average hitter
+ * would bank more value over replacement than an average pitcher for no
+ * reason but the shape of his pool, and a team would gain VAR simply by
+ * drafting bats. Dividing by each pool's own spread removes that, and leaves
+ * the honest question: how exceptional was this player among the drafted
+ * players he was actually competing with?
+ */
+function standardize(pool: Pool, value: number): number {
+  return (value - pool.centre) / pool.scale
 }
 
 function lineOf(pick: DraftPick): DraftBatting & DraftPitching {
@@ -179,38 +233,68 @@ function buildPool(role: DraftRole, picks: DraftPick[]): Pool {
   const meanVolume = played.length > 0 ? mean(played) : 1
 
   const specs = CATEGORIES[role]
-  const moments = specs.map(spec => {
-    // Counting stats: a zero is a real result, so everyone counts. Rate
-    // stats: a player with no AB has no batting average, and folding his 0
-    // into the mean would make every real hitter look above average.
-    const sample = lines
-      .map((line, i) => ({ value: spec.read(line), volume: volumes[i]! }))
-      .filter(s => !spec.isRate || s.volume > 0)
-      .map(s => s.value)
-    return { mean: mean(sample), sd: stdev(sample) }
+  const moments: Moment[] = specs.map(spec => {
+    if (!spec.isRate) {
+      // A zero is a real result for a counting stat, so everyone counts:
+      // a player who missed the season really did hit no home runs.
+      return { kind: 'counting', mean: mean(lines.map(spec.read)), sd: stdev(lines.map(spec.read)) }
+    }
+    // The pool's aggregate rate — total hits over total at-bats, in effect —
+    // which is the baseline a player either lifts or drags.
+    const totalVolume = volumes.reduce((a, b) => a + b, 0)
+    const weightedMean = totalVolume === 0
+      ? 0
+      : lines.reduce((sum, line, i) => sum + spec.read(line) * volumes[i]!, 0) / totalVolume
+    const impacts = lines.map((line, i) => rateImpact(spec, line, volumes[i]!, weightedMean, meanVolume))
+    return { kind: 'rate', weightedMean, impactSd: stdev(impacts) }
   })
 
-  const pool: Pool = { role, moments, meanVolume, values: [], replacement: 0 }
+  const pool: Pool = {
+    role, moments, meanVolume, values: [], centre: 0, scale: 1, replacement: 0,
+  }
   pool.values = members.map((_, i) => valueOf(pool, lines[i]!, volumes[i]!))
-  pool.replacement = percentile(pool.values, REPLACEMENT_PERCENTILE)
+  pool.centre = mean(pool.values)
+  // A pool with one member (or identical members) has no spread to divide by.
+  pool.scale = stdev(pool.values) || 1
+  pool.replacement = percentile(
+    pool.values.map(value => standardize(pool, value)),
+    REPLACEMENT_PERCENTILE,
+  )
   return pool
 }
 
-/** Sum of (weighted) z-scores for one line against its pool. */
+/**
+ * How far this player moves the pool's aggregate rate, in whole-player units.
+ * A .320 average over 600 at-bats shifts it far more than the same average
+ * over 40, and a player who never batted shifts it not at all.
+ */
+function rateImpact(
+  spec: CategorySpec,
+  line: DraftBatting & DraftPitching,
+  volume: number,
+  weightedMean: number,
+  meanVolume: number,
+): number {
+  if (volume <= 0 || meanVolume <= 0) return 0
+  const delta = (spec.read(line) - weightedMean) * (volume / meanVolume)
+  return spec.higherIsBetter ? delta : -delta
+}
+
+/** Sum of z-scores for one line against its pool, over that role's six categories. */
 function valueOf(pool: Pool, line: DraftBatting & DraftPitching, volume: number): number {
   const specs = CATEGORIES[pool.role]
   let total = 0
   specs.forEach((spec, i) => {
-    const { mean: m, sd } = pool.moments[i]!
-    if (sd === 0) return
-    let z = (spec.read(line) - m) / sd
-    if (!spec.higherIsBetter) z = -z
-    if (spec.isRate) {
-      // A .320 average over 600 at-bats is worth far more than over 40, and
-      // a player who never played contributes exactly nothing.
-      z *= volume / pool.meanVolume
+    const moment = pool.moments[i]!
+    if (moment.kind === 'counting') {
+      if (moment.sd === 0) return
+      const z = (spec.read(line) - moment.mean) / moment.sd
+      total += spec.higherIsBetter ? z : -z
+      return
     }
-    total += z
+    if (moment.impactSd === 0) return
+    const impact = rateImpact(spec, line, volume, moment.weightedMean, pool.meanVolume)
+    total += impact / moment.impactSd
   })
   return total
 }
@@ -219,8 +303,12 @@ function valueOf(pool: Pool, line: DraftBatting & DraftPitching, volume: number)
 
 export interface PickValue {
   pick: DraftPick
+  /** Raw sum of z-scores over the role's six categories, before standardising. */
   value: number
-  /** Value over replacement. */
+  /**
+   * Value over replacement, in standard deviations of the player's own pool.
+   * Comparable between hitters and pitchers; `value` is not.
+   */
   var: number
   /** What this slot returned league wide. null for keepers. */
   expected: number | null
@@ -253,8 +341,10 @@ export interface DraftEvaluation {
   worstPicks: PickValue[]
   /** Mean fitted expected VAR per round, for the by-round chart. */
   byRound: Array<{ round: number; expected: number }>
-  /** Replacement-level value per pool, for the methodology note. */
+  /** Replacement level per pool, in standardised units. */
   replacement: Record<DraftRole, number>
+  /** Raw value spread per pool — the gap standardize() exists to close. */
+  poolScale: Record<DraftRole, number>
 }
 
 /**
@@ -309,7 +399,7 @@ export function evaluateDraft(shard: DraftShard): DraftEvaluation {
     valued.set(pick, {
       pick,
       value,
-      var: value - pool.replacement,
+      var: standardize(pool, value) - pool.replacement,
       expected: null,
       surplus: null,
     })
@@ -389,6 +479,10 @@ export function evaluateDraft(shard: DraftShard): DraftEvaluation {
     replacement: {
       batting: pools.batting.replacement,
       pitching: pools.pitching.replacement,
+    },
+    poolScale: {
+      batting: pools.batting.scale,
+      pitching: pools.pitching.scale,
     },
   }
 }

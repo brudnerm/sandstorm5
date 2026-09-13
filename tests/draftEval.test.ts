@@ -112,6 +112,30 @@ function hitter(
   }
 }
 
+function starter(
+  overall: number,
+  teamKey: string,
+  name: string,
+  ip: number,
+  era: number,
+): DraftPick {
+  return {
+    round: Math.ceil(overall / 2),
+    overall,
+    teamKey,
+    playerKey: `p.${overall}`,
+    name,
+    position: 'SP',
+    role: 'pitching',
+    mlbTeam: 'KC',
+    keeper: false,
+    mlbamId: overall,
+    batting: null,
+    // Only IP and ERA move; the rest are held constant.
+    pitching: { ip, w: 10, l: 8, sv: 0, k: 150, era, whip: 1.2 },
+  }
+}
+
 function shardOf(picks: DraftPick[]): DraftShard {
   return {
     leagueId: 'test',
@@ -175,7 +199,9 @@ describe('z-score pool', () => {
 describe('rate-stat weighting', () => {
   it('scales a rate by volume against the pool average', () => {
     // Two .300 hitters at 600 AB and one at 300 AB, versus a .200 hitter.
-    // Mean AB among players who played is 500, so weights are 1.2/1.2/0.6.
+    // The baseline is the pool's AGGREGATE average, not the mean of the four
+    // averages: (.3·600 + .3·600 + .3·300 + .2·500) / 2000 = .275.
+    // Impact is then (avg − .275) · AB / meanAB, with meanAB = 500.
     const picks = [
       hitter(1, 'T1', 'Full', 20, 600, 0.3),
       hitter(2, 'T1', 'AlsoFull', 20, 600, 0.3),
@@ -186,12 +212,53 @@ describe('rate-stat weighting', () => {
     const byName = new Map(
       evaluation.teams.flatMap(t => t.picks).map(e => [e.pick.name, e]),
     )
-    const sd = stdev([0.3, 0.3, 0.3, 0.2])
-    const z = (0.3 - mean([0.3, 0.3, 0.3, 0.2])) / sd
+    const impacts = [
+      (0.3 - 0.275) * (600 / 500),
+      (0.3 - 0.275) * (600 / 500),
+      (0.3 - 0.275) * (300 / 500),
+      (0.2 - 0.275) * (500 / 500),
+    ]
+    const impactSd = stdev(impacts)
+    // AVG is the only category that varies here, so it alone is the value.
+    expect(byName.get('Full')!.value).toBeCloseTo(impacts[0]! / impactSd, 10)
+    expect(byName.get('Part')!.value).toBeCloseTo(impacts[2]! / impactSd, 10)
     // Same average, half the at-bats, half the credit.
-    expect(byName.get('Full')!.value).toBeCloseTo(z * (600 / 500), 10)
-    expect(byName.get('Part')!.value).toBeCloseTo(z * (300 / 500), 10)
     expect(byName.get('Part')!.value).toBeCloseTo(byName.get('Full')!.value / 2, 10)
+  })
+
+  it('does not let a tiny sample flatten the category for everyone else', () => {
+    // The 2026 bug: one pitcher threw a third of an inning for a 162.00 ERA,
+    // which pushed the pool's raw ERA sd to 15.29 and shrank every real
+    // pitcher's ERA z-score by a factor of ten. Scoring the IMPACT on the
+    // pool's aggregate rate makes his third of an inning carry a third of an
+    // inning of weight, so the other three are scored as if he weren't there.
+    const starters = [
+      starter(1, 'T1', 'Good', 180, 2.5),
+      starter(2, 'T2', 'Fine', 180, 3.5),
+      starter(3, 'T1', 'Poor', 180, 4.5),
+    ]
+    const blowUp = starter(4, 'T2', 'OneOutDisaster', 0.3, 162)
+
+    const spreadOf = (picks: DraftPick[]) => {
+      const byName = new Map(
+        evaluateDraft(shardOf(picks)).teams
+          .flatMap(t => t.picks)
+          .map(e => [e.pick.name, e.value]),
+      )
+      return byName.get('Good')! - byName.get('Poor')!
+    }
+
+    const clean = spreadOf(starters)
+    const polluted = spreadOf([...starters, blowUp])
+    expect(clean).toBeGreaterThan(0)
+    // The disaster may shift the baseline slightly, but it must not wipe the
+    // category out: the good starter still clearly outscores the poor one.
+    expect(polluted).toBeGreaterThan(clean * 0.5)
+
+    // Under the old raw-rate standardisation this ratio collapsed towards
+    // zero, because sd(ERA) was set by the outlier rather than by the pool.
+    const rawRatio = stdev([2.5, 3.5, 4.5]) / stdev([2.5, 3.5, 4.5, 162])
+    expect(rawRatio).toBeLessThan(0.02)
   })
 
   it('gives a player who never played no rate credit, but a real zero for counting stats', () => {
@@ -216,18 +283,76 @@ describe('rate-stat weighting', () => {
     //   AVG  over the three who PLAYED: mean .280, weight 500/500 = 1
     //   OBP  identical for all three who played, so sd 0 and no contribution
     const low = all.find(e => e.pick.name === 'Low')!
+    // AVG baseline is the aggregate over the 1500 at-bats actually taken,
+    // = .280; the absent player contributes no at-bats and no impact.
+    const avgImpacts = [
+      (0.3 - 0.28) * 1, (0.28 - 0.28) * 1, (0.26 - 0.28) * 1, 0,
+    ]
     const expected =
       (10 - 15) / stdev([30, 20, 10, 0]) +
       3 * ((50 - 37.5) / stdev([50, 50, 50, 0])) +
-      (0.26 - 0.28) / stdev([0.3, 0.28, 0.26])
+      avgImpacts[2]! / stdev(avgImpacts)
     expect(low.value).toBeCloseTo(expected, 10)
 
     // The point of that AVG term: it is negative, because .260 trails the
     // .280 the players who actually batted averaged. Had the absent player's
-    // .000 been folded in, the mean would be .210 and .260 would score as
-    // ABOVE average — the exact error this guards against.
-    expect((0.26 - 0.28) / stdev([0.3, 0.28, 0.26])).toBeLessThan(0)
+    // .000 been folded into the baseline it would be .210 and .260 would
+    // score as ABOVE average — the exact error this guards against.
+    expect(avgImpacts[2]!).toBeLessThan(0)
     expect(0.26 - mean([0.3, 0.28, 0.26, 0])).toBeGreaterThan(0)
+  })
+})
+
+describe('cross-pool comparability', () => {
+  // Hitters and pitchers are scored in separate pools whose summed z-scores
+  // spread differently — a hitter's categories rise together, while a
+  // pitcher's saves run against his wins and strikeouts. Standardising each
+  // pool is what stops that shape difference becoming a scoring advantage.
+  const picks = [
+    hitter(1, 'T1', 'BatA', 35, 600, 0.32),
+    hitter(2, 'T2', 'BatB', 25, 550, 0.28),
+    hitter(3, 'T1', 'BatC', 15, 500, 0.25),
+    hitter(4, 'T2', 'BatD', 5, 450, 0.22),
+    starter(5, 'T1', 'ArmA', 200, 2.4),
+    starter(6, 'T2', 'ArmB', 170, 3.2),
+    starter(7, 'T1', 'ArmC', 140, 4.0),
+    starter(8, 'T2', 'ArmD', 110, 4.8),
+  ]
+  const evaluation = evaluateDraft(shardOf(picks))
+  const varsOf = (role: 'batting' | 'pitching') =>
+    evaluation.teams
+      .flatMap(t => t.picks)
+      .filter(e => e.pick.role === role)
+      .map(e => e.var)
+
+  it('gives both pools the same spread, whatever their raw spread was', () => {
+    // This is the guarantee: VAR is measured in each pool's own standard
+    // deviations, so a wider-spread pool can no longer hand its players more
+    // value over replacement than a narrower one.
+    expect(stdev(varsOf('batting'))).toBeCloseTo(1, 10)
+    expect(stdev(varsOf('pitching'))).toBeCloseTo(1, 10)
+    // ...and the raw pools really did differ, so the correction is doing work.
+    expect(evaluation.poolScale.batting).not.toBeCloseTo(evaluation.poolScale.pitching, 2)
+  })
+
+  it('leaves only a small location gap, from pool shape rather than scale', () => {
+    // Replacement is an empirical percentile, so it still responds to the
+    // SHAPE of each pool — a pool with a shorter left tail has replacement
+    // closer to its average. That residual is real information and is left
+    // in; what matters is that it is small, not that it is zero.
+    const gap = Math.abs(mean(varsOf('batting')) - mean(varsOf('pitching')))
+    expect(gap).toBeLessThan(0.25)
+  })
+
+  it('still ranks within a pool exactly as the raw values do', () => {
+    // Standardising is a positive affine transform, so it reorders nothing.
+    const entries = evaluation.teams
+      .flatMap(t => t.picks)
+      .filter(e => e.pick.role === 'pitching')
+    const byValue = [...entries].sort((a, b) => b.value - a.value).map(e => e.pick.name)
+    const byVar = [...entries].sort((a, b) => b.var - a.var).map(e => e.pick.name)
+    expect(byVar).toEqual(byValue)
+    expect(byVar[0]).toBe('ArmA')
   })
 })
 
