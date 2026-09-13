@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import type { Manifest } from '../src/domain/matchups'
 import { timeAgo } from './lib/format'
 import { useRoute, type View } from './lib/router'
@@ -45,6 +45,19 @@ export default function App() {
 
   const leagues = manifest.data?.leagues ?? []
   const league = leagues.find(l => l.id === route.league) ?? null
+  const tabsRef = useRef<HTMLElement>(null)
+
+  // The tab strip overflows a phone viewport, so keep the active tab visible —
+  // otherwise the rightmost tabs are selectable but never show as selected.
+  // Deferred a frame: on first paint the strip has not been laid out yet, so
+  // scrolling it immediately is a no-op.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      tabsRef.current?.querySelector('.tab.active')
+        ?.scrollIntoView({ inline: 'nearest', block: 'nearest' })
+    })
+    return () => cancelAnimationFrame(id)
+  }, [route.view])
 
   // Normalize bad or missing league in the URL once the manifest is known.
   useEffect(() => {
@@ -73,7 +86,7 @@ export default function App() {
           <span className="spacer" />
           <ThemeToggle />
         </div>
-        <nav className="tabs" role="tablist" aria-label="Views">
+        <nav className="tabs" role="tablist" aria-label="Views" ref={tabsRef}>
           {TABS.map(tab => (
             <button
               key={tab.id}

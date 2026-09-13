@@ -1,40 +1,204 @@
-/* ---------- Season retrospective ---------- */
-.retro { gap: 18px; }
-.retro-title {
-  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  margin: 0;
-}
-.retro-intro .retro-title { font-size: 24px; margin-bottom: 8px; }
-.retro-kicker { font-size: 13px; font-weight: 600; color: var(--accent); margin: 0 0 2px; }
-.retro-byline { font-size: 13px; color: var(--text-3); margin: 6px 0 0; }
+/* ---------- Season review ----------
+   News-page treatment: flat hairline-ruled story lists rather than stacked
+   cards, an uppercase accent eyebrow over every unit, and a serif display
+   face for headlines against the app's system sans for metadata. */
 
-/* Rank numeral is the identifying mark for a team everywhere on the page */
-.retro-rank {
+.retro { gap: 22px; }
+
+/* Serif display + reading face, shared by headlines and body copy */
+.retro-masthead-title,
+.retro-lead-headline,
+.retro-story-headline,
+.retro-headline,
+.retro-leader,
+.retro-lead-leader,
+.retro-story-leader,
+.retro-standfirst,
+.retro-p,
+.retro-ul,
+.retro-h2 {
   font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+}
+
+/* The label that sits above a unit — small, uppercase, accent */
+.retro-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 6px;
+}
+
+/* Team / manager / record line, in the sans face so it reads as metadata */
+.retro-dateline,
+.retro-byline,
+.retro-upcoming-meta {
+  font-size: 12px;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.retro-rank-tag {
+  font-weight: 700;
+  color: var(--text-2);
+  margin-right: 6px;
+}
+
+/* ---------- Masthead ---------- */
+.retro-masthead { border-bottom: 2px solid var(--text); padding-bottom: 14px; }
+.retro-masthead-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+.retro-standfirst {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-2);
+  margin: 0;
+  max-width: 36em;
+}
+
+/* ---------- Lead story ---------- */
+.retro-lead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  padding: 0 0 20px;
+  border-bottom: 1px solid var(--border);
+}
+.retro-lead-headline {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.retro-lead-leader {
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--text-2);
+  margin-bottom: 10px;
+  max-width: 34em;
+}
+.retro-lead:active .retro-lead-headline,
+.retro-story-btn:active .retro-story-headline { color: var(--accent); }
+
+/* ---------- Section heads ---------- */
+.retro-section { display: flex; flex-direction: column; gap: 0; }
+.retro-section-head {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Story list ---------- */
+.retro-stories { list-style: none; margin: 0; padding: 0; }
+.retro-story + .retro-story { border-top: 1px solid var(--border); }
+.retro-story-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  padding: 14px 0;
+}
+.retro-story-headline {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-top: 5px;
+}
+.retro-story-leader {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text-2);
+  margin-top: 5px;
+  max-width: 34em;
+}
+
+/* ---------- Still to come ---------- */
+.retro-upcoming-list { list-style: none; margin: 0; padding: 0; }
+.retro-upcoming {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+}
+.retro-upcoming + .retro-upcoming { border-top: 1px solid var(--border); }
+.retro-upcoming-rank {
+  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  font-size: 17px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  color: var(--accent);
-  min-width: 1.6em;
+  color: var(--text-3);
+  min-width: 1.4em;
   text-align: right;
 }
-.retro-rank.big { font-size: 56px; line-height: 0.9; min-width: 0; padding-top: 4px; }
-
-/* Article */
-.retro-back { align-self: flex-start; font-size: 13px; font-weight: 600; color: var(--text-3); padding: 4px 0; }
-.retro-back::before { content: '← '; }
-.retro-article {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 18px 24px;
+.retro-upcoming-main { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.retro-upcoming-team {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.retro-article-head { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.retro-upcoming-status {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+/* ---------- Article ---------- */
+.retro-back {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 2px 0;
+}
+.retro-back::before { content: '← '; }
+
+.retro-article-head {
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+.retro-headline {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0 0 10px;
+}
+.retro-leader {
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--text-2);
+  margin: 0 0 14px;
+  max-width: 34em;
+}
+.retro-byline { margin: 0; }
+.retro-byline-sep { display: block; margin-top: 3px; }
+
+/* Body copy */
 .retro-p, .retro-ul {
-  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   font-size: 17px;
   line-height: 1.55;
   color: var(--text);
@@ -44,54 +208,54 @@
 .retro-ul { padding-left: 1.1em; }
 .retro-ul li { margin-bottom: 8px; }
 .retro-h2 {
-  font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
-  font-size: 19px;
+  font-size: 13px;
   font-weight: 700;
-  margin: 26px 0 8px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-2);
+  margin: 26px 0 10px;
   padding-top: 14px;
   border-top: 1px solid var(--border);
 }
 .retro-article > .retro-p:last-child { margin-bottom: 0; }
 
-/* Pager */
-.retro-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* ---------- Pager ---------- */
+.retro-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
 .retro-pager-btn {
-  display: flex; flex-direction: column; gap: 2px;
-  text-align: left; font-size: 14px; font-weight: 600;
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  min-width: 0;
 }
 .retro-pager-btn.right { text-align: right; align-items: flex-end; }
-.retro-pager-btn.muted { color: var(--text-3); font-weight: 500; }
-.retro-pager-label { font-size: 11px; font-weight: 600; color: var(--text-3); }
-
-/* Latest card on the index */
-.retro-latest {
-  display: flex; flex-direction: column; gap: 4px; text-align: left;
-  background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 14px 16px;
+.retro-pager-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
-.retro-latest-team {
-  display: flex; align-items: baseline; gap: 10px;
+.retro-pager-btn.muted .retro-pager-label { color: var(--text-3); }
+.retro-pager-headline {
   font-family: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
-  font-size: 22px; font-weight: 700;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
 }
-.retro-latest-team .retro-rank { font-size: 22px; }
+.retro-pager-btn.muted .retro-pager-headline { color: var(--text-3); font-weight: 400; }
 
-/* Ladder: every team, worst to best, published or held */
-.retro-ladder { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.retro-ladder-row + .retro-ladder-row { border-top: 1px solid var(--border); }
-.retro-ladder-btn { display: flex; align-items: center; gap: 12px; width: 100%; padding: 11px 14px; text-align: left; font: inherit; }
-button.retro-ladder-btn:active { background: var(--surface-2); }
-.retro-ladder-row .retro-rank { font-size: 20px; }
-.retro-ladder-main { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-.retro-ladder-team { font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.retro-ladder-meta { font-size: 12px; color: var(--text-3); }
-.retro-ladder-status { font-size: 12px; color: var(--accent); font-weight: 600; white-space: nowrap; }
-.retro-ladder-row.held .retro-rank, .retro-ladder-row.held .retro-ladder-team { color: var(--text-3); }
-.retro-ladder-row.held .retro-ladder-status { color: var(--text-3); font-weight: 500; }
-.retro-ladder-row.current .retro-ladder-btn { background: var(--surface-2); }
-
-button.retro-ladder-btn:focus-visible, .retro-pager-btn:focus-visible, .retro-latest:focus-visible, .retro-back:focus-visible {
-  outline: 2px solid var(--accent); outline-offset: 2px;
+.retro-lead:focus-visible,
+.retro-story-btn:focus-visible,
+.retro-pager-btn:focus-visible,
+.retro-back:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
