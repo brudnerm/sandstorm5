@@ -62,20 +62,6 @@ const headlineOf = (a: Article) => a.headline ?? a.teamName
 /** Worst rank first, matching the publishing order. */
 const byRankDesc = (a: { rank: number }, b: { rank: number }) => b.rank - a.rank
 
-function LeadStory({ article, onSelect }: { article: Article; onSelect: (s: string) => void }) {
-  return (
-    <button className="retro-lead" onClick={() => onSelect(article.slug)}>
-      <span className="retro-eyebrow">Latest review</span>
-      <span className="retro-lead-headline">{headlineOf(article)}</span>
-      {article.leader && <span className="retro-lead-leader">{article.leader}</span>}
-      <span className="retro-dateline">
-        <span className="retro-rank-tag">No. {article.rank}</span>
-        {article.teamName} · {article.manager} · {article.record}
-      </span>
-    </button>
-  )
-}
-
 function StoryRow({ article, onSelect }: { article: Article; onSelect: (s: string) => void }) {
   return (
     <li className="retro-story">
@@ -179,9 +165,9 @@ export default function Retro({ league, slug, onSelect }: Props) {
     )
   }
 
-  // Newest first: the run goes worst to best, so the newest is the best rank.
-  const byNewest = data.articles.slice().sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
-  const [lead, ...rest] = byNewest
+  // One continuous countdown: published reviews worst-first, then the teams
+  // whose reviews have not run, picking up where the published run left off.
+  const published = data.articles.slice().sort(byRankDesc)
   const upcoming = data.teams.filter(t => !t.slug).sort(byRankDesc)
 
   return (
@@ -189,19 +175,11 @@ export default function Retro({ league, slug, onSelect }: Props) {
       <header className="retro-masthead">
         <p className="retro-eyebrow">Season review</p>
         <h1 className="retro-masthead-title">{data.title}</h1>
-        <p className="retro-standfirst">{data.intro}</p>
       </header>
 
-      {lead && <LeadStory article={lead} onSelect={onSelect} />}
-
-      {rest.length > 0 && (
-        <section className="retro-section">
-          <h2 className="retro-section-head">More reviews</h2>
-          <ol className="retro-stories">
-            {rest.sort(byRankDesc).map(a => <StoryRow key={a.slug} article={a} onSelect={onSelect} />)}
-          </ol>
-        </section>
-      )}
+      <ol className="retro-stories">
+        {published.map(a => <StoryRow key={a.slug} article={a} onSelect={onSelect} />)}
+      </ol>
 
       {upcoming.length > 0 && (
         <section className="retro-section">

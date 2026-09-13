@@ -7,13 +7,10 @@
 
 /* Serif display + reading face, shared by headlines and body copy */
 .retro-masthead-title,
-.retro-lead-headline,
 .retro-story-headline,
 .retro-headline,
 .retro-leader,
-.retro-lead-leader,
 .retro-story-leader,
-.retro-standfirst,
 .retro-p,
 .retro-ul,
 .retro-h2 {
@@ -45,47 +42,15 @@
 }
 
 /* ---------- Masthead ---------- */
-.retro-masthead { border-bottom: 2px solid var(--text); padding-bottom: 14px; }
+.retro-masthead { border-bottom: 2px solid var(--text); padding-bottom: 12px; }
 .retro-masthead-title {
   font-size: 30px;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  margin: 0 0 8px;
-}
-.retro-standfirst {
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--text-2);
   margin: 0;
-  max-width: 36em;
 }
 
-/* ---------- Lead story ---------- */
-.retro-lead {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  width: 100%;
-  padding: 0 0 20px;
-  border-bottom: 1px solid var(--border);
-}
-.retro-lead-headline {
-  font-size: 27px;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-.retro-lead-leader {
-  font-size: 17px;
-  line-height: 1.45;
-  color: var(--text-2);
-  margin-bottom: 10px;
-  max-width: 34em;
-}
-.retro-lead:active .retro-lead-headline,
 .retro-story-btn:active .retro-story-headline { color: var(--accent); }
 
 /* ---------- Section heads ---------- */
@@ -252,7 +217,6 @@
 }
 .retro-pager-btn.muted .retro-pager-headline { color: var(--text-3); font-weight: 400; }
 
-.retro-lead:focus-visible,
 .retro-story-btn:focus-visible,
 .retro-pager-btn:focus-visible,
 .retro-back:focus-visible {
