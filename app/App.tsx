@@ -5,6 +5,7 @@ import { useRoute, type View } from './lib/router'
 import { useJson } from './lib/useJson'
 import Draft from './views/Draft'
 import Home from './views/Home'
+import Injuries from './views/Injuries'
 import Retro from './views/Retro'
 import Scoreboard from './views/Scoreboard'
 import Standings from './views/Standings'
@@ -38,6 +39,7 @@ const TABS: Array<{ id: View; label: string }> = [
   { id: 'standings', label: 'Standings' },
   { id: 'strategy', label: 'Strategy' },
   { id: 'draft', label: 'Draft' },
+  { id: 'injuries', label: 'Injuries' },
   { id: 'retro', label: 'Season review' },
 ]
 
@@ -129,6 +131,7 @@ export default function App() {
         )}
         {league && route.view === 'standings' && <Standings key={league.id} league={league} />}
         {league && route.view === 'draft' && <Draft key={league.id} league={league} />}
+        {league && route.view === 'injuries' && <Injuries key={league.id} league={league} />}
         {league && route.view === 'retro' && (
           <Retro
             key={league.id}
