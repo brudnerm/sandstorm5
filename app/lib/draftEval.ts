@@ -367,15 +367,22 @@ export function gradeFromZ(z: number): Grade {
   return 'F'
 }
 
-/** A pick's season line as one display string. */
-export function seasonLine(pick: DraftPick): string {
-  if (pick.role === 'pitching') {
-    const p = pick.pitching
+/** Anything carrying a role plus its batting/pitching line — a DraftPick or an InjurySeasonLine. */
+export interface HasSeasonLine {
+  role: DraftRole
+  batting: DraftBatting | null
+  pitching: DraftPitching | null
+}
+
+/** A season line as one display string. */
+export function seasonLine(line: HasSeasonLine): string {
+  if (line.role === 'pitching') {
+    const p = line.pitching
     if (!p) return 'did not pitch'
     return `${p.ip.toFixed(1)} IP · ${p.w}-${p.l} · ${p.sv} SV · ${p.k} K · ` +
       `${p.era.toFixed(2)} ERA · ${p.whip.toFixed(2)} WHIP`
   }
-  const b = pick.batting
+  const b = line.batting
   if (!b) return 'did not play'
   return `${b.ab} AB · ${b.r} R · ${b.hr} HR · ${b.rbi} RBI · ${b.sb} SB · ` +
     `${b.avg.toFixed(3).replace(/^0/, '')} AVG · ${b.obp.toFixed(3).replace(/^0/, '')} OBP`

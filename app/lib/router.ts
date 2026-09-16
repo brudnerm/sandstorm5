@@ -4,9 +4,9 @@
  */
 import { useCallback, useSyncExternalStore } from 'react'
 
-export type View = 'home' | 'scoreboard' | 'standings' | 'strategy' | 'draft' | 'retro'
+export type View = 'home' | 'scoreboard' | 'standings' | 'strategy' | 'draft' | 'injuries' | 'retro'
 
-const VIEWS: View[] = ['home', 'scoreboard', 'standings', 'strategy', 'draft', 'retro']
+const VIEWS: View[] = ['home', 'scoreboard', 'standings', 'strategy', 'draft', 'injuries', 'retro']
 
 export interface Route {
   league: string | null
