@@ -39,6 +39,12 @@ export interface LeagueSeasonSettings {
   currentWeek: number | null
   startWeek: number | null
   endWeek: number | null
+  /** First week of the playoff bracket (Yahoo playoff_start_week). */
+  playoffStartWeek: number | null
+  /** How many teams make the bracket (Yahoo num_playoff_teams) — 6 in most
+   * of our seasons, but 4 in the shortened 2020 one and 8 in sidebar 2012,
+   * so it is never assumed. */
+  numPlayoffTeams: number | null
   categories: StatCategory[]
 }
 

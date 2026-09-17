@@ -28,6 +28,8 @@ const settings: LeagueSeasonSettings = {
   currentWeek: 3,
   startWeek: 1,
   endWeek: 5,
+  playoffStartWeek: 4,
+  numPlayoffTeams: 4,
   categories: [
     { statId: 60, role: 'batting', abbr: 'H/AB', name: 'Hits / At Bats', higherIsBetter: true, isDisplayOnly: true },
     { statId: 12, role: 'batting', abbr: 'HR', name: 'Home Runs', higherIsBetter: true, isDisplayOnly: false },

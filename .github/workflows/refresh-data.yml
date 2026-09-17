@@ -95,8 +95,14 @@ jobs:
           npm run fetch:players
           npm run fetch:mlb
           npm run fetch:draft
-          npm run fetch:rosters
           npm run fetch:news
+          # Last, and non-fatal. This is the only request-heavy job — a first
+          # backfill is weeks x teams sequential calls — and the step runs under
+          # `bash -e`, so a failure anywhere in it aborts the publish and throws
+          # away everything the other pipelines just fetched. Stale injury data
+          # is a far better outcome than a skipped refresh.
+          npm run fetch:rosters \
+            || echo "::warning::fetch:rosters failed — injury shards are stale, other data published normally"
 
       # The token is persisted AFTER the pipelines, never before. client.ts
       # refreshes on a 401 and getAccessToken() refreshes on expiry, so the

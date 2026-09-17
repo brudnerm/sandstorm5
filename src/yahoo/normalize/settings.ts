@@ -93,6 +93,8 @@ export function normalizeSettings(
     currentWeek: num(meta['current_week']),
     startWeek: num(meta['start_week']),
     endWeek: num(meta['end_week']),
+    playoffStartWeek: num(settings['playoff_start_week']),
+    numPlayoffTeams: num(settings['num_playoff_teams']),
     categories,
   }
 }

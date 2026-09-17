@@ -2,13 +2,23 @@
  * Fetch weekly roster snapshots and derive injury history:
  *
  *   data/{leagueId}/rosters/{season}/{week}.json   who was on each roster,
- *                                                  and their status, that week
+ *                                                  and the lineup slot they
+ *                                                  filled, that week
  *   data/{leagueId}/injuries/{season}.json         IL stints derived from the
  *                                                  weekly snapshots
  *
+ * The stored `status` is the player's status when the snapshot was *taken*,
+ * not that week's — only `selectedPosition` is week-scoped, and it is what the
+ * stints are cut from. See the note at the top of src/domain/rosters.ts.
+ *
  * Earlier weeks are immutable once played, so only the current week is
  * re-fetched on a steady-state run — a full backfill (all weeks × all teams)
- * only happens once per league. Requires live.json + settings (run
+ * only happens once per league.
+ *
+ * `--rederive` rebuilds the injury shards from the stored snapshots and makes
+ * no Yahoo calls at all. Use it after changing the stint logic: the snapshots
+ * are the expensive part, the derivation is free, and re-deriving offline
+ * keeps a code change from spending API budget or rotating the token. Requires live.json + settings (run
  * fetch:settings and fetch:live first); the injury shard's season lines also
  * prefer the draft shard and fall back to players/current.json, so those are
  * best fetched first too (fetch:draft, fetch:players) though neither is
@@ -37,6 +47,7 @@ import { normalizeRoster } from '../yahoo/normalize/players.js'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const DATA_DIR = path.join(ROOT, 'data')
+const REDERIVE = process.argv.includes('--rederive')
 
 function writeJson(filePath: string, value: unknown): void {
   mkdirSync(path.dirname(filePath), { recursive: true })
@@ -97,9 +108,16 @@ for (const league of LEAGUES) {
 
   for (let w = 1; w <= currentWeek; w++) {
     const weekPath = path.join(rostersDir, `${w}.json`)
-    const existing = w === currentWeek ? null : readJson<WeeklyRostersShard>(weekPath)
+    // The current week is still in progress, so its snapshot is refreshed
+    // every run; past weeks are settled and never re-fetched.
+    const stale = w === currentWeek && !REDERIVE
+    const existing = stale ? null : readJson<WeeklyRostersShard>(weekPath)
     if (existing) {
       weeks.push({ week: w, teams: existing.teams })
+      continue
+    }
+    if (REDERIVE) {
+      console.log(`  week ${w}: no stored snapshot — skipping (--rederive makes no Yahoo calls)`)
       continue
     }
     const teams = await fetchWeekRosters(leagueKey, settings, teamKeys, w)
@@ -136,9 +154,22 @@ for (const league of LEAGUES) {
     leagueId: league.id,
     season,
     asOfWeek: currentWeek,
+    playoffStartWeek: settings.playoffStartWeek,
+    numPlayoffTeams: settings.numPlayoffTeams,
     stints,
   } satisfies InjuriesShard)
-  console.log(`  injuries: ${stints.length} stints (${stints.filter(s => s.lastWeek === null).length} ongoing)`)
+
+  const ongoing = stints.filter(s => s.lastWeek === null).length
+  console.log(`  injuries: ${stints.length} stints (${ongoing} ongoing)`)
+  // Stints are cut from the IL lineup slot, which is week-scoped; `status` is
+  // not (see src/domain/rosters.ts). If a backfill ever reads `status` again,
+  // every stint runs to the final week and this is what shows it.
+  if (stints.length > 4 && ongoing === stints.length) {
+    console.warn(
+      `  [${league.id}] WARNING: every stint is open at week ${currentWeek}. ` +
+      'That is the signature of reading a non-week-scoped field — check the derivation.',
+    )
+  }
 }
 
 console.log('\nDone.')
