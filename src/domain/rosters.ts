@@ -1,11 +1,29 @@
 /**
  * Weekly roster snapshots and the injury history derived from them.
  *
- * Rosters are fetched once per week and kept forever — Yahoo's per-week
- * roster endpoint is authoritative for who was on a team and what their
- * status was that week, and earlier weeks never change. Injury stints are
- * derived client-side-free, in the pipeline, by scanning consecutive weekly
- * snapshots per player: see `deriveInjuryStints`.
+ * Rosters are fetched once per week and kept forever; earlier weeks never
+ * change. Injury stints are derived in the pipeline by scanning consecutive
+ * weekly snapshots per player: see `deriveInjuryStints`.
+ *
+ * ## Only the lineup slot is week-scoped
+ *
+ * In `team/{key}/roster;week=N/players`, Yahoo scopes `selected_position`
+ * (and `player_stats`) to the requested week — each carries its own coverage
+ * object. `status` does NOT: it sits bare in the player info array next to
+ * `uniform_number` and `editorial_team_abbr`, and is the player's status at
+ * *fetch* time, whatever week you asked for.
+ *
+ * So stints are derived from the IL **lineup slot**, never from `status`. A
+ * backfill run writes every past week in one pass, and reading `status` there
+ * stamps today's injuries onto the whole season — which is exactly what the
+ * first version of this shard did: 89 stints, all 89 "still ongoing", 53 of
+ * them starting in the season's opening week, and not one player changing
+ * status across 6,400 player-week observations.
+ *
+ * The slot is also the better fantasy metric regardless of provenance: it
+ * measures roster spots actually consumed by injury. It under-counts by
+ * design — a manager who leaves an injured player in a bench slot is not
+ * paying the IL cost, so we do not charge them for one.
  */
 import { parseInnings, type DraftBatting, type DraftPitching } from './draft.js'
 import { statKey, type Role, type StatCategory, type StatKey } from './stats.js'
@@ -40,31 +58,44 @@ export interface WeekSnapshot {
   teams: WeeklyTeamRoster[]
 }
 
-/** A player's full-season production, joined in for "what was lost". */
+/** A player's full-season production, joined in for context on the row. */
 export interface InjurySeasonLine {
   role: Role
   batting: DraftBatting | null
   pitching: DraftPitching | null
 }
 
+/** One team's share of a stint: the weeks that team carried the IL slot. */
+export interface StintTeamShare {
+  teamKey: string
+  weeks: number
+}
+
 export interface InjuryStint {
   playerKey: string
   name: string
-  /** Team that rostered the player when the stint began. */
+  /** Team holding the IL slot when the stint began; see `teams` for the split. */
   teamKey: string
   firstWeek: number
-  /** Last week observed with an IL status; null if still ongoing as of the latest snapshot. */
+  /** Last week observed in an IL slot; null only when that is the latest snapshot. */
   lastWeek: number | null
-  /** Status at onset, e.g. 'IL10' — the substatus can change mid-stint but this is what triggered it. */
-  status: string
-  /** The player went unrostered (by anyone) at some point during the stint. */
+  /**
+   * Weeks the player actually occupied an IL slot. The run is consecutive by
+   * construction, so this never counts a week he was activated or unrostered.
+   */
+  weeksLost: number
+  /** `weeksLost` split across teams (a mid-stint trade), in first-seen order. */
+  teams: StintTeamShare[]
+  /**
+   * Yahoo's IL substatus ('IL10', 'IL60', ...), and only for a stint still
+   * open at the latest snapshot — that is the one week whose `status` was
+   * read at the time it applied. null for any stint that has ended.
+   */
+  status: string | null
+  /** The stint ended because the player left every roster while still IL-slotted. */
   dropped: boolean
-  /** The player's team changed, with no unrostered gap, at some point during the stint. */
+  /** The IL slot changed hands mid-stint, with no unrostered gap. */
   traded: boolean
-  /** Consecutive weeks rostered (any team) immediately before the stint began. */
-  weeksRosteredBefore: number
-  /** Consecutive weeks rostered (any team) immediately after the stint ended; 0 while still ongoing. */
-  weeksRosteredAfter: number
   seasonLine: InjurySeasonLine | null
 }
 
@@ -74,6 +105,13 @@ export interface InjuriesShard {
   season: string
   /** The latest week the roster history covers. */
   asOfWeek: number
+  /**
+   * Copied from the league's own settings so the view can flag playoff-week
+   * stints without a second fetch, and without assuming a six-team bracket
+   * starting in week 22 — both have varied across our seasons.
+   */
+  playoffStartWeek: number | null
+  numPlayoffTeams: number | null
   stints: InjuryStint[]
 }
 
@@ -82,23 +120,40 @@ export function isInjuredStatus(status: string | null): boolean {
   return !!status && status.toUpperCase().startsWith('IL')
 }
 
+/**
+ * Was this week's lineup slot an IL slot? Yahoo uses 'IL' and, in leagues
+ * with a second one, 'IL+'. 'NA' is a minor-league slot, not an injury.
+ */
+export function isInjurySlot(selectedPosition: string | null): boolean {
+  if (!selectedPosition) return false
+  return selectedPosition.toUpperCase().startsWith('IL')
+}
+
 interface Observation {
   week: number
   teamKey: string
+  ilSlot: boolean
   status: string | null
   name: string
 }
 
 /**
- * Walk each player's weekly observations (only weeks they were rostered
- * somewhere — gaps mean unrostered, not "healthy") and cut out maximal runs
- * of IL status as stints. A gap inside a run means the team dropped him
- * while hurt; a same-week team change with no gap means a trade.
+ * Walk each player's weekly observations and cut out maximal runs of
+ * *consecutive* weeks spent in an IL slot.
+ *
+ * A run ends when the next week is missing (nobody rostered him — a drop) or
+ * present but not IL-slotted (he was activated). Both are real endings: once
+ * a player is off your roster or back in your lineup, you have stopped paying
+ * for the injury. A pickup by someone else who re-IL-slots him therefore
+ * starts a *new* stint, charged to that manager.
+ *
+ * A team change with no gap is a trade, and keeps one stint together — the
+ * roster spot really was consumed continuously — with `teams` splitting the
+ * weeks between the managers.
  */
 export function deriveInjuryStints(weeks: WeekSnapshot[]): Array<Omit<InjuryStint, 'seasonLine'>> {
   const sorted = [...weeks].sort((a, b) => a.week - b.week)
   if (sorted.length === 0) return []
-  const minWeek = sorted[0]!.week
   const maxWeek = sorted[sorted.length - 1]!.week
 
   const byPlayer = new Map<string, Observation[]>()
@@ -106,7 +161,13 @@ export function deriveInjuryStints(weeks: WeekSnapshot[]): Array<Omit<InjuryStin
     for (const team of teams) {
       for (const player of team.players) {
         const list = byPlayer.get(player.playerKey) ?? []
-        list.push({ week, teamKey: team.teamKey, status: player.status, name: player.name })
+        list.push({
+          week,
+          teamKey: team.teamKey,
+          ilSlot: isInjurySlot(player.selectedPosition),
+          status: player.status,
+          name: player.name,
+        })
         byPlayer.set(player.playerKey, list)
       }
     }
@@ -120,45 +181,36 @@ export function deriveInjuryStints(weeks: WeekSnapshot[]): Array<Omit<InjuryStin
 
     let i = 0
     while (i < obs.length) {
-      if (!isInjuredStatus(obs[i]!.status)) {
+      if (!obs[i]!.ilSlot) {
         i++
         continue
       }
       const start = i
       let j = i
-      while (j + 1 < obs.length && isInjuredStatus(obs[j + 1]!.status)) j++
-
-      let dropped = false
-      let traded = false
-      for (let k = start; k < j; k++) {
-        const gap = obs[k + 1]!.week - obs[k]!.week
-        if (gap > 1) dropped = true
-        else if (obs[k + 1]!.teamKey !== obs[k]!.teamKey) traded = true
-      }
+      while (j + 1 < obs.length && obs[j + 1]!.ilSlot && obs[j + 1]!.week === obs[j]!.week + 1) j++
 
       const firstWeek = obs[start]!.week
-      const stillOngoing = j === obs.length - 1
-      const lastWeek = stillOngoing ? null : obs[j]!.week
+      const lastObs = obs[j]!
+      const ongoing = lastObs.week === maxWeek
 
-      let weeksRosteredBefore = 0
-      for (let w = firstWeek - 1; w >= minWeek && rosteredWeeks.has(w); w--) weeksRosteredBefore++
-
-      let weeksRosteredAfter = 0
-      if (lastWeek !== null) {
-        for (let w = lastWeek + 1; w <= maxWeek && rosteredWeeks.has(w); w++) weeksRosteredAfter++
+      // Weeks per team, first-seen order — a trade splits one stint in two.
+      const byTeam = new Map<string, number>()
+      for (let k = start; k <= j; k++) {
+        byTeam.set(obs[k]!.teamKey, (byTeam.get(obs[k]!.teamKey) ?? 0) + 1)
       }
 
       stints.push({
         playerKey,
-        name: obs[start]!.name,
+        name: lastObs.name,
         teamKey: obs[start]!.teamKey,
         firstWeek,
-        lastWeek,
-        status: obs[start]!.status!,
-        dropped,
-        traded,
-        weeksRosteredBefore,
-        weeksRosteredAfter,
+        lastWeek: ongoing ? null : lastObs.week,
+        weeksLost: j - start + 1,
+        teams: [...byTeam].map(([teamKey, weeks]) => ({ teamKey, weeks })),
+        status: ongoing ? lastObs.status : null,
+        // Ended with the player gone from every roster, rather than activated.
+        dropped: !ongoing && !rosteredWeeks.has(lastObs.week + 1),
+        traded: byTeam.size > 1,
       })
 
       i = j + 1

@@ -120,4 +120,26 @@ describe('all recorded fixtures normalize cleanly', () => {
       expect(typeof c.higherIsBetter).toBe('boolean')
     }
   })
+
+  // The Injuries view flags playoff-week stints off these two, so a league
+  // that quietly stopped reporting them would silently mis-flag every row.
+  it.each(files)('%s carries the playoff bracket settings', file => {
+    const leagueId = file.startsWith('kp-') ? 'kp' : 'sidebar'
+    const settings = normalizeSettings(loadFixture(file), leagueId)
+    expect(settings.playoffStartWeek).toBeGreaterThan(0)
+    expect(settings.numPlayoffTeams).toBeGreaterThan(0)
+    expect(settings.playoffStartWeek).toBeLessThanOrEqual(settings.endWeek ?? Infinity)
+  })
+
+  it('reads the bracket per season rather than assuming six teams', () => {
+    // The shortened 2020 season cut the field to four and started week 8.
+    const y2020 = normalizeSettings(loadFixture('kp-2020.json'), 'kp')
+    expect(y2020.numPlayoffTeams).toBe(4)
+    expect(y2020.playoffStartWeek).toBe(8)
+    const y2026 = normalizeSettings(loadFixture('kp-2026.json'), 'kp')
+    expect(y2026.numPlayoffTeams).toBe(6)
+    expect(y2026.playoffStartWeek).toBe(23)
+    // sidebar ran an eight-team bracket in 2012.
+    expect(normalizeSettings(loadFixture('sidebar-2012.json'), 'sidebar').numPlayoffTeams).toBe(8)
+  })
 })

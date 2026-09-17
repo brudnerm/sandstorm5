@@ -1,10 +1,16 @@
 /**
  * Injury stint derivation against small hand-built weekly roster fixtures.
+ *
+ * Stints come from the IL *lineup slot*, which Yahoo scopes to the requested
+ * week. `status` is deliberately set to misleading values in several of these
+ * fixtures: it is the player's status at fetch time, not that week's, so the
+ * derivation must ignore it. See the note at the top of src/domain/rosters.ts.
  */
 import { describe, expect, it } from 'vitest'
 import {
   deriveInjuryStints,
   isInjuredStatus,
+  isInjurySlot,
   statLineToSeasonLine,
   type WeekSnapshot,
   type WeeklyRosterPlayer,
@@ -19,6 +25,11 @@ function player(overrides: Partial<WeeklyRosterPlayer> & { playerKey: string }):
     status: null,
     ...overrides,
   }
+}
+
+/** Shorthand: a player sitting in the IL slot that week. */
+function il(playerKey: string, overrides: Partial<WeeklyRosterPlayer> = {}): WeeklyRosterPlayer {
+  return player({ playerKey, selectedPosition: 'IL', ...overrides })
 }
 
 function week(n: number, teams: Record<string, WeeklyRosterPlayer[]>): WeekSnapshot {
@@ -41,73 +52,119 @@ describe('isInjuredStatus', () => {
   })
 })
 
+describe('isInjurySlot', () => {
+  it('matches the IL slots and nothing else', () => {
+    expect(isInjurySlot('IL')).toBe(true)
+    expect(isInjurySlot('IL+')).toBe(true)
+    expect(isInjurySlot('BN')).toBe(false)
+    expect(isInjurySlot('Util')).toBe(false)
+    expect(isInjurySlot('NA')).toBe(false)
+    expect(isInjurySlot(null)).toBe(false)
+  })
+})
+
 describe('deriveInjuryStints', () => {
   const KEY = '469.l.1.p.1'
 
-  it('merges a drop-and-reappear on another team into one stint', () => {
-    // Week 1-2: hurt on Team A. Week 3: dropped (no team rosters him).
-    // Week 4: picked up by Team B, still hurt. Week 5: activated on Team B.
+  it('derives the stint from the IL slot and ignores the status field', () => {
+    // The whole point: `status` here is today's value stamped on every week
+    // by a backfill. Week 3 says IL60 while he is back in the lineup, and
+    // weeks 1-2 carry it too. Only the slot is week-scoped.
     const weeks: WeekSnapshot[] = [
-      week(1, { A: [player({ playerKey: KEY, status: 'IL10' })] }),
-      week(2, { A: [player({ playerKey: KEY, status: 'IL10' })] }),
-      week(4, { B: [player({ playerKey: KEY, status: 'IL10' })] }),
-      week(5, { B: [player({ playerKey: KEY, status: null })] }),
+      week(1, { A: [il(KEY, { status: 'IL60' })] }),
+      week(2, { A: [il(KEY, { status: 'IL60' })] }),
+      week(3, { A: [player({ playerKey: KEY, status: 'IL60' })] }),
     ]
+    const stints = deriveInjuryStints(weeks)
+    expect(stints).toHaveLength(1)
+    expect(stints[0]!.firstWeek).toBe(1)
+    expect(stints[0]!.lastWeek).toBe(2)
+    expect(stints[0]!.weeksLost).toBe(2)
+  })
 
+  it('ends the stint when the player is dropped, and does not call it ongoing', () => {
+    // Regression: the first version checked "last observation for this player"
+    // instead of "last week of the season", so anyone dropped while hurt was
+    // reported as still out, for every remaining week of the season.
+    const weeks: WeekSnapshot[] = [
+      week(1, { A: [player({ playerKey: KEY })] }),
+      week(2, { A: [il(KEY)] }),
+      ...[3, 4, 5].map(w => week(w, { A: [player({ playerKey: 'other' })] })),
+    ]
+    const stints = deriveInjuryStints(weeks)
+    expect(stints).toHaveLength(1)
+    expect(stints[0]!.lastWeek).toBe(2)
+    expect(stints[0]!.weeksLost).toBe(1)
+    expect(stints[0]!.dropped).toBe(true)
+    expect(stints[0]!.status).toBeNull()
+  })
+
+  it('charges a drop-and-repickup as two stints, one per manager', () => {
+    // Week 1-2 IL-slotted on A, dropped in week 3, picked up and re-IL-slotted
+    // by B in week 4. A paid two weeks; B paid one. Neither paid for week 3.
+    const weeks: WeekSnapshot[] = [
+      week(1, { A: [il(KEY)] }),
+      week(2, { A: [il(KEY)] }),
+      week(3, { A: [player({ playerKey: 'other' })] }),
+      week(4, { B: [il(KEY)] }),
+      week(5, { B: [player({ playerKey: KEY })] }),
+    ]
+    const stints = deriveInjuryStints(weeks)
+    expect(stints).toHaveLength(2)
+    expect(stints[0]).toMatchObject({ teamKey: 'A', firstWeek: 1, lastWeek: 2, weeksLost: 2, dropped: true })
+    expect(stints[1]).toMatchObject({ teamKey: 'B', firstWeek: 4, lastWeek: 4, weeksLost: 1, dropped: false })
+  })
+
+  it('keeps a mid-stint trade as one stint and splits the weeks by team', () => {
+    const weeks: WeekSnapshot[] = [
+      week(1, { A: [il(KEY)] }),
+      week(2, { A: [il(KEY)] }),
+      week(3, { B: [il(KEY)] }),
+      week(4, { B: [player({ playerKey: KEY })] }),
+    ]
     const stints = deriveInjuryStints(weeks)
     expect(stints).toHaveLength(1)
     const stint = stints[0]!
-    expect(stint.playerKey).toBe(KEY)
-    expect(stint.teamKey).toBe('A')
-    expect(stint.firstWeek).toBe(1)
-    expect(stint.lastWeek).toBe(4)
-    expect(stint.status).toBe('IL10')
-    expect(stint.dropped).toBe(true)
-    expect(stint.traded).toBe(false)
-    expect(stint.weeksRosteredAfter).toBe(1)
+    expect(stint.traded).toBe(true)
+    expect(stint.dropped).toBe(false)
+    expect(stint.weeksLost).toBe(3)
+    expect(stint.teams).toEqual([{ teamKey: 'A', weeks: 2 }, { teamKey: 'B', weeks: 1 }])
   })
 
-  it('flags a same-week team change with no gap as a trade, not a drop', () => {
+  it('leaves lastWeek null, and keeps the live status, only at the latest snapshot', () => {
     const weeks: WeekSnapshot[] = [
-      week(1, { A: [player({ playerKey: KEY, status: 'IL10' })] }),
-      week(2, { B: [player({ playerKey: KEY, status: 'IL10' })] }),
-      week(3, { B: [player({ playerKey: KEY, status: null })] }),
-    ]
-    const stints = deriveInjuryStints(weeks)
-    expect(stints).toHaveLength(1)
-    expect(stints[0]!.dropped).toBe(false)
-    expect(stints[0]!.traded).toBe(true)
-    expect(stints[0]!.lastWeek).toBe(2)
-  })
-
-  it('leaves lastWeek null when the stint is still open at the latest snapshot', () => {
-    const weeks: WeekSnapshot[] = [
-      week(1, { A: [player({ playerKey: KEY, status: null })] }),
-      week(2, { A: [player({ playerKey: KEY, status: 'IL60' })] }),
-      week(3, { A: [player({ playerKey: KEY, status: 'IL60' })] }),
+      week(1, { A: [player({ playerKey: KEY })] }),
+      week(2, { A: [il(KEY, { status: 'IL60' })] }),
+      week(3, { A: [il(KEY, { status: 'IL60' })] }),
     ]
     const stints = deriveInjuryStints(weeks)
     expect(stints).toHaveLength(1)
     expect(stints[0]!.firstWeek).toBe(2)
     expect(stints[0]!.lastWeek).toBeNull()
-    expect(stints[0]!.weeksRosteredBefore).toBe(1)
-    expect(stints[0]!.weeksRosteredAfter).toBe(0)
+    expect(stints[0]!.weeksLost).toBe(2)
+    expect(stints[0]!.status).toBe('IL60')
   })
 
   it('produces two separate stints for two distinct injuries', () => {
     const weeks: WeekSnapshot[] = [
       week(1, { A: [player({ playerKey: KEY, status: 'DTD' })] }),
-      week(2, { A: [player({ playerKey: KEY, status: 'IL10' })] }),
-      week(3, { A: [player({ playerKey: KEY, status: null })] }),
-      week(4, { A: [player({ playerKey: KEY, status: null })] }),
-      week(5, { A: [player({ playerKey: KEY, status: 'IL15' })] }),
+      week(2, { A: [il(KEY)] }),
+      week(3, { A: [player({ playerKey: KEY })] }),
+      week(4, { A: [player({ playerKey: KEY })] }),
+      week(5, { A: [il(KEY)] }),
     ]
     const stints = deriveInjuryStints(weeks)
     expect(stints).toHaveLength(2)
-    expect(stints[0]!.firstWeek).toBe(2)
-    expect(stints[0]!.lastWeek).toBe(2)
-    expect(stints[1]!.firstWeek).toBe(5)
-    expect(stints[1]!.lastWeek).toBeNull()
+    expect(stints[0]).toMatchObject({ firstWeek: 2, lastWeek: 2, weeksLost: 1 })
+    expect(stints[1]).toMatchObject({ firstWeek: 5, lastWeek: null, weeksLost: 1 })
+  })
+
+  it('does not treat a bench or NA slot as an IL stint', () => {
+    const weeks: WeekSnapshot[] = [
+      week(1, { A: [player({ playerKey: KEY, selectedPosition: 'BN', status: 'IL10' })] }),
+      week(2, { A: [player({ playerKey: KEY, selectedPosition: 'NA', status: 'NA' })] }),
+    ]
+    expect(deriveInjuryStints(weeks)).toHaveLength(0)
   })
 })
 
