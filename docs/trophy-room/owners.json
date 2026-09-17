@@ -1,0 +1,426 @@
+{
+  "_comment": "Draft for review. Owners are the stable identity across seasons; team names are per-season context only. Yahoo no longer returns manager GUIDs -- every endpoint now reports the literal string \"--hidden--\" -- so `id` is the join key the pipeline uses and yahooGuid is null here on purpose. Real GUIDs for the twelve current managers survive in a March 2026 cache and are held locally in the gitignored data/.cache/trophy-owner-guids.json; this repo is public, so they are not committed until you decide whether to publish them (see audit.md section B). Entries with displayName \"TODO\" are managers whose Yahoo nickname Yahoo no longer exposes.",
+  "league": "kp",
+  "owners": [
+    {
+      "id": "angel-escobar",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "angel escobar"
+      ],
+      "displayName": "Brudner",
+      "teamNames": {
+        "2009": "Fernandez Spa",
+        "2010": "Grits Al Dente",
+        "2011": "Hamel Lights",
+        "2012": "Hamel Crush Bold",
+        "2013": "Hadouken Kuroda",
+        "2014": "Napoli Ever After",
+        "2015": "Todd Liver Oil",
+        "2016": "The Demogorgonzalez",
+        "2017": "Total Nolar Eclipse",
+        "2018": "McHugh Tang Clan",
+        "2019": "Bregulators",
+        "2020": "Virtual Lynnsanity",
+        "2021": "Walsh Terrier",
+        "2022": "Wu Tang McClanahan",
+        "2023": "McClanifest Destiny",
+        "2024": "Witt Arms Wide Open",
+        "2025": "Ketel it to My Heart",
+        "2026": "Mrs. Troutfire"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "brian-bennett",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "Brian Bennett"
+      ],
+      "displayName": "Bennett",
+      "teamNames": {
+        "2009": "Bennett",
+        "2010": "Bennett",
+        "2011": "Bennett",
+        "2012": "Gunman",
+        "2013": "Pork Fried Bryce",
+        "2014": "Pork Fried Bryce",
+        "2015": "nuthin but a D thang",
+        "2016": "Bennett",
+        "2017": "Bennett",
+        "2018": "Bennett",
+        "2019": "Bennett",
+        "2020": "Bennett",
+        "2021": "Bennett!",
+        "2022": "Bennett?",
+        "2023": "Bennett?",
+        "2024": "Bennett?",
+        "2025": "Bennett?",
+        "2026": "Bennett?"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "galen",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "Galen"
+      ],
+      "displayName": "Galen",
+      "teamNames": {
+        "2009": "mannys still stoned",
+        "2010": "mannys still stoned",
+        "2011": "mannys still stoned",
+        "2012": "mannys still stoned",
+        "2013": "mannys still stoned",
+        "2014": "mannys still stoned",
+        "2015": "mannys still stoned",
+        "2016": "mannys still stoned",
+        "2017": "mannys still stoned",
+        "2018": "mannys still stoned",
+        "2019": "mannys still stoned",
+        "2020": "mannys still stoned",
+        "2021": "mannys still stoned",
+        "2022": "mannys still stoned",
+        "2023": "mannys still stoned",
+        "2024": "mannys still stoned",
+        "2025": "mannys still stoned",
+        "2026": "mannys still stoned"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "jamison",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "Jamison"
+      ],
+      "displayName": "Jamison",
+      "teamNames": {
+        "2009": "Jim Mora",
+        "2010": "Assault-Rod",
+        "2011": "Dustin the Wind",
+        "2012": "Cash 4 Goldschmidt",
+        "2013": "The Pearly Gattis",
+        "2014": "Braun Stars",
+        "2015": "Piscotty 2 Hotty",
+        "2016": "Xander Onatopp",
+        "2017": "I Broke The Lamb",
+        "2018": "The Lofts @ Sotosopa",
+        "2019": "American Girl Dahl",
+        "2020": "Wil and Bob's",
+        "2021": "Buster Bluth",
+        "2022": "TheAmericanDream Dusty May",
+        "2023": "Beyond A Reasonable Trout",
+        "2024": "Player Haders Ball",
+        "2025": "Teen Jus",
+        "2026": "So bad it Kurtz"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "joey",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "joey"
+      ],
+      "displayName": "joey",
+      "teamNames": {
+        "2009": "Lip Sweater",
+        "2010": "Ugglas & Jimeskirts",
+        "2011": "Lohsed InTranslation",
+        "2012": "Assless Chapmans",
+        "2013": "TapaGio",
+        "2014": "IfYouWadaBeMyLover",
+        "2015": "Wright On Time",
+        "2016": "Eleven Longoria",
+        "2017": "J.Deez Nuts",
+        "2018": "PerfectlyDeGromulent",
+        "2019": "GetRichOrDieTreinen",
+        "2020": "Dansby Thongsong",
+        "2021": "Canha Del Rey",
+        "2022": "Mai Ty France",
+        "2023": "Tater Stotts",
+        "2024": "Tatis-ami Mario",
+        "2025": "Bobby Schwellenbacala",
+        "2026": "Murakami Myself & Irene"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "mark",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "Mark"
+      ],
+      "displayName": "Mark",
+      "teamNames": {
+        "2009": "Bobby's Grundle",
+        "2010": "A Tribe Called Quest",
+        "2011": "Gone Fishin'",
+        "2012": "Slippery Horse",
+        "2013": "Slippery Horse",
+        "2014": "Slippery Horse",
+        "2015": "Slippery Horse",
+        "2016": "Slippery Horse",
+        "2017": "Slippery Horse",
+        "2018": "Woody Chicken",
+        "2019": "Sod Poodles",
+        "2020": "Look@MyTatiiiissss",
+        "2021": "El Ni\u00f1o",
+        "2022": "This was fun.",
+        "2023": "Rumble Ponies",
+        "2024": "T-T-T-Today Junior",
+        "2025": "IM IN MY PRIME",
+        "2026": "IM IN MY PRIME"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "mike",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "mike"
+      ],
+      "displayName": "mike",
+      "teamNames": {
+        "2009": "Frank White",
+        "2010": "The Garza Strip",
+        "2011": "Braun Burgundy",
+        "2012": "The BraunMower Man",
+        "2013": "Braun Til November",
+        "2014": "Guys & Qualls",
+        "2015": "Khris from a Rose",
+        "2016": "Tuesdays with Corey",
+        "2017": "Autobahncarlo",
+        "2018": "Gattis Everdeen",
+        "2019": "LuxBeALadyTonight",
+        "2020": "Blake Boss",
+        "2021": "I'm About to Blake",
+        "2022": "The Kirk Store",
+        "2023": "Kiss from Arozarena",
+        "2024": "Truly Bradley Deeply",
+        "2025": "Garcia Wouldn't Wanna Be Ya",
+        "2026": "Jesus Take The Wheeler"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "nick",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "Nick"
+      ],
+      "displayName": "Nick",
+      "teamNames": {
+        "2009": "Milton's Crew",
+        "2010": "Milton's Crew",
+        "2011": "Milton's Crew",
+        "2012": "Murphy's Hand",
+        "2013": "Suck Fest",
+        "2014": "Brock and Roll",
+        "2015": "Hamilton Bradley Etc",
+        "2016": "Bawitdabautista",
+        "2017": "Aftern\u00fa\u00f1ez Delight",
+        "2018": "Brady & Gsell",
+        "2019": "Country Fried Steak",
+        "2020": "Your My Buttrefly",
+        "2021": "Riff Rafael",
+        "2022": "Phamily Feud",
+        "2023": "Kirby\u2019s Dream Land",
+        "2024": "My Cousin Vinnie P",
+        "2025": "JP Frelicks",
+        "2026": "Poop Crews"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "rich-garcis",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "Rich Garcis"
+      ],
+      "displayName": "Dan",
+      "teamNames": {
+        "2009": "Y'all Got Boned",
+        "2010": "J.T. Marlin",
+        "2011": "The Freeman's Bureau",
+        "2012": "Slippery Floors",
+        "2013": "Harengitis",
+        "2014": "Keep NolanNolanNolan",
+        "2015": "The Springularity",
+        "2016": "Christian Impossible",
+        "2017": "I Shot Leclerc?",
+        "2018": "Watermelon Shin-Soju",
+        "2019": "Hidey Ho Gleyber",
+        "2020": "Seth Wish",
+        "2021": "Treyzorblade Suitcase",
+        "2022": "Every Wittch Way But Loose",
+        "2023": "Nothing Compares to Ryu",
+        "2024": "Mirandand Deliver",
+        "2025": "Frieding is Fundamental",
+        "2026": "Cease All That"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "swan",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "Swan"
+      ],
+      "displayName": "Hingston",
+      "teamNames": {
+        "2009": "M. Bison",
+        "2010": "King Felix",
+        "2011": "Nova Scotia",
+        "2012": "DNA Double Felix",
+        "2013": "Tulo of Troy",
+        "2014": "Miggy Azalea",
+        "2015": "Cant Cutch This",
+        "2016": "Mig Newtons",
+        "2017": "No Stroman No Cry",
+        "2018": "Christian Scientist",
+        "2019": "Nolar Ice Cap",
+        "2020": "The Happening",
+        "2021": "Michael ConQueso",
+        "2022": "Who Lives on Drury Lane",
+        "2023": "Ketel One",
+        "2024": "Hell in a Snell",
+        "2025": "B.O.B. Bohms over Baghdad",
+        "2026": "Kenley Loggins"
+      },
+      "seasonsPlayed": 18,
+      "firstSeason": "2009",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "kc",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "KC"
+      ],
+      "displayName": "KC",
+      "teamNames": {
+        "2012": "Feed the Bitch",
+        "2013": "Dirty S\u00e5nchez",
+        "2014": "Shoemakers",
+        "2015": "IWannaBeAMachadoMan",
+        "2016": "Ch ch ch trea",
+        "2017": "Smoak 2 Joints",
+        "2018": "Buehler? Anyone?",
+        "2019": "Who's Your Vladdy?",
+        "2020": "Who's Your Vladdy?",
+        "2021": "Who's Your Vladdy?",
+        "2022": "Who's Your Vladdy?",
+        "2023": "Who's Your Vladdy",
+        "2024": "Doyle Rules",
+        "2025": "Who's Your Vladdy",
+        "2026": "Blubaughlls"
+      },
+      "seasonsPlayed": 15,
+      "firstSeason": "2012",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "will-youmans",
+      "yahooGuid": null,
+      "yahooNicknames": [
+        "Will Youmans"
+      ],
+      "displayName": "Will",
+      "teamNames": {
+        "2014": "MAINEiacs",
+        "2015": "MAINEiacs",
+        "2016": "MAINEiacs",
+        "2017": "MAINEiacs",
+        "2018": "MAINEiacs",
+        "2019": "MAINEiacs",
+        "2020": "MAINEiacs",
+        "2021": "MAINEiacs",
+        "2022": "MAINEiacs",
+        "2023": "MAINEiacs",
+        "2024": "MAINEiacs",
+        "2025": "MAINEiacs",
+        "2026": "MAINEiacs"
+      },
+      "seasonsPlayed": 13,
+      "firstSeason": "2014",
+      "lastSeason": "2026",
+      "active": true
+    },
+    {
+      "id": "dans-team",
+      "yahooGuid": null,
+      "yahooNicknames": [],
+      "displayName": "TODO",
+      "teamNames": {
+        "2009": "Dans Team",
+        "2010": "Dans Team",
+        "2011": "Dans Team",
+        "2012": "Dans Team",
+        "2013": "Dans Team"
+      },
+      "seasonsPlayed": 5,
+      "firstSeason": "2009",
+      "lastSeason": "2013",
+      "active": false
+    },
+    {
+      "id": "benfranklinrodriguez",
+      "yahooGuid": null,
+      "yahooNicknames": [],
+      "displayName": "TODO",
+      "teamNames": {
+        "2010": "BenFranklinRodriguez",
+        "2011": "BenFranklinRodriguez"
+      },
+      "seasonsPlayed": 2,
+      "firstSeason": "2010",
+      "lastSeason": "2011",
+      "active": false
+    },
+    {
+      "id": "lonley-picards",
+      "yahooGuid": null,
+      "yahooNicknames": [],
+      "displayName": "TODO",
+      "teamNames": {
+        "2009": "Lonley Picards"
+      },
+      "seasonsPlayed": 1,
+      "firstSeason": "2009",
+      "lastSeason": "2009",
+      "active": false
+    }
+  ]
+}
