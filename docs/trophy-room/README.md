@@ -10,6 +10,10 @@
   cat docs/trophy-room/audit-prose.md docs/trophy-room/audit-generated.md > docs/trophy-room/audit.md
   ```
 
+- `design.md` — the visual language, components and accessibility rules.
+- `screenshots/` — generated with `scripts/screenshot.mjs`, gitignored. They are
+  review artifacts rather than source, so they are regenerated rather than kept
+  in history.
 - `pipeline.md` — how the Trophy Room shards are built and refreshed.
 - `stage1-report.md` — generated; rebuild with `npx tsx src/trophy/report.ts`.
 

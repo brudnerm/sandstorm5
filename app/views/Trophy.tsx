@@ -1,0 +1,135 @@
+/**
+ * The Trophy Room: the league's permanent record book.
+ *
+ * One route per wing (#/kp/trophy/champions and so on) so a single section
+ * can be linked straight from a league email, which is how most people will
+ * arrive. Wings are anchors rather than buttons for the same reason — they
+ * are real links, and they work with a keyboard and a long-press.
+ *
+ * Every figure on this page is computed from the trophy shards. Nothing is
+ * written into copy by hand.
+ */
+import { useEffect } from 'react'
+import type { Manifest } from '../../src/domain/matchups'
+import SectionHeader from '../components/trophy/SectionHeader'
+import { heroSummary, useTrophySeasons, WINGS, wingBySlug, type HeroTile } from '../lib/trophy'
+import StyleSample from './trophy/StyleSample'
+
+interface Props {
+  league: Manifest['leagues'][number]
+  slug: string | null
+}
+
+function Tile({ tile }: { tile: HeroTile }) {
+  return (
+    <div className={`trophy-tile${tile.tone === 'shame' ? ' shame' : ''}`}>
+      <span className="trophy-tile-label">{tile.label}</span>
+      <span className="trophy-tile-name">{tile.names.join(' & ')}</span>
+      <span className="trophy-tile-value">{tile.value}</span>
+      <span className="trophy-tile-detail">{tile.detail}</span>
+    </div>
+  )
+}
+
+export default function Trophy({ league, slug }: Props) {
+  const shard = useTrophySeasons(league.id)
+  const data = shard.data
+  const wing = wingBySlug(slug)
+
+  // The wings are long; arriving at one from an email should start at the top.
+  useEffect(() => { window.scrollTo({ top: 0 }) }, [slug])
+
+  if (shard.error) {
+    return (
+      <div className="empty-state">
+        <p className="empty-title">No record book yet</p>
+        <p className="empty-desc">
+          The Trophy Room data has not been published for this league.
+        </p>
+      </div>
+    )
+  }
+  if (!data) {
+    return <div className="empty-state"><p className="empty-desc">Loading…</p></div>
+  }
+
+  const base = `#/${league.id}/trophy`
+
+  if (slug === 'style') {
+    return (
+      <div className="view trophy">
+        <a className="trophy-back" href={base}>Trophy Room</a>
+        <StyleSample shard={data} />
+      </div>
+    )
+  }
+
+  if (wing) {
+    return (
+      <div className="view trophy">
+        <a className="trophy-back" href={base}>Trophy Room</a>
+        <SectionHeader as="h1" eyebrow="Trophy Room" title={wing.title} note={wing.blurb} tone={wing.tone} />
+        <p className="trophy-pending">This wing is not built yet.</p>
+      </div>
+    )
+  }
+
+  const tiles = heroSummary(data)
+  const first = data.seasons[0]?.season
+  const last = data.seasons[data.seasons.length - 1]?.season
+
+  return (
+    <div className="view trophy">
+      <header className="trophy-masthead">
+        <p className="trophy-eyebrow">Keeping Pattycakes</p>
+        <h1 className="trophy-masthead-title">The Trophy Room</h1>
+        <p className="trophy-masthead-sub">
+          The permanent record, {first} to {last}. Every figure here is computed from
+          stored league data and checked against Yahoo before it is published.
+        </p>
+      </header>
+
+      {tiles.length > 0 && (
+        <section aria-label="Summary">
+          <div className="trophy-hero">
+            {tiles.map(tile => <Tile key={tile.label} tile={tile} />)}
+          </div>
+        </section>
+      )}
+
+      <section>
+        <SectionHeader eyebrow="Wings" title="The collection" />
+        <nav className="trophy-wings" aria-label="Trophy Room wings">
+          {WINGS.map(w => (
+            <a
+              key={w.slug}
+              className={`trophy-wing${w.tone === 'shame' ? ' shame' : ''}`}
+              href={`${base}/${w.slug}`}
+            >
+              <p className="trophy-eyebrow">{w.tone === 'shame' ? 'Shame' : 'Record'}</p>
+              <h2 className="trophy-wing-title">{w.title}</h2>
+              <p className="trophy-wing-blurb">{w.blurb}</p>
+              <span className="trophy-wing-go">Enter</span>
+            </a>
+          ))}
+        </nav>
+      </section>
+
+      <section>
+        <SectionHeader
+          eyebrow="Reference"
+          title="Style sample"
+          note="Every component in both treatments, for checking the look before a wing is built on it."
+        />
+        <nav className="trophy-wings" aria-label="Reference">
+          <a className="trophy-wing" href={`${base}/style`}>
+            <p className="trophy-eyebrow">Reference</p>
+            <h2 className="trophy-wing-title">Components</h2>
+            <p className="trophy-wing-blurb">Plaques, tables, chips and headers, praise and shame.</p>
+            <span className="trophy-wing-go">Enter</span>
+          </a>
+        </nav>
+      </section>
+    </div>
+  )
+}

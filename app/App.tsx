@@ -10,7 +10,9 @@ import Retro from './views/Retro'
 import Scoreboard from './views/Scoreboard'
 import Standings from './views/Standings'
 import Strategy from './views/Strategy'
+import Trophy from './views/Trophy'
 import './retro.css'
+import './trophy.css'
 
 function ThemeToggle() {
   const toggle = () => {
@@ -41,6 +43,7 @@ const TABS: Array<{ id: View; label: string }> = [
   { id: 'draft', label: 'Draft' },
   { id: 'injuries', label: 'Injuries' },
   { id: 'retro', label: 'Season review' },
+  { id: 'trophy', label: 'Trophy Room' },
 ]
 
 export default function App() {
@@ -71,7 +74,7 @@ export default function App() {
   }, [leagues, league, route.view, navigate])
 
   return (
-    <div className={`app${route.view === 'home' ? ' wide' : ''}`}>
+    <div className={`app${route.view === 'home' || route.view === 'trophy' ? ' wide' : ''}`}>
       <header className="header">
         <div className="header-row">
           <span className="wordmark">Sandstorm</span>
@@ -132,6 +135,9 @@ export default function App() {
         {league && route.view === 'standings' && <Standings key={league.id} league={league} />}
         {league && route.view === 'draft' && <Draft key={league.id} league={league} />}
         {league && route.view === 'injuries' && <Injuries key={league.id} league={league} />}
+        {league && route.view === 'trophy' && (
+          <Trophy key={league.id} league={league} slug={route.slug ?? null} />
+        )}
         {league && route.view === 'retro' && (
           <Retro
             key={league.id}

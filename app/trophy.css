@@ -1,0 +1,470 @@
+/* ---------- Trophy Room ----------
+   An old club's trophy room: engraved plaques, restrained brass, serif
+   display type. It should read as its own wing of the building while still
+   clearly being the same building — so every colour is either one of the
+   app's existing tokens or derived from them, and the serif is the one the
+   Season review already uses.
+
+   Two treatments throughout: praise is brass on warm parchment, shame is
+   tarnished grey-green and deliberately colder. Tables stay plain in both,
+   because density and legibility beat atmosphere once there are numbers.
+
+   Scoped to .trophy so none of it leaks into the rest of the app. */
+
+.trophy {
+  /* Praise: brass on warm stock */
+  --brass: #8a6a1f;
+  --brass-bright: #a9832a;
+  --plaque-top: #f6f2e7;
+  --plaque-bottom: #efe8d8;
+  --plaque-edge: #d8cbac;
+  --plaque-lip: rgba(255, 255, 255, 0.75);
+
+  /* Shame: tarnished metal, cooler and duller */
+  --tarnish: #4e5a53;
+  --tarnish-strong: #3b4540;
+  --shame-top: #e8eae6;
+  --shame-bottom: #dcdfd9;
+  --shame-edge: #bfc5bb;
+  --shame-lip: rgba(255, 255, 255, 0.6);
+
+  /* The app's muted grey sits at about 3.2:1 on these warm plaque stocks,
+     under the 4.5:1 this section needs for the small print it leans on
+     (qualifiers, spans, team names). Darkened here only — the rest of the
+     app keeps its own token. */
+  --text-3: #615f59;
+
+  --trophy-serif: Charter, 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --plaque-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+:root[data-theme='dark'] .trophy {
+  --brass: #d7ae4b;
+  --brass-bright: #efc65f;
+  --plaque-top: #221e17;
+  --plaque-bottom: #1a1713;
+  --plaque-edge: #3e3625;
+  --plaque-lip: rgba(255, 255, 255, 0.06);
+
+  /* Pushed cooler and greener than the plaque's warm brown-black, so the
+     two treatments separate at a glance in dark mode as well as light. */
+  --tarnish: #9db09d;
+  --tarnish-strong: #b4c4b4;
+  --shame-top: #161b18;
+  --shame-bottom: #111514;
+  --shame-edge: #333d36;
+  --shame-lip: rgba(190, 215, 195, 0.05);
+
+  /* The app's dark muted grey already clears 4.5:1 on these stocks. */
+  --text-3: #8f8d83;
+}
+
+/* ---------- Masthead ---------- */
+.trophy-masthead {
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 14px;
+}
+.trophy-masthead-title {
+  font-family: var(--trophy-serif);
+  font-size: 32px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0;
+}
+.trophy-masthead-sub {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 40em;
+}
+
+/* The small uppercase label that sits above every unit. */
+.trophy-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 6px;
+}
+.shame .trophy-eyebrow,
+.trophy-eyebrow.shame {
+  color: var(--tarnish);
+}
+
+/* ---------- Section header ---------- */
+.trophy-section-head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+.trophy-section-title {
+  font-family: var(--trophy-serif);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.trophy-section-note {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-3);
+  max-width: 44em;
+}
+
+/* ---------- Hero strip ---------- */
+.trophy-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 560px) {
+  .trophy-hero { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 900px) {
+  .trophy-hero { grid-template-columns: repeat(4, 1fr); }
+}
+
+.trophy-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  box-shadow: inset 0 1px 0 var(--plaque-lip);
+}
+.trophy-tile.shame {
+  border-color: var(--shame-edge);
+  background: linear-gradient(180deg, var(--shame-top), var(--shame-bottom));
+  box-shadow: inset 0 1px 0 var(--shame-lip);
+}
+.trophy-tile-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.trophy-tile.shame .trophy-tile-label { color: var(--tarnish); }
+
+.trophy-tile-name {
+  font-family: var(--trophy-serif);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+}
+.trophy-tile-value {
+  font-family: var(--trophy-serif);
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+}
+.trophy-tile-detail {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.35;
+}
+
+/* ---------- Plaque ---------- */
+.trophy-plaque {
+  position: relative;
+  padding: 16px 16px 14px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  box-shadow: inset 0 1px 0 var(--plaque-lip), var(--shadow);
+}
+/* The engraved rule under the eyebrow — the one overtly decorative touch. */
+.trophy-plaque::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brass), transparent 70%);
+  opacity: 0.7;
+}
+.trophy-plaque.shame {
+  border-color: var(--shame-edge);
+  background: linear-gradient(180deg, var(--shame-top), var(--shame-bottom));
+  box-shadow: inset 0 1px 0 var(--shame-lip), var(--shadow);
+}
+.trophy-plaque.shame::after {
+  background: linear-gradient(90deg, var(--tarnish), transparent 70%);
+  opacity: 0.55;
+}
+
+.trophy-plaque-season {
+  font-family: var(--trophy-serif);
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--brass);
+}
+.trophy-plaque.shame .trophy-plaque-season { color: var(--tarnish); }
+
+.trophy-plaque-title {
+  font-family: var(--trophy-serif);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 4px 0 0;
+  color: var(--text);
+}
+.trophy-plaque-sub {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.45;
+}
+.trophy-plaque-body { margin-top: 10px; }
+.trophy-plaque-foot {
+  margin: 10px 0 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--plaque-edge);
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.45;
+}
+.trophy-plaque.shame .trophy-plaque-foot { border-top-color: var(--shame-edge); }
+
+/* ---------- Owner chip ---------- */
+.trophy-owner {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+.trophy-owner-name {
+  font-weight: 650;
+  color: var(--text);
+  white-space: nowrap;
+}
+.trophy-owner-team {
+  font-size: 12px;
+  color: var(--text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.trophy-owner.stacked { flex-direction: column; gap: 1px; align-items: flex-start; }
+.trophy-owner.stacked .trophy-owner-team { font-size: 11px; }
+
+/* ---------- Record table ----------
+   Deliberately plainer than the plaques: hairlines, tabular numerals, no
+   fill. Atmosphere is for the frame, not for the numbers. */
+.trophy-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.trophy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.trophy-table caption {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+  padding-bottom: 8px;
+}
+.trophy-table.shame caption { color: var(--tarnish); }
+
+.trophy-table th,
+.trophy-table td {
+  padding: 7px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.trophy-table thead th {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--text-3);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+}
+.trophy-table tbody th {
+  font-weight: 650;
+  color: var(--text);
+}
+.trophy-table td.num,
+.trophy-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.trophy-table td.wrap { white-space: normal; min-width: 12em; }
+.trophy-table tbody tr:last-child th,
+.trophy-table tbody tr:last-child td { border-bottom: none; }
+.trophy-table tbody tr:hover td,
+.trophy-table tbody tr:hover th { background: var(--surface-2); }
+
+/* The leading row in a record table — the record itself. */
+.trophy-table tbody tr.leader th,
+.trophy-table tbody tr.leader td { background: var(--accent-soft); }
+/* The muted rank grey does not carry enough contrast on the highlight, so
+   the record row gets a stronger one. */
+.trophy-table tbody tr.leader .rank { color: var(--text-2); }
+
+.trophy-table .rank {
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+  width: 1%;
+}
+
+/* ---------- Wing index ---------- */
+.trophy-wings {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 620px) {
+  .trophy-wings { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 960px) {
+  .trophy-wings { grid-template-columns: repeat(3, 1fr); }
+}
+.trophy-wing {
+  display: block;
+  padding: 14px 15px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  box-shadow: inset 0 1px 0 var(--plaque-lip);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.trophy-wing.shame {
+  border-color: var(--shame-edge);
+  background: linear-gradient(180deg, var(--shame-top), var(--shame-bottom));
+  box-shadow: inset 0 1px 0 var(--shame-lip);
+}
+.trophy-wing:hover { border-color: var(--brass); }
+.trophy-wing.shame:hover { border-color: var(--tarnish); }
+.trophy-wing-title {
+  font-family: var(--trophy-serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 2px 0 0;
+}
+.trophy-wing-blurb {
+  margin: 5px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+.trophy-wing-go {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.trophy-wing.shame .trophy-wing-go { color: var(--tarnish); }
+
+/* ---------- Back link ---------- */
+.trophy-back {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  text-decoration: none;
+  padding: 2px 0;
+}
+.trophy-back::before { content: '\2190\00a0'; }
+.trophy-back:hover { color: var(--brass); }
+
+/* ---------- Placeholder for wings not yet built ---------- */
+.trophy-pending {
+  padding: 22px 16px;
+  border: 1px dashed var(--border);
+  border-radius: var(--plaque-radius);
+  text-align: center;
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+/* ---------- Style sample scaffolding ---------- */
+.trophy-sample-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 620px) {
+  .trophy-sample-grid { grid-template-columns: 1fr 1fr; }
+}
+.trophy-sample-note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-3);
+  margin: 0 0 10px;
+  max-width: 44em;
+}
+
+/* ---------- Focus, for keyboard users ---------- */
+.trophy a:focus-visible,
+.trophy button:focus-visible,
+.trophy [tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respect a reduced-motion preference: the only motion here is decorative. */
+@media (prefers-reduced-motion: reduce) {
+  .trophy-wing { transition: none; }
+}
+
+/* ---------- Labelled line ----------
+   A small caps label beside a value, for the facts a plaque carries under
+   its title: runner-up, seed, the week a final was played. */
+.trophy-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 0;
+  min-width: 0;
+}
+.trophy-line + .trophy-line { border-top: 1px solid var(--plaque-edge); }
+.trophy-plaque.shame .trophy-line + .trophy-line { border-top-color: var(--shame-edge); }
+.trophy-line-label {
+  flex: none;
+  width: 7.5em;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.trophy-line-value {
+  font-size: 13px;
+  color: var(--text);
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
