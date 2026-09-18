@@ -33,6 +33,9 @@
      (qualifiers, spans, team names). Darkened here only — the rest of the
      app keeps its own token. */
   --text-3: #615f59;
+  /* The app's amber tie colour reaches only 3.5:1 on the plaque stock, and
+     the category chips print it at 9 and 11px. Darkened here only. */
+  --tie: #8a5000;
 
   --trophy-serif: Charter, 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --plaque-radius: 4px;
@@ -59,8 +62,10 @@
   --shame-edge: #333d36;
   --shame-lip: rgba(190, 215, 195, 0.05);
 
-  /* The app's dark muted grey already clears 4.5:1 on these stocks. */
+  /* The app's dark tokens already clear 4.5:1 on these stocks, so the light
+     overrides above are handed back rather than left to leak into dark. */
   --text-3: #8f8d83;
+  --tie: #f0a53c;
 }
 
 /* ---------- Masthead ---------- */
@@ -271,6 +276,15 @@
 .trophy-table-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  /* A dense table has to scroll sideways on a phone, and nothing says so.
+     These four layers draw a shadow at whichever edge has content beyond it:
+     the two `local` gradients scroll with the content and mask the `scroll`
+     shadows when there is nothing more that way. */
+  background:
+    linear-gradient(to right, var(--bg) 40%, transparent) left center / 28px 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 40%, transparent) right center / 28px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(20, 16, 8, 0.22), transparent) left center / 12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(20, 16, 8, 0.22), transparent) right center / 12px 100% no-repeat scroll;
 }
 .trophy-table {
   width: 100%;
@@ -313,7 +327,8 @@
 }
 .trophy-table td.num,
 .trophy-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
-.trophy-table td.wrap { white-space: normal; min-width: 12em; }
+.trophy-table td.wrap,
+.trophy-table th.wrap { white-space: normal; min-width: 7em; }
 .trophy-table tbody tr:last-child th,
 .trophy-table tbody tr:last-child td { border-bottom: none; }
 .trophy-table tbody tr:hover td,
@@ -325,6 +340,14 @@
 /* The muted rank grey does not carry enough contrast on the highlight, so
    the record row gets a stronger one. */
 .trophy-table tbody tr.leader .rank { color: var(--text-2); }
+/* A brass highlight on a tarnished table would undo the treatment, so the
+   shame variant highlights in its own metal. */
+.trophy-table.shame tbody tr.leader th,
+.trophy-table.shame tbody tr.leader td {
+  background: color-mix(in srgb, var(--tarnish) 16%, transparent);
+}
+/* The muted team name loses contrast on either highlight, same as the rank. */
+.trophy-table tbody tr.leader .trophy-owner-team { color: var(--text-2); }
 
 .trophy-table .rank {
   color: var(--text-3);
@@ -467,4 +490,80 @@
   color: var(--text);
   min-width: 0;
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Plaque stack ---------- */
+.trophy-plaques {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 760px) {
+  .trophy-plaques { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1040px) {
+  .trophy-plaques { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- Category strip ----------
+   The twelve categories of a final, each labelled with its outcome in text
+   as well as colour, so the result does not depend on seeing the colour. */
+.trophy-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+.trophy-cat {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--plaque-edge);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.3;
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+}
+.trophy-cat-abbr { font-variant-numeric: tabular-nums; }
+/* The outcome is spelled out rather than left to colour alone, so the result
+   survives a greyscale print or a colour-blind reader. No opacity here: it
+   would quietly undercut the contrast the colours were chosen for. */
+.trophy-cat-outcome {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.trophy-cat.W { border-color: var(--win); color: var(--win); }
+.trophy-cat.L { border-color: var(--loss); color: var(--loss); }
+.trophy-cat.T { border-color: var(--tie); color: var(--tie); }
+
+/* ---------- Inline link inside a plaque footnote ---------- */
+.trophy-inline-link {
+  color: var(--brass);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.trophy-plaque.shame .trophy-inline-link { color: var(--tarnish); }
+
+/* ---------- Draft copy marker ----------
+   Only ever visible on a dev server: the production build removes the
+   branch that renders it. */
+.trophy-draft { display: block; }
+.trophy-draft-tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 5px;
+  border: 1px dashed var(--text-3);
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  vertical-align: 1px;
 }

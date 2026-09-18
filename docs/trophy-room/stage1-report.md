@@ -9,14 +9,14 @@ GitHub Pages serves these gzipped, so the compressed column is what a phone actu
 
 | Shard | Raw | Gzipped | Rows |
 |---|---|---|---|
-| `seasons.json` | 114 KB | 14 KB | 18 seasons |
+| `seasons.json` | 117 KB | 14 KB | 18 seasons |
 | `weekly.json` | 333 KB | 100 KB | 4,848 team-weeks |
 | `matchups.json` | 79 KB | 19 KB | 2,424 matchups |
 | `transactions.json` | 636 KB | 107 KB | 10,416 transactions |
 
 **Recommendation: do not split `weekly.json` per season.** Stored positionally it is 333 KB raw and 100 KB over the wire, smaller than `kp/matchups/2026.json` (392 KB) which the app already loads for a single season. The Stage 4 records wing ranks all-time top and bottom fives, so it needs every season at once; splitting would turn one request into eighteen and make the tables wait on the slowest.
 
-Everything except transactions comes to 132 KB gzipped. `transactions.json` is the one heavy shard and belongs only to the records wing that uses it, so it should be lazy-loaded — which `useJson` already does by only fetching a path when a view asks for it.
+Everything except transactions comes to 133 KB gzipped. `transactions.json` is the one heavy shard and belongs only to the records wing that uses it, so it should be lazy-loaded — which `useJson` already does by only fetching a path when a view asks for it.
 
 ## Validation, season by season
 
@@ -55,6 +55,8 @@ Everything except transactions comes to 132 KB gzipped. `transactions.json` is t
 | every scored category is classified as a rate or a counting stat | pass | 12 |
 | week metadata is internally consistent | pass | 416 |
 | transactions reference known owners, players and seasons | pass | 10,416 |
+| keepers and first picks resolve to real owners | pass | 18 |
+| every reported keeper set is five per team | pass | 12 |
 
 No season failed validation.
 

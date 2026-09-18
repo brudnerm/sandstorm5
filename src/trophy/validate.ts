@@ -16,6 +16,7 @@ import type {
   TrophyCategory,
   WeeklyShard,
 } from '../domain/trophy.js'
+import type { DraftsShard } from './drafts.js'
 import { BRACKET_BY_CODE } from '../domain/trophy.js'
 import { statKey } from '../domain/stats.js'
 
@@ -24,6 +25,7 @@ export interface ValidationInput {
   weeklyShard: WeeklyShard
   matchupShard: MatchupShard
   transactionsShard: TransactionsShard
+  draftsShard: DraftsShard
   globalCategories: TrophyCategory[]
 }
 
@@ -42,7 +44,7 @@ export interface ValidationReport {
 const RATE_STATS = new Set(['batting:3', 'batting:4', 'pitching:26', 'pitching:27'])
 
 export function validate(input: ValidationInput): ValidationReport {
-  const { seasonsShard, weeklyShard, matchupShard, transactionsShard, globalCategories } = input
+  const { seasonsShard, weeklyShard, matchupShard, transactionsShard, draftsShard, globalCategories } = input
   const { seasons, owners } = seasonsShard
   const checks: CheckResult[] = []
   const check = (name: string, run: (fail: (msg: string) => void) => number): void => {
@@ -320,6 +322,48 @@ export function validate(input: ValidationInput): ValidationReport {
         if (bad) break
       }
       if (!bad) ok++
+    }
+    return ok
+  })
+
+  // --------------------------------------------------------------- 11
+  check('keepers and first picks resolve to real owners', fail => {
+    let ok = 0
+    const ids = new Set(owners.map(o => o.id))
+    const seasonYears = new Set(seasons.map(s => s.season))
+    for (const d of draftsShard.seasons) {
+      if (!seasonYears.has(d.season)) { fail(`draft data for unknown season ${d.season}`); continue }
+      const unknown = d.keepers.map(k => k.ownerId).filter(id => !ids.has(id))
+      if (unknown.length > 0) { fail(`${d.season}: keeper attributed to unknown owner ${unknown[0]}`); continue }
+      if (d.firstPick && !ids.has(d.firstPick.ownerId)) {
+        fail(`${d.season}: first pick attributed to unknown owner ${d.firstPick.ownerId}`); continue
+      }
+      if (d.keepers.some(k => !k.playerName || k.playerName === 'Unknown player')) {
+        fail(`${d.season}: a keeper has no player name`); continue
+      }
+      ok++
+    }
+    return ok
+  })
+
+  // --------------------------------------------------------------- 12
+  check('every reported keeper set is five per team', fail => {
+    let ok = 0
+    for (const d of draftsShard.seasons) {
+      if (d.keepers.length === 0) continue // not reported for this season
+      const perOwner = new Map<string, number>()
+      for (const k of d.keepers) perOwner.set(k.ownerId, (perOwner.get(k.ownerId) ?? 0) + 1)
+      const wrong = [...perOwner.entries()].filter(([, n]) => n !== 5)
+      if (wrong.length > 0) {
+        fail(`${d.season}: ${wrong.map(([id, n]) => `${id} has ${n}`).join(', ')}, expected five each`)
+        continue
+      }
+      const season = seasons.find(s => s.season === d.season)
+      if (season && perOwner.size !== season.numTeams) {
+        fail(`${d.season}: keepers for ${perOwner.size} teams, expected ${season.numTeams}`)
+        continue
+      }
+      ok++
     }
     return ok
   })

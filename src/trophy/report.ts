@@ -12,6 +12,7 @@ import { gzipSync } from 'node:zlib'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { BRACKET_BY_CODE, type MatchupShard, type SeasonsShard, type TransactionsShard, type WeeklyShard } from '../domain/trophy.js'
+import type { DraftsShard } from './drafts.js'
 import { validate } from './validate.js'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
@@ -24,9 +25,12 @@ const seasonsShard = read<SeasonsShard>('seasons.json')
 const weeklyShard = read<WeeklyShard>('weekly.json')
 const matchupShard = read<MatchupShard>('matchups.json')
 const transactionsShard = read<TransactionsShard>('transactions.json')
+const draftsShard = read<DraftsShard>('drafts.json')
 
 const globalCategories = seasonsShard.seasons[0]!.categories
-const report = validate({ seasonsShard, weeklyShard, matchupShard, transactionsShard, globalCategories })
+const report = validate({
+  seasonsShard, weeklyShard, matchupShard, transactionsShard, draftsShard, globalCategories,
+})
 
 const kb = (n: number) => `${Math.round(n / 1024).toLocaleString()} KB`
 const out: string[] = []

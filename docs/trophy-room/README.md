@@ -15,6 +15,7 @@
   review artifacts rather than source, so they are regenerated rather than kept
   in history.
 - `pipeline.md` — how the Trophy Room shards are built and refreshed.
+- `stage3-copy.md` — generated; every draft blurb, for review.
 - `stage1-report.md` — generated; rebuild with `npx tsx src/trophy/report.ts`.
 
 The owner map moved to `src/domain/owners.json`, beside `leagues.ts`, since it is

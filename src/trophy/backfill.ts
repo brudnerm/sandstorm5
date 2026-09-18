@@ -20,7 +20,7 @@
  *   --dry-run            validate and report, write nothing.
  *   --skip-transactions  leave transactions.json alone.
  */
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { tagBrackets, type BracketGame } from '../domain/brackets.js'
@@ -47,6 +47,8 @@ import { normalizeScoreboard } from '../yahoo/normalize/scoreboard.js'
 import { normalizeSettings } from '../yahoo/normalize/settings.js'
 import { normalizeStandings } from '../yahoo/normalize/standings.js'
 import { cachedGet } from './cache.js'
+import { buildCopy, type CopyShard } from './copy.js'
+import { buildDrafts } from './drafts.js'
 import { validate } from './validate.js'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
@@ -119,6 +121,8 @@ const seasons: TrophySeason[] = []
 const weeklyRows: Array<Array<number | null>> = []
 const matchupRows: Array<Array<number | string | null>> = []
 const transactionRows: TransactionRow[] = []
+/** season -> teamKey -> ownerId, reused by the draft and transaction builds. */
+const ownerByTeamKeyBySeason = new Map<string, Map<string, string>>()
 const unavailableTransactions: TransactionsShard['unavailable'] = []
 /** Interned so 18,600 player movements do not repeat 2,200 names. */
 const playerNames: string[] = []
@@ -202,6 +206,29 @@ for (const [season, leagueKey] of entries) {
     names[season] = teamName
     teamNamesByOwner.set(owner.id, names)
     seasonsByOwner.set(owner.id, [...(seasonsByOwner.get(owner.id) ?? []), Number(season)])
+  }
+  ownerByTeamKeyBySeason.set(
+    season,
+    new Map([...ownerByTeamKey].map(([k, o]) => [k, o.id])),
+  )
+
+  // Season review articles, when this season has any. Read off disk rather
+  // than probed over the network so the client never has to guess which of
+  // eighteen shards exist.
+  const retroSlugs: Record<string, string> = {}
+  const retroPath = path.join(DATA_DIR, LEAGUE_ID, 'retro', `${season}.json`)
+  if (existsSync(retroPath)) {
+    try {
+      const retro = JSON.parse(readFileSync(retroPath, 'utf8')) as {
+        teams?: Array<{ teamKey: string; slug: string | null }>
+      }
+      for (const team of retro.teams ?? []) {
+        const owner = ownerByTeamKey.get(team.teamKey)
+        if (owner && team.slug) retroSlugs[owner.id] = team.slug
+      }
+    } catch {
+      notes.push('A Season review shard exists for this season but could not be read.')
+    }
   }
 
   // ---- standings: regular-season record, plus Yahoo's final rank
@@ -371,6 +398,7 @@ for (const [season, leagueKey] of entries) {
     runnerUp: isFinished ? titleOf(runnerTeamKey) : null,
     lastPlace: isFinished && lastRow ? { ownerId: lastRow.ownerId, teamName: lastRow.teamName } : null,
     isFinished,
+    retroSlugs,
     notes,
   })
 
@@ -515,7 +543,39 @@ const transactionsShard: TransactionsShard = {
   unavailable: unavailableTransactions,
 }
 
-const report = validate({ seasonsShard, weeklyShard, matchupShard, transactionsShard, globalCategories })
+// ----------------------------------------------------------------- drafts
+console.log('')
+const lastPlaceBySeason = new Map<number, string>()
+for (const s of seasons) {
+  if (s.lastPlace) lastPlaceBySeason.set(s.season, s.lastPlace.ownerId)
+}
+const draftsShard = await buildDrafts(
+  LEAGUE_ID, entries, ownerByTeamKeyBySeason, lastPlaceBySeason, forceFor,
+)
+for (const draftSeason of draftsShard.seasons) {
+  const target = seasons.find(s => s.season === draftSeason.season)
+  for (const note of draftSeason.notes) target?.notes.push(note)
+}
+
+// ------------------------------------------------------------------- copy
+// Regenerated from the shards every run, but an approved blurb is never
+// touched: once a human signs off wording, the template stops owning it.
+const copyPath = path.join(DATA_DIR, LEAGUE_ID, 'trophy', 'copy.json')
+const existingCopy = existsSync(copyPath)
+  ? (JSON.parse(readFileSync(copyPath, 'utf8')) as CopyShard)
+  : null
+const copyShard = buildCopy(
+  { seasonsShard, matchupShard, draftsShard }, existingCopy,
+)
+const approved = Object.values(copyShard.entries).filter(e => e.status === 'approved').length
+console.log(
+  `\ncopy: ${Object.keys(copyShard.entries).length} blurbs ` +
+  `(${approved} approved, ${Object.keys(copyShard.entries).length - approved} draft)`,
+)
+
+const report = validate({
+  seasonsShard, weeklyShard, matchupShard, transactionsShard, draftsShard, globalCategories,
+})
 console.log('\n' + report.text)
 if (!report.ok) {
   console.error('Validation failed — refusing to write shards.')
@@ -536,4 +596,6 @@ writeJson(path.join(outDir, 'seasons.json'), seasonsShard)
 writeJson(path.join(outDir, 'weekly.json'), weeklyShard)
 writeJson(path.join(outDir, 'matchups.json'), matchupShard)
 if (!skipTransactions) writeJson(path.join(outDir, 'transactions.json'), transactionsShard)
+writeJson(path.join(outDir, 'drafts.json'), draftsShard)
+writeJson(copyPath, copyShard)
 console.log(`\nWrote shards to data/${LEAGUE_ID}/trophy/`)

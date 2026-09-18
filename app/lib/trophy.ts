@@ -6,7 +6,15 @@
  * is ever written into copy by hand, so every headline number on the page
  * traces back to a row a validator checked.
  */
-import type { SeasonsShard, TrophySeason } from '../../src/domain/trophy'
+import {
+  BRACKET_BY_CODE,
+  type MatchupShard,
+  type SeasonsShard,
+  type TrophySeason,
+  type TrophyWeek,
+} from '../../src/domain/trophy'
+import type { CopyShard } from '../../src/trophy/copy'
+import type { DraftsShard } from '../../src/trophy/drafts'
 import { useJson } from './useJson'
 
 export type Tone = 'praise' | 'shame'
@@ -190,4 +198,252 @@ export function seasonSpan(seasons: TrophySeason[]): string {
   if (seasons.length === 0) return ''
   const years = seasons.map(s => s.season).sort((a, b) => a - b)
   return `${years[0]}–${years[years.length - 1]}`
+}
+
+// ---------------------------------------------------------------- shards
+
+/** An empty league id means "this view does not need the shard", so skip it. */
+const shardPath = (leagueId: string, name: string): string | null =>
+  leagueId ? `data/${leagueId}/trophy/${name}` : null
+
+export function useTrophyMatchups(leagueId: string) {
+  return useJson<MatchupShard>(shardPath(leagueId, 'matchups.json'))
+}
+export function useTrophyDrafts(leagueId: string) {
+  return useJson<DraftsShard>(shardPath(leagueId, 'drafts.json'))
+}
+export function useTrophyCopy(leagueId: string) {
+  return useJson<CopyShard>(shardPath(leagueId, 'copy.json'))
+}
+
+/**
+ * The blurb for a key, or null when there is nothing to show.
+ *
+ * An approved entry always renders. A draft renders only when `allowDrafts`
+ * is set, which the view supplies from `import.meta.env.DEV` — a build-time
+ * constant, so on the deployed site unapproved text is not merely hidden,
+ * the branch is gone. Nothing anyone has not read can reach the league.
+ */
+export function usableCopy(
+  shard: CopyShard | null,
+  key: string,
+  allowDrafts: boolean,
+): { text: string; isDraft: boolean } | null {
+  const entry = shard?.entries?.[key]
+  if (!entry) return null
+  if (entry.status === 'approved') return { text: entry.text, isDraft: false }
+  return allowDrafts ? { text: entry.text, isDraft: true } : null
+}
+
+// ------------------------------------------------------------- champions
+
+export interface FinalDetail {
+  opponentId: string
+  opponentTeamName: string
+  /** From the champion's point of view. */
+  w: number
+  l: number
+  t: number
+  categories: Array<{ abbr: string; outcome: 'W' | 'L' | 'T' | '.' }>
+  week: TrophyWeek | undefined
+}
+
+/** The championship final of a season, from the champion's point of view. */
+export function finalDetail(
+  seasonsShard: SeasonsShard,
+  matchups: MatchupShard,
+  season: TrophySeason,
+): FinalDetail | null {
+  if (!season.champion || season.playoffWeeks.length === 0) return null
+  const c = matchups.columns
+  const i = {
+    season: c.indexOf('season'), week: c.indexOf('week'),
+    a: c.indexOf('ownerA'), b: c.indexOf('ownerB'),
+    bracket: c.indexOf('bracket'), results: c.indexOf('results'),
+  }
+  const finalWeek = Math.max(...season.playoffWeeks)
+  const row = matchups.rows.find(
+    r => r[i.season] === season.season && r[i.week] === finalWeek &&
+      BRACKET_BY_CODE[r[i.bracket] as number] === 'championship',
+  )
+  if (!row) return null
+
+  const owners = seasonsShard.owners
+  const aId = owners[row[i.a] as number]?.id
+  const bId = owners[row[i.b] as number]?.id
+  const championIsA = aId === season.champion.ownerId
+  const opponentId = (championIsA ? bId : aId) ?? ''
+  const raw = String(row[i.results])
+  const flipped = championIsA
+    ? raw
+    : [...raw].map(ch => (ch === 'W' ? 'L' : ch === 'L' ? 'W' : ch)).join('')
+
+  const categories = [...flipped].map((outcome, idx) => ({
+    abbr: season.statOrder[idx] ?? seasonsShard.weeklyColumns[idx + 5] ?? '?',
+    outcome: outcome as 'W' | 'L' | 'T' | '.',
+  }))
+  return {
+    opponentId,
+    opponentTeamName: season.standings.find(r => r.ownerId === opponentId)?.teamName ?? '',
+    w: [...flipped].filter(ch => ch === 'W').length,
+    l: [...flipped].filter(ch => ch === 'L').length,
+    t: [...flipped].filter(ch => ch === 'T').length,
+    categories,
+    week: season.weeks.find(w => w.week === finalWeek),
+  }
+}
+
+export interface TitleCount {
+  ownerId: string
+  titles: number
+  seasons: number[]
+}
+
+export function titleCounts(shard: SeasonsShard): TitleCount[] {
+  const by = new Map<string, number[]>()
+  for (const season of finishedSeasons(shard)) {
+    if (!season.champion) continue
+    by.set(season.champion.ownerId, [...(by.get(season.champion.ownerId) ?? []), season.season])
+  }
+  return [...by.entries()]
+    .map(([ownerId, seasons]) => ({ ownerId, titles: seasons.length, seasons: seasons.sort((a, b) => a - b) }))
+    .sort((a, b) => b.titles - a.titles || b.seasons[b.seasons.length - 1]! - a.seasons[a.seasons.length - 1]!)
+}
+
+const ORDINAL_LABELS = ['', '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th']
+const ordinalLabel = (n: number): string => ORDINAL_LABELS[n] ?? `${n}th`
+
+export interface ChampionRecord {
+  label: string
+  ownerIds: string[]
+  value: string
+  detail: string
+}
+
+/** The handful of championship extremes the wing leads with. */
+export function championRecords(shard: SeasonsShard): ChampionRecord[] {
+  const finished = finishedSeasons(shard)
+  const lookup = ownerLookup(shard)
+  const out: ChampionRecord[] = []
+  const withSeed = finished
+    .filter(s => s.champion)
+    .map(s => ({ season: s, seed: s.standings.find(r => r.ownerId === s.champion!.ownerId)?.seed ?? 0 }))
+    .filter(x => x.seed > 0)
+
+  if (withSeed.length > 0) {
+    const worst = Math.max(...withSeed.map(x => x.seed))
+    const picks = withSeed.filter(x => x.seed === worst)
+    out.push({
+      label: 'Lowest seed to win',
+      ownerIds: picks.map(p => p.season.champion!.ownerId),
+      value: `${ordinalLabel(worst)} seed`,
+      detail: picks.map(p => p.season.season).join(', '),
+    })
+    const best = Math.min(...withSeed.map(x => x.seed))
+    const bestPicks = withSeed.filter(x => x.seed === best)
+    out.push({
+      label: 'Titles from the top seed',
+      ownerIds: [...new Set(bestPicks.map(p => p.season.champion!.ownerId))],
+      value: `${bestPicks.length}`,
+      detail: bestPicks.map(p => p.season.season).join(', '),
+    })
+  }
+
+  // Best regular season by a champion, compared on winning percentage so the
+  // shortened 2020 season is not judged against full ones.
+  const byPct = finished
+    .filter(s => s.champion)
+    .map(s => ({ season: s, row: s.standings.find(r => r.ownerId === s.champion!.ownerId) }))
+    .filter(x => x.row)
+  if (byPct.length > 0) {
+    const best = byPct.reduce((a, b) => (Number(b.row!.percentage) > Number(a.row!.percentage) ? b : a))
+    out.push({
+      label: 'Best regular season by a champion',
+      ownerIds: [best.season.champion!.ownerId],
+      value: `${best.row!.wins}-${best.row!.losses}-${best.row!.ties}`,
+      detail: `${best.season.season}, ${best.row!.percentage}`,
+    })
+    const worst = byPct.reduce((a, b) => (Number(b.row!.percentage) < Number(a.row!.percentage) ? b : a))
+    out.push({
+      label: 'Worst regular season by a champion',
+      ownerIds: [worst.season.champion!.ownerId],
+      value: `${worst.row!.wins}-${worst.row!.losses}-${worst.row!.ties}`,
+      detail: `${worst.season.season}, ${worst.row!.percentage}`,
+    })
+  }
+
+  const repeat = titleCounts(shard).filter(t => t.titles > 1)
+  if (repeat.length > 0) {
+    out.push({
+      label: 'Repeat champions',
+      ownerIds: repeat.map(r => r.ownerId),
+      value: `${repeat.length}`,
+      detail: repeat.map(r => `${lookup.name(r.ownerId)} ${r.titles}`).join(', '),
+    })
+  }
+  return out
+}
+
+// ----------------------------------------------------------------- shame
+
+export interface LastPlaceCount {
+  ownerId: string
+  finishes: number
+  seasons: number[]
+}
+
+export function lastPlaceCounts(shard: SeasonsShard): LastPlaceCount[] {
+  const by = new Map<string, number[]>()
+  for (const season of finishedSeasons(shard)) {
+    if (!season.lastPlace) continue
+    by.set(season.lastPlace.ownerId, [...(by.get(season.lastPlace.ownerId) ?? []), season.season])
+  }
+  return [...by.entries()]
+    .map(([ownerId, seasons]) => ({ ownerId, finishes: seasons.length, seasons: seasons.sort((a, b) => a - b) }))
+    .sort((a, b) => b.finishes - a.finishes || b.seasons[b.seasons.length - 1]! - a.seasons[a.seasons.length - 1]!)
+}
+
+export interface SeasonRecordRow {
+  ownerId: string
+  season: number
+  teamName: string
+  wins: number
+  losses: number
+  ties: number
+  percentage: string
+  seed: number
+}
+
+/**
+ * Every team-season's regular-season record, worst first. Ranked on winning
+ * percentage rather than raw wins, so the shortened 2020 season sits on the
+ * same scale as a full one.
+ */
+export function worstSeasonRecords(shard: SeasonsShard, limit = 10): SeasonRecordRow[] {
+  const rows: SeasonRecordRow[] = []
+  for (const season of finishedSeasons(shard)) {
+    for (const row of season.standings) {
+      rows.push({ ...row, season: season.season })
+    }
+  }
+  return rows
+    .sort((a, b) => Number(a.percentage) - Number(b.percentage) || a.wins - b.wins)
+    .slice(0, limit)
+}
+
+/** The gap between last place and the team immediately above it. */
+export function gapToPenultimate(season: TrophySeason): {
+  wins: number
+  levelOnRecord: boolean
+  place: number
+} | null {
+  const rows = season.standings
+  const last = rows[rows.length - 1]
+  const above = rows[rows.length - 2]
+  if (!last || !above) return null
+  return {
+    wins: above.wins - last.wins,
+    levelOnRecord: last.percentage === above.percentage,
+    place: rows.length - 1,
+  }
 }

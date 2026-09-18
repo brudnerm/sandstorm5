@@ -33,6 +33,7 @@ function season(
     runnerUp: opts.runnerUp ? { ownerId: opts.runnerUp, teamName: `${opts.runnerUp} team` } : null,
     lastPlace: opts.last ? { ownerId: opts.last, teamName: `${opts.last} team` } : null,
     isFinished: opts.finished ?? true,
+    retroSlugs: {},
     notes: [],
   }
 }

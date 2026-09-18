@@ -107,6 +107,12 @@ export interface TrophySeason {
   runnerUp: TrophyTitle | null
   lastPlace: TrophyTitle | null
   isFinished: boolean
+  /**
+   * ownerId -> Season review article slug, for the seasons that have one.
+   * Lets a champion card link straight to that team's write-up without the
+   * client probing eighteen shards to find out which exist.
+   */
+  retroSlugs: Record<string, string>
   /** Anything a reader of a number from this season should know first. */
   notes: string[]
 }

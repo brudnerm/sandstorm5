@@ -7,6 +7,7 @@
  * is what makes the backfill idempotent: a second run reads eighteen
  * seasons off disk and issues no requests at all.
  */
+import { createHash } from 'node:crypto'
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -18,8 +19,19 @@ export const CACHE_DIR = path.join(ROOT, 'data', '.cache', 'yahoo')
 /** Marker written when Yahoo permanently refuses a resource. */
 const REFUSED = '"__yahoo_refused__"'
 
+/**
+ * Filenames stay readable for ordinary resources, but a batched player
+ * lookup carries 25 keys and blows past the 255-byte limit macOS enforces,
+ * so anything long keeps a readable prefix and ends in a digest of the full
+ * resource. Short paths are unaffected, so the existing cache stays valid.
+ */
+const MAX_STEM = 120
+
 function cachePath(resource: string): string {
-  return path.join(CACHE_DIR, resource.replace(/[/;=,?&]/g, '_') + '.json')
+  const stem = resource.replace(/[/;=,?&]/g, '_')
+  if (stem.length <= MAX_STEM) return path.join(CACHE_DIR, `${stem}.json`)
+  const digest = createHash('sha1').update(resource).digest('hex').slice(0, 16)
+  return path.join(CACHE_DIR, `${stem.slice(0, MAX_STEM - 17)}-${digest}.json`)
 }
 
 export interface FetchOptions {

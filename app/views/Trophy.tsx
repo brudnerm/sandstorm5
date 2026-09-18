@@ -12,7 +12,12 @@
 import { useEffect } from 'react'
 import type { Manifest } from '../../src/domain/matchups'
 import SectionHeader from '../components/trophy/SectionHeader'
-import { heroSummary, useTrophySeasons, WINGS, wingBySlug, type HeroTile } from '../lib/trophy'
+import {
+  heroSummary, useTrophyCopy, useTrophyDrafts, useTrophyMatchups, useTrophySeasons,
+  WINGS, wingBySlug, type HeroTile,
+} from '../lib/trophy'
+import Champions from './trophy/Champions'
+import Shame from './trophy/Shame'
 import StyleSample from './trophy/StyleSample'
 
 interface Props {
@@ -33,8 +38,18 @@ function Tile({ tile }: { tile: HeroTile }) {
 
 export default function Trophy({ league, slug }: Props) {
   const shard = useTrophySeasons(league.id)
+  // The wings that need them fetch their own shards; useJson only requests a
+  // path when it is asked for, so the landing page still loads one file.
+  const wantsMatchups = slug === 'champions'
+  const wantsDraftsAndCopy = slug === 'champions' || slug === 'shame'
+  const matchups = useTrophyMatchups(wantsMatchups ? league.id : '')
+  const drafts = useTrophyDrafts(wantsDraftsAndCopy ? league.id : '')
+  const copy = useTrophyCopy(wantsDraftsAndCopy ? league.id : '')
   const data = shard.data
   const wing = wingBySlug(slug)
+  // A build-time constant: on the deployed site this branch is gone, so
+  // unapproved copy cannot render however the page is loaded.
+  const allowDrafts = import.meta.env.DEV
 
   // The wings are long; arriving at one from an email should start at the top.
   useEffect(() => { window.scrollTo({ top: 0 }) }, [slug])
@@ -68,8 +83,28 @@ export default function Trophy({ league, slug }: Props) {
     return (
       <div className="view trophy">
         <a className="trophy-back" href={base}>Trophy Room</a>
-        <SectionHeader as="h1" eyebrow="Trophy Room" title={wing.title} note={wing.blurb} tone={wing.tone} />
-        <p className="trophy-pending">This wing is not built yet.</p>
+        {wing.slug === 'champions' ? (
+          <Champions
+            leagueId={league.id}
+            shard={data}
+            matchups={matchups.data}
+            drafts={drafts.data}
+            copy={copy.data}
+            allowDrafts={allowDrafts}
+          />
+        ) : wing.slug === 'shame' ? (
+          <Shame
+            shard={data}
+            drafts={drafts.data}
+            copy={copy.data}
+            allowDrafts={allowDrafts}
+          />
+        ) : (
+          <>
+            <SectionHeader as="h1" eyebrow="Trophy Room" title={wing.title} note={wing.blurb} tone={wing.tone} />
+            <p className="trophy-pending">This wing is not built yet.</p>
+          </>
+        )}
       </div>
     )
   }
