@@ -42,9 +42,24 @@ npm run fetch:settings    # settings shards for every league-season (--current f
 npm run fetch:live        # standings + scoreboards + full-season schedule + manifest (incremental)
 npm run fetch:players     # rosters × stat windows + free-agent watchlist (needs fetch:live)
 npm run fetch:mlb         # MLBAM id map + Statcast expected stats (statsapi + Savant, no auth)
+npm run fetch:trophy      # Trophy Room shards, all seasons (see docs/trophy-room/pipeline.md)
 npm run discover-leagues  # print registry entries for all your Yahoo leagues
 npm run token ensure      # refresh only if expired — see AUTH.md
 ```
+
+## Refreshing the Trophy Room after a season
+
+The Trophy Room is the league's permanent record book, built from every season
+back to 2009. Finished seasons never change, so a rebuild reads them from the
+raw-response cache and issues no requests. After Yahoo marks a season finished:
+
+```bash
+npm run fetch:trophy -- --refresh current
+```
+
+That re-fetches the newest season, rebuilds all four shards, and refuses to write
+if any of its ten validation checks fail. Full details, including what to do when
+a new manager joins, are in `docs/trophy-room/pipeline.md`.
 
 ## Adding a league or season
 

@@ -164,7 +164,18 @@ cross-check but not a substitute, since they predate this season.
 
 ---
 
-## E. Open questions
+## E. Open questions — all resolved 2026-09-17
+
+> **Resolved.** 1: `Dans Team` is **Other Dan** (distinct from Dan Schwartz), 
+> `BenFranklinRodriguez` is **Rob**, `Lonley Picards` is **Billy**. 2: GUIDs are not 
+> published, and identifying information stays out of published output generally. 
+> 3: `placement` tag approved. 4: the 2016 zero-stat week is a real result, not a gap 
+> — the roster held 21 players, 20 benched and 1 on the disabled list, and the team 
+> completed no games while every other team played 92 to 104. 5: the pre-2024 tiebreak 
+> was head-to-head, changed to regular-season record in 2024; it cannot resolve 2020's 
+> tie because those two teams never played each other, so Yahoo's rank stands and 2020's 
+> last place is Will. 6: the client timeout is fixed. The original questions follow.
+
 
 1. **The three unidentified managers.** Are `Dans Team` (2009–2013),
    `BenFranklinRodriguez` (2010–2011) and `Lonley Picards` (2009) three people who
