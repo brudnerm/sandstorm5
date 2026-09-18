@@ -98,7 +98,13 @@ in rather than printed as a negative number.
 
 ```bash
 node scripts/contrast.mjs
+npx tsx src/trophy/qualifiers-report.ts
+npx tsx src/trophy/spotcheck.ts
 ```
+
+The second regenerates the record qualifiers and the evidence behind them. The
+third traces displayed records back to the raw Yahoo payloads and exits non-zero
+if any disagrees.
 
 Walks every text node in the Trophy Room across both themes at phone width and
 fails on anything below WCAG AA. It composites translucent backgrounds and

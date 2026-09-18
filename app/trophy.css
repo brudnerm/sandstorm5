@@ -567,3 +567,118 @@
   color: var(--text-3);
   vertical-align: 1px;
 }
+
+/* ---------- Record controls ---------- */
+.trophy-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.trophy-control { display: flex; flex-direction: column; gap: 6px; }
+.trophy-control-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* Category chips. Twelve of them, so they wrap rather than scroll. */
+.trophy-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.trophy-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 10px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  font-size: 12px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+  /* A tap target that clears the 44px guidance once padding is counted. */
+  min-height: 32px;
+}
+.trophy-chip:hover { border-color: var(--brass); }
+.trophy-chip.active {
+  border-color: var(--brass);
+  background: var(--accent-soft);
+  color: var(--text);
+}
+.trophy-chip-dir { font-size: 10px; opacity: 0.8; }
+
+/* Mode control. */
+.trophy-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+}
+.trophy-segment {
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-2);
+  border-right: 1px solid var(--plaque-edge);
+  min-height: 34px;
+}
+.trophy-segment:last-child { border-right: none; }
+.trophy-segment.active { background: var(--accent-soft); color: var(--text); }
+.trophy-segment:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ---------- Boards ---------- */
+.trophy-boards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 860px) {
+  .trophy-boards { grid-template-columns: 1fr 1fr; }
+}
+.trophy-record-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.trophy-expander {
+  margin-top: 12px;
+  padding: 7px 12px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brass);
+  min-height: 34px;
+}
+.trophy-expander:hover { border-color: var(--brass); }
+
+/* A small tag beside a record: week length, bracket, or a week with no games. */
+.trophy-tag {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 1px 5px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  vertical-align: 1px;
+}
+.trophy-tag.warn { border-color: var(--loss); color: var(--loss); }
+
+/* ---------- Method list ---------- */
+.trophy-method {
+  margin: 0;
+  padding-left: 1.1em;
+  max-width: 44em;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.trophy-method li { margin-bottom: 7px; }

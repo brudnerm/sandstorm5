@@ -6,12 +6,14 @@
  * is ever written into copy by hand, so every headline number on the page
  * traces back to a row a validator checked.
  */
+import type { TeamWeek } from '../../src/domain/records'
 import {
   BRACKET_BY_CODE,
   type MatchupShard,
   type SeasonsShard,
   type TrophySeason,
   type TrophyWeek,
+  type WeeklyShard,
 } from '../../src/domain/trophy'
 import type { CopyShard } from '../../src/trophy/copy'
 import type { DraftsShard } from '../../src/trophy/drafts'
@@ -26,6 +28,8 @@ export function useTrophySeasons(leagueId: string) {
 export interface OwnerLookup {
   name: (ownerId: string) => string
   teamName: (ownerId: string, season: number) => string | null
+  /** The positional shards reference owners by index into shard.owners. */
+  byIndex: (index: number) => string
 }
 
 export function ownerLookup(shard: SeasonsShard): OwnerLookup {
@@ -33,6 +37,7 @@ export function ownerLookup(shard: SeasonsShard): OwnerLookup {
   return {
     name: id => byId.get(id)?.displayName ?? id,
     teamName: (id, season) => byId.get(id)?.teamNames[String(season)] ?? null,
+    byIndex: index => shard.owners[index]?.id ?? '',
   }
 }
 
@@ -214,6 +219,35 @@ export function useTrophyDrafts(leagueId: string) {
 }
 export function useTrophyCopy(leagueId: string) {
   return useJson<CopyShard>(shardPath(leagueId, 'copy.json'))
+}
+export function useTrophyWeekly(leagueId: string) {
+  return useJson<WeeklyShard>(shardPath(leagueId, 'weekly.json'))
+}
+
+/**
+ * Decode the positional weekly rows into something the record tables can
+ * rank. The column order is declared in the shard rather than assumed here,
+ * so adding a category to the league does not silently shift every value.
+ */
+export function decodeWeekly(weekly: WeeklyShard, statOrder: string[]): TeamWeek[] {
+  const col = (name: string) => weekly.columns.indexOf(name)
+  const idx = {
+    season: col('season'), week: col('week'), owner: col('owner'),
+    days: col('days'), bracket: col('bracket'),
+    ab: col('ab'), ip: col('ip'), completedGames: col('completedGames'),
+  }
+  const statCols = statOrder.map(abbr => [abbr, col(abbr)] as const)
+  return weekly.rows.map(r => ({
+    season: r[idx.season] as number,
+    week: r[idx.week] as number,
+    ownerIndex: r[idx.owner] as number,
+    days: r[idx.days] as number,
+    bracket: BRACKET_BY_CODE[r[idx.bracket] as number] ?? 'regular',
+    values: Object.fromEntries(statCols.map(([abbr, i]) => [abbr, i >= 0 ? r[i] ?? null : null])),
+    ab: idx.ab >= 0 ? r[idx.ab] ?? null : null,
+    ip: idx.ip >= 0 ? r[idx.ip] ?? null : null,
+    completedGames: idx.completedGames >= 0 ? r[idx.completedGames] ?? null : null,
+  }))
 }
 
 /**

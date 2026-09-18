@@ -11,6 +11,9 @@
  *     --name trophy-landing --width 1200 --height 900 --theme dark [--full]
  *
  * Repeat --theme and --size to capture a matrix in one Chrome session.
+ * --eval runs a snippet in the page after it loads and before the capture,
+ * for pages whose interesting state lives in the component rather than the
+ * URL (a selected category, an expanded table).
  */
 import { mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -27,6 +30,7 @@ const url = flag('url')
 const out = flag('out', 'screenshots')
 const name = flag('name', 'shot')
 const full = args.includes('--full')
+const evalSnippet = flag('eval')
 const themes = flags('theme').length ? flags('theme') : ['light']
 const sizes = flags('size').length
   ? flags('size').map(s => s.split('x').map(Number))
@@ -43,6 +47,14 @@ try {
   for (const [width, height] of sizes) {
     for (const theme of themes) {
       const state = await loadPage(chrome.send, { url, width, height, theme })
+      if (evalSnippet) {
+        const { result } = await chrome.send('Runtime.evaluate', {
+          expression: `(async () => { ${evalSnippet} })()`,
+          awaitPromise: true, returnByValue: true,
+        })
+        if (result?.subtype === 'error') throw new Error(`--eval failed: ${result.description}`)
+        await sleep(600)
+      }
       if (full) {
         await chrome.send('Emulation.setDeviceMetricsOverride', {
           width, height: Math.min(state.height, 4000), deviceScaleFactor: 2, mobile: width < 768,

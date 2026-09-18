@@ -14,9 +14,10 @@ import type { Manifest } from '../../src/domain/matchups'
 import SectionHeader from '../components/trophy/SectionHeader'
 import {
   heroSummary, useTrophyCopy, useTrophyDrafts, useTrophyMatchups, useTrophySeasons,
-  WINGS, wingBySlug, type HeroTile,
+  useTrophyWeekly, WINGS, wingBySlug, type HeroTile,
 } from '../lib/trophy'
 import Champions from './trophy/Champions'
+import Records from './trophy/Records'
 import Shame from './trophy/Shame'
 import StyleSample from './trophy/StyleSample'
 
@@ -43,6 +44,7 @@ export default function Trophy({ league, slug }: Props) {
   const wantsMatchups = slug === 'champions'
   const wantsDraftsAndCopy = slug === 'champions' || slug === 'shame'
   const matchups = useTrophyMatchups(wantsMatchups ? league.id : '')
+  const weekly = useTrophyWeekly(slug === 'records' ? league.id : '')
   const drafts = useTrophyDrafts(wantsDraftsAndCopy ? league.id : '')
   const copy = useTrophyCopy(wantsDraftsAndCopy ? league.id : '')
   const data = shard.data
@@ -92,6 +94,8 @@ export default function Trophy({ league, slug }: Props) {
             copy={copy.data}
             allowDrafts={allowDrafts}
           />
+        ) : wing.slug === 'records' ? (
+          <Records shard={data} weekly={weekly.data} />
         ) : wing.slug === 'shame' ? (
           <Shame
             shard={data}
