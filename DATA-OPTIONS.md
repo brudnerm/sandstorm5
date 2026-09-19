@@ -182,7 +182,7 @@ So you can point the application at an app you already own (`4rOh2ELW`,
 - **Not mutually exclusive with Option 1.** Re-auth now to unfreeze the data,
   apply in parallel for the durable path. That's the sensible sequencing.
 
-### Option 3 — Reduce the blast radius of token rotation ✅ DONE
+### Option 3 — Reduce the blast radius of token rotation (DONE)
 
 **What it is:** Not a data source — a resilience change, worth doing under any
 option. **This has been implemented.**

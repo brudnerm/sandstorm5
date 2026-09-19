@@ -604,6 +604,15 @@ const report = validate({
   seasonsShard, weeklyShard, matchupShard, transactionsShard, draftsShard, globalCategories,
 })
 console.log('\n' + report.text)
+if (skipTransactions) {
+  // The transaction check just ran against an empty shard and reported a
+  // pass, which is worth nothing. Say so, rather than letting the word PASS
+  // above stand as evidence the transaction log is sound.
+  console.log(
+    'Note: --skip-transactions means the transaction check examined an empty shard. ' +
+    'It proves nothing. Run `npx tsx src/trophy/verify.ts` to check the file on disk.',
+  )
+}
 if (!report.ok) {
   console.error('Validation failed — refusing to write shards.')
   process.exit(1)

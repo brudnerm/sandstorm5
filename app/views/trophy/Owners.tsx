@@ -153,6 +153,7 @@ function OwnerPage({ leagueId, shard, weekly, matchups, row }: {
       />
 
       <section>
+        <SectionHeader eyebrow="Summary" title="The record" />
         <div className="trophy-owner-summary">
           <Plaque season="Honours" title={`${row.titles} ${row.titles === 1 ? 'title' : 'titles'}`}>
             <div className="trophy-line">

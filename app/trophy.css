@@ -290,6 +290,8 @@
 .trophy-table-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  min-width: 0;
+  contain: paint;
   /* A dense table has to scroll sideways on a phone, and nothing says so.
      These four layers draw a shadow at whichever edge has content beyond it:
      the two `local` gradients scroll with the content and mask the `scroll`
@@ -426,6 +428,11 @@
 /* ---------- Back link ---------- */
 .trophy-back {
   align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  /* A standalone control, so it clears the 24px minimum tap target rather
+     than relying on the inline exception that covers links inside prose. */
+  min-height: 24px;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -561,6 +568,14 @@
   font-weight: 650;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+/* A link that is the whole content of a cell is a control rather than part
+   of a sentence, so it gets a real tap target. */
+.trophy-table td > .trophy-inline-link,
+.trophy-table th > .trophy-inline-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
 }
 .trophy-plaque.shame .trophy-inline-link { color: var(--tarnish); }
 
@@ -701,6 +716,8 @@
 .trophy-sort {
   display: inline-flex;
   align-items: center;
+  /* A sort control is a control, so it clears the 24px tap-target floor. */
+  min-height: 24px;
   gap: 3px;
   font: inherit;
   color: inherit;
@@ -712,6 +729,16 @@
 .trophy-sort-mark { font-size: 9px; width: 0.7em; }
 
 .trophy-owner-link { color: inherit; text-decoration: none; }
+/* An owner link filling a table cell is a control rather than part of a
+   sentence, so it gets a real tap target too. */
+.trophy-table th > .trophy-owner-link,
+.trophy-table td > .trophy-owner-link {
+  display: inline-flex;
+  align-items: center;
+  /* Both dimensions, since a two-letter name is narrower than it is tall. */
+  min-height: 24px;
+  min-width: 24px;
+}
 .trophy-owner-link:hover .trophy-owner-name { color: var(--brass); text-decoration: underline; }
 
 /* ---------- Owner page ---------- */
@@ -755,6 +782,14 @@
 .trophy-matrix-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  /* The view is a flex column, and a flex item will not shrink below its
+     content width without this — so the matrix pushed the whole document
+     sideways instead of scrolling inside its own box. `contain: paint` is
+     what actually stops the overflow reaching the document's scroll area:
+     without it the page itself scrolled sideways by thirty pixels even
+     though the table was scrolling correctly inside its own box. */
+  min-width: 0;
+  contain: paint;
   background:
     linear-gradient(to right, var(--bg) 40%, transparent) left center / 28px 100% no-repeat local,
     linear-gradient(to left, var(--bg) 40%, transparent) right center / 28px 100% no-repeat local,
@@ -779,10 +814,19 @@
   font-size: 10px;
   font-weight: 700;
   text-align: left;
-  padding: 5px 7px;
+  padding: 0;
   white-space: nowrap;
   color: var(--text-2);
   border-bottom: 1px solid var(--border);
+}
+.trophy-matrix thead th { padding: 5px 7px; }
+/* The row-header link fills its cell so the tap target is the whole cell
+   rather than the few pixels the name occupies. */
+.trophy-matrix tbody th .trophy-owner-link {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 7px;
 }
 .trophy-matrix thead th { color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; }
 /* The owner column stays put while the rest scrolls sideways. */
@@ -799,9 +843,12 @@
   text-align: center;
 }
 .trophy-cell button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 5px 7px;
+  min-height: 24px;
+  padding: 3px 7px;
   font: inherit;
   font-variant-numeric: tabular-nums;
   color: var(--text);
