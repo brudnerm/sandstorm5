@@ -65,11 +65,35 @@ describe('qualifiers', () => {
     expect(eligible(weeks, 'ERA', 'all')).toHaveLength(0)
   })
 
-  it('holds AVG and OBP to a minimum at-bat count', () => {
+  it('holds AVG and OBP to a minimum at-bat count where one is recorded', () => {
     const weeks = [tw({ ab: 85, values: { AVG: 0.45 } }), tw({ ab: 200, values: { AVG: 0.31 } })]
     const board = leaderboard(weeks, 'AVG', 'all', true, 'best', 5)
     expect(board.rows).toHaveLength(1)
     expect(board.rows[0]!.value).toBeCloseTo(0.31)
+  })
+
+  it('assumes the at-bat minimum was met when no count was recorded', () => {
+    // Yahoo carries no at-bat count before 2023. Dropping those seasons would
+    // lose fourteen years of batting records over a missing column.
+    const weeks = [tw({ season: 2013, ab: null, values: { AVG: 0.388 } })]
+    const board = leaderboard(weeks, 'AVG', 'all', true, 'best', 5)
+    expect(board.rows).toHaveLength(1)
+    expect(board.assumed).toEqual([2013])
+  })
+
+  it('never assumes for a week in which nobody was started', () => {
+    const weeks = [tw({ season: 2016, ab: null, completedGames: 0, values: { AVG: 0.5 } })]
+    expect(leaderboard(weeks, 'AVG', 'all', true, 'best', 5).rows).toHaveLength(0)
+  })
+
+  it('does not assume for innings, which every season records', () => {
+    const weeks = [tw({ ip: null, values: { ERA: 0 } })]
+    expect(leaderboard(weeks, 'ERA', 'all', false, 'best', 5).rows).toHaveLength(0)
+  })
+
+  it('reports nothing as assumed when every count is recorded', () => {
+    const weeks = [tw({ season: 2025, ab: 200, values: { AVG: 0.31 } })]
+    expect(leaderboard(weeks, 'AVG', 'all', true, 'best', 5).assumed).toEqual([])
   })
 
   it('leaves a counting category unqualified', () => {
@@ -155,15 +179,17 @@ describe('ties', () => {
 })
 
 describe('pool reporting', () => {
-  it('reports the seasons the pool actually covers', () => {
+  it('reports the seasons the pool covers and which were assumed', () => {
     const weeks = [
       tw({ season: 2023, ab: 200, values: { AVG: 0.3 } }),
       tw({ season: 2026, ab: 200, values: { AVG: 0.29 } }),
       tw({ season: 2011, ab: null, values: { AVG: 0.4 } }),
     ]
     const board = leaderboard(weeks, 'AVG', 'all', true, 'best', 5)
-    // 2011 has no at-bat count, so it cannot qualify and is not in the span.
-    expect(board.seasons).toEqual([2023, 2026])
-    expect(board.pool).toBe(2)
+    expect(board.seasons).toEqual([2011, 2023, 2026])
+    expect(board.pool).toBe(3)
+    expect(board.assumed).toEqual([2011])
+    // The pre-2023 week is now eligible, and leads.
+    expect(board.rows[0]!.teamWeek.season).toBe(2011)
   })
 })

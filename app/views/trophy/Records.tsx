@@ -60,10 +60,18 @@ function Board({
 
   const notes: string[] = []
   if (partial) {
-    notes.push(`${seasonsCovered[0]}–${seasonsCovered[seasonsCovered.length - 1]} only. Yahoo carries no at-bat denominator before ${seasonsCovered[0]}, and a rate without a qualifier is not a record.`)
+    notes.push(`${seasonsCovered[0]}–${seasonsCovered[seasonsCovered.length - 1]} only.`)
   }
   if (qualifier) notes.push(`${qualifier}. ${board.pool.toLocaleString()} team-weeks qualify.`)
   else notes.push(`${board.pool.toLocaleString()} team-weeks in the pool.`)
+  if (board.assumed.length > 0) {
+    const lastAssumed = board.assumed[board.assumed.length - 1]!
+    notes.push(
+      `Yahoo records no at-bat count before ${lastAssumed + 1}, so the ` +
+      `${board.assumed.length} seasons up to ${lastAssumed} are taken as having met it. ` +
+      `Where the count does exist, one full week in 980 falls short.`,
+    )
+  }
   if (board.tiedAtCut > 0) {
     notes.push(`${board.tiedAtCut} team-weeks share the value at the cut, so this is one slice of a larger tie. Ties are ordered oldest first.`)
   }
@@ -254,6 +262,13 @@ export default function Records({ shard, weekly }: Props) {
             {Object.entries(QUALIFIERS).map(([k, q]) =>
               `${k} needs ${q.minIp ?? q.minAb} ${q.minIp ? 'innings' : 'at-bats'}`).join('; ')}.
             The thresholds and the evidence for them are in the Stage 4 qualifier note.
+          </li>
+          <li>
+            Yahoo records no at-bat count before 2023. Rather than lose fourteen
+            seasons of batting records to a missing column, those seasons are taken
+            as having met the minimum: where the count does exist, only one full week
+            in 980 falls short of it, and every leading week is a normal one. A week
+            in which a team started nobody never qualifies for a rate.
           </li>
           <li>
             Tied team-weeks share a rank and are ordered oldest first, so the same

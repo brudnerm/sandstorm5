@@ -123,15 +123,27 @@ p()
 const abSeasons = [...new Set(standard.filter(w => w.ab !== null).map(w => w.season))].sort()
 p(`Yahoo only carries a hits-over-at-bats display stat from ${abSeasons[0]}, so at-bats exist for ${abSeasons.join(', ')} and for no earlier season.`)
 p()
-p('**This bounds the AVG and OBP records to those seasons.** A rate category needs a qualifier, and a qualifier needs a denominator, so rather than publish an unqualified all-time batting-average record the page labels those two boards with the span they actually cover. For reference, the unqualified all-time board would be led by:')
+p('**Those seasons are taken as having met the minimum rather than dropped.** Losing fourteen seasons of batting records to a missing column would cost far more than it protects, and the data supports the assumption in both directions.')
 p()
-const unqualified = standard
-  .filter(w => w.values['AVG'] !== null)
-  .sort((a, b) => b.values['AVG']! - a.values['AVG']!)
-  .slice(0, 3)
-for (const w of unqualified) {
-  p(`- ${w.values['AVG']!.toFixed(3)}, ${ownerName(w.ownerIndex)} ${w.season} week ${w.week}, at-bats ${w.ab === null ? 'unknown' : Math.round(w.ab)}`)
+const withAb = standard.filter(w => w.ab !== null)
+const shortFull = withAb.filter(w => (w.ab as number) < 150 && (w.completedGames ?? 0) > 60)
+p(`Where the count does exist, ${withAb.length} standard team-weeks, only ${shortFull.length} full week falls below the bar:`)
+p()
+for (const w of shortFull) {
+  p(`- ${ownerName(w.ownerIndex)} ${w.season} week ${w.week}: ${Math.round(w.ab as number)} at-bats over ${w.completedGames} completed games, batting ${w.values['AVG']!.toFixed(3)}.`)
 }
+p()
+p('And nothing at the top of the pre-2023 boards rests on a thin sample. The leading weeks:')
+p()
+const preLeaders = standard
+  .filter(w => w.ab === null && w.values['AVG'] !== null)
+  .sort((a, b) => b.values['AVG']! - a.values['AVG']!)
+  .slice(0, 5)
+for (const w of preLeaders) {
+  p(`- ${w.values['AVG']!.toFixed(3)}, ${ownerName(w.ownerIndex)} ${w.season} week ${w.week}, ${w.completedGames} completed games.`)
+}
+p()
+p('A normal week is 85 to 100 completed games, so every one of those is a full week. The one case the assumption must not cover is a team that started nobody, and that is excluded explicitly: a week with no completed games never qualifies for a rate.')
 p()
 const abs = standard.map(w => w.ab).filter((v): v is number => v !== null).sort((a, b) => a - b)
 p('| Percentile | AB |')

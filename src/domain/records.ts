@@ -33,6 +33,22 @@ export interface TeamWeek {
 export interface Qualifier {
   minIp?: number
   minAb?: number
+  /**
+   * What to do when the denominator is not recorded at all.
+   *
+   * Yahoo carries no at-bat count before 2023, and dropping fourteen seasons
+   * of batting records over a missing column would lose far more than it
+   * protects. In every season the count does exist, a completed week clears
+   * the bar with room to spare: of 980 standard team-weeks only one full week
+   * falls short, and it batted .216. The pre-2023 leaders are all normal
+   * weeks of 86 to 102 completed games, so nothing at the top of those boards
+   * rests on a thin sample.
+   *
+   * So a missing denominator is assumed to have met the minimum. A team-week
+   * that completed no games never is, which covers the one occasion in league
+   * history anyone reached the end of a week without fielding a side.
+   */
+  assumeWhenMissing?: boolean
 }
 
 /**
@@ -45,13 +61,14 @@ export interface Qualifier {
  *
  * 150 at-bats removes the only sub-qualified outlier, a partial week that
  * topped OBP on 85 at-bats, and leaves the AVG board untouched. It keeps
- * 98.4% of the team-weeks that have an at-bat count at all.
+ * 98.4% of the team-weeks that have an at-bat count at all, and is assumed
+ * met for the seasons that record no at-bat count — see assumeWhenMissing.
  */
 export const QUALIFIERS: Record<string, Qualifier> = {
   ERA: { minIp: 25 },
   WHIP: { minIp: 25 },
-  AVG: { minAb: 150 },
-  OBP: { minAb: 150 },
+  AVG: { minAb: 150, assumeWhenMissing: true },
+  OBP: { minAb: 150, assumeWhenMissing: true },
 }
 
 /** Categories that are already a rate, so dividing them by days is nonsense. */
@@ -79,14 +96,35 @@ export interface Leaderboard {
   tiedAtCut: number
   /** Seasons the pool actually spans, for a span label. */
   seasons: number[]
+  /** Seasons whose qualifier was assumed because the count is not recorded. */
+  assumed: number[]
 }
 
 function qualifies(tw: TeamWeek, abbr: string): boolean {
   const q = QUALIFIERS[abbr]
   if (!q) return true
-  if (q.minIp !== undefined && (tw.ip === null || tw.ip < q.minIp)) return false
-  if (q.minAb !== undefined && (tw.ab === null || tw.ab < q.minAb)) return false
+  // A week in which nobody was started has no denominator in any sense, so it
+  // never qualifies for a rate however the numbers were recorded.
+  if (tw.completedGames === 0) return false
+
+  if (q.minIp !== undefined) {
+    if (tw.ip === null) { if (!q.assumeWhenMissing) return false }
+    else if (tw.ip < q.minIp) return false
+  }
+  if (q.minAb !== undefined) {
+    if (tw.ab === null) { if (!q.assumeWhenMissing) return false }
+    else if (tw.ab < q.minAb) return false
+  }
   return true
+}
+
+/** True when this team-week is taken on trust because the count is missing. */
+export function qualifierAssumed(tw: TeamWeek, abbr: string): boolean {
+  const q = QUALIFIERS[abbr]
+  if (!q?.assumeWhenMissing) return false
+  if (q.minIp !== undefined && tw.ip === null) return true
+  if (q.minAb !== undefined && tw.ab === null) return true
+  return false
 }
 
 /**
@@ -160,6 +198,7 @@ export function leaderboard(
     pool: pool.length,
     tiedAtCut: tiedAtCut > rows.filter(r => r.value === cutValue).length ? tiedAtCut : 0,
     seasons: [...new Set(pool.map(tw => tw.season))].sort((a, b) => a - b),
+    assumed: assumedSeasons(pool, abbr),
   }
 }
 
@@ -170,4 +209,10 @@ export function qualifierLabel(abbr: string): string | null {
   if (q.minIp !== undefined) return `Minimum ${q.minIp} innings pitched`
   if (q.minAb !== undefined) return `Minimum ${q.minAb} at-bats`
   return null
+}
+
+/** Seasons in a pool whose qualifier was assumed rather than measured. */
+export function assumedSeasons(weeks: TeamWeek[], abbr: string): number[] {
+  return [...new Set(weeks.filter(tw => qualifierAssumed(tw, abbr)).map(tw => tw.season))]
+    .sort((a, b) => a - b)
 }

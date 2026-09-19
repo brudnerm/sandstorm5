@@ -69,11 +69,21 @@ At 25 innings both boards stop changing. Thirty and thirty-five produce the same
 
 Yahoo only carries a hits-over-at-bats display stat from 2023, so at-bats exist for 2023, 2024, 2025, 2026 and for no earlier season.
 
-**This bounds the AVG and OBP records to those seasons.** A rate category needs a qualifier, and a qualifier needs a denominator, so rather than publish an unqualified all-time batting-average record the page labels those two boards with the span they actually cover. For reference, the unqualified all-time board would be led by:
+**Those seasons are taken as having met the minimum rather than dropped.** Losing fourteen seasons of batting records to a missing column would cost far more than it protects, and the data supports the assumption in both directions.
 
-- 0.388, Galen 2013 week 18, at-bats unknown
-- 0.386, Nick 2020 week 4, at-bats unknown
-- 0.382, mike 2017 week 11, at-bats unknown
+Where the count does exist, 980 standard team-weeks, only 1 full week falls below the bar:
+
+- joey 2024 week 17: 134 at-bats over 92 completed games, batting 0.216.
+
+And nothing at the top of the pre-2023 boards rests on a thin sample. The leading weeks:
+
+- 0.388, Galen 2013 week 18, 86 completed games.
+- 0.386, Nick 2020 week 4, 101 completed games.
+- 0.382, mike 2017 week 11, 99 completed games.
+- 0.373, mike 2009 week 6, 90 completed games.
+- 0.372, Mark 2009 week 6, 93 completed games.
+
+A normal week is 85 to 100 completed games, so every one of those is a full week. The one case the assumption must not cover is a team that started nobody, and that is excluded explicitly: a week with no completed games never qualifies for a rate.
 
 | Percentile | AB |
 |---|---|

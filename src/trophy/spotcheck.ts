@@ -60,13 +60,18 @@ const weeks: TeamWeek[] = weekly.rows.map(r => ({
   completedGames: r[col('completedGames')] ?? null,
 }))
 
-/** Five records, chosen to cover both directions and both ends. */
+/**
+ * Six records, chosen to cover both directions, both ends, a week with no
+ * games, and a batting record from a season with no at-bat count — the case
+ * the assumed qualifier admits, and so the one most worth tracing.
+ */
 const TARGETS: Array<{ abbr: string; end: 'best' | 'worst'; mode: Mode }> = [
   { abbr: 'HR', end: 'best', mode: 'standard' },
   { abbr: 'ERA', end: 'best', mode: 'standard' },
   { abbr: 'WHIP', end: 'worst', mode: 'standard' },
   { abbr: 'K', end: 'best', mode: 'standard' },
   { abbr: 'R', end: 'worst', mode: 'standard' },
+  { abbr: 'AVG', end: 'best', mode: 'standard' },
 ]
 
 const league = leagueById('kp')
@@ -74,10 +79,13 @@ const out: string[] = []
 const p = (s = '') => out.push(s)
 p('# Trophy Room — Stage 4 spot check')
 p()
-p('Five displayed records traced back to the raw Yahoo responses. For each, the')
+p('Six displayed records traced back to the raw Yahoo responses. For each, the')
 p('value is read out of Yahoo\'s own scoreboard payload and compared with what the')
 p('shard stored and what the ranking selected. The owner is re-resolved from the')
 p('raw response through `owners.json`, so a misattributed record would fail here.')
+p()
+p('The batting-average record is included deliberately: it comes from a season with')
+p('no at-bat count, which is the case the assumed qualifier admits.')
 p()
 p('| Record | Owner | Season, week | Yahoo raw | Shard | Board | Result |')
 p('|---|---|---|---|---|---|---|')
@@ -149,7 +157,7 @@ for (const target of TARGETS) {
 
 p()
 p(failures === 0
-  ? `All ${TARGETS.length} records agree with Yahoo's raw payload. Four match value for ` +
+  ? `All ${TARGETS.length} records agree with Yahoo's raw payload. Five match value for ` +
     `value; the fifth is the week in which a team started nobody, where Yahoo returns an ` +
     `empty string and the shard stores the zero it represents. That case is accepted only ` +
     `when the team also reports no completed games, so a genuine gap could not pass as a zero.`
