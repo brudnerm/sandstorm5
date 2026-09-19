@@ -191,6 +191,20 @@
   background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
   box-shadow: inset 0 1px 0 var(--plaque-lip), var(--shadow);
 }
+/* A curated plaque's rule is broken rather than solid, so hand-entered
+   content reads as different from a computed record before anything is read. */
+.trophy-plaque:has(.trophy-tag.curated)::after {
+  background: repeating-linear-gradient(
+    90deg, var(--brass) 0 6px, transparent 6px 11px
+  );
+  opacity: 0.85;
+}
+.trophy-plaque.shame:has(.trophy-tag.curated)::after {
+  background: repeating-linear-gradient(
+    90deg, var(--tarnish) 0 6px, transparent 6px 11px
+  );
+}
+
 /* The engraved rule under the eyebrow — the one overtly decorative touch. */
 .trophy-plaque::after {
   content: '';
@@ -893,3 +907,54 @@
 }
 .trophy-names-name { color: var(--text); min-width: 0; }
 .trophy-names-owner .trophy-expander { margin-top: 8px; font-size: 10px; padding: 5px 9px; }
+
+/* Curated sections usually hold one or two entries, so a three-column grid
+   would strand a single card at a third of the width. These pack from the
+   left at a consistent readable measure instead, which looks deliberate at
+   any count. */
+.trophy-curated-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 400px));
+  justify-content: start;
+  gap: 12px;
+}
+
+/* ---------- Curated entries ----------
+   Hand-entered content has to be distinguishable from a computed record at a
+   glance, so the engraved rule along the top of a curated plaque is broken
+   rather than solid, and every entry carries its marks. */
+.trophy-curated-marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.trophy-curated-marks .trophy-tag { margin-left: 0; }
+.trophy-tag.curated {
+  border-style: dashed;
+  border-color: var(--brass);
+  color: var(--brass);
+}
+/* Brass does not carry on the cooler shame stock, so a curated mark on a
+   tarnished plaque takes the tarnish instead. */
+.trophy-plaque.shame .trophy-tag.curated {
+  border-color: var(--tarnish);
+  color: var(--tarnish);
+}
+.trophy-tag.source-confirmed { border-color: var(--win); color: var(--win); }
+.trophy-tag.source-reported { border-color: var(--text-3); color: var(--text-3); }
+
+.trophy-curated-note {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-3);
+}
+.trophy-curated-body {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.trophy-veto-player { display: block; }

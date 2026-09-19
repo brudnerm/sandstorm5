@@ -47,6 +47,8 @@ import { normalizeScoreboard } from '../yahoo/normalize/scoreboard.js'
 import { normalizeSettings } from '../yahoo/normalize/settings.js'
 import { normalizeStandings } from '../yahoo/normalize/standings.js'
 import { cachedGet } from './cache.js'
+import curatedJson from '../domain/curated.json' with { type: 'json' }
+import { validateCurated, type CuratedShard } from '../domain/curated.js'
 import { buildCopy, type CopyShard } from './copy.js'
 import { buildDrafts } from './drafts.js'
 import { validate } from './validate.js'
@@ -573,6 +575,31 @@ console.log(
   `(${approved} approved, ${Object.keys(copyShard.entries).length - approved} draft)`,
 )
 
+// ---------------------------------------------------------------- curated
+// Hand-entered content, sourced from the repo so it is reviewed like code
+// and cannot be lost when the data branch is rebuilt. A plaque that cites a
+// statistic is checked against the stored team-week: a curated entry may be
+// hand-written, but it may not be wrong.
+const curatedShard = curatedJson as unknown as CuratedShard
+const derivedKeepers = draftsShard.seasons.flatMap(d =>
+  d.keepers.map(k => ({ season: d.season, ownerId: k.ownerId, playerName: k.playerName })),
+)
+const curatedProblems = validateCurated(curatedShard, seasonsShard, weeklyShard, derivedKeepers)
+const curatedCount =
+  curatedShard.vetoes.length + curatedShard.keepers.length + curatedShard.plaques.length
+const curatedApproved = [...curatedShard.vetoes, ...curatedShard.keepers, ...curatedShard.plaques]
+  .filter(e => e.status === 'approved').length
+console.log(
+  `curated: ${curatedCount} entries (${curatedApproved} approved, ${curatedCount - curatedApproved} draft)`,
+)
+for (const problem of curatedProblems) {
+  console.log(`  ${problem.fatal ? 'FATAL' : 'note '} ${problem.entry}: ${problem.problem}`)
+}
+if (curatedProblems.some(p => p.fatal)) {
+  console.error('A curated entry contradicts the record — refusing to write shards.')
+  process.exit(1)
+}
+
 const report = validate({
   seasonsShard, weeklyShard, matchupShard, transactionsShard, draftsShard, globalCategories,
 })
@@ -598,4 +625,5 @@ writeJson(path.join(outDir, 'matchups.json'), matchupShard)
 if (!skipTransactions) writeJson(path.join(outDir, 'transactions.json'), transactionsShard)
 writeJson(path.join(outDir, 'drafts.json'), draftsShard)
 writeJson(copyPath, copyShard)
+writeJson(path.join(outDir, 'curated.json'), curatedShard)
 console.log(`\nWrote shards to data/${LEAGUE_ID}/trophy/`)

@@ -94,6 +94,16 @@ anyone, a final that finished level on categories is described as level rather
 than won, and a gap that runs the wrong way is stated in the terms it is true
 in rather than printed as a negative number.
 
+## Curated content
+
+The Museum holds hand-entered entries. They are marked as curated everywhere
+they appear: a broken rather than solid engraved rule along the top of the
+plaque, and a row of marks giving `Curated`, then `Confirmed` or `Reported`,
+then `Draft` where it applies. See `curated.md` for how to add one.
+
+A curated entry may cite a team-week, and the build fails if the cited figure
+stops matching the stored record. Hand-written does not mean unchecked.
+
 ## Checking it
 
 ```bash

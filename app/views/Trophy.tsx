@@ -14,10 +14,11 @@ import type { Manifest } from '../../src/domain/matchups'
 import SectionHeader from '../components/trophy/SectionHeader'
 import {
   heroSummary, useTrophyCopy, useTrophyDrafts, useTrophyMatchups, useTrophySeasons,
-  useTrophyTransactions, useTrophyWeekly, WINGS, wingBySlug, type HeroTile,
+  useTrophyCurated, useTrophyTransactions, useTrophyWeekly, WINGS, wingBySlug, type HeroTile,
 } from '../lib/trophy'
 import Archive from './trophy/Archive'
 import Champions from './trophy/Champions'
+import Museum from './trophy/Museum'
 import Owners from './trophy/Owners'
 import Records from './trophy/Records'
 import Rivalries from './trophy/Rivalries'
@@ -53,6 +54,7 @@ export default function Trophy({ league, slug, sub }: Props) {
   const weekly = useTrophyWeekly(slug === 'records' || slug === 'owners' ? league.id : '')
   // The heaviest shard, and only the archive needs it.
   const transactions = useTrophyTransactions(slug === 'archive' ? league.id : '')
+  const curated = useTrophyCurated(slug === 'museum' ? league.id : '')
   const drafts = useTrophyDrafts(wantsDraftsAndCopy ? league.id : '')
   const copy = useTrophyCopy(wantsDraftsAndCopy ? league.id : '')
   const data = shard.data
@@ -120,6 +122,14 @@ export default function Trophy({ league, slug, sub }: Props) {
             shard={data}
             matchups={matchups.data}
             transactions={transactions.data}
+          />
+        ) : wing.slug === 'museum' ? (
+          <Museum
+            leagueId={league.id}
+            shard={data}
+            curated={curated.data}
+            section={sub}
+            allowDrafts={allowDrafts}
           />
         ) : wing.slug === 'shame' ? (
           <Shame

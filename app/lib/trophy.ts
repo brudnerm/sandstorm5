@@ -16,6 +16,7 @@ import {
   type TrophyWeek,
   type WeeklyShard,
 } from '../../src/domain/trophy'
+import type { CuratedShard } from '../../src/domain/curated'
 import type { CopyShard } from '../../src/trophy/copy'
 import type { DraftsShard } from '../../src/trophy/drafts'
 import { useJson } from './useJson'
@@ -193,6 +194,12 @@ export const WINGS: Wing[] = [
     blurb: 'Team names, transactions, streaks and the rest of the record.',
     tone: 'praise',
   },
+  {
+    slug: 'museum',
+    title: 'The Museum',
+    blurb: 'Vetoed trades, long-held keepers and one-off plaques, entered by hand.',
+    tone: 'praise',
+  },
 ]
 
 export function wingBySlug(slug: string | null): Wing | null {
@@ -226,6 +233,9 @@ export function useTrophyWeekly(leagueId: string) {
 }
 export function useTrophyTransactions(leagueId: string) {
   return useJson<TransactionsShard>(shardPath(leagueId, 'transactions.json'))
+}
+export function useTrophyCurated(leagueId: string) {
+  return useJson<CuratedShard>(shardPath(leagueId, 'curated.json'))
 }
 
 /**

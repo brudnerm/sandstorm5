@@ -15,6 +15,7 @@
   review artifacts rather than source, so they are regenerated rather than kept
   in history.
 - `pipeline.md` — how the Trophy Room shards are built and refreshed.
+- `curated.md` — how to add a veto, a keeper or a plaque by hand.
 - `stage3-copy.md` — generated; every draft blurb, for review.
 - `stage4-qualifiers.md` — generated; the record qualifiers and the evidence for them.
 - `stage4-spotcheck.md` — generated; displayed records traced back to raw Yahoo.
