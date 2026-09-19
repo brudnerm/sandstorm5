@@ -100,11 +100,20 @@ in rather than printed as a negative number.
 node scripts/contrast.mjs
 npx tsx src/trophy/qualifiers-report.ts
 npx tsx src/trophy/spotcheck.ts
+npx tsx src/trophy/matrix-check.ts
 ```
 
 The second regenerates the record qualifiers and the evidence behind them. The
-third traces displayed records back to the raw Yahoo payloads and exits non-zero
-if any disagrees.
+third traces displayed records back to the raw Yahoo payloads. The fourth proves
+the head-to-head matrix sums to the all-time standings. Both exit non-zero on a
+disagreement.
+
+A note on which seasons count. The all-time standings and the matrix both include
+every season whose regular season is arithmetically complete, which is the current
+one as soon as its last regular-season week is scored. Reading Yahoo's `is_finished`
+flag instead would leave the current season out of the standings while the matrix
+counted it, and that is exactly how the two first came to disagree. Honours are
+still only counted once the season itself has finished.
 
 Walks every text node in the Trophy Room across both themes at phone width and
 fails on anything below WCAG AA. It composites translucent backgrounds and

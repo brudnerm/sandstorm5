@@ -18,6 +18,11 @@ export interface Route {
   week: number | null
   /** Name segment for a slug view: a retro article, or a Trophy Room wing. */
   slug?: string | null
+  /**
+   * A fourth segment under a slug view, so a Trophy Room wing can address
+   * something inside itself — #/kp/trophy/owners/hingston.
+   */
+  sub?: string | null
 }
 
 export function parseHash(hash: string): Route {
@@ -25,10 +30,14 @@ export function parseHash(hash: string): Route {
   const league = parts[0] ?? null
   const view = VIEWS.find(v => v === parts[1]) ?? 'home'
   if (SLUG_VIEWS.includes(view)) {
-    return { league, view, week: null, slug: parts[2] ? decodeURIComponent(parts[2]) : null }
+    return {
+      league, view, week: null,
+      slug: parts[2] ? decodeURIComponent(parts[2]) : null,
+      sub: parts[3] ? decodeURIComponent(parts[3]) : null,
+    }
   }
   const week = parts[2] ? Number.parseInt(parts[2], 10) : null
-  return { league, view, week: Number.isNaN(week) ? null : week, slug: null }
+  return { league, view, week: Number.isNaN(week) ? null : week, slug: null, sub: null }
 }
 
 export function routeToHash(route: Route): string {
@@ -36,6 +45,7 @@ export function routeToHash(route: Route): string {
   const parts = [route.league, route.view]
   if (SLUG_VIEWS.includes(route.view)) {
     if (route.slug) parts.push(encodeURIComponent(route.slug))
+    if (route.slug && route.sub) parts.push(encodeURIComponent(route.sub))
   } else {
     const hasWeek = route.view === 'scoreboard' || route.view === 'home'
     if (hasWeek && route.week !== null) parts.push(String(route.week))

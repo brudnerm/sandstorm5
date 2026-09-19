@@ -136,7 +136,12 @@ export default function App() {
         {league && route.view === 'draft' && <Draft key={league.id} league={league} />}
         {league && route.view === 'injuries' && <Injuries key={league.id} league={league} />}
         {league && route.view === 'trophy' && (
-          <Trophy key={league.id} league={league} slug={route.slug ?? null} />
+          <Trophy
+            key={league.id}
+            league={league}
+            slug={route.slug ?? null}
+            sub={route.sub ?? null}
+          />
         )}
         {league && route.view === 'retro' && (
           <Retro

@@ -18,6 +18,8 @@
 - `stage3-copy.md` — generated; every draft blurb, for review.
 - `stage4-qualifiers.md` — generated; the record qualifiers and the evidence for them.
 - `stage4-spotcheck.md` — generated; displayed records traced back to raw Yahoo.
+- `stage5-matrix-check.md` — generated; the head-to-head matrix reconciled against
+  the all-time standings.
 - `stage1-report.md` — generated; rebuild with `npx tsx src/trophy/report.ts`.
 
 The owner map moved to `src/domain/owners.json`, beside `leagues.ts`, since it is

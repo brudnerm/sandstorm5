@@ -17,13 +17,17 @@ import {
   useTrophyWeekly, WINGS, wingBySlug, type HeroTile,
 } from '../lib/trophy'
 import Champions from './trophy/Champions'
+import Owners from './trophy/Owners'
 import Records from './trophy/Records'
+import Rivalries from './trophy/Rivalries'
 import Shame from './trophy/Shame'
 import StyleSample from './trophy/StyleSample'
 
 interface Props {
   league: Manifest['leagues'][number]
   slug: string | null
+  /** A fourth path segment, e.g. the owner on #/kp/trophy/owners/kc. */
+  sub: string | null
 }
 
 function Tile({ tile }: { tile: HeroTile }) {
@@ -37,14 +41,14 @@ function Tile({ tile }: { tile: HeroTile }) {
   )
 }
 
-export default function Trophy({ league, slug }: Props) {
+export default function Trophy({ league, slug, sub }: Props) {
   const shard = useTrophySeasons(league.id)
   // The wings that need them fetch their own shards; useJson only requests a
   // path when it is asked for, so the landing page still loads one file.
-  const wantsMatchups = slug === 'champions'
+  const wantsMatchups = slug === 'champions' || slug === 'rivalries' || slug === 'owners'
   const wantsDraftsAndCopy = slug === 'champions' || slug === 'shame'
   const matchups = useTrophyMatchups(wantsMatchups ? league.id : '')
-  const weekly = useTrophyWeekly(slug === 'records' ? league.id : '')
+  const weekly = useTrophyWeekly(slug === 'records' || slug === 'owners' ? league.id : '')
   const drafts = useTrophyDrafts(wantsDraftsAndCopy ? league.id : '')
   const copy = useTrophyCopy(wantsDraftsAndCopy ? league.id : '')
   const data = shard.data
@@ -54,7 +58,7 @@ export default function Trophy({ league, slug }: Props) {
   const allowDrafts = import.meta.env.DEV
 
   // The wings are long; arriving at one from an email should start at the top.
-  useEffect(() => { window.scrollTo({ top: 0 }) }, [slug])
+  useEffect(() => { window.scrollTo({ top: 0 }) }, [slug, sub])
 
   if (shard.error) {
     return (
@@ -96,6 +100,16 @@ export default function Trophy({ league, slug }: Props) {
           />
         ) : wing.slug === 'records' ? (
           <Records shard={data} weekly={weekly.data} />
+        ) : wing.slug === 'owners' ? (
+          <Owners
+            leagueId={league.id}
+            shard={data}
+            weekly={weekly.data}
+            matchups={matchups.data}
+            ownerId={sub}
+          />
+        ) : wing.slug === 'rivalries' ? (
+          <Rivalries leagueId={league.id} shard={data} matchups={matchups.data} />
         ) : wing.slug === 'shame' ? (
           <Shame
             shard={data}
