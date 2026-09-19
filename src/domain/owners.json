@@ -1,37 +1,37 @@
 {
-  "_comment": "Hand-maintained owner identity for Keeping Pattycakes. Owners are the stable identity across seasons; team names are per-season context and come from Yahoo, so they are NOT stored here. Yahoo no longer returns manager GUIDs (every endpoint reports the literal string \"--hidden--\"), so `id` is the join key and no GUID is recorded anywhere in this repo. Most team-seasons resolve by yahooNicknames. The three owners who left before Yahoo hid nicknames cannot, so they carry claimedTeamSeasons: the exact (season, team name) pairs that identify them.",
+  "_comment": "Hand-maintained owner identity for Keeping Pattycakes. Owners are the stable identity across seasons; team names are per-season context and come from Yahoo, so they are NOT stored here. Yahoo no longer returns manager GUIDs (every endpoint reports the literal string \"--hidden--\"), so `id` is the join key and no GUID is recorded anywhere in this repo. `id` is derived from displayName, not from the Yahoo nickname, because it is published in seasons.json and in owner-page URLs and two nicknames are full names. Most team-seasons resolve by yahooNicknames. The three owners who left before Yahoo hid nicknames cannot, so they carry claimedTeamSeasons: the exact (season, team name) pairs that identify them.",
   "league": "kp",
   "owners": [
     {
-      "id": "swan",
+      "id": "hingston",
       "displayName": "Hingston",
       "yahooNicknames": [
         "Swan"
       ]
     },
     {
-      "id": "rich-garcis",
+      "id": "dan",
       "displayName": "Dan",
       "yahooNicknames": [
         "Rich Garcis"
       ]
     },
     {
-      "id": "angel-escobar",
+      "id": "brudner",
       "displayName": "Brudner",
       "yahooNicknames": [
         "angel escobar"
       ]
     },
     {
-      "id": "brian-bennett",
+      "id": "bennett",
       "displayName": "Bennett",
       "yahooNicknames": [
         "Brian Bennett"
       ]
     },
     {
-      "id": "will-youmans",
+      "id": "will",
       "displayName": "Will",
       "yahooNicknames": [
         "Will Youmans"

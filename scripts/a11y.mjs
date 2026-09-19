@@ -57,7 +57,7 @@ const width = Number(flag('width', 390))
 const height = Number(flag('height', 844))
 const routes = flag('routes', [
   'trophy', 'trophy/champions', 'trophy/records', 'trophy/owners',
-  'trophy/owners/swan', 'trophy/rivalries', 'trophy/shame', 'trophy/archive',
+  'trophy/owners/hingston', 'trophy/rivalries', 'trophy/shame', 'trophy/archive',
   'trophy/museum', 'trophy/style',
 ].join(',')).split(',')
 

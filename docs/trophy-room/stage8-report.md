@@ -134,21 +134,34 @@ treating them as emoji would be a false positive.
 
 ## What is still outstanding
 
-These are not defects. They are decisions that are the league's to make, and none
-of them can be resolved by code.
-
-1. **The shards are not published.** `.github/workflows/refresh-data.yml` does
-   not run `fetch:trophy`, so the deployed site has no record book. Adding it
-   needs the raw cache available to the runner, and that workflow also carries
-   the refresh-token chain, so it was left alone deliberately rather than
-   changed speculatively.
-2. **Nothing is approved.** All 34 blurbs and all 3 curated entries are `draft`.
+1. **Nothing is approved.** All 34 blurbs and all 3 curated entries are `draft`.
    They are readable in `npm run dev` and render nowhere else. Until some are
    approved, a deployed Trophy Room shows its computed records and none of its
-   writing.
-3. **The style sample is linked from the landing page.** It is a design
-   reference, not a wing, and probably wants hiding before league-mates see it.
-4. **Two transactions from 2011 are unrecoverable.** Yahoo returns HTTP 400 for
-   them, citing a player key that no longer exists. Paging isolates the failure
-   to exactly those two records out of 10,416. The archive says the count is
+   writing. This is the design working as specified, not a defect.
+2. **CI does not rebuild the record book.** The shards are published to the
+   `data` branch directly and survive every refresh, because the refresh
+   workflow restores that branch and force-pushes it back untouched. What CI
+   does not do is regenerate them, so after a season finishes the rebuild is a
+   local `npm run fetch:trophy -- --refresh current` followed by a push. That is
+   an annual operation on a workflow that carries a fragile token chain, so
+   automating it was not worth the risk.
+3. **Two 2011 transactions are unrecoverable.** Yahoo returns HTTP 400 for them,
+   citing a player key that no longer exists. Paging isolates the failure to
+   exactly those two records out of 10,416. The archive says the count is
    incomplete for that season rather than quietly reporting a smaller number.
+
+## Changes made while going live
+
+**Owner ids no longer carry surnames.** The `id` in `owners.json` is published
+in `seasons.json` and appears in every owner-page URL. Two of them were built
+from Yahoo nicknames that are full names, which would have put a surname into a
+shareable link on a public site. Ids are now derived from the display name
+(`hingston`, `dan`, `brudner`, `bennett`, `will`), matching the slugs the retro
+views already used. The Yahoo nicknames stay in the source file because they are
+how a team is matched to a person, but they are no longer published. A scan of
+all seven shards finds no league member's surname; the one remaining hit for
+"swan" is the player Dansby Swanson.
+
+**The style sample is gone from production.** It is a component reference, not a
+wing, and it is now gated on the same flag as draft copy. The landing page shows
+no link to it and the direct URL falls back to the Trophy Room.

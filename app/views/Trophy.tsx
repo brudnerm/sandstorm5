@@ -82,7 +82,10 @@ export default function Trophy({ league, slug, sub }: Props) {
 
   const base = `#/${league.id}/trophy`
 
-  if (slug === 'style') {
+  // The style sample is a build-time reference for checking components, not a
+  // wing. It is gated on the same flag as draft copy, so league-mates opening
+  // the deployed site never reach it and never see a link to it.
+  if (slug === 'style' && allowDrafts) {
     return (
       <div className="view trophy">
         <a className="trophy-back" href={base}>Trophy Room</a>
@@ -189,21 +192,23 @@ export default function Trophy({ league, slug, sub }: Props) {
         </nav>
       </section>
 
-      <section>
-        <SectionHeader
-          eyebrow="Reference"
-          title="Style sample"
-          note="Every component in both treatments, for checking the look before a wing is built on it."
-        />
-        <nav className="trophy-wings" aria-label="Reference">
-          <a className="trophy-wing" href={`${base}/style`}>
-            <p className="trophy-eyebrow">Reference</p>
-            <h2 className="trophy-wing-title">Components</h2>
-            <p className="trophy-wing-blurb">Plaques, tables, chips and headers, praise and shame.</p>
-            <span className="trophy-wing-go">Enter</span>
-          </a>
-        </nav>
-      </section>
+      {allowDrafts && (
+        <section>
+          <SectionHeader
+            eyebrow="Reference"
+            title="Style sample"
+            note="Every component in both treatments, for checking the look before a wing is built on it. Local preview only."
+          />
+          <nav className="trophy-wings" aria-label="Reference">
+            <a className="trophy-wing" href={`${base}/style`}>
+              <p className="trophy-eyebrow">Reference</p>
+              <h2 className="trophy-wing-title">Components</h2>
+              <p className="trophy-wing-blurb">Plaques, tables, chips and headers, praise and shame.</p>
+              <span className="trophy-wing-go">Enter</span>
+            </a>
+          </nav>
+        </section>
+      )}
     </div>
   )
 }

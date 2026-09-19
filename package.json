@@ -20,7 +20,8 @@
     "fetch:rosters": "tsx src/pipeline/fetch-rosters.ts",
     "fetch:news": "tsx src/pipeline/fetch-news.ts",
     "fetch:trophy": "tsx src/trophy/backfill.ts",
-    "verify:trophy": "tsx src/trophy/verify.ts"
+    "verify:trophy": "tsx src/trophy/verify.ts",
+    "publish:trophy": "bash scripts/publish-trophy.sh"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

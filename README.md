@@ -87,10 +87,21 @@ against the stored record at build time and a mismatch stops the build.
 
 ### Publishing the shards
 
-`.github/workflows/refresh-data.yml` does not run `fetch:trophy`, so the record
-book is built locally and is not yet published by CI. Adding it needs the raw
-cache available to the runner, and that workflow also holds the refresh-token
-chain, so it is left alone deliberately. See `docs/trophy-room/pipeline.md`.
+The shards live on the `data` branch, like every other snapshot. They are pushed
+there directly rather than rebuilt by CI, and they persist: the refresh workflow
+restores that branch into `data/`, runs the pipelines, and force-pushes the whole
+directory back, so anything already there survives untouched. Nothing in the
+refresh workflow needs to change, and its Yahoo token chain is not involved.
+
+After a rebuild, publish with:
+
+```bash
+npm run publish:trophy
+```
+
+That pushes only `data/kp/trophy/` onto the existing `data` branch and leaves
+every other snapshot alone. A push to `main` then triggers a Pages deploy, which
+picks the shards up.
 
 ## Adding a league or season
 
