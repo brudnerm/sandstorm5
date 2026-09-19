@@ -14,6 +14,11 @@ token_response.json
 *.pem
 *.key
 
+# Review screenshots — regenerated on demand by scripts/screenshot.mjs.
+# They are review artifacts, not source, and 3+ MB per stage would live in
+# git history forever.
+docs/trophy-room/screenshots/
+
 # OS / editor
 .DS_Store
 *.local

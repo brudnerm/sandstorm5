@@ -4,34 +4,48 @@
  */
 import { useCallback, useSyncExternalStore } from 'react'
 
-export type View = 'home' | 'scoreboard' | 'standings' | 'strategy' | 'draft' | 'injuries' | 'retro'
+export type View =
+  | 'home' | 'scoreboard' | 'standings' | 'strategy' | 'draft' | 'injuries' | 'retro' | 'trophy'
 
-const VIEWS: View[] = ['home', 'scoreboard', 'standings', 'strategy', 'draft', 'injuries', 'retro']
+const VIEWS: View[] = ['home', 'scoreboard', 'standings', 'strategy', 'draft', 'injuries', 'retro', 'trophy']
+
+/** Views whose third path segment is a name, not a week number. */
+const SLUG_VIEWS: View[] = ['retro', 'trophy']
 
 export interface Route {
   league: string | null
   view: View
   week: number | null
-  /** Article slug for the retro view (e.g. "will"). */
+  /** Name segment for a slug view: a retro article, or a Trophy Room wing. */
   slug?: string | null
+  /**
+   * A fourth segment under a slug view, so a Trophy Room wing can address
+   * something inside itself — #/kp/trophy/owners/hingston.
+   */
+  sub?: string | null
 }
 
 export function parseHash(hash: string): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean)
   const league = parts[0] ?? null
   const view = VIEWS.find(v => v === parts[1]) ?? 'home'
-  if (view === 'retro') {
-    return { league, view, week: null, slug: parts[2] ? decodeURIComponent(parts[2]) : null }
+  if (SLUG_VIEWS.includes(view)) {
+    return {
+      league, view, week: null,
+      slug: parts[2] ? decodeURIComponent(parts[2]) : null,
+      sub: parts[3] ? decodeURIComponent(parts[3]) : null,
+    }
   }
   const week = parts[2] ? Number.parseInt(parts[2], 10) : null
-  return { league, view, week: Number.isNaN(week) ? null : week, slug: null }
+  return { league, view, week: Number.isNaN(week) ? null : week, slug: null, sub: null }
 }
 
 export function routeToHash(route: Route): string {
   if (!route.league) return '#/'
   const parts = [route.league, route.view]
-  if (route.view === 'retro') {
+  if (SLUG_VIEWS.includes(route.view)) {
     if (route.slug) parts.push(encodeURIComponent(route.slug))
+    if (route.slug && route.sub) parts.push(encodeURIComponent(route.sub))
   } else {
     const hasWeek = route.view === 'scoreboard' || route.view === 'home'
     if (hasWeek && route.week !== null) parts.push(String(route.week))

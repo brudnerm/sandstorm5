@@ -74,7 +74,10 @@ function matchup(week: number, status: string, a: MatchupTeam, b: MatchupTeam, i
       else t.score.t++
     }
   }
-  return { week, weekStart: null, weekEnd: null, status, isPlayoffs, teams: [a, b] }
+  return {
+    week, weekStart: null, weekEnd: null, status, isPlayoffs,
+    isConsolation: false, winnerTeamKey: null, teams: [a, b],
+  }
 }
 
 // Week 1: A sweeps B; C beats D on ERA, ties HR.

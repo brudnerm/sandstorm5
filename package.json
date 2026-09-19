@@ -18,7 +18,10 @@
     "fetch:mlb": "tsx src/pipeline/fetch-mlb.ts",
     "fetch:draft": "tsx src/pipeline/fetch-draft.ts",
     "fetch:rosters": "tsx src/pipeline/fetch-rosters.ts",
-    "fetch:news": "tsx src/pipeline/fetch-news.ts"
+    "fetch:news": "tsx src/pipeline/fetch-news.ts",
+    "fetch:trophy": "tsx src/trophy/backfill.ts",
+    "verify:trophy": "tsx src/trophy/verify.ts",
+    "publish:trophy": "bash scripts/publish-trophy.sh"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

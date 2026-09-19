@@ -33,6 +33,15 @@ export interface Matchup {
   /** Yahoo status: 'preevent' | 'midevent' | 'postevent' */
   status: string
   isPlayoffs: boolean
+  /**
+   * Yahoo's consolation flag. Note this is NOT the complement of a
+   * championship game: Yahoo reports `is_consolation = 0` on the third- and
+   * fifth-place games too, so a false value means "not in the consolation
+   * bracket", not "on the path to the title".
+   */
+  isConsolation: boolean
+  /** Winning team key, or null while the week is unfinished or tied. */
+  winnerTeamKey: string | null
   teams: [MatchupTeam, MatchupTeam]
 }
 

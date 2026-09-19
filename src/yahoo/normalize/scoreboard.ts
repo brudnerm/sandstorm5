@@ -181,6 +181,8 @@ export function normalizeScoreboard(
       weekEnd: matchup['week_end'] ? String(matchup['week_end']) : null,
       status: String(matchup['status'] ?? 'unknown'),
       isPlayoffs: String(matchup['is_playoffs'] ?? '0') === '1',
+      isConsolation: String(matchup['is_consolation'] ?? '0') === '1',
+      winnerTeamKey: matchup['winner_team_key'] ? String(matchup['winner_team_key']) : null,
       teams: teams as [MatchupTeam, MatchupTeam],
     })
   }

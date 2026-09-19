@@ -42,9 +42,66 @@ npm run fetch:settings    # settings shards for every league-season (--current f
 npm run fetch:live        # standings + scoreboards + full-season schedule + manifest (incremental)
 npm run fetch:players     # rosters × stat windows + free-agent watchlist (needs fetch:live)
 npm run fetch:mlb         # MLBAM id map + Statcast expected stats (statsapi + Savant, no auth)
+npm run fetch:trophy      # Trophy Room shards, all seasons (see docs/trophy-room/pipeline.md)
+npm run verify:trophy     # re-validate the Trophy Room shards as written on disk
 npm run discover-leagues  # print registry entries for all your Yahoo leagues
 npm run token ensure      # refresh only if expired — see AUTH.md
 ```
+
+## Refreshing the Trophy Room after a season
+
+The Trophy Room is the league's permanent record book, built from every season
+back to 2009. Finished seasons never change, so a rebuild reads them from the
+raw-response cache and issues no requests. After Yahoo marks a season finished:
+
+```bash
+npm run fetch:trophy -- --refresh current
+```
+
+That re-fetches the newest season, rebuilds all seven shards, and refuses to
+write if any of its twelve validation checks fail. Then check what was written,
+rather than what was held in memory:
+
+```bash
+npm run verify:trophy
+```
+
+That re-runs every check against the files on disk and treats a check
+that examined zero rows as a failure, so a partial build cannot pass by having
+nothing to inspect. Two more reports are worth running after a new season:
+
+```bash
+npx tsx src/trophy/matrix-check.ts   # head-to-head totals vs all-time standings
+npx tsx src/trophy/audit.ts          # trace 20 sampled displayed numbers to raw Yahoo
+```
+
+### Approving the writing
+
+Every blurb the pipeline generates is written with `status: "draft"` and only
+`"approved"` entries render on the deployed site. Drafts are visible in `npm run
+dev` so they can be read in place, and nothing else has to change to publish
+one: edit the entry's status in `data/kp/trophy/copy.json`. A rebuild never
+rewrites an entry that has been approved. The same applies to the hand-entered
+Museum content in `curated.json`, where any statistic an entry cites is checked
+against the stored record at build time and a mismatch stops the build.
+
+### Publishing the shards
+
+The shards live on the `data` branch, like every other snapshot. They are pushed
+there directly rather than rebuilt by CI, and they persist: the refresh workflow
+restores that branch into `data/`, runs the pipelines, and force-pushes the whole
+directory back, so anything already there survives untouched. Nothing in the
+refresh workflow needs to change, and its Yahoo token chain is not involved.
+
+After a rebuild, publish with:
+
+```bash
+npm run publish:trophy
+```
+
+That pushes only `data/kp/trophy/` onto the existing `data` branch and leaves
+every other snapshot alone. A push to `main` then triggers a Pages deploy, which
+picks the shards up.
 
 ## Adding a league or season
 
@@ -54,12 +111,14 @@ That's it — no code changes.
 
 ## Delivery phases
 
-- **Phase 0** — foundation: registry, client, normalizer, settings pipeline ✅
-- **Phase 1** — MVP: scoreboard + standings, both leagues, deployed ✅
-- **Phase 2** — strategy: Home vs-field matrix with per-player breakdowns,
-  waiver-wire risers vs roster slumpers (z-score valuation) ✅
-- **Phase 3** — transaction history redesign + draft history
-- **Phase 4** — hall of fame + cross-season trends
+- **Phase 0** — done. Foundation: registry, client, normalizer, settings pipeline.
+- **Phase 1** — done. MVP: scoreboard + standings, both leagues, deployed.
+- **Phase 2** — done. Strategy: Home vs-field matrix with per-player breakdowns,
+  waiver-wire risers vs roster slumpers (z-score valuation).
+- **Phase 3** — transaction history redesign + draft history.
+- **Phase 4** — done, pending publication. The Trophy Room: the KP record book
+  from 2009 on, covering champions, weekly records, owners, rivalries,
+  extremes and archives, and hand-curated wings.
 
 ## Strategic views
 

@@ -65,7 +65,7 @@ Pick one:
   app you already own, leaving the CI secrets on the prod app. The two chains
   never touch.
 
-  > ⚠️ Use an **existing** app. Yahoo has moved the Fantasy Sports API behind an
+  > **Important.** Use an **existing** app. Yahoo has moved the Fantasy Sports API behind an
   > application-and-approval process, and the Fantasy Sports permission is no
   > longer offered on the Create Application form — so a newly created app
   > cannot read fantasy data, and an existing one that has it cannot be

@@ -1,0 +1,1007 @@
+/* ---------- Trophy Room ----------
+   An old club's trophy room: engraved plaques, restrained brass, serif
+   display type. It should read as its own wing of the building while still
+   clearly being the same building — so every colour is either one of the
+   app's existing tokens or derived from them, and the serif is the one the
+   Season review already uses.
+
+   Two treatments throughout: praise is brass on warm parchment, shame is
+   tarnished grey-green and deliberately colder. Tables stay plain in both,
+   because density and legibility beat atmosphere once there are numbers.
+
+   Scoped to .trophy so none of it leaks into the rest of the app. */
+
+.trophy {
+  /* Praise: brass on warm stock */
+  --brass: #8a6a1f;
+  --brass-bright: #a9832a;
+  --plaque-top: #f6f2e7;
+  --plaque-bottom: #efe8d8;
+  --plaque-edge: #d8cbac;
+  --plaque-lip: rgba(255, 255, 255, 0.75);
+
+  /* Shame: tarnished metal, cooler and duller */
+  --tarnish: #4e5a53;
+  --tarnish-strong: #3b4540;
+  --shame-top: #e8eae6;
+  --shame-bottom: #dcdfd9;
+  --shame-edge: #bfc5bb;
+  --shame-lip: rgba(255, 255, 255, 0.6);
+
+  /* The app's muted grey sits at about 3.2:1 on these warm plaque stocks,
+     under the 4.5:1 this section needs for the small print it leans on
+     (qualifiers, spans, team names). Darkened here only — the rest of the
+     app keeps its own token. */
+  --text-3: #615f59;
+  /* The app's amber tie colour reaches only 3.5:1 on the plaque stock, and
+     the category chips print it at 9 and 11px. Darkened here only. */
+  --tie: #8a5000;
+
+  --trophy-serif: Charter, 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --plaque-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+:root[data-theme='dark'] .trophy {
+  --brass: #d7ae4b;
+  --brass-bright: #efc65f;
+  --plaque-top: #221e17;
+  --plaque-bottom: #1a1713;
+  --plaque-edge: #3e3625;
+  --plaque-lip: rgba(255, 255, 255, 0.06);
+
+  /* Pushed cooler and greener than the plaque's warm brown-black, so the
+     two treatments separate at a glance in dark mode as well as light. */
+  --tarnish: #9db09d;
+  --tarnish-strong: #b4c4b4;
+  --shame-top: #161b18;
+  --shame-bottom: #111514;
+  --shame-edge: #333d36;
+  --shame-lip: rgba(190, 215, 195, 0.05);
+
+  /* The app's dark tokens already clear 4.5:1 on these stocks, so the light
+     overrides above are handed back rather than left to leak into dark. */
+  --text-3: #8f8d83;
+  --tie: #f0a53c;
+}
+
+/* ---------- Masthead ---------- */
+.trophy-masthead {
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 14px;
+}
+.trophy-masthead-title {
+  font-family: var(--trophy-serif);
+  font-size: 32px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0;
+}
+.trophy-masthead-sub {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 40em;
+}
+
+/* The small uppercase label that sits above every unit. */
+.trophy-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 6px;
+}
+.shame .trophy-eyebrow,
+.trophy-eyebrow.shame {
+  color: var(--tarnish);
+}
+
+/* ---------- Section header ---------- */
+.trophy-section-head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+.trophy-section-title {
+  font-family: var(--trophy-serif);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.trophy-section-note {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-3);
+  max-width: 44em;
+}
+
+/* ---------- Hero strip ---------- */
+.trophy-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 560px) {
+  .trophy-hero { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 900px) {
+  .trophy-hero { grid-template-columns: repeat(4, 1fr); }
+}
+
+.trophy-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  box-shadow: inset 0 1px 0 var(--plaque-lip);
+}
+.trophy-tile.shame {
+  border-color: var(--shame-edge);
+  background: linear-gradient(180deg, var(--shame-top), var(--shame-bottom));
+  box-shadow: inset 0 1px 0 var(--shame-lip);
+}
+.trophy-tile-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.trophy-tile.shame .trophy-tile-label { color: var(--tarnish); }
+
+.trophy-tile-name {
+  font-family: var(--trophy-serif);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+}
+.trophy-tile-value {
+  font-family: var(--trophy-serif);
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+}
+.trophy-tile-detail {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.35;
+}
+
+/* ---------- Plaque ---------- */
+.trophy-plaque {
+  position: relative;
+  padding: 16px 16px 14px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  box-shadow: inset 0 1px 0 var(--plaque-lip), var(--shadow);
+}
+/* A curated plaque's rule is broken rather than solid, so hand-entered
+   content reads as different from a computed record before anything is read. */
+.trophy-plaque:has(.trophy-tag.curated)::after {
+  background: repeating-linear-gradient(
+    90deg, var(--brass) 0 6px, transparent 6px 11px
+  );
+  opacity: 0.85;
+}
+.trophy-plaque.shame:has(.trophy-tag.curated)::after {
+  background: repeating-linear-gradient(
+    90deg, var(--tarnish) 0 6px, transparent 6px 11px
+  );
+}
+
+/* The engraved rule under the eyebrow — the one overtly decorative touch. */
+.trophy-plaque::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brass), transparent 70%);
+  opacity: 0.7;
+}
+.trophy-plaque.shame {
+  border-color: var(--shame-edge);
+  background: linear-gradient(180deg, var(--shame-top), var(--shame-bottom));
+  box-shadow: inset 0 1px 0 var(--shame-lip), var(--shadow);
+}
+.trophy-plaque.shame::after {
+  background: linear-gradient(90deg, var(--tarnish), transparent 70%);
+  opacity: 0.55;
+}
+
+.trophy-plaque-season {
+  font-family: var(--trophy-serif);
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--brass);
+}
+.trophy-plaque.shame .trophy-plaque-season { color: var(--tarnish); }
+
+.trophy-plaque-title {
+  font-family: var(--trophy-serif);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 4px 0 0;
+  color: var(--text);
+}
+.trophy-plaque-sub {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.45;
+}
+.trophy-plaque-body { margin-top: 10px; }
+.trophy-plaque-foot {
+  margin: 10px 0 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--plaque-edge);
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.45;
+}
+.trophy-plaque.shame .trophy-plaque-foot { border-top-color: var(--shame-edge); }
+
+/* ---------- Owner chip ---------- */
+.trophy-owner {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+.trophy-owner-name {
+  font-weight: 650;
+  color: var(--text);
+  white-space: nowrap;
+}
+.trophy-owner-team {
+  font-size: 12px;
+  color: var(--text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.trophy-owner.stacked { flex-direction: column; gap: 1px; align-items: flex-start; }
+.trophy-owner.stacked .trophy-owner-team { font-size: 11px; }
+
+/* ---------- Record table ----------
+   Deliberately plainer than the plaques: hairlines, tabular numerals, no
+   fill. Atmosphere is for the frame, not for the numbers. */
+.trophy-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  min-width: 0;
+  contain: paint;
+  /* A dense table has to scroll sideways on a phone, and nothing says so.
+     These four layers draw a shadow at whichever edge has content beyond it:
+     the two `local` gradients scroll with the content and mask the `scroll`
+     shadows when there is nothing more that way. */
+  background:
+    linear-gradient(to right, var(--bg) 40%, transparent) left center / 28px 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 40%, transparent) right center / 28px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(20, 16, 8, 0.22), transparent) left center / 12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(20, 16, 8, 0.22), transparent) right center / 12px 100% no-repeat scroll;
+}
+.trophy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.trophy-table caption {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+  padding-bottom: 8px;
+}
+.trophy-table.shame caption { color: var(--tarnish); }
+
+.trophy-table th,
+.trophy-table td {
+  padding: 7px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.trophy-table thead th {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--text-3);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+}
+.trophy-table tbody th {
+  font-weight: 650;
+  color: var(--text);
+}
+.trophy-table td.num,
+.trophy-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.trophy-table td.wrap,
+.trophy-table th.wrap { white-space: normal; min-width: 7em; }
+.trophy-table tbody tr:last-child th,
+.trophy-table tbody tr:last-child td { border-bottom: none; }
+.trophy-table tbody tr:hover td,
+.trophy-table tbody tr:hover th { background: var(--surface-2); }
+
+/* The leading row in a record table — the record itself. */
+.trophy-table tbody tr.leader th,
+.trophy-table tbody tr.leader td { background: var(--accent-soft); }
+/* The muted rank grey does not carry enough contrast on the highlight, so
+   the record row gets a stronger one. */
+.trophy-table tbody tr.leader .rank { color: var(--text-2); }
+/* A brass highlight on a tarnished table would undo the treatment, so the
+   shame variant highlights in its own metal. */
+.trophy-table.shame tbody tr.leader th,
+.trophy-table.shame tbody tr.leader td {
+  background: color-mix(in srgb, var(--tarnish) 16%, transparent);
+}
+/* The muted team name loses contrast on either highlight, same as the rank. */
+.trophy-table tbody tr.leader .trophy-owner-team { color: var(--text-2); }
+
+.trophy-table .rank {
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+  width: 1%;
+}
+
+/* ---------- Wing index ---------- */
+.trophy-wings {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 620px) {
+  .trophy-wings { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 960px) {
+  .trophy-wings { grid-template-columns: repeat(3, 1fr); }
+}
+.trophy-wing {
+  display: block;
+  padding: 14px 15px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  box-shadow: inset 0 1px 0 var(--plaque-lip);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.trophy-wing.shame {
+  border-color: var(--shame-edge);
+  background: linear-gradient(180deg, var(--shame-top), var(--shame-bottom));
+  box-shadow: inset 0 1px 0 var(--shame-lip);
+}
+.trophy-wing:hover { border-color: var(--brass); }
+.trophy-wing.shame:hover { border-color: var(--tarnish); }
+.trophy-wing-title {
+  font-family: var(--trophy-serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 2px 0 0;
+}
+.trophy-wing-blurb {
+  margin: 5px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+.trophy-wing-go {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.trophy-wing.shame .trophy-wing-go { color: var(--tarnish); }
+
+/* ---------- Back link ---------- */
+.trophy-back {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  /* A standalone control, so it clears the 24px minimum tap target rather
+     than relying on the inline exception that covers links inside prose. */
+  min-height: 24px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  text-decoration: none;
+  padding: 2px 0;
+}
+.trophy-back::before { content: '\2190\00a0'; }
+.trophy-back:hover { color: var(--brass); }
+
+/* ---------- Placeholder for wings not yet built ---------- */
+.trophy-pending {
+  padding: 22px 16px;
+  border: 1px dashed var(--border);
+  border-radius: var(--plaque-radius);
+  text-align: center;
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+/* ---------- Style sample scaffolding ---------- */
+.trophy-sample-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 620px) {
+  .trophy-sample-grid { grid-template-columns: 1fr 1fr; }
+}
+.trophy-sample-note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-3);
+  margin: 0 0 10px;
+  max-width: 44em;
+}
+
+/* ---------- Focus, for keyboard users ---------- */
+.trophy a:focus-visible,
+.trophy button:focus-visible,
+.trophy [tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respect a reduced-motion preference: the only motion here is decorative. */
+@media (prefers-reduced-motion: reduce) {
+  .trophy-wing { transition: none; }
+}
+
+/* ---------- Labelled line ----------
+   A small caps label beside a value, for the facts a plaque carries under
+   its title: runner-up, seed, the week a final was played. */
+.trophy-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 0;
+  min-width: 0;
+}
+.trophy-line + .trophy-line { border-top: 1px solid var(--plaque-edge); }
+.trophy-plaque.shame .trophy-line + .trophy-line { border-top-color: var(--shame-edge); }
+.trophy-line-label {
+  flex: none;
+  width: 7.5em;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.trophy-line-value {
+  font-size: 13px;
+  color: var(--text);
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Plaque stack ---------- */
+.trophy-plaques {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 760px) {
+  .trophy-plaques { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1040px) {
+  .trophy-plaques { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- Category strip ----------
+   The twelve categories of a final, each labelled with its outcome in text
+   as well as colour, so the result does not depend on seeing the colour. */
+.trophy-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+.trophy-cat {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--plaque-edge);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.3;
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+}
+.trophy-cat-abbr { font-variant-numeric: tabular-nums; }
+/* The outcome is spelled out rather than left to colour alone, so the result
+   survives a greyscale print or a colour-blind reader. No opacity here: it
+   would quietly undercut the contrast the colours were chosen for. */
+.trophy-cat-outcome {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.trophy-cat.W { border-color: var(--win); color: var(--win); }
+.trophy-cat.L { border-color: var(--loss); color: var(--loss); }
+.trophy-cat.T { border-color: var(--tie); color: var(--tie); }
+
+/* ---------- Inline link inside a plaque footnote ---------- */
+.trophy-inline-link {
+  color: var(--brass);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+/* A link that is the whole content of a cell is a control rather than part
+   of a sentence, so it gets a real tap target. */
+.trophy-table td > .trophy-inline-link,
+.trophy-table th > .trophy-inline-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+.trophy-plaque.shame .trophy-inline-link { color: var(--tarnish); }
+
+/* ---------- Draft copy marker ----------
+   Only ever visible on a dev server: the production build removes the
+   branch that renders it. */
+.trophy-draft { display: block; }
+.trophy-draft-tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 5px;
+  border: 1px dashed var(--text-3);
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  vertical-align: 1px;
+}
+
+/* ---------- Record controls ---------- */
+.trophy-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.trophy-control { display: flex; flex-direction: column; gap: 6px; }
+.trophy-control-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* Category chips. Twelve of them, so they wrap rather than scroll. */
+.trophy-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.trophy-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 10px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  font-size: 12px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+  /* A tap target that clears the 44px guidance once padding is counted. */
+  min-height: 32px;
+}
+.trophy-chip:hover { border-color: var(--brass); }
+.trophy-chip.active {
+  border-color: var(--brass);
+  background: var(--accent-soft);
+  color: var(--text);
+}
+.trophy-chip-dir { font-size: 10px; opacity: 0.8; }
+
+/* Mode control. */
+.trophy-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+}
+.trophy-segment {
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-2);
+  border-right: 1px solid var(--plaque-edge);
+  min-height: 34px;
+}
+.trophy-segment:last-child { border-right: none; }
+.trophy-segment.active { background: var(--accent-soft); color: var(--text); }
+.trophy-segment:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ---------- Boards ---------- */
+.trophy-boards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 860px) {
+  .trophy-boards { grid-template-columns: 1fr 1fr; }
+}
+.trophy-record-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.trophy-expander {
+  margin-top: 12px;
+  padding: 7px 12px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brass);
+  min-height: 34px;
+}
+.trophy-expander:hover { border-color: var(--brass); }
+
+/* A small tag beside a record: week length, bracket, or a week with no games. */
+.trophy-tag {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 1px 5px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  vertical-align: 1px;
+}
+.trophy-tag.warn { border-color: var(--loss); color: var(--loss); }
+
+/* ---------- Method list ---------- */
+.trophy-method {
+  margin: 0;
+  padding-left: 1.1em;
+  max-width: 44em;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.trophy-method li { margin-bottom: 7px; }
+
+/* ---------- Sortable headers ---------- */
+.trophy-sort {
+  display: inline-flex;
+  align-items: center;
+  /* A sort control is a control, so it clears the 24px tap-target floor. */
+  min-height: 24px;
+  gap: 3px;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+.trophy-sort:hover { color: var(--brass); }
+.trophy-sort.active { color: var(--brass); }
+.trophy-sort-mark { font-size: 9px; width: 0.7em; }
+
+.trophy-owner-link { color: inherit; text-decoration: none; }
+/* An owner link filling a table cell is a control rather than part of a
+   sentence, so it gets a real tap target too. */
+.trophy-table th > .trophy-owner-link,
+.trophy-table td > .trophy-owner-link {
+  display: inline-flex;
+  align-items: center;
+  /* Both dimensions, since a two-letter name is narrower than it is tall. */
+  min-height: 24px;
+  min-width: 24px;
+}
+.trophy-owner-link:hover .trophy-owner-name { color: var(--brass); text-decoration: underline; }
+
+/* ---------- Owner page ---------- */
+.trophy-owner-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 760px) {
+  .trophy-owner-summary { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Finish-by-season line. First place at the top, so a good run reads high. */
+.trophy-spark { margin: 8px 0 0; }
+.trophy-spark svg { width: 100%; height: 56px; overflow: visible; }
+.trophy-spark-line {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.trophy-spark-rule {
+  stroke: var(--plaque-edge);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.trophy-spark-dot { fill: var(--brass); }
+.trophy-spark-dot.first { fill: var(--win); }
+.trophy-spark-dot.last { fill: var(--loss); }
+.trophy-spark figcaption {
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-3);
+}
+
+/* ---------- Head-to-head matrix ----------
+   Dense by design. The record is written in every cell, so the colour is a
+   second reading of the same fact rather than the only one. */
+.trophy-matrix-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* The view is a flex column, and a flex item will not shrink below its
+     content width without this — so the matrix pushed the whole document
+     sideways instead of scrolling inside its own box. `contain: paint` is
+     what actually stops the overflow reaching the document's scroll area:
+     without it the page itself scrolled sideways by thirty pixels even
+     though the table was scrolling correctly inside its own box. */
+  min-width: 0;
+  contain: paint;
+  background:
+    linear-gradient(to right, var(--bg) 40%, transparent) left center / 28px 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 40%, transparent) right center / 28px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(20, 16, 8, 0.22), transparent) left center / 12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(20, 16, 8, 0.22), transparent) right center / 12px 100% no-repeat scroll;
+}
+.trophy-matrix {
+  border-collapse: collapse;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.trophy-matrix caption {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+  padding-bottom: 8px;
+}
+.trophy-matrix th {
+  font-size: 10px;
+  font-weight: 700;
+  text-align: left;
+  padding: 0;
+  white-space: nowrap;
+  color: var(--text-2);
+  border-bottom: 1px solid var(--border);
+}
+.trophy-matrix thead th { padding: 5px 7px; }
+/* The row-header link fills its cell so the tap target is the whole cell
+   rather than the few pixels the name occupies. */
+.trophy-matrix tbody th .trophy-owner-link {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 7px;
+}
+.trophy-matrix thead th { color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; }
+/* The owner column stays put while the rest scrolls sideways. */
+.trophy-matrix tbody th {
+  position: sticky;
+  left: 0;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  z-index: 1;
+}
+.trophy-cell {
+  padding: 0;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.trophy-cell button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 24px;
+  padding: 3px 7px;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  white-space: nowrap;
+}
+.trophy-cell.self { background: var(--surface-2); }
+.trophy-cell.none { color: var(--text-3); padding: 5px 7px; }
+.trophy-cell.open button { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* The scale: three steps of advantage either way, plus even. */
+.trophy-cell.even   { background: color-mix(in srgb, var(--text-3) 8%, transparent); }
+.trophy-cell.up1    { background: color-mix(in srgb, var(--win) 12%, transparent); }
+.trophy-cell.up2    { background: color-mix(in srgb, var(--win) 22%, transparent); }
+.trophy-cell.up3    { background: color-mix(in srgb, var(--win) 34%, transparent); }
+.trophy-cell.down1  { background: color-mix(in srgb, var(--loss) 12%, transparent); }
+.trophy-cell.down2  { background: color-mix(in srgb, var(--loss) 22%, transparent); }
+.trophy-cell.down3  { background: color-mix(in srgb, var(--loss) 34%, transparent); }
+
+.trophy-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- In-page jump nav ---------- */
+.trophy-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: -10px;
+}
+.trophy-jump-link {
+  padding: 4px 10px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brass);
+  text-decoration: none;
+}
+.trophy-jump-link:hover { border-color: var(--brass); }
+
+/* ---------- Team name archive ---------- */
+.trophy-names {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 720px) {
+  .trophy-names { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1040px) {
+  .trophy-names { grid-template-columns: repeat(3, 1fr); }
+}
+.trophy-names-owner {
+  padding: 12px 14px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+}
+.trophy-names-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0 0 8px;
+  font-family: var(--trophy-serif);
+  font-size: 17px;
+  font-weight: 700;
+}
+.trophy-names-count {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-3);
+}
+.trophy-names-list { list-style: none; margin: 0; padding: 0; }
+.trophy-names-list li {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 3px 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+.trophy-names-list li + li { border-top: 1px solid var(--plaque-edge); }
+.trophy-names-span {
+  flex: none;
+  width: 6.4em;
+  /* A range must not break across lines: "2012-" over "2017" reads as two
+     different things. */
+  white-space: nowrap;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.trophy-names-name { color: var(--text); min-width: 0; }
+.trophy-names-owner .trophy-expander { margin-top: 8px; font-size: 10px; padding: 5px 9px; }
+
+/* Curated sections usually hold one or two entries, so a three-column grid
+   would strand a single card at a third of the width. These pack from the
+   left at a consistent readable measure instead, which looks deliberate at
+   any count. */
+.trophy-curated-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 400px));
+  justify-content: start;
+  gap: 12px;
+}
+
+/* ---------- Curated entries ----------
+   Hand-entered content has to be distinguishable from a computed record at a
+   glance, so the engraved rule along the top of a curated plaque is broken
+   rather than solid, and every entry carries its marks. */
+.trophy-curated-marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.trophy-curated-marks .trophy-tag { margin-left: 0; }
+.trophy-tag.curated {
+  border-style: dashed;
+  border-color: var(--brass);
+  color: var(--brass);
+}
+/* Brass does not carry on the cooler shame stock, so a curated mark on a
+   tarnished plaque takes the tarnish instead. */
+.trophy-plaque.shame .trophy-tag.curated {
+  border-color: var(--tarnish);
+  color: var(--tarnish);
+}
+.trophy-tag.source-confirmed { border-color: var(--win); color: var(--win); }
+.trophy-tag.source-reported { border-color: var(--text-3); color: var(--text-3); }
+
+.trophy-curated-note {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-3);
+}
+.trophy-curated-body {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.trophy-veto-player { display: block; }

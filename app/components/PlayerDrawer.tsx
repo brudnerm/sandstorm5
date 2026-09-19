@@ -544,7 +544,7 @@ export default function PlayerDrawer({ player, settings, onClose }: Props) {
               {savantUrl && <> · <a href={savantUrl} target="_blank" rel="noreferrer">Savant ↗</a></>}
             </span>
           </div>
-          <button className="icon-btn drawer-close" aria-label="Close" onClick={onClose}>✕</button>
+          <button className="icon-btn drawer-close" aria-label="Close" onClick={onClose}>×</button>
         </header>
 
         <section className="drawer-section">

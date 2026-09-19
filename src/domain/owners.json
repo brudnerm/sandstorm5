@@ -1,0 +1,119 @@
+{
+  "_comment": "Hand-maintained owner identity for Keeping Pattycakes. Owners are the stable identity across seasons; team names are per-season context and come from Yahoo, so they are NOT stored here. Yahoo no longer returns manager GUIDs (every endpoint reports the literal string \"--hidden--\"), so `id` is the join key and no GUID is recorded anywhere in this repo. `id` is derived from displayName, not from the Yahoo nickname, because it is published in seasons.json and in owner-page URLs and two nicknames are full names. Most team-seasons resolve by yahooNicknames. The three owners who left before Yahoo hid nicknames cannot, so they carry claimedTeamSeasons: the exact (season, team name) pairs that identify them.",
+  "league": "kp",
+  "owners": [
+    {
+      "id": "hingston",
+      "displayName": "Hingston",
+      "yahooNicknames": [
+        "Swan"
+      ]
+    },
+    {
+      "id": "dan",
+      "displayName": "Dan",
+      "yahooNicknames": [
+        "Rich Garcis"
+      ]
+    },
+    {
+      "id": "brudner",
+      "displayName": "Brudner",
+      "yahooNicknames": [
+        "angel escobar"
+      ]
+    },
+    {
+      "id": "bennett",
+      "displayName": "Bennett",
+      "yahooNicknames": [
+        "Brian Bennett"
+      ]
+    },
+    {
+      "id": "will",
+      "displayName": "Will",
+      "yahooNicknames": [
+        "Will Youmans"
+      ]
+    },
+    {
+      "id": "kc",
+      "displayName": "KC",
+      "yahooNicknames": [
+        "KC"
+      ]
+    },
+    {
+      "id": "mark",
+      "displayName": "Mark",
+      "yahooNicknames": [
+        "Mark"
+      ]
+    },
+    {
+      "id": "nick",
+      "displayName": "Nick",
+      "yahooNicknames": [
+        "Nick"
+      ]
+    },
+    {
+      "id": "galen",
+      "displayName": "Galen",
+      "yahooNicknames": [
+        "Galen"
+      ]
+    },
+    {
+      "id": "jamison",
+      "displayName": "Jamison",
+      "yahooNicknames": [
+        "Jamison"
+      ]
+    },
+    {
+      "id": "mike",
+      "displayName": "mike",
+      "yahooNicknames": [
+        "mike"
+      ]
+    },
+    {
+      "id": "joey",
+      "displayName": "joey",
+      "yahooNicknames": [
+        "joey"
+      ]
+    },
+    {
+      "id": "other-dan",
+      "displayName": "Other Dan",
+      "yahooNicknames": [],
+      "claimedTeamSeasons": {
+        "2009": "Dans Team",
+        "2010": "Dans Team",
+        "2011": "Dans Team",
+        "2012": "Dans Team",
+        "2013": "Dans Team"
+      }
+    },
+    {
+      "id": "rob",
+      "displayName": "Rob",
+      "yahooNicknames": [],
+      "claimedTeamSeasons": {
+        "2010": "BenFranklinRodriguez",
+        "2011": "BenFranklinRodriguez"
+      }
+    },
+    {
+      "id": "billy",
+      "displayName": "Billy",
+      "yahooNicknames": [],
+      "claimedTeamSeasons": {
+        "2009": "Lonley Picards"
+      }
+    }
+  ]
+}
