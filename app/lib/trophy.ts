@@ -12,6 +12,7 @@ import {
   type MatchupShard,
   type SeasonsShard,
   type TrophySeason,
+  type TransactionsShard,
   type TrophyWeek,
   type WeeklyShard,
 } from '../../src/domain/trophy'
@@ -222,6 +223,9 @@ export function useTrophyCopy(leagueId: string) {
 }
 export function useTrophyWeekly(leagueId: string) {
   return useJson<WeeklyShard>(shardPath(leagueId, 'weekly.json'))
+}
+export function useTrophyTransactions(leagueId: string) {
+  return useJson<TransactionsShard>(shardPath(leagueId, 'transactions.json'))
 }
 
 /**

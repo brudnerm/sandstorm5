@@ -14,8 +14,9 @@ import type { Manifest } from '../../src/domain/matchups'
 import SectionHeader from '../components/trophy/SectionHeader'
 import {
   heroSummary, useTrophyCopy, useTrophyDrafts, useTrophyMatchups, useTrophySeasons,
-  useTrophyWeekly, WINGS, wingBySlug, type HeroTile,
+  useTrophyTransactions, useTrophyWeekly, WINGS, wingBySlug, type HeroTile,
 } from '../lib/trophy'
+import Archive from './trophy/Archive'
 import Champions from './trophy/Champions'
 import Owners from './trophy/Owners'
 import Records from './trophy/Records'
@@ -45,10 +46,13 @@ export default function Trophy({ league, slug, sub }: Props) {
   const shard = useTrophySeasons(league.id)
   // The wings that need them fetch their own shards; useJson only requests a
   // path when it is asked for, so the landing page still loads one file.
-  const wantsMatchups = slug === 'champions' || slug === 'rivalries' || slug === 'owners'
+  const wantsMatchups =
+    slug === 'champions' || slug === 'rivalries' || slug === 'owners' || slug === 'archive'
   const wantsDraftsAndCopy = slug === 'champions' || slug === 'shame'
   const matchups = useTrophyMatchups(wantsMatchups ? league.id : '')
   const weekly = useTrophyWeekly(slug === 'records' || slug === 'owners' ? league.id : '')
+  // The heaviest shard, and only the archive needs it.
+  const transactions = useTrophyTransactions(slug === 'archive' ? league.id : '')
   const drafts = useTrophyDrafts(wantsDraftsAndCopy ? league.id : '')
   const copy = useTrophyCopy(wantsDraftsAndCopy ? league.id : '')
   const data = shard.data
@@ -110,6 +114,13 @@ export default function Trophy({ league, slug, sub }: Props) {
           />
         ) : wing.slug === 'rivalries' ? (
           <Rivalries leagueId={league.id} shard={data} matchups={matchups.data} />
+        ) : wing.slug === 'archive' ? (
+          <Archive
+            leagueId={league.id}
+            shard={data}
+            matchups={matchups.data}
+            transactions={transactions.data}
+          />
         ) : wing.slug === 'shame' ? (
           <Shame
             shard={data}

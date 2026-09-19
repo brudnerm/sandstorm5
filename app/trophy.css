@@ -817,3 +817,79 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* ---------- In-page jump nav ---------- */
+.trophy-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: -10px;
+}
+.trophy-jump-link {
+  padding: 4px 10px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brass);
+  text-decoration: none;
+}
+.trophy-jump-link:hover { border-color: var(--brass); }
+
+/* ---------- Team name archive ---------- */
+.trophy-names {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 720px) {
+  .trophy-names { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1040px) {
+  .trophy-names { grid-template-columns: repeat(3, 1fr); }
+}
+.trophy-names-owner {
+  padding: 12px 14px;
+  border: 1px solid var(--plaque-edge);
+  border-radius: var(--plaque-radius);
+  background: linear-gradient(180deg, var(--plaque-top), var(--plaque-bottom));
+}
+.trophy-names-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0 0 8px;
+  font-family: var(--trophy-serif);
+  font-size: 17px;
+  font-weight: 700;
+}
+.trophy-names-count {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-3);
+}
+.trophy-names-list { list-style: none; margin: 0; padding: 0; }
+.trophy-names-list li {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 3px 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+.trophy-names-list li + li { border-top: 1px solid var(--plaque-edge); }
+.trophy-names-span {
+  flex: none;
+  width: 6.4em;
+  /* A range must not break across lines: "2012-" over "2017" reads as two
+     different things. */
+  white-space: nowrap;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.trophy-names-name { color: var(--text); min-width: 0; }
+.trophy-names-owner .trophy-expander { margin-top: 8px; font-size: 10px; padding: 5px 9px; }

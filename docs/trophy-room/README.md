@@ -20,6 +20,7 @@
 - `stage4-spotcheck.md` — generated; displayed records traced back to raw Yahoo.
 - `stage5-matrix-check.md` — generated; the head-to-head matrix reconciled against
   the all-time standings.
+- `stage6-archive.md` — generated; what the archive computes, and what it cannot.
 - `stage1-report.md` — generated; rebuild with `npx tsx src/trophy/report.ts`.
 
 The owner map moved to `src/domain/owners.json`, beside `leagues.ts`, since it is
