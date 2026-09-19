@@ -1,0 +1,3201 @@
+{
+ "leagueId": "sidebar",
+ "season": "2026",
+ "week": 25,
+ "players": [
+  {
+   "playerKey": "469.p.10455",
+   "name": "Tyler Mahle",
+   "mlbTeam": "ATL",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/HAJ3CjTj9g6X4KvrK91FTQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/08042026/10455.3.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "13.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "9",
+     "pitching:46": "2",
+     "pitching:26": "1.38",
+     "pitching:27": "0.77",
+     "pitching:56": "9.00",
+     "pitching:83": "2"
+    },
+    "lastmonth": {
+     "pitching:50": "30.2",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "25",
+     "pitching:46": "4",
+     "pitching:26": "1.17",
+     "pitching:27": "0.91",
+     "pitching:56": "6.25",
+     "pitching:83": "4"
+    },
+    "season": {
+     "pitching:50": "144.0",
+     "pitching:29": "10",
+     "pitching:32": "0",
+     "pitching:42": "133",
+     "pitching:46": "16",
+     "pitching:26": "3.81",
+     "pitching:27": "1.22",
+     "pitching:56": "3.02",
+     "pitching:83": "10"
+    }
+   },
+   "percentOwned": 64,
+   "ownershipDelta": 4
+  },
+  {
+   "playerKey": "469.p.12567",
+   "name": "Dustin Harris",
+   "mlbTeam": "SD",
+   "positionType": "B",
+   "displayPosition": "LF,RF",
+   "eligiblePositions": [
+    "LF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/l2BrnlRLc3kIzf4FOU5gcg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03282025/12567.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "11/28",
+     "batting:7": "5",
+     "batting:12": "0",
+     "batting:13": "10",
+     "batting:16": "3",
+     "batting:21": "4",
+     "batting:22": "0",
+     "batting:3": ".393",
+     "batting:55": ".919"
+    },
+    "lastmonth": {
+     "batting:60": "22/59",
+     "batting:7": "11",
+     "batting:12": "0",
+     "batting:13": "13",
+     "batting:16": "5",
+     "batting:21": "9",
+     "batting:22": "0",
+     "batting:3": ".373",
+     "batting:55": ".881"
+    },
+    "season": {
+     "batting:60": "32/102",
+     "batting:7": "17",
+     "batting:12": "0",
+     "batting:13": "18",
+     "batting:16": "9",
+     "batting:21": "16",
+     "batting:22": "0",
+     "batting:3": ".314",
+     "batting:55": ".776"
+    }
+   },
+   "percentOwned": 5,
+   "ownershipDelta": 5
+  },
+  {
+   "playerKey": "469.p.11823",
+   "name": "Joey Cantillo",
+   "mlbTeam": "CLE",
+   "positionType": "P",
+   "displayPosition": "SP,RP",
+   "eligiblePositions": [
+    "SP",
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/P3.zv19Xg_Rw523E6.KGxw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03162026/11823.2.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "10.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "13",
+     "pitching:46": "1",
+     "pitching:26": "0.00",
+     "pitching:27": "0.50",
+     "pitching:56": "6.50",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "28.1",
+     "pitching:29": "2",
+     "pitching:32": "0",
+     "pitching:42": "28",
+     "pitching:46": "3",
+     "pitching:26": "3.49",
+     "pitching:27": "1.45",
+     "pitching:56": "1.40",
+     "pitching:83": "1"
+    },
+    "season": {
+     "pitching:50": "154.0",
+     "pitching:29": "9",
+     "pitching:32": "0",
+     "pitching:42": "167",
+     "pitching:46": "15",
+     "pitching:26": "3.74",
+     "pitching:27": "1.44",
+     "pitching:56": "2.11",
+     "pitching:83": "6"
+    }
+   },
+   "percentOwned": 38,
+   "ownershipDelta": -1
+  },
+  {
+   "playerKey": "469.p.11914",
+   "name": "Spencer Torkelson",
+   "mlbTeam": "DET",
+   "positionType": "B",
+   "displayPosition": "1B",
+   "eligiblePositions": [
+    "1B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/EfW7zQ4P.8Ml1AmCw6W8_Q--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03162026/11914.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "10/24",
+     "batting:7": "5",
+     "batting:12": "2",
+     "batting:13": "6",
+     "batting:16": "1",
+     "batting:21": "8",
+     "batting:22": "0",
+     "batting:3": ".417",
+     "batting:55": "1.298"
+    },
+    "lastmonth": {
+     "batting:60": "19/73",
+     "batting:7": "10",
+     "batting:12": "4",
+     "batting:13": "9",
+     "batting:16": "1",
+     "batting:21": "28",
+     "batting:22": "1",
+     "batting:3": ".260",
+     "batting:55": ".879"
+    },
+    "season": {
+     "batting:60": "116/506",
+     "batting:7": "63",
+     "batting:12": "24",
+     "batting:13": "72",
+     "batting:16": "1",
+     "batting:21": "182",
+     "batting:22": "12",
+     "batting:3": ".229",
+     "batting:55": ".747"
+    }
+   },
+   "percentOwned": 43,
+   "ownershipDelta": 3
+  },
+  {
+   "playerKey": "469.p.62119",
+   "name": "Jakob Marsee",
+   "mlbTeam": "MIA",
+   "positionType": "B",
+   "displayPosition": "LF,CF",
+   "eligiblePositions": [
+    "LF",
+    "CF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/TtughSifj8RQ7ohdO_oAJQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/62119.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "7/18",
+     "batting:7": "5",
+     "batting:12": "2",
+     "batting:13": "3",
+     "batting:16": "1",
+     "batting:21": "3",
+     "batting:22": "0",
+     "batting:3": ".389",
+     "batting:55": "1.411"
+    },
+    "lastmonth": {
+     "batting:60": "28/83",
+     "batting:7": "18",
+     "batting:12": "4",
+     "batting:13": "10",
+     "batting:16": "4",
+     "batting:21": "18",
+     "batting:22": "1",
+     "batting:3": ".337",
+     "batting:55": "1.045"
+    },
+    "season": {
+     "batting:60": "112/492",
+     "batting:7": "78",
+     "batting:12": "11",
+     "batting:13": "39",
+     "batting:16": "23",
+     "batting:21": "121",
+     "batting:22": "4",
+     "batting:3": ".228",
+     "batting:55": ".703"
+    }
+   },
+   "percentOwned": 50,
+   "ownershipDelta": 3
+  },
+  {
+   "playerKey": "469.p.12575",
+   "name": "Samad Taylor",
+   "mlbTeam": "SD",
+   "positionType": "B",
+   "displayPosition": "2B,LF,RF",
+   "eligiblePositions": [
+    "2B",
+    "LF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/yMkN9V7fu9_dZo3rchtlag--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07242026/12575.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "8/19",
+     "batting:7": "7",
+     "batting:12": "0",
+     "batting:13": "4",
+     "batting:16": "2",
+     "batting:21": "1",
+     "batting:22": "0",
+     "batting:3": ".421",
+     "batting:55": ".974"
+    },
+    "lastmonth": {
+     "batting:60": "14/44",
+     "batting:7": "10",
+     "batting:12": "0",
+     "batting:13": "4",
+     "batting:16": "4",
+     "batting:21": "9",
+     "batting:22": "0",
+     "batting:3": ".318",
+     "batting:55": ".797"
+    },
+    "season": {
+     "batting:60": "43/132",
+     "batting:7": "24",
+     "batting:12": "1",
+     "batting:13": "15",
+     "batting:16": "10",
+     "batting:21": "39",
+     "batting:22": "2",
+     "batting:3": ".326",
+     "batting:55": ".805"
+    }
+   },
+   "percentOwned": 3,
+   "ownershipDelta": 1
+  },
+  {
+   "playerKey": "469.p.12370",
+   "name": "Connor Norby",
+   "mlbTeam": "COL",
+   "positionType": "B",
+   "displayPosition": "1B,2B,3B",
+   "eligiblePositions": [
+    "1B",
+    "2B",
+    "3B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/telGMLz_itUi2rUT3IY8vQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/12370.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "10/21",
+     "batting:7": "4",
+     "batting:12": "0",
+     "batting:13": "4",
+     "batting:16": "2",
+     "batting:21": "2",
+     "batting:22": "0",
+     "batting:3": ".476",
+     "batting:55": "1.189"
+    },
+    "lastmonth": {
+     "batting:60": "28/87",
+     "batting:7": "14",
+     "batting:12": "3",
+     "batting:13": "15",
+     "batting:16": "2",
+     "batting:21": "25",
+     "batting:22": "1",
+     "batting:3": ".322",
+     "batting:55": ".898"
+    },
+    "season": {
+     "batting:60": "75/310",
+     "batting:7": "35",
+     "batting:12": "7",
+     "batting:13": "32",
+     "batting:16": "10",
+     "batting:21": "102",
+     "batting:22": "6",
+     "batting:3": ".242",
+     "batting:55": ".724"
+    }
+   },
+   "percentOwned": 9,
+   "ownershipDelta": 2
+  },
+  {
+   "playerKey": "469.p.64311",
+   "name": "Travis Bazzana",
+   "mlbTeam": "CLE",
+   "positionType": "B",
+   "displayPosition": "2B",
+   "eligiblePositions": [
+    "2B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/VpmN9nVAuKwMWUdw7KU4tA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/05012026/64311.3.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "7/23",
+     "batting:7": "5",
+     "batting:12": "4",
+     "batting:13": "7",
+     "batting:16": "1",
+     "batting:21": "3",
+     "batting:22": "1",
+     "batting:3": ".304",
+     "batting:55": "1.230"
+    },
+    "lastmonth": {
+     "batting:60": "25/76",
+     "batting:7": "16",
+     "batting:12": "6",
+     "batting:13": "21",
+     "batting:16": "2",
+     "batting:21": "10",
+     "batting:22": "1",
+     "batting:3": ".329",
+     "batting:55": "1.029"
+    },
+    "season": {
+     "batting:60": "105/420",
+     "batting:7": "53",
+     "batting:12": "15",
+     "batting:13": "57",
+     "batting:16": "19",
+     "batting:21": "98",
+     "batting:22": "3",
+     "batting:3": ".250",
+     "batting:55": ".757"
+    }
+   },
+   "percentOwned": 37,
+   "ownershipDelta": 15
+  },
+  {
+   "playerKey": "469.p.62461",
+   "name": "Jack Perkins",
+   "mlbTeam": "ATH",
+   "positionType": "P",
+   "displayPosition": "SP,RP",
+   "eligiblePositions": [
+    "SP",
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/LahqXrUGdAz4F1e.Y0iLWw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03132026/62461.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "6.2",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "8",
+     "pitching:46": "1",
+     "pitching:26": "0.00",
+     "pitching:27": "0.75",
+     "pitching:56": "8.00",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "24.2",
+     "pitching:29": "2",
+     "pitching:32": "0",
+     "pitching:42": "29",
+     "pitching:46": "3",
+     "pitching:26": "3.28",
+     "pitching:27": "1.50",
+     "pitching:56": "1.93",
+     "pitching:83": "1"
+    },
+    "season": {
+     "pitching:50": "110.0",
+     "pitching:29": "11",
+     "pitching:32": "3",
+     "pitching:42": "127",
+     "pitching:46": "8",
+     "pitching:26": "6.14",
+     "pitching:27": "1.48",
+     "pitching:56": "2.65",
+     "pitching:83": "1"
+    }
+   },
+   "percentOwned": 5,
+   "ownershipDelta": 2
+  },
+  {
+   "playerKey": "469.p.60582",
+   "name": "Michael Arroyo",
+   "mlbTeam": "SEA",
+   "positionType": "B",
+   "displayPosition": "2B",
+   "eligiblePositions": [
+    "2B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/92ousfZKRvzXF0GzKBAkpg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/09092026/60582.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "5/11",
+     "batting:7": "4",
+     "batting:12": "1",
+     "batting:13": "3",
+     "batting:16": "1",
+     "batting:21": "3",
+     "batting:22": "0",
+     "batting:3": ".455",
+     "batting:55": "1.472"
+    },
+    "lastmonth": {
+     "batting:60": "5/15",
+     "batting:7": "4",
+     "batting:12": "1",
+     "batting:13": "3",
+     "batting:16": "1",
+     "batting:21": "5",
+     "batting:22": "0",
+     "batting:3": ".333",
+     "batting:55": "1.117"
+    },
+    "season": {
+     "batting:60": "5/15",
+     "batting:7": "4",
+     "batting:12": "1",
+     "batting:13": "3",
+     "batting:16": "1",
+     "batting:21": "5",
+     "batting:22": "0",
+     "batting:3": ".333",
+     "batting:55": "1.117"
+    }
+   },
+   "percentOwned": 1,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.63640",
+   "name": "Shota Imanaga",
+   "mlbTeam": "CHC",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/TqLwtOHNOPqaMsFYzBarVw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03162026/63640.3.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "6.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "8",
+     "pitching:46": "0",
+     "pitching:26": "1.50",
+     "pitching:27": "0.67",
+     "pitching:56": "-",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "25.0",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "24",
+     "pitching:46": "0",
+     "pitching:26": "3.96",
+     "pitching:27": "1.20",
+     "pitching:56": "4.80",
+     "pitching:83": "3"
+    },
+    "season": {
+     "pitching:50": "168.1",
+     "pitching:29": "10",
+     "pitching:32": "0",
+     "pitching:42": "164",
+     "pitching:46": "11",
+     "pitching:26": "3.80",
+     "pitching:27": "1.10",
+     "pitching:56": "4.43",
+     "pitching:83": "14"
+    }
+   },
+   "percentOwned": 90,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.62974",
+   "name": "Max Clark",
+   "mlbTeam": "DET",
+   "positionType": "B",
+   "displayPosition": "CF",
+   "eligiblePositions": [
+    "CF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/YAwhUZwrPIbRqyMA.1dRUg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/05142026/62974.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "10/27",
+     "batting:7": "8",
+     "batting:12": "0",
+     "batting:13": "5",
+     "batting:16": "1",
+     "batting:21": "4",
+     "batting:22": "0",
+     "batting:3": ".370",
+     "batting:55": ".933"
+    },
+    "lastmonth": {
+     "batting:60": "24/85",
+     "batting:7": "18",
+     "batting:12": "2",
+     "batting:13": "13",
+     "batting:16": "5",
+     "batting:21": "19",
+     "batting:22": "1",
+     "batting:3": ".282",
+     "batting:55": ".843"
+    },
+    "season": {
+     "batting:60": "43/155",
+     "batting:7": "26",
+     "batting:12": "3",
+     "batting:13": "22",
+     "batting:16": "5",
+     "batting:21": "36",
+     "batting:22": "1",
+     "batting:3": ".277",
+     "batting:55": ".795"
+    }
+   },
+   "percentOwned": 46,
+   "ownershipDelta": 26
+  },
+  {
+   "playerKey": "469.p.63002",
+   "name": "Cole Carrigg",
+   "mlbTeam": "COL",
+   "positionType": "B",
+   "displayPosition": "SS,CF",
+   "eligiblePositions": [
+    "SS",
+    "CF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/Gmd_JFB8FPJzozHDt.4lFQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07102026/63002.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "10/31",
+     "batting:7": "4",
+     "batting:12": "3",
+     "batting:13": "7",
+     "batting:16": "2",
+     "batting:21": "9",
+     "batting:22": "0",
+     "batting:3": ".323",
+     "batting:55": ".968"
+    },
+    "lastmonth": {
+     "batting:60": "26/103",
+     "batting:7": "11",
+     "batting:12": "5",
+     "batting:13": "12",
+     "batting:16": "4",
+     "batting:21": "32",
+     "batting:22": "2",
+     "batting:3": ".252",
+     "batting:55": ".746"
+    },
+    "season": {
+     "batting:60": "82/302",
+     "batting:7": "46",
+     "batting:12": "10",
+     "batting:13": "46",
+     "batting:16": "11",
+     "batting:21": "80",
+     "batting:22": "5",
+     "batting:3": ".272",
+     "batting:55": ".804"
+    }
+   },
+   "percentOwned": 23,
+   "ownershipDelta": 9
+  },
+  {
+   "playerKey": "469.p.63000",
+   "name": "Cooper Pratt",
+   "mlbTeam": "MIL",
+   "positionType": "B",
+   "displayPosition": "SS",
+   "eligiblePositions": [
+    "SS",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/4QIIlGNrgdA1LquqmdkC9Q--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07172026/63000.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "8/17",
+     "batting:7": "3",
+     "batting:12": "0",
+     "batting:13": "2",
+     "batting:16": "2",
+     "batting:21": "1",
+     "batting:22": "0",
+     "batting:3": ".471",
+     "batting:55": "1.029"
+    },
+    "lastmonth": {
+     "batting:60": "21/67",
+     "batting:7": "13",
+     "batting:12": "1",
+     "batting:13": "14",
+     "batting:16": "5",
+     "batting:21": "9",
+     "batting:22": "0",
+     "batting:3": ".313",
+     "batting:55": ".758"
+    },
+    "season": {
+     "batting:60": "58/207",
+     "batting:7": "33",
+     "batting:12": "3",
+     "batting:13": "31",
+     "batting:16": "15",
+     "batting:21": "42",
+     "batting:22": "8",
+     "batting:3": ".280",
+     "batting:55": ".719"
+    }
+   },
+   "percentOwned": 6,
+   "ownershipDelta": -1
+  },
+  {
+   "playerKey": "469.p.60223",
+   "name": "Walbert Ureña",
+   "mlbTeam": "LAA",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/R9QP5gCzsrPS4UPyPfVBkQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03242026/60223.2.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "13.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "16",
+     "pitching:46": "0",
+     "pitching:26": "2.77",
+     "pitching:27": "1.15",
+     "pitching:56": "8.00",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "31.2",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "31",
+     "pitching:46": "3",
+     "pitching:26": "2.56",
+     "pitching:27": "1.07",
+     "pitching:56": "3.88",
+     "pitching:83": "3"
+    },
+    "season": {
+     "pitching:50": "144.1",
+     "pitching:29": "10",
+     "pitching:32": "0",
+     "pitching:42": "140",
+     "pitching:46": "12",
+     "pitching:26": "2.74",
+     "pitching:27": "1.21",
+     "pitching:56": "2.09",
+     "pitching:83": "13"
+    }
+   },
+   "percentOwned": 60,
+   "ownershipDelta": 1
+  },
+  {
+   "playerKey": "469.p.64367",
+   "name": "Ryan Johnson",
+   "mlbTeam": "LAA",
+   "positionType": "P",
+   "displayPosition": "SP,RP",
+   "eligiblePositions": [
+    "SP",
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/rVqzDHsbiXW2_C3Aw.bPVw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/64367.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "6.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "7",
+     "pitching:46": "0",
+     "pitching:26": "1.50",
+     "pitching:27": "1.00",
+     "pitching:56": "-",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "30.0",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "23",
+     "pitching:46": "2",
+     "pitching:26": "1.80",
+     "pitching:27": "0.93",
+     "pitching:56": "2.30",
+     "pitching:83": "4"
+    },
+    "season": {
+     "pitching:50": "90.1",
+     "pitching:29": "8",
+     "pitching:32": "0",
+     "pitching:42": "70",
+     "pitching:46": "9",
+     "pitching:26": "4.88",
+     "pitching:27": "1.34",
+     "pitching:56": "1.79",
+     "pitching:83": "5"
+    }
+   },
+   "percentOwned": 26,
+   "ownershipDelta": 20
+  },
+  {
+   "playerKey": "469.p.11392",
+   "name": "Andrew Knizner",
+   "mlbTeam": "SF",
+   "positionType": "B",
+   "displayPosition": "C",
+   "eligiblePositions": [
+    "C",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/hYCfwhhEFIJ1XBfsgnAKAw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03212026/11392.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "5/10",
+     "batting:7": "2",
+     "batting:12": "1",
+     "batting:13": "3",
+     "batting:16": "0",
+     "batting:21": "0",
+     "batting:22": "0",
+     "batting:3": ".500",
+     "batting:55": "1.383"
+    },
+    "lastmonth": {
+     "batting:60": "12/48",
+     "batting:7": "6",
+     "batting:12": "2",
+     "batting:13": "4",
+     "batting:16": "0",
+     "batting:21": "9",
+     "batting:22": "1",
+     "batting:3": ".250",
+     "batting:55": ".759"
+    },
+    "season": {
+     "batting:60": "12/54",
+     "batting:7": "6",
+     "batting:12": "2",
+     "batting:13": "4",
+     "batting:16": "0",
+     "batting:21": "11",
+     "batting:22": "2",
+     "batting:3": ".222",
+     "batting:55": ".689"
+    }
+   },
+   "percentOwned": null,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.60183",
+   "name": "Drew Gilbert",
+   "mlbTeam": "SF",
+   "positionType": "B",
+   "displayPosition": "LF,CF,RF",
+   "eligiblePositions": [
+    "LF",
+    "CF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/xtogPZnDoQKiqx4zcAup3A--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03202026/60183.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "3/13",
+     "batting:7": "4",
+     "batting:12": "2",
+     "batting:13": "4",
+     "batting:16": "1",
+     "batting:21": "2",
+     "batting:22": "0",
+     "batting:3": ".231",
+     "batting:55": "1.067"
+    },
+    "lastmonth": {
+     "batting:60": "13/64",
+     "batting:7": "15",
+     "batting:12": "4",
+     "batting:13": "11",
+     "batting:16": "1",
+     "batting:21": "17",
+     "batting:22": "4",
+     "batting:3": ".203",
+     "batting:55": ".760"
+    },
+    "season": {
+     "batting:60": "76/328",
+     "batting:7": "50",
+     "batting:12": "10",
+     "batting:13": "40",
+     "batting:16": "2",
+     "batting:21": "68",
+     "batting:22": "10",
+     "batting:3": ".232",
+     "batting:55": ".706"
+    }
+   },
+   "percentOwned": 1,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.63601",
+   "name": "Zebby Matthews",
+   "mlbTeam": "MIN",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/EY4JEoo5VSOMB6_tjlXUfg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/63601.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "6.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "8",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.67",
+     "pitching:56": "4.00",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "28.2",
+     "pitching:29": "2",
+     "pitching:32": "0",
+     "pitching:42": "26",
+     "pitching:46": "2",
+     "pitching:26": "3.45",
+     "pitching:27": "0.94",
+     "pitching:56": "3.25",
+     "pitching:83": "3"
+    },
+    "season": {
+     "pitching:50": "125.1",
+     "pitching:29": "10",
+     "pitching:32": "0",
+     "pitching:42": "107",
+     "pitching:46": "11",
+     "pitching:26": "4.74",
+     "pitching:27": "1.24",
+     "pitching:56": "2.74",
+     "pitching:83": "11"
+    }
+   },
+   "percentOwned": 20,
+   "ownershipDelta": -4
+  },
+  {
+   "playerKey": "469.p.60238",
+   "name": "Emmet Sheehan",
+   "mlbTeam": "LAD",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/LDnwZBRRVhB7REk7MoUnVA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/60238.png",
+   "status": "NA",
+   "windows": {
+    "lastweek": {
+     "pitching:50": "6.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "5",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.50",
+     "pitching:56": "5.00",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "11.2",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "15",
+     "pitching:46": "0",
+     "pitching:26": "0.77",
+     "pitching:27": "0.60",
+     "pitching:56": "7.50",
+     "pitching:83": "1"
+    },
+    "season": {
+     "pitching:50": "107.0",
+     "pitching:29": "8",
+     "pitching:32": "0",
+     "pitching:42": "123",
+     "pitching:46": "2",
+     "pitching:26": "4.79",
+     "pitching:27": "1.21",
+     "pitching:56": "3.84",
+     "pitching:83": "6"
+    }
+   },
+   "percentOwned": 51,
+   "ownershipDelta": -6
+  },
+  {
+   "playerKey": "469.p.61749",
+   "name": "Chad Patrick",
+   "mlbTeam": "MIL",
+   "positionType": "P",
+   "displayPosition": "SP,RP",
+   "eligiblePositions": [
+    "SP",
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/xY3IMw0YR9CiH1yTkFq18A--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/61749.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "3.2",
+     "pitching:29": "0",
+     "pitching:32": "1",
+     "pitching:42": "7",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.55",
+     "pitching:56": "7.00",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "16.0",
+     "pitching:29": "0",
+     "pitching:32": "1",
+     "pitching:42": "15",
+     "pitching:46": "0",
+     "pitching:26": "1.69",
+     "pitching:27": "1.06",
+     "pitching:56": "1.88",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "103.2",
+     "pitching:29": "4",
+     "pitching:32": "6",
+     "pitching:42": "93",
+     "pitching:46": "11",
+     "pitching:26": "3.13",
+     "pitching:27": "1.20",
+     "pitching:56": "2.21",
+     "pitching:83": "1"
+    }
+   },
+   "percentOwned": 9,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.66382",
+   "name": "Eduardo Valencia",
+   "mlbTeam": "DET",
+   "positionType": "B",
+   "displayPosition": "C,1B",
+   "eligiblePositions": [
+    "C",
+    "1B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/WoLdeNxEq8M2jEeyQCFMDQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07172026/66382.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "6/11",
+     "batting:7": "5",
+     "batting:12": "0",
+     "batting:13": "0",
+     "batting:16": "0",
+     "batting:21": "1",
+     "batting:22": "0",
+     "batting:3": ".545",
+     "batting:55": "1.461"
+    },
+    "lastmonth": {
+     "batting:60": "13/45",
+     "batting:7": "7",
+     "batting:12": "0",
+     "batting:13": "1",
+     "batting:16": "0",
+     "batting:21": "10",
+     "batting:22": "0",
+     "batting:3": ".289",
+     "batting:55": ".733"
+    },
+    "season": {
+     "batting:60": "34/104",
+     "batting:7": "19",
+     "batting:12": "6",
+     "batting:13": "18",
+     "batting:16": "0",
+     "batting:21": "27",
+     "batting:22": "3",
+     "batting:3": ".327",
+     "batting:55": ".964"
+    }
+   },
+   "percentOwned": 2,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.11768",
+   "name": "Jeremy Peña",
+   "mlbTeam": "HOU",
+   "positionType": "B",
+   "displayPosition": "SS",
+   "eligiblePositions": [
+    "SS",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/sg2Yi685GXbcdOvQ3XiCUg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03242026/11768.3.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "8/22",
+     "batting:7": "4",
+     "batting:12": "3",
+     "batting:13": "4",
+     "batting:16": "0",
+     "batting:21": "7",
+     "batting:22": "0",
+     "batting:3": ".364",
+     "batting:55": "1.209"
+    },
+    "lastmonth": {
+     "batting:60": "26/102",
+     "batting:7": "15",
+     "batting:12": "6",
+     "batting:13": "11",
+     "batting:16": "1",
+     "batting:21": "36",
+     "batting:22": "0",
+     "batting:3": ".255",
+     "batting:55": ".770"
+    },
+    "season": {
+     "batting:60": "114/413",
+     "batting:7": "74",
+     "batting:12": "20",
+     "batting:13": "51",
+     "batting:16": "9",
+     "batting:21": "105",
+     "batting:22": "3",
+     "batting:3": ".276",
+     "batting:55": ".799"
+    }
+   },
+   "percentOwned": 85,
+   "ownershipDelta": -1
+  },
+  {
+   "playerKey": "469.p.12152",
+   "name": "Garrett Mitchell",
+   "mlbTeam": "MIL",
+   "positionType": "B",
+   "displayPosition": "CF,RF",
+   "eligiblePositions": [
+    "CF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/NxLUUKJsW.yjd1wh1zDiEQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/12152.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "6/15",
+     "batting:7": "3",
+     "batting:12": "1",
+     "batting:13": "4",
+     "batting:16": "1",
+     "batting:21": "5",
+     "batting:22": "0",
+     "batting:3": ".400",
+     "batting:55": "1.300"
+    },
+    "lastmonth": {
+     "batting:60": "23/70",
+     "batting:7": "17",
+     "batting:12": "3",
+     "batting:13": "14",
+     "batting:16": "2",
+     "batting:21": "22",
+     "batting:22": "0",
+     "batting:3": ".329",
+     "batting:55": ".961"
+    },
+    "season": {
+     "batting:60": "116/434",
+     "batting:7": "69",
+     "batting:12": "11",
+     "batting:13": "65",
+     "batting:16": "14",
+     "batting:21": "156",
+     "batting:22": "4",
+     "batting:3": ".267",
+     "batting:55": ".789"
+    }
+   },
+   "percentOwned": 16,
+   "ownershipDelta": 7
+  },
+  {
+   "playerKey": "469.p.60319",
+   "name": "Hao-Yu Lee",
+   "mlbTeam": "DET",
+   "positionType": "B",
+   "displayPosition": "2B,3B",
+   "eligiblePositions": [
+    "2B",
+    "3B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/q6fiyL.oDHb92IN0QeylwQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07172026/60319.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "9/26",
+     "batting:7": "5",
+     "batting:12": "2",
+     "batting:13": "8",
+     "batting:16": "0",
+     "batting:21": "5",
+     "batting:22": "1",
+     "batting:3": ".346",
+     "batting:55": "1.148"
+    },
+    "lastmonth": {
+     "batting:60": "20/86",
+     "batting:7": "15",
+     "batting:12": "4",
+     "batting:13": "15",
+     "batting:16": "1",
+     "batting:21": "25",
+     "batting:22": "3",
+     "batting:3": ".233",
+     "batting:55": ".776"
+    },
+    "season": {
+     "batting:60": "78/296",
+     "batting:7": "38",
+     "batting:12": "10",
+     "batting:13": "45",
+     "batting:16": "2",
+     "batting:21": "78",
+     "batting:22": "4",
+     "batting:3": ".264",
+     "batting:55": ".752"
+    }
+   },
+   "percentOwned": 10,
+   "ownershipDelta": 6
+  },
+  {
+   "playerKey": "469.p.64997",
+   "name": "Trent Harris",
+   "mlbTeam": "SF",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/pqegsMzSt_SLAs1.c50ZAg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/09092026/64997.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "3.1",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "4",
+     "pitching:46": "1",
+     "pitching:26": "0.00",
+     "pitching:27": "0.30",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "14.2",
+     "pitching:29": "0",
+     "pitching:32": "1",
+     "pitching:42": "15",
+     "pitching:46": "3",
+     "pitching:26": "0.61",
+     "pitching:27": "0.82",
+     "pitching:56": "3.75",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "19.1",
+     "pitching:29": "0",
+     "pitching:32": "1",
+     "pitching:42": "25",
+     "pitching:46": "3",
+     "pitching:26": "2.33",
+     "pitching:27": "1.09",
+     "pitching:56": "3.57",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": 1,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.11448",
+   "name": "Brayan Rocchio",
+   "mlbTeam": "CLE",
+   "positionType": "B",
+   "displayPosition": "2B,SS",
+   "eligiblePositions": [
+    "2B",
+    "SS",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/PMoC9fd5rOqkzCR_XH1U_w--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03162026/11448.2.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "6/19",
+     "batting:7": "5",
+     "batting:12": "0",
+     "batting:13": "5",
+     "batting:16": "2",
+     "batting:21": "3",
+     "batting:22": "0",
+     "batting:3": ".316",
+     "batting:55": ".856"
+    },
+    "lastmonth": {
+     "batting:60": "20/82",
+     "batting:7": "15",
+     "batting:12": "3",
+     "batting:13": "18",
+     "batting:16": "5",
+     "batting:21": "12",
+     "batting:22": "2",
+     "batting:3": ".244",
+     "batting:55": ".715"
+    },
+    "season": {
+     "batting:60": "128/512",
+     "batting:7": "61",
+     "batting:12": "13",
+     "batting:13": "69",
+     "batting:16": "20",
+     "batting:21": "82",
+     "batting:22": "10",
+     "batting:3": ".250",
+     "batting:55": ".691"
+    }
+   },
+   "percentOwned": 19,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.12271",
+   "name": "Nick Fortes",
+   "mlbTeam": "TB",
+   "positionType": "B",
+   "displayPosition": "C",
+   "eligiblePositions": [
+    "C",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/BqElJt7H0xtKy0eUSjIIzg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03242026/12271.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "3/7",
+     "batting:7": "2",
+     "batting:12": "1",
+     "batting:13": "3",
+     "batting:16": "0",
+     "batting:21": "0",
+     "batting:22": "0",
+     "batting:3": ".429",
+     "batting:55": "1.699"
+    },
+    "lastmonth": {
+     "batting:60": "7/28",
+     "batting:7": "4",
+     "batting:12": "1",
+     "batting:13": "5",
+     "batting:16": "0",
+     "batting:21": "5",
+     "batting:22": "0",
+     "batting:3": ".250",
+     "batting:55": ".787"
+    },
+    "season": {
+     "batting:60": "75/281",
+     "batting:7": "32",
+     "batting:12": "5",
+     "batting:13": "34",
+     "batting:16": "0",
+     "batting:21": "38",
+     "batting:22": "6",
+     "batting:3": ".267",
+     "batting:55": ".696"
+    }
+   },
+   "percentOwned": 1,
+   "ownershipDelta": -1
+  },
+  {
+   "playerKey": "469.p.10594",
+   "name": "Edmundo Sosa",
+   "mlbTeam": "PHI",
+   "positionType": "B",
+   "displayPosition": "2B,3B,SS,LF",
+   "eligiblePositions": [
+    "2B",
+    "3B",
+    "SS",
+    "LF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/oueDoRHpFaAn4mdbimMzgg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03202026/10594.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "3/4",
+     "batting:7": "2",
+     "batting:12": "1",
+     "batting:13": "1",
+     "batting:16": "0",
+     "batting:21": "0",
+     "batting:22": "0",
+     "batting:3": ".750",
+     "batting:55": "2.500"
+    },
+    "lastmonth": {
+     "batting:60": "14/34",
+     "batting:7": "9",
+     "batting:12": "3",
+     "batting:13": "13",
+     "batting:16": "1",
+     "batting:21": "7",
+     "batting:22": "1",
+     "batting:3": ".412",
+     "batting:55": "1.223"
+    },
+    "season": {
+     "batting:60": "55/221",
+     "batting:7": "29",
+     "batting:12": "8",
+     "batting:13": "43",
+     "batting:16": "4",
+     "batting:21": "50",
+     "batting:22": "6",
+     "batting:3": ".249",
+     "batting:55": ".708"
+    }
+   },
+   "percentOwned": 1,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.62194",
+   "name": "Javier Sanoja",
+   "mlbTeam": "MIA",
+   "positionType": "B",
+   "displayPosition": "2B,3B,SS,LF,CF,RF",
+   "eligiblePositions": [
+    "2B",
+    "3B",
+    "SS",
+    "LF",
+    "CF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/aFfeJKxjM0PsVGwVQG6gpg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/62194.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "7/24",
+     "batting:7": "4",
+     "batting:12": "1",
+     "batting:13": "7",
+     "batting:16": "1",
+     "batting:21": "2",
+     "batting:22": "0",
+     "batting:3": ".292",
+     "batting:55": ".903"
+    },
+    "lastmonth": {
+     "batting:60": "35/102",
+     "batting:7": "16",
+     "batting:12": "3",
+     "batting:13": "16",
+     "batting:16": "5",
+     "batting:21": "7",
+     "batting:22": "4",
+     "batting:3": ".343",
+     "batting:55": ".919"
+    },
+    "season": {
+     "batting:60": "126/429",
+     "batting:7": "48",
+     "batting:12": "9",
+     "batting:13": "64",
+     "batting:16": "11",
+     "batting:21": "36",
+     "batting:22": "8",
+     "batting:3": ".294",
+     "batting:55": ".784"
+    }
+   },
+   "percentOwned": 50,
+   "ownershipDelta": 12
+  },
+  {
+   "playerKey": "469.p.12293",
+   "name": "Ray Kerr",
+   "mlbTeam": "ATL",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/TycS1XDjQpncicpL2VQVRA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/02292024/12293.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "3.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "4",
+     "pitching:46": "1",
+     "pitching:26": "0.00",
+     "pitching:27": "0.33",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "12.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "10",
+     "pitching:46": "1",
+     "pitching:26": "1.50",
+     "pitching:27": "0.50",
+     "pitching:56": "10.00",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "14.1",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "10",
+     "pitching:46": "1",
+     "pitching:26": "1.26",
+     "pitching:27": "0.49",
+     "pitching:56": "10.00",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": null,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.60267",
+   "name": "Connor Prielipp",
+   "mlbTeam": "MIN",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/NdScgyKjkIrp9zJeJK5Tgg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/60267.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "12.1",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "9",
+     "pitching:46": "0",
+     "pitching:26": "2.19",
+     "pitching:27": "0.73",
+     "pitching:56": "4.50",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "32.2",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "31",
+     "pitching:46": "3",
+     "pitching:26": "3.86",
+     "pitching:27": "1.07",
+     "pitching:56": "5.17",
+     "pitching:83": "1"
+    },
+    "season": {
+     "pitching:50": "120.1",
+     "pitching:29": "7",
+     "pitching:32": "0",
+     "pitching:42": "125",
+     "pitching:46": "10",
+     "pitching:26": "4.94",
+     "pitching:27": "1.30",
+     "pitching:56": "2.98",
+     "pitching:83": "4"
+    }
+   },
+   "percentOwned": 12,
+   "ownershipDelta": 4
+  },
+  {
+   "playerKey": "469.p.60900",
+   "name": "Ryan Watson",
+   "mlbTeam": "LAA",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/WGvz1B2mUW8q_YaJfeLlPg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03142026/60900.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "2.1",
+     "pitching:29": "0",
+     "pitching:32": "1",
+     "pitching:42": "2",
+     "pitching:46": "1",
+     "pitching:26": "0.00",
+     "pitching:27": "0.43",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "11.0",
+     "pitching:29": "1",
+     "pitching:32": "2",
+     "pitching:42": "13",
+     "pitching:46": "1",
+     "pitching:26": "2.45",
+     "pitching:27": "1.09",
+     "pitching:56": "4.33",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "70.0",
+     "pitching:29": "1",
+     "pitching:32": "3",
+     "pitching:42": "60",
+     "pitching:46": "4",
+     "pitching:26": "3.99",
+     "pitching:27": "1.24",
+     "pitching:56": "2.73",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": 3,
+   "ownershipDelta": 3
+  },
+  {
+   "playerKey": "469.p.64978",
+   "name": "Jonah Tong",
+   "mlbTeam": "NYM",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/F4Cwk0becfXWnlm0Lj.unA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03202026/64978.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "6.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "6",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.83",
+     "pitching:56": "6.00",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "11.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "13",
+     "pitching:46": "0",
+     "pitching:26": "3.27",
+     "pitching:27": "0.91",
+     "pitching:56": "6.50",
+     "pitching:83": "1"
+    },
+    "season": {
+     "pitching:50": "21.0",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "20",
+     "pitching:46": "1",
+     "pitching:26": "3.43",
+     "pitching:27": "1.19",
+     "pitching:56": "2.22",
+     "pitching:83": "1"
+    }
+   },
+   "percentOwned": 16,
+   "ownershipDelta": 9
+  },
+  {
+   "playerKey": "469.p.10826",
+   "name": "Austin Hays",
+   "mlbTeam": "SD",
+   "positionType": "B",
+   "displayPosition": "LF",
+   "eligiblePositions": [
+    "LF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/.pDV6blu1sFcBjwVxmN.Vw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03142026/10826.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "4/7",
+     "batting:7": "3",
+     "batting:12": "1",
+     "batting:13": "1",
+     "batting:16": "0",
+     "batting:21": "1",
+     "batting:22": "0",
+     "batting:3": ".571",
+     "batting:55": "1.714"
+    },
+    "lastmonth": {
+     "batting:60": "10/31",
+     "batting:7": "8",
+     "batting:12": "1",
+     "batting:13": "2",
+     "batting:16": "0",
+     "batting:21": "9",
+     "batting:22": "0",
+     "batting:3": ".323",
+     "batting:55": ".837"
+    },
+    "season": {
+     "batting:60": "24/90",
+     "batting:7": "14",
+     "batting:12": "3",
+     "batting:13": "12",
+     "batting:16": "0",
+     "batting:21": "25",
+     "batting:22": "3",
+     "batting:3": ".267",
+     "batting:55": ".687"
+    }
+   },
+   "percentOwned": null,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.9319",
+   "name": "Xander Bogaerts",
+   "mlbTeam": "SD",
+   "positionType": "B",
+   "displayPosition": "SS",
+   "eligiblePositions": [
+    "SS",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/zZ5At8T4.ZI3zxkm_bEAZQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03202026/9319.2.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "11/27",
+     "batting:7": "8",
+     "batting:12": "1",
+     "batting:13": "2",
+     "batting:16": "1",
+     "batting:21": "7",
+     "batting:22": "1",
+     "batting:3": ".407",
+     "batting:55": "1.171"
+    },
+    "lastmonth": {
+     "batting:60": "24/91",
+     "batting:7": "14",
+     "batting:12": "1",
+     "batting:13": "10",
+     "batting:16": "5",
+     "batting:21": "21",
+     "batting:22": "4",
+     "batting:3": ".264",
+     "batting:55": ".741"
+    },
+    "season": {
+     "batting:60": "115/504",
+     "batting:7": "63",
+     "batting:12": "12",
+     "batting:13": "56",
+     "batting:16": "21",
+     "batting:21": "106",
+     "batting:22": "12",
+     "batting:3": ".228",
+     "batting:55": ".665"
+    }
+   },
+   "percentOwned": 31,
+   "ownershipDelta": 2
+  },
+  {
+   "playerKey": "469.p.9105",
+   "name": "Nolan Arenado",
+   "mlbTeam": "AZ",
+   "positionType": "B",
+   "displayPosition": "3B",
+   "eligiblePositions": [
+    "3B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/IIo108T.j4ixyPE39Kview--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03102026/9105.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "8/21",
+     "batting:7": "3",
+     "batting:12": "2",
+     "batting:13": "4",
+     "batting:16": "0",
+     "batting:21": "5",
+     "batting:22": "0",
+     "batting:3": ".381",
+     "batting:55": "1.149"
+    },
+    "lastmonth": {
+     "batting:60": "23/91",
+     "batting:7": "12",
+     "batting:12": "6",
+     "batting:13": "11",
+     "batting:16": "0",
+     "batting:21": "17",
+     "batting:22": "2",
+     "batting:3": ".253",
+     "batting:55": ".804"
+    },
+    "season": {
+     "batting:60": "123/502",
+     "batting:7": "71",
+     "batting:12": "26",
+     "batting:13": "74",
+     "batting:16": "4",
+     "batting:21": "113",
+     "batting:22": "12",
+     "batting:3": ".245",
+     "batting:55": ".771"
+    }
+   },
+   "percentOwned": 32,
+   "ownershipDelta": 6
+  },
+  {
+   "playerKey": "469.p.65281",
+   "name": "Drew Sommers",
+   "mlbTeam": "DET",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/K52fWEXxqcIw1NTpvVTpiA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07222026/65281.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "4.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "5",
+     "pitching:46": "1",
+     "pitching:26": "0.00",
+     "pitching:27": "1.00",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "14.0",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "20",
+     "pitching:46": "2",
+     "pitching:26": "3.21",
+     "pitching:27": "0.93",
+     "pitching:56": "10.00",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "38.0",
+     "pitching:29": "4",
+     "pitching:32": "0",
+     "pitching:42": "58",
+     "pitching:46": "4",
+     "pitching:26": "3.32",
+     "pitching:27": "1.21",
+     "pitching:56": "4.46",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": 1,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.11358",
+   "name": "Garrett Whitlock",
+   "mlbTeam": "BOS",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/hm7sIGTJNLMiyqSbfn4HhA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03142026/11358.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "2.2",
+     "pitching:29": "0",
+     "pitching:32": "1",
+     "pitching:42": "4",
+     "pitching:46": "1",
+     "pitching:26": "0.00",
+     "pitching:27": "0.75",
+     "pitching:56": "4.00",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "6.2",
+     "pitching:29": "0",
+     "pitching:32": "2",
+     "pitching:42": "9",
+     "pitching:46": "2",
+     "pitching:26": "0.00",
+     "pitching:27": "0.45",
+     "pitching:56": "9.00",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "50.2",
+     "pitching:29": "1",
+     "pitching:32": "4",
+     "pitching:42": "58",
+     "pitching:46": "3",
+     "pitching:26": "1.78",
+     "pitching:27": "0.83",
+     "pitching:56": "7.25",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": 26,
+   "ownershipDelta": 4
+  },
+  {
+   "playerKey": "469.p.9724",
+   "name": "Eugenio Suárez",
+   "mlbTeam": "CIN",
+   "positionType": "B",
+   "displayPosition": "3B",
+   "eligiblePositions": [
+    "3B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/iCl9wlDjkrqdM49.bVI11g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03162026/9724.3.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "6/21",
+     "batting:7": "5",
+     "batting:12": "2",
+     "batting:13": "6",
+     "batting:16": "0",
+     "batting:21": "5",
+     "batting:22": "0",
+     "batting:3": ".286",
+     "batting:55": ".946"
+    },
+    "lastmonth": {
+     "batting:60": "17/73",
+     "batting:7": "14",
+     "batting:12": "6",
+     "batting:13": "19",
+     "batting:16": "1",
+     "batting:21": "22",
+     "batting:22": "2",
+     "batting:3": ".233",
+     "batting:55": ".878"
+    },
+    "season": {
+     "batting:60": "87/413",
+     "batting:7": "46",
+     "batting:12": "24",
+     "batting:13": "69",
+     "batting:16": "1",
+     "batting:21": "160",
+     "batting:22": "6",
+     "batting:3": ".211",
+     "batting:55": ".732"
+    }
+   },
+   "percentOwned": 62,
+   "ownershipDelta": 1
+  },
+  {
+   "playerKey": "469.p.61881",
+   "name": "Brendan Cellucci",
+   "mlbTeam": "TOR",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/TcM85WhJ.fAOHWf2QKLjIw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMDA7Y3I9MTtjdz0xNTM7ZHg9NzQ7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/dh/ap/default/140828/silhouette@2x.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "3.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "4",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.00",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "3.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "4",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.00",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "3.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "4",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.00",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": null,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.11713",
+   "name": "Yohan Ramírez",
+   "mlbTeam": "PIT",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/ybvEfobMLFUJOu4uHSVokQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07152025/11713.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "3.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "4",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.00",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "12.2",
+     "pitching:29": "1",
+     "pitching:32": "1",
+     "pitching:42": "16",
+     "pitching:46": "1",
+     "pitching:26": "2.84",
+     "pitching:27": "0.71",
+     "pitching:56": "8.00",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "81.0",
+     "pitching:29": "4",
+     "pitching:32": "2",
+     "pitching:42": "95",
+     "pitching:46": "11",
+     "pitching:26": "3.00",
+     "pitching:27": "1.21",
+     "pitching:56": "2.21",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": 1,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.11075",
+   "name": "Miguel Amaya",
+   "mlbTeam": "CHC",
+   "positionType": "B",
+   "displayPosition": "C",
+   "eligiblePositions": [
+    "C",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/724HvKkiLG_zRIGprOwrJQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03162026/11075.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "2/4",
+     "batting:7": "1",
+     "batting:12": "1",
+     "batting:13": "3",
+     "batting:16": "0",
+     "batting:21": "0",
+     "batting:22": "0",
+     "batting:3": ".500",
+     "batting:55": "1.650"
+    },
+    "lastmonth": {
+     "batting:60": "6/24",
+     "batting:7": "5",
+     "batting:12": "1",
+     "batting:13": "4",
+     "batting:16": "0",
+     "batting:21": "8",
+     "batting:22": "1",
+     "batting:3": ".250",
+     "batting:55": ".762"
+    },
+    "season": {
+     "batting:60": "48/201",
+     "batting:7": "35",
+     "batting:12": "6",
+     "batting:13": "26",
+     "batting:16": "0",
+     "batting:21": "62",
+     "batting:22": "8",
+     "batting:3": ".239",
+     "batting:55": ".723"
+    }
+   },
+   "percentOwned": null,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.60120",
+   "name": "Moisés Ballesteros",
+   "mlbTeam": "LAA",
+   "positionType": "B",
+   "displayPosition": "C",
+   "eligiblePositions": [
+    "C",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/BukH9vK3.hfO3eBpB6IBLw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/08062026/60120.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "6/15",
+     "batting:7": "2",
+     "batting:12": "1",
+     "batting:13": "4",
+     "batting:16": "0",
+     "batting:21": "3",
+     "batting:22": "0",
+     "batting:3": ".400",
+     "batting:55": "1.050"
+    },
+    "lastmonth": {
+     "batting:60": "24/84",
+     "batting:7": "8",
+     "batting:12": "3",
+     "batting:13": "12",
+     "batting:16": "0",
+     "batting:21": "25",
+     "batting:22": "2",
+     "batting:3": ".286",
+     "batting:55": ".766"
+    },
+    "season": {
+     "batting:60": "66/290",
+     "batting:7": "25",
+     "batting:12": "9",
+     "batting:13": "35",
+     "batting:16": "1",
+     "batting:21": "73",
+     "batting:22": "4",
+     "batting:3": ".228",
+     "batting:55": ".647"
+    }
+   },
+   "percentOwned": 4,
+   "ownershipDelta": 1
+  },
+  {
+   "playerKey": "469.p.11587",
+   "name": "Geoff Hartlieb",
+   "mlbTeam": "ATH",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/pb8BixQv2Sw0DWNub0zukQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07242026/11587.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "3.2",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "4",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.27",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "10.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "10",
+     "pitching:46": "1",
+     "pitching:26": "0.90",
+     "pitching:27": "0.70",
+     "pitching:56": "10.00",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "23.1",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "16",
+     "pitching:46": "2",
+     "pitching:26": "3.86",
+     "pitching:27": "1.41",
+     "pitching:56": "1.60",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": null,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.9799",
+   "name": "Chris Bassitt",
+   "mlbTeam": "BAL",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/I_pN8673ieqqxMliDiIT4g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03142026/9799.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "6.2",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "6",
+     "pitching:46": "0",
+     "pitching:26": "1.35",
+     "pitching:27": "0.90",
+     "pitching:56": "6.00",
+     "pitching:83": "1"
+    },
+    "lastmonth": {
+     "pitching:50": "29.2",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "26",
+     "pitching:46": "2",
+     "pitching:26": "3.64",
+     "pitching:27": "1.38",
+     "pitching:56": "2.36",
+     "pitching:83": "2"
+    },
+    "season": {
+     "pitching:50": "97.0",
+     "pitching:29": "5",
+     "pitching:32": "0",
+     "pitching:42": "72",
+     "pitching:46": "7",
+     "pitching:26": "4.64",
+     "pitching:27": "1.55",
+     "pitching:56": "1.95",
+     "pitching:83": "4"
+    }
+   },
+   "percentOwned": 15,
+   "ownershipDelta": 1
+  },
+  {
+   "playerKey": "469.p.11428",
+   "name": "Dean Kremer",
+   "mlbTeam": "MIN",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/WC2l6RVHdgjbmkNIKQUEuA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03142026/11428.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "5.2",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "5",
+     "pitching:46": "1",
+     "pitching:26": "1.59",
+     "pitching:27": "0.53",
+     "pitching:56": "5.00",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "24.0",
+     "pitching:29": "1",
+     "pitching:32": "0",
+     "pitching:42": "21",
+     "pitching:46": "2",
+     "pitching:26": "5.25",
+     "pitching:27": "1.38",
+     "pitching:56": "2.10",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "77.1",
+     "pitching:29": "5",
+     "pitching:32": "0",
+     "pitching:42": "74",
+     "pitching:46": "5",
+     "pitching:26": "5.35",
+     "pitching:27": "1.24",
+     "pitching:56": "2.85",
+     "pitching:83": "3"
+    }
+   },
+   "percentOwned": 10,
+   "ownershipDelta": 3
+  },
+  {
+   "playerKey": "469.p.11347",
+   "name": "Trevor Larnach",
+   "mlbTeam": "MIN",
+   "positionType": "B",
+   "displayPosition": "LF,RF",
+   "eligiblePositions": [
+    "LF",
+    "RF",
+    "Util",
+    "IL"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/M.VCbnRnw89jQ864WuFZ2A--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/11347.png",
+   "status": "IL10",
+   "windows": {
+    "lastweek": {
+     "batting:60": "2/3",
+     "batting:7": "1",
+     "batting:12": "1",
+     "batting:13": "1",
+     "batting:16": "0",
+     "batting:21": "0",
+     "batting:22": "0",
+     "batting:3": ".667",
+     "batting:55": "2.750"
+    },
+    "lastmonth": {
+     "batting:60": "14/51",
+     "batting:7": "7",
+     "batting:12": "3",
+     "batting:13": "6",
+     "batting:16": "0",
+     "batting:21": "11",
+     "batting:22": "2",
+     "batting:3": ".275",
+     "batting:55": ".868"
+    },
+    "season": {
+     "batting:60": "103/383",
+     "batting:7": "57",
+     "batting:12": "13",
+     "batting:13": "48",
+     "batting:16": "2",
+     "batting:21": "79",
+     "batting:22": "10",
+     "batting:3": ".269",
+     "batting:55": ".788"
+    }
+   },
+   "percentOwned": 3,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.12265",
+   "name": "Ryan Feltner",
+   "mlbTeam": "COL",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/zQOpxgt4vxj4jckxmPMMQg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03162026/12265.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "5.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "5",
+     "pitching:46": "1",
+     "pitching:26": "0.00",
+     "pitching:27": "0.80",
+     "pitching:56": "5.00",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "24.2",
+     "pitching:29": "3",
+     "pitching:32": "0",
+     "pitching:42": "24",
+     "pitching:46": "1",
+     "pitching:26": "4.38",
+     "pitching:27": "1.50",
+     "pitching:56": "2.18",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "116.2",
+     "pitching:29": "10",
+     "pitching:32": "0",
+     "pitching:42": "88",
+     "pitching:46": "8",
+     "pitching:26": "5.63",
+     "pitching:27": "1.53",
+     "pitching:56": "1.76",
+     "pitching:83": "5"
+    }
+   },
+   "percentOwned": 1,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.12430",
+   "name": "Colt Keith",
+   "mlbTeam": "DET",
+   "positionType": "B",
+   "displayPosition": "1B,2B,3B",
+   "eligiblePositions": [
+    "1B",
+    "2B",
+    "3B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/sDyLzea0vvLJ158gORy.ug--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03162026/12430.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "4/10",
+     "batting:7": "3",
+     "batting:12": "0",
+     "batting:13": "1",
+     "batting:16": "1",
+     "batting:21": "1",
+     "batting:22": "0",
+     "batting:3": ".400",
+     "batting:55": "1.238"
+    },
+    "lastmonth": {
+     "batting:60": "9/48",
+     "batting:7": "5",
+     "batting:12": "1",
+     "batting:13": "4",
+     "batting:16": "1",
+     "batting:21": "16",
+     "batting:22": "0",
+     "batting:3": ".188",
+     "batting:55": ".649"
+    },
+    "season": {
+     "batting:60": "99/381",
+     "batting:7": "51",
+     "batting:12": "10",
+     "batting:13": "36",
+     "batting:16": "6",
+     "batting:21": "83",
+     "batting:22": "8",
+     "batting:3": ".260",
+     "batting:55": ".733"
+    }
+   },
+   "percentOwned": 8,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.10627",
+   "name": "Jesús Luzardo",
+   "mlbTeam": "PHI",
+   "positionType": "P",
+   "displayPosition": "SP",
+   "eligiblePositions": [
+    "SP",
+    "P",
+    "IL"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/4l31X0Zmr1u_y0_ymCFr5A--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03202026/10627.1.png",
+   "status": "IL15",
+   "windows": {
+    "lastweek": {
+     "pitching:50": "-",
+     "pitching:29": "-",
+     "pitching:32": "-",
+     "pitching:42": "-",
+     "pitching:46": "-",
+     "pitching:26": "-",
+     "pitching:27": "-",
+     "pitching:56": "-",
+     "pitching:83": "-"
+    },
+    "lastmonth": {
+     "pitching:50": "28.1",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "36",
+     "pitching:46": "2",
+     "pitching:26": "0.95",
+     "pitching:27": "0.71",
+     "pitching:56": "6.00",
+     "pitching:83": "3"
+    },
+    "season": {
+     "pitching:50": "178.2",
+     "pitching:29": "5",
+     "pitching:32": "0",
+     "pitching:42": "221",
+     "pitching:46": "8",
+     "pitching:26": "2.87",
+     "pitching:27": "1.08",
+     "pitching:56": "4.25",
+     "pitching:83": "17"
+    }
+   },
+   "percentOwned": 92,
+   "ownershipDelta": -6
+  },
+  {
+   "playerKey": "469.p.12451",
+   "name": "Carter Jensen",
+   "mlbTeam": "KC",
+   "positionType": "B",
+   "displayPosition": "C",
+   "eligiblePositions": [
+    "C",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/wgfhmU430zy1W.iWvxJHAA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03192026/12451.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "6/21",
+     "batting:7": "2",
+     "batting:12": "1",
+     "batting:13": "5",
+     "batting:16": "0",
+     "batting:21": "8",
+     "batting:22": "0",
+     "batting:3": ".286",
+     "batting:55": ".872"
+    },
+    "lastmonth": {
+     "batting:60": "25/86",
+     "batting:7": "18",
+     "batting:12": "8",
+     "batting:13": "19",
+     "batting:16": "1",
+     "batting:21": "25",
+     "batting:22": "0",
+     "batting:3": ".291",
+     "batting:55": "1.084"
+    },
+    "season": {
+     "batting:60": "117/502",
+     "batting:7": "74",
+     "batting:12": "24",
+     "batting:13": "75",
+     "batting:16": "2",
+     "batting:21": "162",
+     "batting:22": "4",
+     "batting:3": ".233",
+     "batting:55": ".770"
+    }
+   },
+   "percentOwned": 70,
+   "ownershipDelta": 5
+  },
+  {
+   "playerKey": "469.p.60246",
+   "name": "Victor Mesa Jr.",
+   "mlbTeam": "TB",
+   "positionType": "B",
+   "displayPosition": "RF",
+   "eligiblePositions": [
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/fPw4KR2cN5c.ocH6TLkuvg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03242026/60246.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "5/17",
+     "batting:7": "5",
+     "batting:12": "0",
+     "batting:13": "2",
+     "batting:16": "0",
+     "batting:21": "4",
+     "batting:22": "0",
+     "batting:3": ".294",
+     "batting:55": ".871"
+    },
+    "lastmonth": {
+     "batting:60": "19/50",
+     "batting:7": "13",
+     "batting:12": "3",
+     "batting:13": "8",
+     "batting:16": "3",
+     "batting:21": "6",
+     "batting:22": "0",
+     "batting:3": ".380",
+     "batting:55": "1.096"
+    },
+    "season": {
+     "batting:60": "53/209",
+     "batting:7": "33",
+     "batting:12": "13",
+     "batting:13": "30",
+     "batting:16": "9",
+     "batting:21": "46",
+     "batting:22": "2",
+     "batting:3": ".254",
+     "batting:55": ".821"
+    }
+   },
+   "percentOwned": 25,
+   "ownershipDelta": 14
+  },
+  {
+   "playerKey": "469.p.62957",
+   "name": "Bryce Eldridge",
+   "mlbTeam": "SF",
+   "positionType": "B",
+   "displayPosition": "1B",
+   "eligiblePositions": [
+    "1B",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/.6SpEQ8RUFmciSCLXkUlew--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03202026/62957.1.png",
+   "status": "DTD",
+   "windows": {
+    "lastweek": {
+     "batting:60": "5/19",
+     "batting:7": "2",
+     "batting:12": "1",
+     "batting:13": "4",
+     "batting:16": "0",
+     "batting:21": "6",
+     "batting:22": "0",
+     "batting:3": ".263",
+     "batting:55": ".865"
+    },
+    "lastmonth": {
+     "batting:60": "31/90",
+     "batting:7": "9",
+     "batting:12": "3",
+     "batting:13": "24",
+     "batting:16": "0",
+     "batting:21": "28",
+     "batting:22": "0",
+     "batting:3": ".344",
+     "batting:55": ".973"
+    },
+    "season": {
+     "batting:60": "104/386",
+     "batting:7": "50",
+     "batting:12": "17",
+     "batting:13": "57",
+     "batting:16": "1",
+     "batting:21": "119",
+     "batting:22": "0",
+     "batting:3": ".269",
+     "batting:55": ".825"
+    }
+   },
+   "percentOwned": 29,
+   "ownershipDelta": 1
+  },
+  {
+   "playerKey": "469.p.62914",
+   "name": "Jonah Cox",
+   "mlbTeam": "SF",
+   "positionType": "B",
+   "displayPosition": "2B,LF,CF",
+   "eligiblePositions": [
+    "2B",
+    "LF",
+    "CF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/e8U2vErQ3Mwrp8QujOnYrA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/09092026/62914.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "8/24",
+     "batting:7": "3",
+     "batting:12": "0",
+     "batting:13": "3",
+     "batting:16": "3",
+     "batting:21": "10",
+     "batting:22": "0",
+     "batting:3": ".333",
+     "batting:55": ".693"
+    },
+    "lastmonth": {
+     "batting:60": "26/83",
+     "batting:7": "18",
+     "batting:12": "3",
+     "batting:13": "11",
+     "batting:16": "9",
+     "batting:21": "29",
+     "batting:22": "0",
+     "batting:3": ".313",
+     "batting:55": ".801"
+    },
+    "season": {
+     "batting:60": "36/122",
+     "batting:7": "24",
+     "batting:12": "4",
+     "batting:13": "14",
+     "batting:16": "13",
+     "batting:21": "50",
+     "batting:22": "0",
+     "batting:3": ".295",
+     "batting:55": ".776"
+    }
+   },
+   "percentOwned": 10,
+   "ownershipDelta": 2
+  },
+  {
+   "playerKey": "469.p.60294",
+   "name": "Spencer Jones",
+   "mlbTeam": "NYY",
+   "positionType": "B",
+   "displayPosition": "LF,CF,RF",
+   "eligiblePositions": [
+    "LF",
+    "CF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/onO4JopLnNE0O33TLiAq3A--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03202026/60294.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "4/26",
+     "batting:7": "1",
+     "batting:12": "1",
+     "batting:13": "4",
+     "batting:16": "0",
+     "batting:21": "11",
+     "batting:22": "0",
+     "batting:3": ".154",
+     "batting:55": ".423"
+    },
+    "lastmonth": {
+     "batting:60": "28/92",
+     "batting:7": "17",
+     "batting:12": "5",
+     "batting:13": "20",
+     "batting:16": "3",
+     "batting:21": "35",
+     "batting:22": "0",
+     "batting:3": ".304",
+     "batting:55": ".878"
+    },
+    "season": {
+     "batting:60": "59/238",
+     "batting:7": "32",
+     "batting:12": "10",
+     "batting:13": "38",
+     "batting:16": "9",
+     "batting:21": "96",
+     "batting:22": "0",
+     "batting:3": ".248",
+     "batting:55": ".751"
+    }
+   },
+   "percentOwned": 31,
+   "ownershipDelta": -2
+  },
+  {
+   "playerKey": "469.p.10195",
+   "name": "Tyrone Taylor",
+   "mlbTeam": "CHC",
+   "positionType": "B",
+   "displayPosition": "LF,CF,RF",
+   "eligiblePositions": [
+    "LF",
+    "CF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/h199VRHKXPVtuNu2zTRJ8g--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/08062026/10195.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "1/7",
+     "batting:7": "1",
+     "batting:12": "0",
+     "batting:13": "0",
+     "batting:16": "0",
+     "batting:21": "1",
+     "batting:22": "0",
+     "batting:3": ".143",
+     "batting:55": ".536"
+    },
+    "lastmonth": {
+     "batting:60": "17/42",
+     "batting:7": "9",
+     "batting:12": "1",
+     "batting:13": "8",
+     "batting:16": "2",
+     "batting:21": "5",
+     "batting:22": "0",
+     "batting:3": ".405",
+     "batting:55": "1.054"
+    },
+    "season": {
+     "batting:60": "58/209",
+     "batting:7": "34",
+     "batting:12": "11",
+     "batting:13": "37",
+     "batting:16": "3",
+     "batting:21": "40",
+     "batting:22": "0",
+     "batting:3": ".278",
+     "batting:55": ".833"
+    }
+   },
+   "percentOwned": 2,
+   "ownershipDelta": 0
+  },
+  {
+   "playerKey": "469.p.63242",
+   "name": "Brett Bateman",
+   "mlbTeam": "TOR",
+   "positionType": "B",
+   "displayPosition": "CF,RF",
+   "eligiblePositions": [
+    "CF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/p_4kj2Bq.HD4MUUYcaI6yA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/08272026/63242.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "6/24",
+     "batting:7": "6",
+     "batting:12": "1",
+     "batting:13": "2",
+     "batting:16": "0",
+     "batting:21": "7",
+     "batting:22": "0",
+     "batting:3": ".250",
+     "batting:55": ".708"
+    },
+    "lastmonth": {
+     "batting:60": "33/94",
+     "batting:7": "19",
+     "batting:12": "2",
+     "batting:13": "7",
+     "batting:16": "2",
+     "batting:21": "23",
+     "batting:22": "0",
+     "batting:3": ".351",
+     "batting:55": ".894"
+    },
+    "season": {
+     "batting:60": "46/142",
+     "batting:7": "23",
+     "batting:12": "2",
+     "batting:13": "11",
+     "batting:16": "3",
+     "batting:21": "33",
+     "batting:22": "0",
+     "batting:3": ".324",
+     "batting:55": ".805"
+    }
+   },
+   "percentOwned": 10,
+   "ownershipDelta": 3
+  },
+  {
+   "playerKey": "469.p.10444",
+   "name": "Bryan Hudson",
+   "mlbTeam": "CWS",
+   "positionType": "P",
+   "displayPosition": "SP,RP",
+   "eligiblePositions": [
+    "SP",
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/9Ds_uBIGtOoIHFMQwXjMXA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/07222026/10444.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "3.2",
+     "pitching:29": "0",
+     "pitching:32": "1",
+     "pitching:42": "2",
+     "pitching:46": "0",
+     "pitching:26": "4.91",
+     "pitching:27": "1.36",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "12.2",
+     "pitching:29": "0",
+     "pitching:32": "3",
+     "pitching:42": "8",
+     "pitching:46": "2",
+     "pitching:26": "1.42",
+     "pitching:27": "0.87",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "65.1",
+     "pitching:29": "4",
+     "pitching:32": "8",
+     "pitching:42": "59",
+     "pitching:46": "6",
+     "pitching:26": "3.03",
+     "pitching:27": "1.21",
+     "pitching:56": "3.47",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": 7,
+   "ownershipDelta": 2
+  },
+  {
+   "playerKey": "469.p.60421",
+   "name": "Tristan Peters",
+   "mlbTeam": "CWS",
+   "positionType": "B",
+   "displayPosition": "LF,CF,RF",
+   "eligiblePositions": [
+    "LF",
+    "CF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/KA5ZLeXbdEvCCHoSxJenjA--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03142026/60421.png",
+   "status": "DTD",
+   "windows": {
+    "lastweek": {
+     "batting:60": "2/18",
+     "batting:7": "3",
+     "batting:12": "0",
+     "batting:13": "1",
+     "batting:16": "0",
+     "batting:21": "6",
+     "batting:22": "0",
+     "batting:3": ".111",
+     "batting:55": ".500"
+    },
+    "lastmonth": {
+     "batting:60": "23/84",
+     "batting:7": "15",
+     "batting:12": "5",
+     "batting:13": "11",
+     "batting:16": "2",
+     "batting:21": "20",
+     "batting:22": "0",
+     "batting:3": ".274",
+     "batting:55": ".926"
+    },
+    "season": {
+     "batting:60": "114/419",
+     "batting:7": "61",
+     "batting:12": "12",
+     "batting:13": "54",
+     "batting:16": "8",
+     "batting:21": "87",
+     "batting:22": "0",
+     "batting:3": ".272",
+     "batting:55": ".795"
+    }
+   },
+   "percentOwned": 21,
+   "ownershipDelta": -9
+  },
+  {
+   "playerKey": "469.p.9339",
+   "name": "George Springer",
+   "mlbTeam": "TOR",
+   "positionType": "B",
+   "displayPosition": "LF,CF,RF",
+   "eligiblePositions": [
+    "LF",
+    "CF",
+    "RF",
+    "Util"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/fPZH6Y6qASgMY68tqXDO.w--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03242026/9339.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "batting:60": "7/23",
+     "batting:7": "4",
+     "batting:12": "1",
+     "batting:13": "5",
+     "batting:16": "0",
+     "batting:21": "4",
+     "batting:22": "1",
+     "batting:3": ".304",
+     "batting:55": ".885"
+    },
+    "lastmonth": {
+     "batting:60": "28/86",
+     "batting:7": "12",
+     "batting:12": "3",
+     "batting:13": "15",
+     "batting:16": "2",
+     "batting:21": "15",
+     "batting:22": "1",
+     "batting:3": ".326",
+     "batting:55": ".888"
+    },
+    "season": {
+     "batting:60": "111/442",
+     "batting:7": "57",
+     "batting:12": "15",
+     "batting:13": "53",
+     "batting:16": "12",
+     "batting:21": "89",
+     "batting:22": "10",
+     "batting:3": ".251",
+     "batting:55": ".738"
+    }
+   },
+   "percentOwned": 69,
+   "ownershipDelta": 1
+  },
+  {
+   "playerKey": "469.p.12114",
+   "name": "Tyler Wells",
+   "mlbTeam": "TB",
+   "positionType": "P",
+   "displayPosition": "SP,RP",
+   "eligiblePositions": [
+    "SP",
+    "RP",
+    "P",
+    "IL"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/MHo3fdj7sRmkVgHf1uieKQ--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/08062026/12114.1.png",
+   "status": "IL15",
+   "windows": {
+    "lastweek": {
+     "pitching:50": "1.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "2",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "1.00",
+     "pitching:56": "2.00",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "10.2",
+     "pitching:29": "0",
+     "pitching:32": "2",
+     "pitching:42": "11",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.38",
+     "pitching:56": "5.50",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "72.0",
+     "pitching:29": "2",
+     "pitching:32": "6",
+     "pitching:42": "72",
+     "pitching:46": "3",
+     "pitching:26": "2.38",
+     "pitching:27": "0.90",
+     "pitching:56": "4.00",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": 10,
+   "ownershipDelta": -5
+  },
+  {
+   "playerKey": "469.p.64030",
+   "name": "Brandyn Garcia",
+   "mlbTeam": "AZ",
+   "positionType": "P",
+   "displayPosition": "RP",
+   "eligiblePositions": [
+    "RP",
+    "P"
+   ],
+   "headshotUrl": "https://s.yimg.com/iu/api/res/1.2/YdptjGlL90dpFfDYhjbUjg--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03102026/64030.1.png",
+   "status": null,
+   "windows": {
+    "lastweek": {
+     "pitching:50": "3.0",
+     "pitching:29": "0",
+     "pitching:32": "0",
+     "pitching:42": "2",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.33",
+     "pitching:56": "-",
+     "pitching:83": "0"
+    },
+    "lastmonth": {
+     "pitching:50": "10.0",
+     "pitching:29": "0",
+     "pitching:32": "1",
+     "pitching:42": "13",
+     "pitching:46": "0",
+     "pitching:26": "0.00",
+     "pitching:27": "0.50",
+     "pitching:56": "13.00",
+     "pitching:83": "0"
+    },
+    "season": {
+     "pitching:50": "46.1",
+     "pitching:29": "1",
+     "pitching:32": "5",
+     "pitching:42": "55",
+     "pitching:46": "7",
+     "pitching:26": "1.94",
+     "pitching:27": "0.76",
+     "pitching:56": "5.50",
+     "pitching:83": "0"
+    }
+   },
+   "percentOwned": 11,
+   "ownershipDelta": -1
+  }
+ ]
+}

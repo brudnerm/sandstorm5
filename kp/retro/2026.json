@@ -1,0 +1,860 @@
+{
+ "leagueId": "kp",
+ "season": 2026,
+ "title": "The 2026 season, team by team",
+ "intro": "One review per team, written by an AI reading the season data, the trade log, and seventeen years of league email. Non-playoff teams first, worst to best. The six playoff teams get theirs after the championship.",
+ "teams": [
+  {
+   "rank": 1,
+   "teamName": "It’s the Smellinger",
+   "manager": "Brudner",
+   "record": "150-96-18",
+   "teamKey": "469.l.13624.t.8",
+   "playoffs": true,
+   "slug": null
+  },
+  {
+   "rank": 2,
+   "teamName": "Cease All That",
+   "manager": "Dan",
+   "record": "138-109-17",
+   "teamKey": "469.l.13624.t.4",
+   "playoffs": true,
+   "slug": null
+  },
+  {
+   "rank": 3,
+   "teamName": "mannys still stoned",
+   "manager": "Galen",
+   "record": "135-111-18",
+   "teamKey": "469.l.13624.t.10",
+   "playoffs": true,
+   "slug": null
+  },
+  {
+   "rank": 4,
+   "teamName": "So bad it Kurtz",
+   "manager": "Jamison",
+   "record": "135-113-16",
+   "teamKey": "469.l.13624.t.11",
+   "playoffs": true,
+   "slug": "jamison"
+  },
+  {
+   "rank": 5,
+   "teamName": "Zachs Fifth Avenue",
+   "manager": "mike",
+   "record": "133-112-19",
+   "teamKey": "469.l.13624.t.5",
+   "playoffs": true,
+   "slug": null
+  },
+  {
+   "rank": 6,
+   "teamName": "Kenley Loggins",
+   "manager": "Hingston",
+   "record": "124-119-21",
+   "teamKey": "469.l.13624.t.1",
+   "playoffs": true,
+   "slug": "hingston"
+  },
+  {
+   "rank": 7,
+   "teamName": "Murakami Myself & Irene",
+   "manager": "joey",
+   "record": "115-128-21",
+   "teamKey": "469.l.13624.t.3",
+   "playoffs": false,
+   "slug": "joey"
+  },
+  {
+   "rank": 8,
+   "teamName": "IM IN MY PRIME",
+   "manager": "Mark",
+   "record": "118-133-13",
+   "teamKey": "469.l.13624.t.6",
+   "playoffs": false,
+   "slug": "mark"
+  },
+  {
+   "rank": 9,
+   "teamName": "Blubaughlls",
+   "manager": "KC",
+   "record": "111-127-26",
+   "teamKey": "469.l.13624.t.12",
+   "playoffs": false,
+   "slug": "kc"
+  },
+  {
+   "rank": 10,
+   "teamName": "Bennett?",
+   "manager": "Bennett",
+   "record": "111-136-17",
+   "teamKey": "469.l.13624.t.2",
+   "playoffs": false,
+   "slug": "bennett"
+  },
+  {
+   "rank": 11,
+   "teamName": "Poop Crews",
+   "manager": "Nick",
+   "record": "103-143-18",
+   "teamKey": "469.l.13624.t.7",
+   "playoffs": false,
+   "slug": "nick"
+  },
+  {
+   "rank": 12,
+   "teamName": "MAINEiacs",
+   "manager": "Will",
+   "record": "98-144-22",
+   "teamKey": "469.l.13624.t.9",
+   "playoffs": false,
+   "slug": "will"
+  }
+ ],
+ "articles": [
+  {
+   "slug": "will",
+   "rank": 12,
+   "teamName": "MAINEiacs",
+   "manager": "Will",
+   "record": "98-144-22",
+   "publishedAt": "2026-09-14",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Will was in first place after three weeks, 21-10-5, after beating Dan's team 9-1-2 in the opener with a 0.94 WHIP. He went 77-134-17 the rest of the way and finished last."
+    },
+    {
+     "type": "p",
+     "text": "The roster barely moved: twelve transactions all season, fewest in the league. Bennett made seventeen. Everyone else made at least thirty-one. The same lineup ran into the same categories every week, and by the end the stolen base record was 1-19-3, with three catchers on the roster and Jarren Duran, the fastest player on it, on the bench. Will's best category, 14-4-5, was pitcher losses. It is hard to take a loss when nobody is pitching."
+    },
+    {
+     "type": "h",
+     "text": "The injuries"
+    },
+    {
+     "type": "p",
+     "text": "The pitching staff Will drafted never showed up. Ryan Pepiot, the 8th-round pick, did not throw a pitch all year. Max Fried, the 1st-rounder, was excellent when he pitched and pitched 99 innings. Glasnow managed 62. Between them, Will's top two starters gave him less than one full season of work, which is why a roster built around them was down to seven pitchers by September, three of them on the IL and one, Caleb Kilian, sitting on the IL in an active slot. The strikeout category went with them: 23 and 20 in Weeks 21 and 22, against opponents posting 40 and 22."
+    },
+    {
+     "type": "p",
+     "text": "The lineup lost Corey Seager and Jose Altuve to the IL in the same stretch of May, and according to the league thread Will left both in his starting lineup for the duration. Weeks 7 through 9 were three straight losses; in Week 8 the MAINEiacs scored 19 runs and hit .206. Seager came back to hit .231 in 333 at-bats, so the injury cost Will his shortstop for a third of the season and the shortstop he got back was not the one he kept."
+    },
+    {
+     "type": "h",
+     "text": "The deadline"
+    },
+    {
+     "type": "p",
+     "text": "Six trades, tied for most in the league, five of them in nine days."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "May 29: Will's 6th to Jamison for Jamison's 10th, with Bryce Elder as filler. The 6th comes back later.",
+      "Jul 28, 4:26 pm: Michael Harris II and a 12th to Mark for Curtis Mead, Manny Machado, and Mark's 2nd.",
+      "Jul 28, 6:21 pm: Machado, the 10th from the Elder deal, and a 21st to Jamison for Jamison's 2nd and 5th. Harris became two second-rounders and a fifth in one afternoon.",
+      "Jul 31: Taj Bradley and a 20th to KC for KC's 6th, with Tommy Edman as filler.",
+      "Aug 1: Max Fried and a 19th to Brudner for Brudner's 5th and Jarren Duran.",
+      "Aug 6: Glasnow, a 17th, and an 18th to Jamison for Jamison's 3rd, Will's own 6th back, and Sal Perez as filler. Perez has hit .297 since."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "The haul: three 2nds, two 3rds, three 5ths, two 6ths, and the first pick in every round. Only Nick sold harder."
+    },
+    {
+     "type": "h",
+     "text": "Report card"
+    },
+    {
+     "type": "p",
+     "text": "Keepers: C. Olson hit 39 homers. William Contreras hit .273 with 86 RBI, from the bench, behind Rutschman's .238. Michael Harris hit .291 with 25 homers, most of it for Mark. Seager and Altuve were the two oldest keepers and the two who got hurt."
+    },
+    {
+     "type": "p",
+     "text": "Draft: C (draft report). Eighth of twelve. Rounds 2 and 5 were Edwin Díaz (elbow surgery, 11.85 ERA) and Eugenio Suárez (.213), and rounds 1 through 5 as a group were the third-worst in the league. Alec Burleson in the 9th (109 RBI, .283) was the ninth-best pick anyone made, and Pagán in the 10th saved 23 games for someone else."
+    },
+    {
+     "type": "p",
+     "text": "Waiver wire: B. Three of twelve moves were the best pickups anyone made: Eduardo Rodriguez (15-5, 2.55) for Pepiot on April 15, Taj Bradley (11-6, 190 K) for Brenton Doyle on April 7, Nick Gonzales (.305, from the bench) for Díaz on June 4. On the other side, Alec Bohm (.248, 82 RBI), Trent Grisham (18 homers), and Pagán were all dropped in the season's first nine weeks and all had seasons Will could have used. And the IL cycle."
+    },
+    {
+     "type": "p",
+     "text": "Trades: A. Four players who weren't part of next year's plan became nine picks in the first six rounds. The one debatable price is Fried for a 5th, and Fried's 2.13 ERA for the top seed since is Brudner's answer."
+    },
+    {
+     "type": "h",
+     "text": "Low point"
+    },
+    {
+     "type": "p",
+     "text": "Week 5, a 6-6-0 tie with Bennett. A tie with a team named \"Bennett?\" is the only result that describes this season. Nobody won and nobody could say why."
+    },
+    {
+     "type": "h",
+     "text": "From the archives"
+    },
+    {
+     "type": "p",
+     "text": "Will has traded Manny Machado to KC before: June 2017, Altuve out and Machado in; August 2018, Machado out and Altuve back. Altuve is on the MAINEiacs today. Machado was on the MAINEiacs for two hours in July, which by Nick's count may make him the most traded player in Pattycakes history."
+    },
+    {
+     "type": "p",
+     "text": "Thirteenth straight season as the MAINEiacs, the longest unchanged name in the league after Galen's. Whatever else you say about the roster, the branding is disciplined."
+    }
+   ]
+  },
+  {
+   "slug": "nick",
+   "rank": 11,
+   "teamName": "Poop Crews",
+   "manager": "Nick",
+   "record": "103-143-18",
+   "publishedAt": "2026-09-15",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Nick spent eleven of twenty-two weeks in last place and finished eleventh, one spot above Will. He got there by winning three of four in August, which turns out to have been a mistake we'll get to."
+    },
+    {
+     "type": "p",
+     "text": "The pitching was good: the best WHIP record in the league (15-8) and a winning ERA record (13-10). It was also 4-15-4 in wins, worst in the league, because Yamamoto was the only starter with a winning record, and the offense went 6-15-2 in runs and 7-16 in on-base percentage. In Week 9 the staff posted a 1.84 ERA, the lineup hit .173, and Nick lost 4-7-1. That was the whole year in one week."
+    },
+    {
+     "type": "p",
+     "text": "He tried everything: 63 roster moves, second-most in the league, and two team names. \"Roman Got Fingered\" through Week 17, then \"Poop Crews,\" after Dylan Crews, who is hitting .222 on the bench. Colson Montgomery hit 31 home runs with a .206 average, which is a stat line that should not be possible and was."
+    },
+    {
+     "type": "h",
+     "text": "The injuries"
+    },
+    {
+     "type": "p",
+     "text": "Nick's injuries were on the hitting side, which was the side that couldn't afford them. Roman Anthony, a keeper and the reason the team was called \"Roman Got Fingered\" for seventeen weeks, got 168 at-bats. His .340 on-base percentage was the one Nick's lineup was missing; without him the team lost OBP sixteen times in twenty-two weeks. Jackson Holliday, a 3rd-round pick, opened the season on the IL and was dropped May 1, having played five games for Nick. Andy Pages, the 4th-round pick and the best hitter Nick drafted (.272, 21 homers, 80 RBI), made it to September and then landed on the IL for the stretch."
+    },
+    {
+     "type": "p",
+     "text": "The pitching stayed healthy, which is why Yamamoto, Tolle, and the closers produced the best WHIP record in the league. The one arm that never got hurt was Jesús Made, the fourth overall pick, who also never got called up."
+    },
+    {
+     "type": "h",
+     "text": "The deadline"
+    },
+    {
+     "type": "p",
+     "text": "Nick started selling July 18, earlier than anyone, and by August 6 the only thing left with a nail in it was Yamamoto."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Jul 18: Bo Bichette to Hingston for Esmerlyn Valdez. No picks. Valdez is on the IL. The only one of six trades without a pick, and the only one that looks bad.",
+      "Jul 18: Josh Hader (0.87 ERA, 25 saves), Louis Varland (33 saves), and a 21st to Brudner for Brudner's 2nd.",
+      "Jul 27: Rafael Devers and a 20th to mike for mike's 2nd. Devers has hit .317 with 13 homers since. Mike is up 11-1 on Brudner in the semifinal.",
+      "Jul 31: Ranger Suarez, Grant Taylor, and a 19th to Galen for Galen's 2nd.",
+      "Aug 5: Logan Gilbert, a 17th, and an 18th to mike for mike's 3rd and 6th.",
+      "Aug 6: Kyle Harrison and a 16th to Brudner for Hunter Greene and Brudner's 6th. Neither is on either roster anymore."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Four second-round picks. Nobody else has three. Now the thought you were holding: draft order is reverse regular-season standings, so Nick picks second in every round. Had he lost one more week in August he'd pick first, with four seconds. He won Weeks 19 and 20 instead."
+    },
+    {
+     "type": "h",
+     "text": "Report card"
+    },
+    {
+     "type": "p",
+     "text": "Keepers: B+. Yamamoto went 13-8 with a 2.62 ERA and 0.88 WHIP, the best pitcher on any roster in the bottom half. Devers had 37 homers and 98 RBI, most of it in a Poop Crews uniform. Gilbert was a reliable 187 strikeouts. Bichette hit .263 with 16 homers, a poor Bichette. Roman Anthony got 168 at-bats. Four of five produced; the one that didn't was the one the team was named after."
+    },
+    {
+     "type": "p",
+     "text": "Draft: B- (draft report). Sixth of twelve, and two drafts in one. Rounds 1 through 5 were the worst in the league outside Bennett's: Jesús Made fourth overall, then Kirby, Adames, Holliday, and Lawrence Butler. Rounds 6 through 16 were the second-best in the league: Hader in the 8th, Megill in the 11th, Payton Tolle in the 13th. Nick dropped Tolle the day after drafting him and re-added him a month later."
+    },
+    {
+     "type": "p",
+     "text": "Waiver wire: B-. Louis Varland, added April 16 for Gregory Soto, saved 33 games and became half of Brudner's 2nd. Jake McCarthy (.296, 29 steals) and Caleb Durbin were real June pickups. The rest was churn: seven different catchers between the draft and mid-June, including Ryan Jeffers for two days (.371 OBP for Galen since), and Trevor Megill dropped on May 6 with 27 saves and a 2.59 ERA for Hingston since. Gabriel Moreno, the catcher who finally stuck, was dropped by two other managers before Nick picked him up."
+    },
+    {
+     "type": "p",
+     "text": "Trades: A-. Five of six trades returned an early pick, and the four second-rounders are the best draft capital in the league. The minus is Bichette for Valdez, which returned nothing."
+    },
+    {
+     "type": "h",
+     "text": "Low point"
+    },
+    {
+     "type": "p",
+     "text": "Week 21, 1-11-0 against mike, three weeks after shipping Hader and Varland to Brudner. Saves 0-7. Wins 0-5. The one category won was stolen bases."
+    },
+    {
+     "type": "h",
+     "text": "From the archives"
+    },
+    {
+     "type": "p",
+     "text": "Nick is an original 2009 member. Seventeen seasons, sixteen team names, none held longer than one year since 2011. The 2013 entry was \"Suck Fest,\" which was either a prediction or a review."
+    },
+    {
+     "type": "p",
+     "text": "The one constant is George Kirby. Nick drafted him for 2023, named the team \"Kirby's Dream Land,\" kept him every year since, and this year re-drafted him in the 2nd round. Kirby is 9-11 with a 4.25 ERA and is on Nick's bench."
+    },
+    {
+     "type": "p",
+     "text": "Aaron Nola was dropped four times by two managers this season before Nick picked him up on August 20 and put him in an active SP slot, where he remains. Nobody in this league could hold Nola for more than two days. Nick has had him three weeks."
+    }
+   ]
+  },
+  {
+   "slug": "bennett",
+   "rank": 10,
+   "teamName": "Bennett?",
+   "manager": "Bennett",
+   "record": "111-136-17",
+   "publishedAt": "2026-09-16",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Bennett's team is two teams. The hitting team went 15-4-3 in stolen bases, 14-8 in on-base percentage, and 13-9 in average, which is a playoff lineup. The pitching team went 4-16-2 in wins, 4-16-2 in losses, 6-16 in ERA, and 7-15 in WHIP, which is not. Put them together and you get tenth place, seventeen ties, and the strangest pair of box scores in the league: in Week 13 against Brudner and again in Week 22 against Hingston, Bennett won all six hitting categories and lost all six pitching categories. 6-6-0, twice, the same way. Nobody else tied a week like that once."
+    },
+    {
+     "type": "p",
+     "text": "The offense was real. Pete Crow-Armstrong had the best season on any roster in the league: 111 runs, 41 homers, 98 RBI, 36 steals. Pete Alonso hit 35 homers with 100 RBI. Bryce Harper got on base at .387. In Week 17 against Nick, Bennett scored 48 runs with 21 home runs and lost 4-7-1, because the pitching staff gave up seven losses and a 4.86 ERA in the same week."
+    },
+    {
+     "type": "h",
+     "text": "The injuries"
+    },
+    {
+     "type": "p",
+     "text": "The pitching problem was partly drafted and partly bad luck, and the bad luck was concentrated on the two arms that were actually good. Blake Snell, the 4th-round pick, threw 37 innings with a 1.91 ERA and was dropped in May. Brandon Woodruff, the 12th-rounder, threw 45 innings with a 0.84 WHIP and was dropped in July. The healthy starters were the problem: Peralta, Gausman, Gore, Bibee, and Castillo combined for 800 innings of ERAs between 4.16 and 5.67, and Kodai Senga, dropped April 28 and re-added August 11, is in an active slot at 0-9 with a 7.14."
+    },
+    {
+     "type": "p",
+     "text": "On the hitting side, Jazz Chisholm stole 40 bases and then went on the IL for September, and Brendan Donovan, the 11th-round pick, got 137 at-bats. Will Smith, the 2nd-round pick, got 204. The lineup absorbed all of it and still won steals fifteen times, which says more about PCA than about depth."
+    },
+    {
+     "type": "h",
+     "text": "The deadline"
+    },
+    {
+     "type": "p",
+     "text": "There is no deadline section. Bennett made zero trades, the only manager in the league who didn't, and 17 roster moves all season, second-fewest after Will. He goes into the 2027 draft with every one of his own picks and none of anyone else's, drafting third in every round. Whether that's discipline or absence is the question the league has been asking about Bennett since the team name got a question mark."
+    },
+    {
+     "type": "h",
+     "text": "Report card"
+    },
+    {
+     "type": "p",
+     "text": "Keepers: A. PCA, Alonso, Harper, Jazz, and Bryan Woo (12-9, 3.88, 1.05). Four of the five best players on the roster were keepers, and the fifth was the only reliable starting pitcher. This is the best keeper class in the bottom half and it isn't close."
+    },
+    {
+     "type": "p",
+     "text": "Draft: F (draft report). Last of twelve by a wide margin. Peralta, Will Smith, and Gausman in the first three rounds; Luis Castillo in the 7th was the second-worst pick in the entire draft; Senga in the 10th and Donovan in the 11th are both in the bottom ten. Fifteen of sixteen picks returned less than their slot. The exception was Seranthony Domínguez in the 15th, 12 saves."
+    },
+    {
+     "type": "p",
+     "text": "Waiver wire: B+. Seventeen moves, and the two that mattered were outfielders: Carson Benge, added May 5 for Daulton Varsho, hit .273 with 17 homers and 22 steals, and A.J. Ewing, added July 1, stole 23 bases. Rico Garcia, added May 7, posted a 0.96 WHIP out of the bullpen. The misses were on the mound: Clay Holmes, dropped May 16, has a 2.85 ERA for Dan since, and Snell was dropped with a 1.91."
+    },
+    {
+     "type": "p",
+     "text": "Trades: none. The only manager without a grade here."
+    },
+    {
+     "type": "h",
+     "text": "Low point"
+    },
+    {
+     "type": "p",
+     "text": "Week 4, 2-10-0 against Dan: outhomered 18-7, outstolen 10-2. Bennett's only two category wins that week were pitcher wins and saves, which happened exactly once all season and never again."
+    },
+    {
+     "type": "h",
+     "text": "From the archives"
+    },
+    {
+     "type": "p",
+     "text": "The team name has been some form of \"Bennett\" for all eighteen seasons, which makes it the longest-running name in the league and the only one whose punctuation carries the narrative: \"Bennett\" through 2020, \"Bennett!\" in 2021, \"Bennett?\" from 2022 on. The exception is 2012 through 2015, when the team was briefly \"Gunman,\" then \"Pork Fried Bryce\" for two years, then \"nuthin but a D thang.\""
+    },
+    {
+     "type": "p",
+     "text": "About Pork Fried Bryce. Bryce Harper has been in Major League Baseball since 2012, and in eighteen seasons of Keeping Pattycakes transaction history he has never once been added, dropped, or traded. Not by anyone. The only way that happens is if one manager drafted him and kept him, every year, through every roster crunch and every deadline. Bennett named his team after him in 2013. Fourteen years later Harper is in Bennett's Util slot with a .387 on-base percentage, and the league's most stable relationship isn't the team name."
+    }
+   ]
+  },
+  {
+   "slug": "kc",
+   "rank": 9,
+   "teamName": "Blubaughlls",
+   "manager": "KC",
+   "record": "111-127-26",
+   "publishedAt": "2026-09-17",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "KC was in first place after Week 4. He went 8-10 the rest of the way and finished ninth, but the record undersells how it felt, because KC did not lose so much as fail to resolve. Twenty-six ties, the most in the league. Week 12 against joey was 1-7-4. Week 7 against Brudner was 5-4-3; he won the week and was not sure how."
+    },
+    {
+     "type": "p",
+     "text": "The categories tell the same story as everyone else in the bottom half: a lineup that could hit and a rotation that couldn't. KC went 12-7-3 in runs and 11-9-2 in steals, then 4-14-4 in pitcher wins and 8-14 in WHIP. Kyle Schwarber hit 44 homers. Hunter Goodman hit 38 as a catcher. Jordan Walker drove in 100. Chandler Simpson hit .305 with 41 stolen bases and zero home runs, and spent the season on the bench, which is one way to go 11-9 in steals instead of 15-4."
+    },
+    {
+     "type": "h",
+     "text": "The injuries"
+    },
+    {
+     "type": "p",
+     "text": "KC's first-round pick was Brent Rooker, fifth overall. Rooker got 180 at-bats, hit .200, and was traded to Mark in May as a throw-in. Ronald Acuña, a keeper, got 369 at-bats and was fine in them (17 homers, 20 steals) but not the Acuña the roster was built around. JJ Wetherholt, another keeper, scored 88 runs and then went on the IL for September. Ryan Helsley, the 8th-round pick, threw 15 innings."
+    },
+    {
+     "type": "p",
+     "text": "None of it was fatal, because KC's lineup was deep enough to absorb it: Walker, Vargas, and Goodman all arrived in April or May and covered for Rooker and Acuña. The pitching had no such cover. Bryan Baker had 40 saves with a 1.54 ERA, the best closer season in the league, on a team that finished ninth. Contenders were paying second-round picks for closers in July: Nick got Brudner's 2nd for Hader and Varland. KC kept Baker and got a 10-5-7 saves record for it, which is worth nothing in September."
+    },
+    {
+     "type": "h",
+     "text": "The deadline"
+    },
+    {
+     "type": "p",
+     "text": "Two trades, and the first is the best trade any non-playoff team made this year."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "May 18: Gunnar Henderson and Brent Rooker to Mark for Kyle Schwarber and Miguel Vargas. Schwarber: 44 homers, 94 RBI. Vargas: 30 homers, 96 runs, 18 steals, .356 OBP. Henderson: .223, on Mark's bench. Rooker: not on a roster.",
+      "Jul 31: KC's 6th and Tommy Edman to Will for Taj Bradley and a 20th. Bradley went 11-6 with 190 strikeouts, and KC won the K category four of the last five weeks. A buy by a team in eighth place, at a rental price."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "KC enters 2027 with every pick but that 6th, drafting fourth in each round. He was the only bottom-half team that didn't sell, and the only one who had a closer worth selling."
+    },
+    {
+     "type": "h",
+     "text": "Report card"
+    },
+    {
+     "type": "p",
+     "text": "Keepers: B-. Vlad hit .265 with 9 homers. Acuña and Wetherholt were good and hurt. Hunter Brown threw 92 innings. Gunnar Henderson hit .223 before being traded. Not one of the five had the season he was kept for."
+    },
+    {
+     "type": "p",
+     "text": "Draft: C+ (draft report). Seventh of twelve. Rooker fifth overall was the sixth-worst pick in the league. Hunter Goodman in the 4th (38 homers) and Nolan McLean in the 2nd (184 strikeouts) held up the top half, and the back half is where KC drafted well: Seiya Suzuki in the 10th (.369 OBP, 91 runs), Chandler Simpson in the 12th, Max Muncy in the 13th (28 homers). Three of the twenty best picks in the draft came from rounds 10 through 13."
+    },
+    {
+     "type": "p",
+     "text": "Waiver wire: A-. Jordan Walker, added March 31 for Samuel Basallo: .282, 28 homers, 100 RBI, 19 steals, the best pickup anyone made this year. Bryan Baker, added April 11 for Michael Busch: 40 saves. Miguel Vargas, added April 5, dropped April 12, and reacquired by trade in May. The misses are the two pitchers who got away: Foster Griffin, dropped May 21, went 15-5 for Mark, and Grant Taylor, dropped May 29, has a 2.23 ERA and 100 strikeouts for Galen. KC replaced Griffin with Griffin Jax."
+    },
+    {
+     "type": "p",
+     "text": "Trades: B+. The Schwarber deal is an A on its own. The Bradley deal cost a 6th for a rental on a team that wasn't going anywhere, and the deadline pass on Baker is the missed sale."
+    },
+    {
+     "type": "h",
+     "text": "Low point"
+    },
+    {
+     "type": "p",
+     "text": "Week 16, 2-9-1 against mike: 27 strikeouts to 66, wins 0-4. The only categories won were steals and saves. The week the rotation stopped pretending."
+    },
+    {
+     "type": "h",
+     "text": "From the archives"
+    },
+    {
+     "type": "p",
+     "text": "KC picked Vladimir Guerrero Jr. up off free agency on April 25, 2018, as a prospect with zero major league at-bats, dropping Eloy Jiménez to do it. He has never dropped or traded him. He named the team \"Who's Your Vladdy\" in 2019 and kept the name, with one exception, through the first seventeen weeks of 2026. Then Vlad hit nine home runs in 510 at-bats, and in Week 18 the team became \"Blubaughlls,\" after a swingman with 90 innings who is currently on KC's bench. Eight years of loyalty, gone for a pun about a guy who isn't starting."
+    },
+    {
+     "type": "p",
+     "text": "The Vlad pickup was part of a larger 2018 project. That July, KC agreed to send Jose Altuve, Carlos Correa, and the first overall pick in the next draft to Jamison for Juan Soto, Ozzie Albies, and a pick swap. The league vetoed it. KC and Jamison refiled it. The league vetoed it again. They refiled it with Aníbal Sánchez and Gregory Polanco added, which did not help, and then once more on August 2: four filings, four vetoes, six days. The email chain from that week has Mark calling KC to check whether he'd had a stroke, Dan posting the at-bat totals of KC's entire prospect stockpile under the heading \"gross puke,\" and KC promising a written defense \"college essay style\" with a Monday deadline that came and went. His closing argument on the fourth attempt was that Altuve may have been the greatest there ever was, but Soto would be the greatest there ever will be."
+    },
+    {
+     "type": "p",
+     "text": "Eight years on: Soto is on Jamison's roster, where he's been since Jamison picked him up off free agency in May 2018. Altuve is on Will's, because five days after the fourth veto KC traded him there for Manny Machado. Machado is on Jamison's. KC has Vlad."
+    }
+   ]
+  },
+  {
+   "slug": "mark",
+   "rank": 8,
+   "teamName": "IM IN MY PRIME",
+   "manager": "Mark",
+   "record": "118-133-13",
+   "publishedAt": "2026-09-18",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Mark had the pitching. Twelve wins in the wins category, thirteen in saves, twelve each in ERA and WHIP, which on most rosters in the bottom half would have been a playoff staff. He did not have a lineup: 7-15 in average, 7-15 in on-base percentage, 8-14 in RBI. CJ Abrams (30 homers, 96 RBI, 29 steals) was the offense. Everyone else hit between .222 and .262, except Michael Harris, who arrived in July, and Walker Jenkins, who hit .108 on the bench."
+    },
+    {
+     "type": "p",
+     "text": "The good stretch was five straight wins from Week 12 through 16, which put Mark in sixth place, a playoff spot, with six weeks left. Then Hingston beat him 2-10-0 in a week where Mark scored 47 runs and hit 16 homers, because Hingston scored 50 and hit 19. Two weeks later Brudner beat him 2-10-0, 63 strikeouts to 29. Mark went 1-5 the rest of the way. The team has been \"IM IN MY PRIME\" for two seasons now and hit .238 over the second one."
+    },
+    {
+     "type": "h",
+     "text": "The injuries"
+    },
+    {
+     "type": "p",
+     "text": "Mark's worst injury was a keeper he'd already traded. Garrett Crochet, kept over the winter and sent to Hingston on April 14, threw 30 innings with a 6.30 ERA and went on the IL on April 29, two weeks after Mark spent a morning emailing Hingston about Crochet's velocity. That one landed on someone else. The ones that landed on Mark were Luis Robert (204 at-bats, .221, on the IL now), Blaze Alexander (261 at-bats, .303, on the IL now), and Justin Wrobleski, a May pickup who went 11-5 and is also on the IL now. Three of Mark's better second-half pieces are unavailable in September, which is the wrong month for it."
+    },
+    {
+     "type": "h",
+     "text": "The deadline"
+    },
+    {
+     "type": "p",
+     "text": "Five trades: two in the spring, three in one week at the end of July."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Apr 14: Otto Lopez and Garrett Crochet to Hingston for CJ Abrams and Gavin Williams. Abrams became Mark's best player. Crochet threw 30 innings and went on the IL. Lopez hit .310 with 30 steals for Hingston, which keeps this from being a clean sweep.",
+      "May 18: Kyle Schwarber and Miguel Vargas to KC for Gunnar Henderson and Brent Rooker. Schwarber hit 44 homers. Vargas had 30 homers and 96 runs. Henderson hit .223 and is on Mark's bench. Rooker is not on a roster. An intra-Maine deal, and KC's best move of the year was Mark's worst.",
+      "Jul 28: Curtis Mead, Manny Machado, and Mark's 2027 2nd to Will for Michael Harris II and a 12th. A buy, in seventh place, one spot out.",
+      "Jul 30: Jackson Chourio and Cristopher Sánchez to joey for Julio Rodríguez and Oneil Cruz. Chourio: .292, 23 homers, 17 steals. Sánchez: 17-5, 2.79, 210 strikeouts. Julio: .243. Cruz: .274 with 27 steals in half a season. A buy that sent out the two best players in the deal.",
+      "Aug 3: Gavin Williams (13-7, 228 K) and Raisel Iglesias (32 saves) to Dan for Dan's 5th and 8th. A sell, one day after the 2-10 loss to Brudner."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "In six days Mark spent a second-round pick on Harris, gave up Sánchez and Chourio, decided the season was over, and sold his best pitcher and his closer for a fifth and an eighth. He drafts fifth in each round next year with no second-rounder, Dan's 5th and 8th, and Will's 12th."
+    },
+    {
+     "type": "h",
+     "text": "Report card"
+    },
+    {
+     "type": "p",
+     "text": "Keepers: B. Sánchez (17-5, 2.79) and Schwarber (44 homers) were two of the best keepers in the league and Mark traded both. Chourio hit .292 with 23 homers and 17 steals and Mark traded him too. Machado hit .221. Crochet threw 30 innings. Three excellent seasons, none of them finishing on this roster."
+    },
+    {
+     "type": "p",
+     "text": "Draft: D (draft report). Eleventh of twelve, with a real excuse: Mark had no picks in the first four rounds, having spent them going all in last year. What he did with rounds 5 through 16 was mostly nothing. Christian Walker in the 5th hit .225. TJ Friedl in the 8th hit .162 and was the fourth-worst pick in the league. Trevor Story in the 9th hit .236 in 216 at-bats. Gabriel Moreno in the 11th was the one hit (.302, .378 OBP), and Mark dropped him on April 21."
+    },
+    {
+     "type": "p",
+     "text": "Waiver wire: B. Riley O'Brien, added March 18, saved 36 games. Liam Hicks, added, dropped, and re-added in the first ten days of April, hit .286 with 79 RBI as Mark's catcher. Foster Griffin, dropped by KC in May, went 15-5 for Mark from June on. Kody Clemens hit 26 homers after a July pickup. The drops are the problem: Moreno on April 21 (Nick's .302 catcher), Steven Kwan on May 13 (.278, .375 OBP), and Otto Lopez, added April 9 and traded five days later at .310 with 30 steals."
+    },
+    {
+     "type": "p",
+     "text": "Trades: C. The Abrams deal was excellent. The Schwarber deal and the Sánchez deal each sent out the two best players involved. Buying Harris with a second-rounder five days before selling Williams and Iglesias is the sequence that decides the grade."
+    },
+    {
+     "type": "h",
+     "text": "Low point"
+    },
+    {
+     "type": "p",
+     "text": "Week 19, 2-10-0 against Brudner, the loss that triggered the sell-off. Steals and saves were the wins. The staff struck out 29."
+    },
+    {
+     "type": "h",
+     "text": "From the archives"
+    },
+    {
+     "type": "p",
+     "text": "The morning after the Crochet trade, Crochet had a bad start, and Mark sent Hingston three emails in two minutes. The first was a link to an article about Red Sox fans fearing the worst. The second was a list of Crochet's warning signs, each separated by ellipses, ending in \"DEVASTATING.\" The third was ninety-two periods. Hingston said the third one was the one that got to him. Crochet went on the IL two weeks later and has not come back, which means Mark's most accurate scouting report of the season was punctuation."
+    },
+    {
+     "type": "p",
+     "text": "Mark is an original 2009 member, and Manny Machado has been on his roster three separate times: 2012 off waivers, 2024 by trade, and 2026 until July 28. The 2024 trade cost him Fernando Tatis Jr., whom he had named the team after twice, in 2020 and again that spring. He traded Tatis to joey, whose team was already named \"Tatis-ami Mario\" before he had him. Joey still has him. Mark has neither."
+    }
+   ]
+  },
+  {
+   "slug": "joey",
+   "rank": 7,
+   "teamName": "Murakami Myself & Irene",
+   "manager": "joey",
+   "record": "115-128-21",
+   "publishedAt": "2026-09-19",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Joey was twelfth after three weeks and seventh at the end, the only real climb in the bottom half, and it stopped one spot short. The team was built on strikeouts (13-8-1, best in the league) and steals (14-7-1), and it was undone by pitcher wins (6-11-5) and WHIP (8-14). In Week 17 the staff struck out 100 batters and took six losses."
+    },
+    {
+     "type": "p",
+     "text": "The lineup was two things at once. Fernando Tatis Jr. hit .286 with 34 steals, Jackson Chourio hit .292 after arriving in July, and Luis García Jr. drove in 91. Cal Raleigh hit .181 with 21 homers, Munetaka Murakami hit .206 with 31, and Spencer Torkelson hit .222 with 23 from the bench, which is a lot of home runs to lose the average category with. The team was named after Trey Yesavage through Week 16. Joey dropped him August 7."
+    },
+    {
+     "type": "h",
+     "text": "The injuries"
+    },
+    {
+     "type": "p",
+     "text": "Joey's injuries were mostly other people's. Luis Robert, the 7th-round pick, got 204 at-bats and was dropped in May. Carlos Estévez, the 8th-rounder, threw one-third of an inning. Dansby Swanson, a June pickup, is on the IL now. And Shohei Ohtani's pitching half, acquired from Dan on July 31 in the Cease trade, arrived on the IL with a 1.79 ERA in 85 innings and has stayed there, which means joey traded an ace for an ace who wasn't pitching, and knew it."
+    },
+    {
+     "type": "p",
+     "text": "What didn't get hurt was the rotation joey built himself: Cease, Gray, Sánchez, Cavalli, and Soroka all stayed on the mound all year, which is where the strikeout record came from and why he had so much to sell."
+    },
+    {
+     "type": "h",
+     "text": "The deadline"
+    },
+    {
+     "type": "p",
+     "text": "Six trades, four of them in five days at the end of July. Joey announced on July 28 that he was selling for the third year in a row. He was in seventh place."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "May 6: Trea Turner to Hingston for Mason Miller. Turner hit .241 for Hingston.",
+      "May 29: Spencer Arrighetti to Brudner for Kyle Bradish. Bradish is back on Joey's roster, 7-14 with a 4.12 ERA.",
+      "Jul 30: Mason Miller (36 saves, 1.14 ERA), Sonny Gray (17-5, 2.76), Jake Bauers (.395 OBP, 25 homers) and two late picks to mike for mike's 1st and 5th.",
+      "Jul 30: Julio Rodríguez and Oneil Cruz to Mark for Jackson Chourio and Cristopher Sánchez (17-5, 2.79, 210 K). The one buy, and a good one.",
+      "Jul 31: Dylan Cease (11-5, 2.38, 236 K) and Aroldis Chapman (33 saves, 1.99) to Dan for Max Clark, Shohei Ohtani's pitching half, and Dan's 4th.",
+      "Aug 1: Logan Webb and Ceddanne Rafaela to Hingston for Hingston's 5th."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Joey picks seventh in each round next year and adds mike's 1st, Dan's 4th, Hingston's 5th, and mike's 5th. Two first-rounders. The price was Miller, Gray, Bauers, Cease, Chapman, Webb, and Rafaela, delivered to three playoff teams, all three of which are in this week's semifinals. Mike is up 11-1 on Brudner with Gray and Miller. Dan is up 7-4 on Galen with Cease and Chapman. Joey sold to the field and finished a spot behind it."
+    },
+    {
+     "type": "h",
+     "text": "Report card"
+    },
+    {
+     "type": "p",
+     "text": "Keepers: B. Tatis hit .286 with 34 steals and 85 runs, the best keeper on the roster. Geraldo Perdomo had a .357 OBP and 20 steals. Trea Turner scored 94 runs, mostly for Hingston. Julio was fine and then traded. Cal Raleigh hit .181, which is the number that pulls the grade down, and is a real number."
+    },
+    {
+     "type": "p",
+     "text": "Draft: B+ (draft report). Fifth of twelve. Cease in the 2nd (236 strikeouts, 2.38) was the eighth-best pick in the league, and the whole top of the draft held up: Cruz in the 3rd, Bregman in the 4th, Gray and Chapman in the 5th, Cavalli in the 11th (12-5, 194 K). The other 2nd-rounder was Kyle Bradish, 7-14 with a 1.46 WHIP, the fifth-worst pick anyone made. Rounds 6 through 10 (Chandler, Robert, Yesavage, Estévez, Torkelson, Hoffman) were the worst middle of any draft in the league."
+    },
+    {
+     "type": "p",
+     "text": "Waiver wire: B. Luis García Jr., added June 30: .291, 30 homers, 91 RBI, the best pickup in the bottom half after Jordan Walker. Jake Bauers, added May 28, became half of mike's 1st-round pick two months later. Michael Soroka went 8-5 from an April add. Cavalli was dropped April 11 and re-added, which is the second time this year a manager drafted a 190-strikeout pitcher and let him go in the first month. The misses: Reid Detmers, added April 19 and dropped April 28, has 191 strikeouts and a 1.04 WHIP for mike; Sean Burke, dropped after a week, has 169 for Jamison; Gabriel Moreno, dropped June 24, hit .302 for Nick. Joey had Moreno and Ryan Jeffers in the same month and kept neither."
+    },
+    {
+     "type": "p",
+     "text": "Trades: A-. Two first-round picks, a 4th, and two 5ths for players who were leaving anyway, plus Chourio and Sánchez in the one buy. The minus is timing: a team one spot out of the playoffs sold its closer, its 17-game winner, and its ace inside of forty-eight hours, and then went 3-1-1."
+    },
+    {
+     "type": "h",
+     "text": "Low point"
+    },
+    {
+     "type": "p",
+     "text": "Week 6, 1-10-1 against Dan, the team he'd later hand an ace and a closer to."
+    },
+    {
+     "type": "h",
+     "text": "From the archives"
+    },
+    {
+     "type": "p",
+     "text": "Joey is an original 2009 member with nineteen team names in eighteen seasons, every one a player pun: Lip Sweater, Ugglas & Jimeskirts, Lohsed InTranslation, Assless Chapmans, TapaGio, IfYouWadaBeMyLover, Wright On Time, Eleven Longoria, J.Deez Nuts, PerfectlyDeGromulent, GetRichOrDieTreinen, Dansby Thongsong, Canha Del Rey, Mai Ty France, Tater Stotts, Tatis-ami Mario, Bobby Schwellenbacala, YesavAge of Empires II, Murakami Myself & Irene. He named the team after Tatis in 2024 before he had Tatis, then traded for him that June."
+    },
+    {
+     "type": "p",
+     "text": "He was also selling in August 2018, everything must go, picks and keeper upgrades wanted. He was a playoff contender that year too. Joey rebuilds on schedule, every year, regardless of the standings."
+    }
+   ]
+  },
+  {
+   "slug": "hingston",
+   "headline": "Hingston Drafted the Best Team in the League and Traded It Into a Six Seed",
+   "leader": "Six players left in five deadline deals, and a bullpen built from other managers' drops carried what remained into the first round and out of it.",
+   "rank": 6,
+   "teamName": "Kenley Loggins",
+   "manager": "Hingston",
+   "record": "124-119-21",
+   "publishedAt": "2026-09-20",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Hingston made the playoffs as the six seed, spent the season between fifth and eighth, and never lost more than two weeks in a row. It was a steady year from a roster that should have been better than steady, because the roster in March was the second-best draft anyone had."
+    },
+    {
+     "type": "p",
+     "text": "The team that showed up in September hit .239. Kyle Tucker, a keeper, hit .226. Trea Turner, acquired in May, hit .239 with a .291 on-base percentage. The lineup lost average fourteen times and OBP fifteen. What carried it was pitching: Luzardo (14-5, 2.87, 221 strikeouts), Michael King (11-9, 3.03), and a bullpen assembled from other people's mistakes. Trevor Megill, 27 saves, was Nick's May drop. Emilio Pagán, 22 saves, was Will's. Carlos Rodón, 2.94 in 70 innings, was Will's too. Hingston won strikeouts fourteen times and WHIP thirteen and got to the playoffs on the wire."
+    },
+    {
+     "type": "h",
+     "text": "The injuries"
+    },
+    {
+     "type": "p",
+     "text": "There weren't many, which removes the usual excuse. Nick Pivetta, the 5th-round pick, threw 21 innings. Byron Buxton, the 4th, got 370 at-bats and hit 25 homers in them. Ceddanne Rafaela, a July acquisition, went on the IL before the playoffs. Garrett Crochet, a keeper, threw 30 innings and went on the IL on April 29, fifteen days after Hingston traded him to Mark, which is the kind of injury you take."
+    },
+    {
+     "type": "h",
+     "text": "The playoffs"
+    },
+    {
+     "type": "p",
+     "text": "Week 23, the six seed at the three seed, and Galen won 6-4-2. Hingston hit .225 for the week with five home runs and 21 RBI, from a lineup with Okamoto, Dingler, and Brandon Lowe in it, three players with 87 homers between them on the season. The pitching held. The bats did not show up, and one week is all the playoffs give you."
+    },
+    {
+     "type": "h",
+     "text": "The deadline"
+    },
+    {
+     "type": "p",
+     "text": "Five trades, and the shape of them is the season. Six players left, and the six were most of the good ones."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Apr 14: CJ Abrams and Gavin Williams to Mark for Otto Lopez and Garrett Crochet. Abrams: 30 homers, 96 RBI, 29 steals. Williams: 228 strikeouts. Lopez: .310 with 30 steals, a real player. Crochet: 30 innings.",
+      "May 6: Mason Miller to joey for Trea Turner. Miller: 36 saves, 1.14 ERA, and later half of a first-round pick. Turner: .239.",
+      "Jun 24: Freddie Freeman, Bryan Reynolds, Chris Sale, and an 8th to Brudner for Willson Contreras, Tarik Skubal, and Brudner's 4th. Freeman hit .295, Reynolds scored 100 runs, Sale went 14-9 with a 2.18. Skubal (2.84, 0.97) and Contreras (26 homers, .384 OBP) were good enough that this one is closer than it reads.",
+      "Jul 18: Esmerlyn Valdez to Nick for Bo Bichette. A win.",
+      "Aug 1: Hingston's 5th to joey for Logan Webb and Ceddanne Rafaela. A buy for the stretch. Rafaela is on the IL."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Hingston picks sixth in each round next year, minus a 5th and an 8th, plus Brudner's 4th at the back of the round."
+    },
+    {
+     "type": "h",
+     "text": "Report card"
+    },
+    {
+     "type": "p",
+     "text": "Keepers: B. Chris Sale had the best ERA of any keeper in the league. CJ Abrams had 30 homers and 29 steals. Freddie Freeman hit .295. All three did most of it somewhere else. Wyatt Langford hit .241 and Kyle Tucker hit .226, and those were the two who stayed."
+    },
+    {
+     "type": "p",
+     "text": "Draft: A. Second of twelve on the Draft tab. Mason Miller in the 2nd, Luzardo in the 3rd, Gavin Williams in the 9th, King in the 10th, Brandon Lowe in the 13th (29 homers, 85 RBI), and Bryan Reynolds in the 16th (101 runs, .370 OBP), the best pick after round 12 in the entire draft. The one miss was Austin Riley at 8th overall, .222."
+    },
+    {
+     "type": "p",
+     "text": "Waiver wire: B+. Dillon Dingler, added May 4 off Mark's drop: 27 homers, 87 RBI. Megill, added May 29: 27 saves. Isaac Paredes, added June 30: 83 RBI and a .358 OBP. Pagán and Rodón off Will's drops. The misses are two pitchers held for a combined three days: Cade Cavalli, May 5 to May 7 (12-5, 194 strikeouts for joey), and Troy Melton, added and dropped on June 25 (2.42 ERA for Jamison). Kenley Jansen was dropped June 29 and re-added July 13, and the team was named after him the whole time."
+    },
+    {
+     "type": "p",
+     "text": "Trades: C. Bichette for Valdez and the Skubal half of the Brudner deal keep this out of the D range. The rest moved Abrams, Williams, Miller, Freeman, Reynolds, and Sale off the roster for Lopez, Turner, and Crochet, and the roster that resulted lost in the first round hitting .225. Hingston drafted an A and traded it down to a six seed."
+    },
+    {
+     "type": "h",
+     "text": "Low point"
+    },
+    {
+     "type": "p",
+     "text": "Week 7, 2-9-1 against Dan, with a 6.98 ERA and 0-3 in wins. Or the playoff week, depending on how you count."
+    },
+    {
+     "type": "h",
+     "text": "From the archives"
+    },
+    {
+     "type": "p",
+     "text": "The Freeman trade ended the second-longest keeper tenure in league history. Hingston acquired Freddie Freeman in 2016 and kept him every year after, two weeks short of ten full seasons by the time he sent him to Brudner on June 24. The only longer run is Bennett and Harper. Freeman is hitting .295 with a .373 OBP for the top seed."
+    }
+   ]
+  },
+  {
+   "slug": "jamison",
+   "headline": "Jamison Had the Best Roster in the League and Two Bad Weeks at the Wrong Time",
+   "leader": "Second place with two weeks left, then a four seed, then a first-round exit to a staff that couldn't keep a starter healthy.",
+   "rank": 4,
+   "teamName": "So bad it Kurtz",
+   "manager": "Jamison",
+   "record": "135-113-16",
+   "publishedAt": "2026-09-21",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Jamison was in the top four for nineteen of twenty-two weeks and second with two weeks left. His lineup had the best ratio profile in the league: 14-8 in average, 14-8 in on-base percentage, and a 14-8 ERA record to go with it. Yordan Alvarez hit .310 with a .427 OBP, 38 homers, and 96 RBI, the best keeper season on any roster. Elly De La Cruz hit .283 with 26 homers and 25 steals. Chase Burns went 15-3 with a 2.73."
+    },
+    {
+     "type": "p",
+     "text": "Then he lost the last two weeks of the regular season, dropped to the four seed, drew mike in the first round, and lost 2-8-2 with a 5.57 ERA and a 30-46 deficit in RBI. He won the two categories he'd won all year, average and OBP, and nothing else."
+    },
+    {
+     "type": "h",
+     "text": "The injuries"
+    },
+    {
+     "type": "p",
+     "text": "Jamison collected injured pitchers the way other managers collect catchers. Spencer Strider, the 6th-round pick, threw 39 innings and was dropped in June. Gerrit Cole, the 9th, threw 115. Spencer Schwellenbach, the 12th, did not pitch and was dropped in June. Blake Snell, picked up in July, threw 37 innings all year. Tyler Glasnow, acquired at the deadline, threw 62. At any given point in the second half the roster carried three or four starting pitchers who were not starting, which is how a team with a 14-8 ERA record finished 9-13 in strikeouts."
+    },
+    {
+     "type": "p",
+     "text": "The lineup lost Nick Kurtz, the keeper the team was named after, to the 60-day IL with a .396 on-base percentage and 21 homers in 352 at-bats. Juan Soto got 345 at-bats and hit 25 homers in them. Both were the kind of hitter who wins a playoff week, and neither was available for one."
+    },
+    {
+     "type": "h",
+     "text": "The playoffs"
+    },
+    {
+     "type": "p",
+     "text": "Week 23, the four seed against the five, and mike won 8-2-2. Jamison hit .299 with a .412 OBP for the week and lost anyway, because mike hit 12 homers with 46 RBI and Jamison's staff posted a 5.57 ERA. The team that had lost strikeouts thirteen times in the regular season lost them again, 57-62, and lost saves 1-2 with a bullpen of Tanner Scott and nobody."
+    },
+    {
+     "type": "h",
+     "text": "The deadline"
+    },
+    {
+     "type": "p",
+     "text": "Five trades, and the deadline ones went the wrong direction for a contender."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Mar 16: Cam Schlittler to Brudner for Chase Burns, the day after the draft. Burns went 15-3 with a 2.73. Schlittler went 14-6 with a 1.95 and 228 strikeouts for the top seed, and was the single best pick in the 2026 draft by the site's math.",
+      "May 29: Jamison's 10th and Bryce Elder to Will for Will's 6th. A pick swap with Elder as filler.",
+      "Jul 28: Jamison's 2nd and 5th to Will for Manny Machado, the 10th back, and a 21st. Machado hit .221 the rest of the way.",
+      "Jul 31: Mike Trout to Brudner for Sean Burke. Trout had a .379 OBP. Burke (169 strikeouts, 3.58) is on Jamison's bench.",
+      "Aug 6: Jamison's 3rd and Will's 6th back to Will for Tyler Glasnow, a 17th, and an 18th, with Sal Pérez as filler. Glasnow: 62 innings, 3.50."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Net at the deadline: a 2nd, a 3rd, a 5th, and Trout out; Machado, Glasnow, Burke, and three late picks in. Jamison drafts ninth in each round next year without his 2nd, 3rd, or 5th."
+    },
+    {
+     "type": "h",
+     "text": "Report card"
+    },
+    {
+     "type": "p",
+     "text": "Keepers: A-. Yordan and Elly were two of the four best keeper seasons in the league. Soto had a .394 OBP in the at-bats he got. Merrill had 25 homers and 26 steals with a .299 OBP. Kurtz was excellent and then gone."
+    },
+    {
+     "type": "p",
+     "text": "Draft: C. Tenth of twelve on the Draft tab, with no picks in rounds 2 through 4. Maikel Garcia at 11th overall hit .269 with 3 homers in 283 at-bats. Noelvi Marte in the 10th hit .189. Jordan Westburg in the 17th did not play and was dropped the day after the draft. The one hit was Schlittler in the 5th, the best pick anyone made, and Jamison had him for a day. Robert Suárez in the 16th (0.56 ERA) was the other, and Jamison dropped him July 10."
+    },
+    {
+     "type": "p",
+     "text": "Waiver wire: C+. Sixty-four moves, the most in the league. Tanner Scott, added April 20: 22 saves, 2.47. Troy Melton, added July 10 off Hingston's same-day drop: 2.42 ERA. Sam Antonacci, added July 12: .269, .367 OBP, 17 steals. The misses outnumber the hits. Carson Benge (March 24 to April 17), Isaac Paredes (added and dropped twice), A.J. Ewing (dropped June 19), and Grant Taylor (dropped July 11) all went on to be regulars for other playoff and near-playoff teams. Paredes drove in 83 for Hingston. Benge and Ewing stole 45 bases for Bennett."
+    },
+    {
+     "type": "p",
+     "text": "Trades: D+. The Schlittler trade returned a 15-game winner, so it's defensible in isolation. Everything in July was a contender buying a .221 third baseman and an injured starter with a 2nd, 3rd, 5th, and 6th, while sending a .379-OBP outfielder to the one seed for a pitcher he then benched. The picks are gone and the players didn't move a category."
+    },
+    {
+     "type": "h",
+     "text": "Low point"
+    },
+    {
+     "type": "p",
+     "text": "Week 14, 2-9-1 against Brudner, the week after a 9-1-2 win over mike, in a season that was otherwise never worse than 3-8."
+    },
+    {
+     "type": "h",
+     "text": "From the archives"
+    },
+    {
+     "type": "p",
+     "text": "Jamison picked Juan Soto up off free agency on May 20, 2018, dropping Freddy Peralta to do it. Two months later he agreed to trade Soto to KC for Altuve, Correa, and the first overall pick; the league vetoed it four times in six days. Soto has been on Jamison's roster ever since, eight seasons, the third-longest active tenure in the league after Harper and, until June, Freeman."
+    },
+    {
+     "type": "p",
+     "text": "He has also traded Mike Trout away twice. He acquired Trout from Mark in July 2022 for a four-player package, named the team “Beyond A Reasonable Trout” the next spring, traded Trout to Bennett that August, drafted him again in the 7th round this year, and traded him to Brudner on July 31. Trout has a .379 on-base percentage for the top seed. Jamison, for the record, was the one who called for Kangaroo Court in 2018."
+    }
+   ]
+  }
+ ]
+}

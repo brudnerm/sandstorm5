@@ -1,0 +1,17 @@
+{
+ "generatedAt": "2026-09-19T18:17:41.210Z",
+ "leagues": [
+  {
+   "id": "kp",
+   "name": "Keeping Pattycakes",
+   "season": "2026",
+   "currentWeek": 25
+  },
+  {
+   "id": "sidebar",
+   "name": "sidebar",
+   "season": "2026",
+   "currentWeek": 25
+  }
+ ]
+}
