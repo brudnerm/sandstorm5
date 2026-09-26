@@ -1,0 +1,1935 @@
+{
+ "leagueId": "kp",
+ "season": "2026",
+ "asOfWeek": 25,
+ "playoffStartWeek": 23,
+ "numPlayoffTeams": 6,
+ "stints": [
+  {
+   "playerKey": "469.p.10148",
+   "name": "Blake Snell",
+   "teamKey": "469.l.13624.t.2",
+   "firstWeek": 1,
+   "lastWeek": 6,
+   "weeksLost": 6,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.2",
+     "weeks": 6
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 38.667,
+     "w": 4,
+     "l": 1,
+     "sv": 0,
+     "k": 52,
+     "era": 1.86,
+     "whip": 1.09
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10862",
+   "name": "Hunter Greene",
+   "teamKey": "469.l.13624.t.8",
+   "firstWeek": 1,
+   "lastWeek": 6,
+   "weeksLost": 6,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.8",
+     "weeks": 6
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 27.667,
+     "w": 2,
+     "l": 2,
+     "sv": 0,
+     "k": 33,
+     "era": 6.83,
+     "whip": 1.37
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10867",
+   "name": "Shane Bieber",
+   "teamKey": "469.l.13624.t.4",
+   "firstWeek": 1,
+   "lastWeek": 12,
+   "weeksLost": 12,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.4",
+     "weeks": 12
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 55.667,
+     "w": 5,
+     "l": 2,
+     "sv": 0,
+     "k": 44,
+     "era": 4.37,
+     "whip": 1.42
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.11733",
+   "name": "Kyle Stowers",
+   "teamKey": "469.l.13624.t.12",
+   "firstWeek": 1,
+   "lastWeek": 2,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.12",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 447,
+     "r": 57,
+     "hr": 21,
+     "rbi": 65,
+     "sb": 1,
+     "avg": 0.239,
+     "obp": 0.331
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.12363",
+   "name": "Spencer Schwellenbach",
+   "teamKey": "469.l.13624.t.11",
+   "firstWeek": 1,
+   "lastWeek": 10,
+   "weeksLost": 10,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.11",
+     "weeks": 10
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": null
+  },
+  {
+   "playerKey": "469.p.60090",
+   "name": "Jackson Holliday",
+   "teamKey": "469.l.13624.t.7",
+   "firstWeek": 1,
+   "lastWeek": 5,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.7",
+     "weeks": 5
+    }
+   ],
+   "status": null,
+   "dropped": true,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 315,
+     "r": 45,
+     "hr": 7,
+     "rbi": 30,
+     "sb": 8,
+     "avg": 0.229,
+     "obp": 0.3
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.64320",
+   "name": "Trey Yesavage",
+   "teamKey": "469.l.13624.t.3",
+   "firstWeek": 1,
+   "lastWeek": 5,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.3",
+     "weeks": 5
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 95.667,
+     "w": 5,
+     "l": 5,
+     "sv": 0,
+     "k": 94,
+     "era": 3.67,
+     "whip": 1.13
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.9124",
+   "name": "Zack Wheeler",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 1,
+   "lastWeek": 4,
+   "weeksLost": 4,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 4
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 156,
+     "w": 13,
+     "l": 5,
+     "sv": 0,
+     "k": 188,
+     "era": 3.06,
+     "whip": 1.06
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.9727",
+   "name": "Kirby Yates",
+   "teamKey": "469.l.13624.t.6",
+   "firstWeek": 1,
+   "lastWeek": 4,
+   "weeksLost": 4,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.6",
+     "weeks": 4
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": null
+  },
+  {
+   "playerKey": "469.p.9552",
+   "name": "Mookie Betts",
+   "teamKey": "469.l.13624.t.10",
+   "firstWeek": 2,
+   "lastWeek": 6,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.10",
+     "weeks": 5
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 471,
+     "r": 70,
+     "hr": 22,
+     "rbi": 68,
+     "sb": 2,
+     "avg": 0.259,
+     "obp": 0.328
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.9823",
+   "name": "Carlos Rodón",
+   "teamKey": "469.l.13624.t.9",
+   "firstWeek": 2,
+   "lastWeek": 5,
+   "weeksLost": 4,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.9",
+     "weeks": 4
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 84.333,
+     "w": 7,
+     "l": 3,
+     "sv": 0,
+     "k": 91,
+     "era": 2.67,
+     "whip": 1.06
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10011",
+   "name": "Matthew Boyd",
+   "teamKey": "469.l.13624.t.1",
+   "firstWeek": 3,
+   "lastWeek": 3,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.1",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 126.667,
+     "w": 10,
+     "l": 5,
+     "sv": 0,
+     "k": 96,
+     "era": 3.91,
+     "whip": 1.21
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10917",
+   "name": "Brent Rooker",
+   "teamKey": "469.l.13624.t.12",
+   "firstWeek": 3,
+   "lastWeek": 4,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.12",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 180,
+     "r": 20,
+     "hr": 10,
+     "rbi": 29,
+     "sb": 2,
+     "avg": 0.2,
+     "obp": 0.281
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.10683",
+   "name": "Nick Pivetta",
+   "teamKey": "469.l.13624.t.1",
+   "firstWeek": 4,
+   "lastWeek": 9,
+   "weeksLost": 6,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.1",
+     "weeks": 6
+    }
+   ],
+   "status": null,
+   "dropped": true,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 34.667,
+     "w": 3,
+     "l": 2,
+     "sv": 0,
+     "k": 42,
+     "era": 2.86,
+     "whip": 1.01
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.12141",
+   "name": "Hunter Brown",
+   "teamKey": "469.l.13624.t.12",
+   "firstWeek": 5,
+   "lastWeek": 12,
+   "weeksLost": 8,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.12",
+     "weeks": 8
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 107.333,
+     "w": 6,
+     "l": 4,
+     "sv": 0,
+     "k": 124,
+     "era": 3.19,
+     "whip": 1.27
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.9320",
+   "name": "Christian Yelich",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 5,
+   "lastWeek": 7,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 3
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 436,
+     "r": 69,
+     "hr": 12,
+     "rbi": 58,
+     "sb": 11,
+     "avg": 0.236,
+     "obp": 0.316
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.9902",
+   "name": "Raisel Iglesias",
+   "teamKey": "469.l.13624.t.6",
+   "firstWeek": 5,
+   "lastWeek": 5,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.6",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 59,
+     "w": 1,
+     "l": 2,
+     "sv": 34,
+     "k": 64,
+     "era": 2.59,
+     "whip": 1.08
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10131",
+   "name": "Josh Hader",
+   "teamKey": "469.l.13624.t.7",
+   "firstWeek": 6,
+   "lastWeek": 10,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.7",
+     "weeks": 5
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 44.667,
+     "w": 4,
+     "l": 2,
+     "sv": 26,
+     "k": 55,
+     "era": 1.01,
+     "whip": 0.76
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10214",
+   "name": "Edwin Díaz",
+   "teamKey": "469.l.13624.t.9",
+   "firstWeek": 6,
+   "lastWeek": 10,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.9",
+     "weeks": 5
+    }
+   ],
+   "status": null,
+   "dropped": true,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 17.667,
+     "w": 2,
+     "l": 2,
+     "sv": 7,
+     "k": 27,
+     "era": 9.17,
+     "whip": 2.09
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10274",
+   "name": "Carlos Estévez",
+   "teamKey": "469.l.13624.t.3",
+   "firstWeek": 6,
+   "lastWeek": 6,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.3",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 0.333,
+     "w": 0,
+     "l": 1,
+     "sv": 0,
+     "k": 0,
+     "era": 162,
+     "whip": 18
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.12014",
+   "name": "Clayton Beeter",
+   "teamKey": "469.l.13624.t.6",
+   "firstWeek": 6,
+   "lastWeek": 8,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.6",
+     "weeks": 3
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 48,
+     "w": 6,
+     "l": 5,
+     "sv": 12,
+     "k": 47,
+     "era": 4.5,
+     "whip": 1.4
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10610",
+   "name": "Cole Ragans",
+   "teamKey": "469.l.13624.t.10",
+   "firstWeek": 7,
+   "lastWeek": 13,
+   "weeksLost": 7,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.10",
+     "weeks": 7
+    }
+   ],
+   "status": null,
+   "dropped": true,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 35.333,
+     "w": 1,
+     "l": 4,
+     "sv": 0,
+     "k": 45,
+     "era": 4.84,
+     "whip": 1.42
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10730",
+   "name": "Brandon Woodruff",
+   "teamKey": "469.l.13624.t.2",
+   "firstWeek": 7,
+   "lastWeek": 7,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.2",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 45.333,
+     "w": 2,
+     "l": 2,
+     "sv": 0,
+     "k": 47,
+     "era": 2.98,
+     "whip": 0.84
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10765",
+   "name": "Luis Robert Jr.",
+   "teamKey": "469.l.13624.t.3",
+   "firstWeek": 7,
+   "lastWeek": 9,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.3",
+     "weeks": 3
+    }
+   ],
+   "status": null,
+   "dropped": true,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 204,
+     "r": 26,
+     "hr": 11,
+     "rbi": 26,
+     "sb": 2,
+     "avg": 0.221,
+     "obp": 0.3
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.11763",
+   "name": "Tarik Skubal",
+   "teamKey": "469.l.13624.t.8",
+   "firstWeek": 7,
+   "lastWeek": 8,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.8",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 158.667,
+     "w": 12,
+     "l": 7,
+     "sv": 0,
+     "k": 186,
+     "era": 2.72,
+     "whip": 0.96
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.11768",
+   "name": "Jeremy Peña",
+   "teamKey": "469.l.13624.t.2",
+   "firstWeek": 8,
+   "lastWeek": 8,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.2",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 436,
+     "r": 77,
+     "hr": 20,
+     "rbi": 51,
+     "sb": 12,
+     "avg": 0.271,
+     "obp": 0.321
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.60907",
+   "name": "Jared Jones",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 8,
+   "lastWeek": 8,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 97.667,
+     "w": 5,
+     "l": 6,
+     "sv": 0,
+     "k": 118,
+     "era": 3.87,
+     "whip": 1.12
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10862",
+   "name": "Hunter Greene",
+   "teamKey": "469.l.13624.t.8",
+   "firstWeek": 9,
+   "lastWeek": 14,
+   "weeksLost": 6,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.8",
+     "weeks": 6
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 27.667,
+     "w": 2,
+     "l": 2,
+     "sv": 0,
+     "k": 33,
+     "era": 6.83,
+     "whip": 1.37
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.12351",
+   "name": "Brendan Donovan",
+   "teamKey": "469.l.13624.t.2",
+   "firstWeek": 9,
+   "lastWeek": 16,
+   "weeksLost": 8,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.2",
+     "weeks": 8
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 137,
+     "r": 12,
+     "hr": 3,
+     "rbi": 15,
+     "sb": 1,
+     "avg": 0.277,
+     "obp": 0.371
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.60077",
+   "name": "Drake Baldwin",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 9,
+   "lastWeek": 11,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 3
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 544,
+     "r": 84,
+     "hr": 24,
+     "rbi": 77,
+     "sb": 3,
+     "avg": 0.281,
+     "obp": 0.356
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.11531",
+   "name": "Cal Raleigh",
+   "teamKey": "469.l.13624.t.3",
+   "firstWeek": 10,
+   "lastWeek": 12,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.3",
+     "weeks": 3
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 442,
+     "r": 49,
+     "hr": 23,
+     "rbi": 68,
+     "sb": 2,
+     "avg": 0.179,
+     "obp": 0.294
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.8758",
+   "name": "Kenley Jansen",
+   "teamKey": "469.l.13624.t.1",
+   "firstWeek": 10,
+   "lastWeek": 10,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.1",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 45,
+     "w": 4,
+     "l": 6,
+     "sv": 22,
+     "k": 51,
+     "era": 3.2,
+     "whip": 1.04
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10366",
+   "name": "Teoscar Hernández",
+   "teamKey": "469.l.13624.t.9",
+   "firstWeek": 11,
+   "lastWeek": 11,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.9",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 436,
+     "r": 66,
+     "hr": 16,
+     "rbi": 64,
+     "sb": 5,
+     "avg": 0.268,
+     "obp": 0.336
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.12046",
+   "name": "Garrett Crochet",
+   "teamKey": "469.l.13624.t.1",
+   "firstWeek": 11,
+   "lastWeek": null,
+   "weeksLost": 15,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.1",
+     "weeks": 15
+    }
+   ],
+   "status": "IL60",
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 30,
+     "w": 3,
+     "l": 3,
+     "sv": 0,
+     "k": 37,
+     "era": 6.3,
+     "whip": 1.47
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.12096",
+   "name": "Bailey Ober",
+   "teamKey": "469.l.13624.t.6",
+   "firstWeek": 11,
+   "lastWeek": 14,
+   "weeksLost": 4,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.6",
+     "weeks": 4
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 126,
+     "w": 7,
+     "l": 6,
+     "sv": 1,
+     "k": 91,
+     "era": 4.21,
+     "whip": 1.26
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.12393",
+   "name": "Elly De La Cruz",
+   "teamKey": "469.l.13624.t.11",
+   "firstWeek": 11,
+   "lastWeek": 12,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.11",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 551,
+     "r": 99,
+     "hr": 30,
+     "rbi": 79,
+     "sb": 30,
+     "avg": 0.285,
+     "obp": 0.367
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.60108",
+   "name": "Roman Anthony",
+   "teamKey": "469.l.13624.t.7",
+   "firstWeek": 11,
+   "lastWeek": 21,
+   "weeksLost": 11,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.7",
+     "weeks": 11
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 210,
+     "r": 24,
+     "hr": 5,
+     "rbi": 15,
+     "sb": 2,
+     "avg": 0.248,
+     "obp": 0.342
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.12449",
+   "name": "Vinnie Pasquantino",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 12,
+   "lastWeek": 14,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 3
+    }
+   ],
+   "status": null,
+   "dropped": true,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 414,
+     "r": 52,
+     "hr": 15,
+     "rbi": 60,
+     "sb": 5,
+     "avg": 0.246,
+     "obp": 0.33
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.9616",
+   "name": "Tyler Glasnow",
+   "teamKey": "469.l.13624.t.9",
+   "firstWeek": 12,
+   "lastWeek": 18,
+   "weeksLost": 7,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.9",
+     "weeks": 7
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 74,
+     "w": 5,
+     "l": 2,
+     "sv": 0,
+     "k": 98,
+     "era": 3.53,
+     "whip": 0.95
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.11370",
+   "name": "Oneil Cruz",
+   "teamKey": "469.l.13624.t.3",
+   "firstWeek": 13,
+   "lastWeek": 17,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.3",
+     "weeks": 5
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 368,
+     "r": 65,
+     "hr": 20,
+     "rbi": 67,
+     "sb": 30,
+     "avg": 0.28,
+     "obp": 0.368
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.60121",
+   "name": "Daniel Palencia",
+   "teamKey": "469.l.13624.t.12",
+   "firstWeek": 13,
+   "lastWeek": 20,
+   "weeksLost": 8,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.12",
+     "weeks": 8
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 29.667,
+     "w": 2,
+     "l": 2,
+     "sv": 3,
+     "k": 30,
+     "era": 3.64,
+     "whip": 1.21
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.8861",
+   "name": "Mike Trout",
+   "teamKey": "469.l.13624.t.11",
+   "firstWeek": 13,
+   "lastWeek": 15,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.11",
+     "weeks": 3
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 509,
+     "r": 86,
+     "hr": 22,
+     "rbi": 54,
+     "sb": 11,
+     "avg": 0.244,
+     "obp": 0.384
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.9507",
+   "name": "José Ramírez",
+   "teamKey": "469.l.13624.t.4",
+   "firstWeek": 13,
+   "lastWeek": 16,
+   "weeksLost": 4,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.4",
+     "weeks": 4
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 468,
+     "r": 70,
+     "hr": 12,
+     "rbi": 53,
+     "sb": 37,
+     "avg": 0.237,
+     "obp": 0.323
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.60262",
+   "name": "Logan Henderson",
+   "teamKey": "469.l.13624.t.10",
+   "firstWeek": 14,
+   "lastWeek": 15,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.10",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 98.333,
+     "w": 11,
+     "l": 3,
+     "sv": 0,
+     "k": 110,
+     "era": 2.47,
+     "whip": 0.84
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.12005",
+   "name": "Tyler Soderstrom",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 15,
+   "lastWeek": 15,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 396,
+     "r": 58,
+     "hr": 19,
+     "rbi": 56,
+     "sb": 2,
+     "avg": 0.245,
+     "obp": 0.338
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.10148",
+   "name": "Blake Snell",
+   "teamKey": "469.l.13624.t.11",
+   "firstWeek": 16,
+   "lastWeek": 17,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.11",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 38.667,
+     "w": 4,
+     "l": 1,
+     "sv": 0,
+     "k": 52,
+     "era": 1.86,
+     "whip": 1.09
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.64318",
+   "name": "Konnor Griffin",
+   "teamKey": "469.l.13624.t.10",
+   "firstWeek": 16,
+   "lastWeek": 22,
+   "weeksLost": 7,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.10",
+     "weeks": 7
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 306,
+     "r": 42,
+     "hr": 5,
+     "rbi": 31,
+     "sb": 23,
+     "avg": 0.268,
+     "obp": 0.321
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.10642",
+   "name": "Will Smith",
+   "teamKey": "469.l.13624.t.2",
+   "firstWeek": 17,
+   "lastWeek": 22,
+   "weeksLost": 6,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.2",
+     "weeks": 6
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 232,
+     "r": 34,
+     "hr": 10,
+     "rbi": 34,
+     "sb": 0,
+     "avg": 0.259,
+     "obp": 0.355
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.11415",
+   "name": "Blaze Alexander",
+   "teamKey": "469.l.13624.t.6",
+   "firstWeek": 17,
+   "lastWeek": 21,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.6",
+     "weeks": 5
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 261,
+     "r": 35,
+     "hr": 4,
+     "rbi": 31,
+     "sb": 10,
+     "avg": 0.303,
+     "obp": 0.358
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.11750",
+   "name": "Nick Lodolo",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 17,
+   "lastWeek": 18,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 108.667,
+     "w": 3,
+     "l": 6,
+     "sv": 0,
+     "k": 83,
+     "era": 4.97,
+     "whip": 1.48
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.11771",
+   "name": "Bobby Witt Jr.",
+   "teamKey": "469.l.13624.t.8",
+   "firstWeek": 17,
+   "lastWeek": 18,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.8",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 550,
+     "r": 92,
+     "hr": 18,
+     "rbi": 54,
+     "sb": 44,
+     "avg": 0.282,
+     "obp": 0.361
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.9877",
+   "name": "Aaron Judge",
+   "teamKey": "469.l.13624.t.4",
+   "firstWeek": 17,
+   "lastWeek": 23,
+   "weeksLost": 7,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.4",
+     "weeks": 7
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 237,
+     "r": 45,
+     "hr": 18,
+     "rbi": 41,
+     "sb": 5,
+     "avg": 0.241,
+     "obp": 0.36
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.10626",
+   "name": "Juan Soto",
+   "teamKey": "469.l.13624.t.11",
+   "firstWeek": 18,
+   "lastWeek": 20,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.11",
+     "weeks": 3
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 395,
+     "r": 63,
+     "hr": 27,
+     "rbi": 68,
+     "sb": 9,
+     "avg": 0.278,
+     "obp": 0.396
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.11728",
+   "name": "Shea Langeliers",
+   "teamKey": "469.l.13624.t.3",
+   "firstWeek": 18,
+   "lastWeek": 19,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.3",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": true,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 418,
+     "r": 58,
+     "hr": 23,
+     "rbi": 58,
+     "sb": 3,
+     "avg": 0.263,
+     "obp": 0.328
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.10504",
+   "name": "Cody Bellinger",
+   "teamKey": "469.l.13624.t.8",
+   "firstWeek": 19,
+   "lastWeek": 20,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.8",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 496,
+     "r": 73,
+     "hr": 17,
+     "rbi": 73,
+     "sb": 12,
+     "avg": 0.264,
+     "obp": 0.338
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.11847",
+   "name": "Joe Ryan",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 19,
+   "lastWeek": 23,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 5
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 144.667,
+     "w": 7,
+     "l": 10,
+     "sv": 0,
+     "k": 159,
+     "era": 3.79,
+     "whip": 1.16
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.1000002",
+   "name": "Shohei Ohtani (Pitcher)",
+   "teamKey": "469.l.13624.t.3",
+   "firstWeek": 20,
+   "lastWeek": null,
+   "weeksLost": 6,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.3",
+     "weeks": 6
+    }
+   ],
+   "status": "IL",
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 85.667,
+     "w": 8,
+     "l": 2,
+     "sv": 0,
+     "k": 95,
+     "era": 1.79,
+     "whip": 0.95
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.64313",
+   "name": "Nick Kurtz",
+   "teamKey": "469.l.13624.t.11",
+   "firstWeek": 21,
+   "lastWeek": null,
+   "weeksLost": 5,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.11",
+     "weeks": 5
+    }
+   ],
+   "status": "IL60",
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 352,
+     "r": 62,
+     "hr": 21,
+     "rbi": 69,
+     "sb": 7,
+     "avg": 0.256,
+     "obp": 0.396
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.9620",
+   "name": "Max Fried",
+   "teamKey": "469.l.13624.t.8",
+   "firstWeek": 21,
+   "lastWeek": 21,
+   "weeksLost": 1,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.8",
+     "weeks": 1
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 112.667,
+     "w": 5,
+     "l": 5,
+     "sv": 0,
+     "k": 104,
+     "era": 2.8,
+     "whip": 0.99
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.10036",
+   "name": "Ketel Marte",
+   "teamKey": "469.l.13624.t.8",
+   "firstWeek": 22,
+   "lastWeek": 23,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.8",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 553,
+     "r": 77,
+     "hr": 22,
+     "rbi": 75,
+     "sb": 4,
+     "avg": 0.248,
+     "obp": 0.315
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.12148",
+   "name": "Andy Pages",
+   "teamKey": "469.l.13624.t.7",
+   "firstWeek": 22,
+   "lastWeek": null,
+   "weeksLost": 4,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.7",
+     "weeks": 4
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 505,
+     "r": 74,
+     "hr": 22,
+     "rbi": 81,
+     "sb": 13,
+     "avg": 0.275,
+     "obp": 0.343
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.63581",
+   "name": "Justin Wrobleski",
+   "teamKey": "469.l.13624.t.6",
+   "firstWeek": 22,
+   "lastWeek": null,
+   "weeksLost": 4,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.6",
+     "weeks": 4
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "pitching",
+    "batting": null,
+    "pitching": {
+     "ip": 138,
+     "w": 12,
+     "l": 5,
+     "sv": 0,
+     "k": 115,
+     "era": 3.72,
+     "whip": 1.14
+    }
+   }
+  },
+  {
+   "playerKey": "469.p.12351",
+   "name": "Brendan Donovan",
+   "teamKey": "469.l.13624.t.2",
+   "firstWeek": 23,
+   "lastWeek": null,
+   "weeksLost": 3,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.2",
+     "weeks": 3
+    }
+   ],
+   "status": "IL7",
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 137,
+     "r": 12,
+     "hr": 3,
+     "rbi": 15,
+     "sb": 1,
+     "avg": 0.277,
+     "obp": 0.371
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.1000001",
+   "name": "Shohei Ohtani (Batter)",
+   "teamKey": "469.l.13624.t.4",
+   "firstWeek": 24,
+   "lastWeek": null,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.4",
+     "weeks": 2
+    }
+   ],
+   "status": null,
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 515,
+     "r": 89,
+     "hr": 30,
+     "rbi": 81,
+     "sb": 11,
+     "avg": 0.276,
+     "obp": 0.378
+    },
+    "pitching": null
+   }
+  },
+  {
+   "playerKey": "469.p.10235",
+   "name": "Rafael Devers",
+   "teamKey": "469.l.13624.t.5",
+   "firstWeek": 24,
+   "lastWeek": null,
+   "weeksLost": 2,
+   "teams": [
+    {
+     "teamKey": "469.l.13624.t.5",
+     "weeks": 2
+    }
+   ],
+   "status": "IL60",
+   "dropped": false,
+   "traded": false,
+   "seasonLine": {
+    "role": "batting",
+    "batting": {
+     "ab": 558,
+     "r": 88,
+     "hr": 37,
+     "rbi": 98,
+     "sb": 0,
+     "avg": 0.258,
+     "obp": 0.34
+    },
+    "pitching": null
+   }
+  }
+ ]
+}
